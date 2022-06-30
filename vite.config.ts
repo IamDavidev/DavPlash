@@ -11,6 +11,7 @@ export default ({ mode }: { mode: string }) => {
 				'~components': path.resolve(__dirname, './src/components'),
 				'~interfaces': path.resolve(__dirname, './src/interfaces'),
 				'~lib': path.resolve(__dirname, './src/lib'),
+				'~constants': path.resolve(__dirname, './src/constants'),
 				'~pages': path.resolve(__dirname, './src/pages'),
 			},
 		},
