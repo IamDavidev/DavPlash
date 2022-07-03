@@ -10,8 +10,11 @@ import {
 	ApiUnsplashAccessKey,
 } from '~constants/unsplash.const';
 
-import { TypeEmptyStatePhotosPlash } from '~interfaces/unsplash.types';
-import { typeApiPhotosProps } from '~interfaces/photos.types';
+import {
+	TypeEmptyStatePhotosPlash,
+	usePhotos,
+	typeApiPhotosProps,
+} from '~interfaces/photos.types';
 
 import { ApiInstance } from '@/config';
 
@@ -40,13 +43,13 @@ export async function apiPhotos({
 	successPhotos(response);
 }
 
-export function usePhotosPlash() {
+export function usePhotosPlash(): usePhotos {
 	const [photos, setPhotos] = useState<TypeEmptyStatePhotosPlash>(
 		EMPTY_STATE_PHOTOS_PLASH
 	);
 
 	const successPhotos = (results: any[]) => {
-		return setPhotos(prev => ({
+		return setPhotos((prev: TypeEmptyStatePhotosPlash) => ({
 			...prev,
 			results,
 		}));
@@ -58,7 +61,6 @@ export function usePhotosPlash() {
 
 	return {
 		photos,
-		setPhotos,
 	};
 }
 
