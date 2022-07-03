@@ -25,3 +25,6 @@ dist-ssr
 
 # env
 .env
+
+# ubuntu config files
+models.json
