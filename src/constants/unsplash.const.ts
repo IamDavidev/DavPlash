@@ -12,4 +12,7 @@ export const EMPTY_STATE_PHOTOS_PLASH: TypeEmptyStatePhotosPlash = {
 		message: '',
 		isExistError: false,
 	},
+	orderBy: 'latest',
+	perPage: 15,
+	page: 1,
 };

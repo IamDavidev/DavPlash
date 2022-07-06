@@ -1,10 +1,10 @@
-import { Box, Heading, List, ListItem } from '@chakra-ui/react';
+import { Box, Heading, Image } from '@chakra-ui/react';
 
 import { usePhotosPlash } from '~lib/hooks';
 
 import '@/styles/global.styles.css';
 
-import { CheckIcon } from '~components/icons';
+import { TypePhotoPlash } from './interfaces/photos.types';
 
 // solid - resposibility unique for each function
 
@@ -21,20 +21,25 @@ const App = () => {
 				DavPlash
 			</Heading>
 			<Box padding={'15'}>
-				<List spacing={'4'}>
-					{photos.results?.map((photo: any) => {
+				<Box
+					display={'flex'}
+					flexWrap={'wrap'}
+					gap={'1rem'}
+					justifyContent={'center'}
+					flexDirection={'row'}>
+					{photos.results?.map((photo: TypePhotoPlash) => {
 						return (
-							<ListItem
+							<Image
+								borderRadius={'1rem'}
+								src={photo.images.small}
+								boxSize={'180px'}
+								alt={photo.id}
+								objectFit={'cover'}
 								key={photo.id}
-								display={'flex'}
-								alignItems={'center'}
-								gap={'2'}>
-								<CheckIcon width={'40'} height={'40'} fillColor={'#fff'} />
-								<p>{photo.blur_hash}</p>
-							</ListItem>
+							/>
 						);
 					})}
-				</List>
+				</Box>
 			</Box>
 		</Box>
 	);

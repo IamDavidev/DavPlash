@@ -1,9 +1,15 @@
+export interface TypeGenericRequestProps {
+	perPage: number;
+	page: number;
+	orderBy: 'latest' | 'oldest' | 'popular';
+}
+
 export type TypeErrorPhotosPlash = {
 	message: string;
 	isExistError: boolean;
 };
 
-export interface typeApiPhotosProps {
+export interface typeApiPhotosProps extends TypeGenericRequestProps {
 	// setPhotos: Function;
 	// function void
 	success: (results: any[]) => void;
@@ -42,8 +48,12 @@ export interface TypeAdapterPhotos {
 /** endAdapters photos */
 
 /** Api photos */
+
+export type TypeGetPhotosServiceProps = TypeGenericRequestProps;
+
 export type TypePhotoPlash = TypeAdapterPhotos;
-export interface TypeEmptyStatePhotosPlash {
+
+export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
 	results: TypePhotoPlash[];
 	isLoading: boolean;
 	error: TypeErrorPhotosPlash;
