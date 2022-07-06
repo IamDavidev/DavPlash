@@ -1,6 +1,10 @@
 import { useEffect, useReducer } from 'react';
 
-import { usePhotos, TypePhotoPlash } from '~interfaces/photos.types';
+import {
+	usePhotos,
+	TypePhotoPlash,
+	typeOrderBy,
+} from '~interfaces/photos.types';
 import { EMPTY_STATE_PHOTOS_PLASH } from '~constants/unsplash.const';
 import { apiPhotos } from '~lib/api';
 import { reducerPhotos } from '../reducers';
@@ -56,6 +60,29 @@ export function usePhotosPlash(): usePhotos {
 			},
 		});
 
+	const setPage = (page: number) =>
+		setPhotos({
+			type: ACTIONS_PHOTOS._SET_PAGE,
+			payload: {
+				page,
+			},
+		});
+
+	const setPerPage = (perPage: number) =>
+		setPhotos({
+			type: ACTIONS_PHOTOS._SET_PER_PAGE,
+			payload: {
+				perPage,
+			},
+		});
+	const setOrderBy = (orderBy: typeOrderBy) =>
+		setPhotos({
+			type: ACTIONS_PHOTOS._SET_ORDER_BY,
+			payload: {
+				orderBy,
+			},
+		});
+
 	useEffect(() => {
 		apiPhotos({
 			init: initialRequestPhotos,
@@ -65,9 +92,12 @@ export function usePhotosPlash(): usePhotos {
 			perPage: photos.perPage,
 			orderBy: photos.orderBy,
 		});
-	}, []);
+	}, [photos.perPage, photos.perPage, photos.orderBy]);
 
 	return {
 		photos,
+		setPage,
+		setPerPage,
+		setOrderBy,
 	};
 }

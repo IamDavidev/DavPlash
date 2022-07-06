@@ -1,7 +1,9 @@
+export type typeOrderBy = 'latest' | 'oldest' | 'popular';
+
 export interface TypeGenericRequestProps {
 	perPage: number;
 	page: number;
-	orderBy: 'latest' | 'oldest' | 'popular';
+	orderBy: typeOrderBy;
 }
 
 export type TypeErrorPhotosPlash = {
@@ -61,4 +63,7 @@ export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
 
 export interface usePhotos {
 	photos: TypeEmptyStatePhotosPlash;
+	setPage: (page: number) => void;
+	setPerPage: (perPage: number) => void;
+	setOrderBy: (orderBy: typeOrderBy) => void;
 }
