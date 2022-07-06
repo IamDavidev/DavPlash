@@ -1,8 +1,22 @@
-import { TypeEmptyStatePhotosPlash } from '~interfaces/photos.types';
+import {
+	TypeEmptyStatePhotosPlash,
+	TypeErrorPhotosPlash,
+} from '~interfaces/photos.types';
 
 import { EMPTY_STATE_PHOTOS_PLASH } from '~constants/unsplash.const';
 
 import { ACTIONS_PHOTOS } from '../actions';
+
+type TypeNotError = {
+	error: TypeErrorPhotosPlash;
+};
+
+const notError: TypeNotError = {
+	error: {
+		isExistError: false,
+		message: null,
+	},
+};
 
 export const reducerPhotos = (
 	state: any = EMPTY_STATE_PHOTOS_PLASH,
@@ -12,11 +26,8 @@ export const reducerPhotos = (
 		case ACTIONS_PHOTOS._INTIAL_REQUEST: {
 			return {
 				...state,
+				...notError,
 				isLoading: true,
-				error: {
-					isExistError: false,
-					message: null,
-				},
 			};
 		}
 
@@ -25,6 +36,8 @@ export const reducerPhotos = (
 			return {
 				...state,
 				results,
+				isLoading: false,
+				...notError,
 			};
 		}
 
@@ -52,6 +65,7 @@ export const reducerPhotos = (
 			return {
 				...state,
 				page,
+				perPage: 15,
 			};
 		}
 
@@ -64,6 +78,6 @@ export const reducerPhotos = (
 		}
 
 		default:
-			return state;
+			throw new Error(`Unhandled action type: ${action.type}`);
 	}
 };

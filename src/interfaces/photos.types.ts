@@ -1,4 +1,4 @@
-export type typeOrderBy = 'latest' | 'oldest' | 'popular';
+export type typeOrderBy = string;
 
 export interface TypeGenericRequestProps {
 	perPage: number;
@@ -7,7 +7,7 @@ export interface TypeGenericRequestProps {
 }
 
 export type TypeErrorPhotosPlash = {
-	message: string;
+	message: string | null;
 	isExistError: boolean;
 };
 

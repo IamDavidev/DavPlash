@@ -17,7 +17,7 @@ export const colors = {
 	black: {
 		500: '#000',
 	},
-	cyan: {
+	cyanCale: {
 		500: '#a6b2ec',
 	},
 	// ...

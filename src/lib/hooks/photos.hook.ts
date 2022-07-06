@@ -35,6 +35,7 @@ export function usePhotosPlash(): usePhotos {
 	// 		results, // = results: results`
 	// 		isLoading: false,
 	// 	}));
+
 	const successPhotos = (results: TypePhotoPlash[]) =>
 		setPhotos({
 			type: ACTIONS_PHOTOS._SUCCESS_REQUEST,
@@ -52,6 +53,7 @@ export function usePhotosPlash(): usePhotos {
 	// 		},
 	// 		isLoading: false,
 	// 	}));
+
 	const errorPhotos = (error: string) =>
 		setPhotos({
 			type: ACTIONS_PHOTOS._ERROR_REQUEST,
@@ -75,6 +77,7 @@ export function usePhotosPlash(): usePhotos {
 				perPage,
 			},
 		});
+
 	const setOrderBy = (orderBy: typeOrderBy) =>
 		setPhotos({
 			type: ACTIONS_PHOTOS._SET_ORDER_BY,
@@ -92,7 +95,7 @@ export function usePhotosPlash(): usePhotos {
 			perPage: photos.perPage,
 			orderBy: photos.orderBy,
 		});
-	}, [photos.perPage, photos.perPage, photos.orderBy]);
+	}, [photos.perPage, photos.page, photos.orderBy]);
 
 	return {
 		photos,
