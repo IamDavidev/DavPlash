@@ -10,6 +10,7 @@ import { TypePhotoPlash } from './interfaces/photos.types';
 
 const App = () => {
 	const { photos } = usePhotosPlash();
+	console.log(photos);
 
 	console.log(photos);
 

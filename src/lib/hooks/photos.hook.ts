@@ -101,3 +101,4 @@ export function usePhotosPlash(): usePhotos {
 		setOrderBy,
 	};
 }
+// add functionalities to the hook

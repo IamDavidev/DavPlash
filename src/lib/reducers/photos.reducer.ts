@@ -13,7 +13,10 @@ export const reducerPhotos = (
 			return {
 				...state,
 				isLoading: true,
-				error: null,
+				error: {
+					isExistError: false,
+					message: null,
+				},
 			};
 		}
 
