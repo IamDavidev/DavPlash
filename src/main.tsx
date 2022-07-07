@@ -7,7 +7,7 @@ import { theme } from '@/styles/theme/theme.chakra';
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<ChakraProvider theme={theme}>
-			<Box bg='black.500' minHeight={'100vh'}>
+			<Box bg='blackTheme.500' minHeight={'100vh'}>
 				<App />
 			</Box>
 		</ChakraProvider>

@@ -44,6 +44,7 @@ type TypeUserAdapterPhotos = {
 export interface TypeAdapterPhotos {
 	id: string;
 	likes: number;
+	description: string | null;
 	images: TypeImagesAdapterPhotos;
 	user: TypeUserAdapterPhotos;
 }
