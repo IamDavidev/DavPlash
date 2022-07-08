@@ -11,9 +11,11 @@ import { reducerPhotos } from '../reducers';
 import { ACTIONS_PHOTOS } from '../actions';
 
 export function usePhotosPlash(): usePhotos {
+
 	// const [photos, setPhotos] = useState<TypeEmptyStatePhotosPlash>(
 	// 	EMPTY_STATE_PHOTOS_PLASH
 	// );
+	
 	const [photos, setPhotos] = useReducer(
 		reducerPhotos,
 		EMPTY_STATE_PHOTOS_PLASH

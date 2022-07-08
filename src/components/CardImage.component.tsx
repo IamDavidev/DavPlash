@@ -36,8 +36,9 @@ function CardImage({ image, likes, userName }: Props) {
 			<Box padding={'1rem'}>
 				<Stack spacing={'1rem'}>
 					<Button
-						rightIcon={<VerifiedIcon width={19} height={20} />}
+						rightIcon={<VerifiedIcon width={24} height={25} />}
 						textAlign='left'
+						justifyContent={'flex-start'}
 						variant={'ghost'}
 						_hover={{
 							backgroundColor: COLORS_THEME._GRAY_,

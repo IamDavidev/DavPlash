@@ -19,6 +19,11 @@ export const colors = {
 	},
 	// ...
 };
+export const fonts = {
+		body: `Poppins, sans-serif`,
+		heading: `Poppins, sans-serif`,
+	}
+
 
 export const COLORS_THEME = {
 	_NAV_: '#080c25',
@@ -29,3 +34,4 @@ export const COLORS_THEME = {
 	_CYAN_: '#a6b2ec',
 	_PURPLE_: '#9c27b0',
 };
+
