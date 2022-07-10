@@ -3,10 +3,13 @@ import { TypeAdapterPhotos } from '~interfaces/photos.types';
 export function AdapterPhotos(objApiPhotos: any): TypeAdapterPhotos {
 	const user = objApiPhotos.user;
 	const images = objApiPhotos.urls;
+	const description =
+		objApiPhotos.description !== null ? objApiPhotos.description : null;
 
 	return {
 		id: objApiPhotos.id,
 		likes: objApiPhotos.likes,
+		description,
 		images: {
 			small: images.small,
 			full: images.full,

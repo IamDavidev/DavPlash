@@ -3,12 +3,12 @@
 		"target": "ESNext",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
 			"~components/*": ["./src/components/*"],
 			"~interfaces/*": ["./src/interfaces/*"],
 			"~lib/*": ["./src/lib/*"],
 			"~pages/*": ["./src/pages/*"],
-			"~constants/*": ["./src/constants/*"]
+			"~constants/*": ["./src/constants/*"],
+			"@/*": ["./src/*"]
 		},
 		"useDefineForClassFields": true,
 		"lib": ["DOM", "DOM.Iterable", "ESNext"],

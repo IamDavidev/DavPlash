@@ -1,2 +1,2 @@
 export {};
-export * from './photos.hook';
+export { default as useApiSplah } from './useApiSplash.hook';

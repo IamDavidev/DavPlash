@@ -1,9 +1,17 @@
+import { typeOrderBy } from './ApiSplash.types';
+
+export interface TypeGenericRequestProps {
+	perPage: number;
+	page: number;
+	orderBy: typeOrderBy;
+}
+
 export type TypeErrorPhotosPlash = {
-	message: string;
+	message: string | null;
 	isExistError: boolean;
 };
 
-export interface typeApiPhotosProps {
+export interface typeApiPhotosProps extends TypeGenericRequestProps {
 	// setPhotos: Function;
 	// function void
 	success: (results: any[]) => void;
@@ -36,14 +44,19 @@ type TypeUserAdapterPhotos = {
 export interface TypeAdapterPhotos {
 	id: string;
 	likes: number;
+	description: string | null;
 	images: TypeImagesAdapterPhotos;
 	user: TypeUserAdapterPhotos;
 }
 /** endAdapters photos */
 
 /** Api photos */
+
+export type TypeGetPhotosServiceProps = TypeGenericRequestProps;
+
 export type TypePhotoPlash = TypeAdapterPhotos;
-export interface TypeEmptyStatePhotosPlash {
+
+export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
 	results: TypePhotoPlash[];
 	isLoading: boolean;
 	error: TypeErrorPhotosPlash;
@@ -51,4 +64,7 @@ export interface TypeEmptyStatePhotosPlash {
 
 export interface usePhotos {
 	photos: TypeEmptyStatePhotosPlash;
+	setPage: (page: number) => void;
+	setPerPage: (perPage: number) => void;
+	setOrderBy: (orderBy: typeOrderBy) => void;
 }
