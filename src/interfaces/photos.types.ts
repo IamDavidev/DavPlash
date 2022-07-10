@@ -1,4 +1,4 @@
-export type typeOrderBy = string;
+import { typeOrderBy } from './ApiSplash.types';
 
 export interface TypeGenericRequestProps {
 	perPage: number;

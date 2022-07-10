@@ -17,13 +17,23 @@ export const colors = {
 	cyanTheme: {
 		500: '#a6b2ec',
 	},
+	bgTheme: {
+		500: '#242132',
+	},
+	purpleTheme: {
+		300: '#9c6cfc',
+		500: '#746cfe',
+	},
+	purpeLightTheme: {
+		500: '#ae8cfa',
+	},
+
 	// ...
 };
 export const fonts = {
-		body: `Poppins, sans-serif`,
-		heading: `Poppins, sans-serif`,
-	}
-
+	body: `Poppins, sans-serif`,
+	heading: `Poppins, sans-serif`,
+};
 
 export const COLORS_THEME = {
 	_NAV_: '#080c25',
@@ -32,6 +42,6 @@ export const COLORS_THEME = {
 	_WHITE_: '#fff',
 	_BLACK_: '#000',
 	_CYAN_: '#a6b2ec',
-	_PURPLE_: '#9c27b0',
+	_PURPLE_: '#746cfe',
+	_PURPLE_LIGHT_: '#ae8cfa',
 };
-

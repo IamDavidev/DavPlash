@@ -4,6 +4,7 @@ const PublicRoutes = () => {
 	return (
 		<Routes>
 			<Route path='/' element={<p>homee ....</p>} />
+			<Route path='*' element={<p>404 ....</p>} />
 		</Routes>
 	);
 };

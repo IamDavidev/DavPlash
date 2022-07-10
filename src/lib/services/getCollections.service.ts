@@ -1,16 +1,17 @@
 import { ApiUnsplashAccessKey } from '~constants/unsplash.const';
 
-import { requestPhotosApi } from '~interfaces/photos.types';
-
 import { getDataService } from './service';
 
-export async function getUser(username: string): Promise<requestPhotosApi> {
+export async function getCollections({ perPage, page }: any) {
 	const apiData = await getDataService({
-		pathUrl: `/users/${username}`,
+		pathUrl: '/collections',
 		params: {
 			client_id: ApiUnsplashAccessKey,
+			per_page: perPage,
+			page,
 		},
-	}).then(data => data);
+	});
+	console.log(apiData);
 
 	return {
 		data: apiData.data,

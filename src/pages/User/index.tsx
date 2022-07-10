@@ -1,9 +1,25 @@
 import { useParams } from 'react-router-dom';
 
-const User = () => {
-	const { user } = useParams();
+import { useEffect, useState } from 'react';
 
-	console.log('<< user >> <<', user);
+import { getUser } from '~lib/services';
+
+const User = () => {
+	const { user } = useParams<string>();
+	const [userData, setUserData] = useState({
+		isSuccess: false,
+	});
+	// \s
+	const userNew: string = user?.replace(' ', '-') || '';
+
+	console.log('🚀 ~ file: index.tsx ~ line 10 ~ User ~ userData', userData);
+
+	useEffect(() => {
+		getUser(userNew).then(setUserData);
+		return () => {};
+	}, []);
+
+	if (!user.isSuccess) return <p>No user</p>;
 
 	return (
 		<>

@@ -1,13 +1,13 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { GridPhotos } from '~pages/layouts/GridPhotos.layout';
+import SplashHome from '~pages/splash';
 import User from '~pages/User';
 
 const PrivateRoutes = () => {
 	return (
 		<Routes>
-			<Route path='/plash/photos' element={<GridPhotos />} />
+			<Route path='/plash/' element={<SplashHome />} />
 			<Route path='/plash/user/:user' element={<User />} />
-			<Route path='*' element={<Navigate to='/plash/photos' replace />} />
+			<Route path='*' element={<Navigate to='/plash/' replace />} />
 		</Routes>
 	);
 };

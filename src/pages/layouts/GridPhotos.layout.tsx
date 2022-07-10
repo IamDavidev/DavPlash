@@ -1,10 +1,9 @@
 import { Box, Wrap, WrapItem } from '@chakra-ui/react';
 import CardImage from '~components/CardImage.component';
 import { TypePhotoPlash } from '~interfaces/photos.types';
-import { usePhotosPlash } from '~lib/hooks';
 
-export const GridPhotos = () => {
-	const { photos } = usePhotosPlash();
+export const GridPhotos = ({ photos }: any) => {
+	console.log(photos);
 	return (
 		<Box width={'100%'} my={'2rem'}>
 			<Wrap spacing={'1.5rem'} justify='center' width={'100%'}>
