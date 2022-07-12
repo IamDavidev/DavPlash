@@ -4,9 +4,13 @@ import { useEffect, useState } from 'react';
 
 import { getUser } from '~lib/services';
 
+interface TypeUserData {
+	isSuccess: boolean;
+}
+
 const User = () => {
 	const { user } = useParams<string>();
-	const [userData, setUserData] = useState({
+	const [userData, setUserData] = useState<TypeUserData>({
 		isSuccess: false,
 	});
 	// \s

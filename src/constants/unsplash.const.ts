@@ -1,11 +1,11 @@
-import { TypeEmptyApiSplash } from '~interfaces/ApiSplash.types';
+import { IEmptyApiSplash } from '~interfaces/ApiSplash.types';
 
 export const ApiUnsplashAccessKey: string = import.meta.env.VITE_ACCESS_KEY;
 export const ApiUnsplashSecretKey: string = import.meta.env.VITE_SECRET_KEY;
 
 export const baseURL: string = 'https://api.unsplash.com';
 
-export const INTITIAL_STATE_EMPTY_API_SPLASH: TypeEmptyApiSplash = {
+export const INTITIAL_STATE_EMPTY_API_SPLASH: IEmptyApiSplash = {
 	isLoading: false,
 	error: {
 		message: '',

@@ -8,6 +8,7 @@ interface TypeGetPhotosServiceProps {
 		per_page?: number;
 		page?: number;
 		order_by?: string;
+		query?: string;
 	};
 }
 

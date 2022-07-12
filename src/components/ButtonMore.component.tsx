@@ -25,7 +25,7 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 							color={COLORS_THEME._PURPLE_LIGHT_}
 						/>
 					}>
-					<Text>{text}</Text>
+					<Text fontSize={'sm'}>{text}</Text>
 				</Button>
 			</Link>
 		</>

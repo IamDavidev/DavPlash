@@ -1,13 +1,25 @@
-import { Box, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import CardImage from '~components/CardImage.component';
-import { TypePhotoPlash } from '~interfaces/photos.types';
 
-export const GridPhotos = ({ photos }: any) => {
-	console.log(photos);
+import { TypeGenericData } from '~interfaces/ApiSplash.types';
+import { IPhotoSplash } from '~interfaces/photos.types';
+
+interface IGridPhotosProps {
+	photos: TypeGenericData;
+}
+
+export const GridPhotos = ({ photos }: IGridPhotosProps) => {
 	return (
 		<Box width={'100%'} my={'2rem'}>
-			<Wrap spacing={'1.5rem'} justify='center' width={'100%'}>
-				{photos.results.map((photo: TypePhotoPlash) => {
+			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
+				Best Photos over{' '}
+				<Text color={'purpleTheme.500'} display={'inline-flex'}>
+					Last 7 days
+				</Text>
+			</Heading>
+
+			<Wrap py={'2rem'} spacing={'1.5rem'} justify='center' width={'100%'}>
+				{photos.results.map((photo: IPhotoSplash) => {
 					return (
 						<WrapItem key={photo.id}>
 							<CardImage
