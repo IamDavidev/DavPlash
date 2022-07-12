@@ -1,18 +1,18 @@
 export type typeOrderBy = string;
 
-type TypeGenericData = {
+export type TypeGenericData = {
 	results: any[];
 	perPage: number;
 	page: number;
 	orderBy?: typeOrderBy;
 };
-
-export interface TypeEmptyApiSplash {
+export type TypeErrorPlash = {
+	message: string | null;
+	isExistError: boolean;
+};
+export interface IEmptyApiSplash {
 	isLoading: false;
-	error: {
-		message: string;
-		isExistError: false;
-	};
+	error: TypeErrorPlash;
 	photos: TypeGenericData;
 	collections: TypeGenericData;
 	users: TypeGenericData;

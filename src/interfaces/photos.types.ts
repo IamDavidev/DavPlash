@@ -6,11 +6,6 @@ export interface TypeGenericRequestProps {
 	orderBy: typeOrderBy;
 }
 
-export type TypeErrorPhotosPlash = {
-	message: string | null;
-	isExistError: boolean;
-};
-
 export interface requestPhotosApi {
 	data: any[] | [];
 	err: string | null;
