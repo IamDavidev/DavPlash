@@ -11,11 +11,12 @@ import {
 
 import { COLORS_THEME } from '~constants/theme.const';
 
-import { ArrowRightIcon, HeartIcon } from './icons';
+import { HeartIcon } from './icons';
 
 import VerifiedIcon from './icons/verified.icon';
 
 import { Link } from 'react-router-dom';
+import ButtonMore from './ButtonMore.component';
 
 type Props = {
 	image: string;
@@ -31,12 +32,12 @@ function CardImage({ image, likes, userName }: Props) {
 			border={'2px'}
 			borderColor={COLORS_THEME._PURPLE_LIGHT_}
 			borderRadius={'1rem'}
-			width={'280px'}
+			width={'250px'}
 			py='1rem'>
 			<Image
 				src={image}
 				borderRadius={'10px'}
-				boxSize={'250px'}
+				boxSize={'230px'}
 				objectFit={'cover'}
 				margin={'auto'}
 			/>
@@ -56,7 +57,7 @@ function CardImage({ image, likes, userName }: Props) {
 						</Link>
 					</Button>
 					<Flex>
-						<Button
+						{/* <Button
 							colorScheme={'grayTheme'}
 							borderRadius={'.5rem'}
 							border={'2px'}
@@ -71,7 +72,8 @@ function CardImage({ image, likes, userName }: Props) {
 								/>
 							}>
 							See More
-						</Button>
+						</Button> */}
+						<ButtonMore path='/' text='view' key={userName} />
 						<Spacer />
 						<Button
 							colorScheme={'grayTheme'}

@@ -1,4 +1,18 @@
-export function AdapterCollections(objApiCollections: any) {
+type TypePhotoCollection = {
+	src: string;
+	key: string;
+};
+
+export interface IAdapterCollection {
+	totalPhotos: number;
+	title: string;
+	photos: TypePhotoCollection[];
+	id: string;
+	shareKey: string;
+	description: string | '';
+}
+
+export function AdapterCollections(objApiCollections: any): IAdapterCollection {
 	return {
 		totalPhotos: objApiCollections.total_photos,
 		title: objApiCollections.title,
@@ -10,6 +24,6 @@ export function AdapterCollections(objApiCollections: any) {
 		}),
 		id: objApiCollections.id,
 		shareKey: objApiCollections.share_key,
-		description: objApiCollections.description,
+		description: objApiCollections.description || '',
 	};
 }

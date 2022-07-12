@@ -1,8 +1,17 @@
 import { AdapterCollections, AdapterPhotos } from '~lib/adapters';
+import { ISuccessRequestSplash } from '~lib/hooks/useApiSplash.hook';
 import { getPhotos } from '~lib/services';
 import { getCollections } from '~lib/services/getCollections.service';
 
-export async function SplahsApi({ init, success }: any) {
+interface IApiSplahProps {
+	init: () => void;
+	success: (payload: ISuccessRequestSplash) => void;
+}
+
+export async function SplahsApi({
+	init,
+	success,
+}: IApiSplahProps): Promise<void> {
 	init();
 
 	const photos = await getPhotos({

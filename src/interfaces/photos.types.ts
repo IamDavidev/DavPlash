@@ -11,14 +11,6 @@ export type TypeErrorPhotosPlash = {
 	isExistError: boolean;
 };
 
-export interface typeApiPhotosProps extends TypeGenericRequestProps {
-	// setPhotos: Function;
-	// function void
-	success: (results: any[]) => void;
-	error: (error: string) => void;
-	init: () => void;
-}
-
 export interface requestPhotosApi {
 	data: any[] | [];
 	err: string | null;
@@ -41,7 +33,7 @@ type TypeUserAdapterPhotos = {
 	username: string;
 	bio: string;
 };
-export interface TypeAdapterPhotos {
+export interface IAdapterPhotos {
 	id: string;
 	likes: number;
 	description: string | null;
@@ -54,10 +46,10 @@ export interface TypeAdapterPhotos {
 
 export type TypeGetPhotosServiceProps = TypeGenericRequestProps;
 
-export type TypePhotoPlash = TypeAdapterPhotos;
+export type IPhotoSplash = IAdapterPhotos;
 
 export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
-	results: TypePhotoPlash[];
+	results: IPhotoSplash[];
 	isLoading: boolean;
 	error: TypeErrorPhotosPlash;
 }

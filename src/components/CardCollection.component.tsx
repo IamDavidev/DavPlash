@@ -29,15 +29,15 @@ const CardCollection = ({
 	totalPhotos,
 	photos,
 }: CardCollectionProps) => {
-	console.log(ImgCollection);
 	return (
 		<Box
+			minWidth={'100%'}
 			width={'400px'}
+			maxWidth={'400px'}
 			border={'2px'}
 			borderColor={COLORS_THEME._PURPLE_LIGHT_}
-			borderRadius={'1rem'}
-			py='1rem'>
-			<Flex gap={'1rem'} padding={'.5rem'}>
+			borderRadius={'1rem'}>
+			<Flex gap={'1rem'}>
 				<Image
 					src={ImgCollection.src}
 					alt={title}
@@ -48,7 +48,7 @@ const CardCollection = ({
 					borderRadius={'1rem'}
 				/>
 				<Flex
-					py={'.5rem'}
+					p={'.5rem'}
 					flexDirection={'column'}
 					width={'100%'}
 					// justifyContent={'space-between'}
@@ -76,7 +76,7 @@ const CardCollection = ({
 
 						<Spacer />
 
-						<ButtonMore path='/' text='View more' />
+						<ButtonMore path='/' text='view' />
 					</Flex>
 				</Flex>
 			</Flex>

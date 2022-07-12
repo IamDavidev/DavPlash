@@ -1,15 +1,21 @@
-import { Heading, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import CardCollection from '~components/CardCollection.component';
 
 const GridCollections = ({ collections }: any) => {
 	return (
-		<>
-			<Heading>Collections </Heading>
+		<Box py={'2rem'}>
+			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
+				Top Collections over{' '}
+				<Text color={'purpleTheme.500'} display={'inline-flex'}>
+					Last 7 days
+				</Text>
+			</Heading>
 			<Wrap
-				spacing={'1.5rem'}
+				spacing={'2.5rem'}
 				justify={'center'}
 				width={'100%'}
-				alignItems={'center'}>
+				alignItems={'center'}
+				my={'3rem'}>
 				{collections.results.map((collection: any) => {
 					return (
 						<WrapItem key={collection.shareKey}>
@@ -23,7 +29,7 @@ const GridCollections = ({ collections }: any) => {
 					);
 				})}
 			</Wrap>
-		</>
+		</Box>
 	);
 };
 
