@@ -1,4 +1,5 @@
-import { Box, Button, Heading, Stack } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Stack } from '@chakra-ui/react';
+import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { ArrowRightIcon, HeartIcon } from '~components/icons';
 import { COLORS_THEME } from '~constants/theme.const';
 
@@ -7,7 +8,7 @@ const HeaderLayout = () => {
 		<>
 			<Box
 				width={'100%'}
-				my={'4rem'}
+				my={'1rem'}
 				display={'flex'}
 				flexDirection={'column'}
 				justifyContent={'center'}
@@ -50,8 +51,20 @@ const HeaderLayout = () => {
 					</Button>
 				</Stack>
 			</Box>
-
-			<Box></Box>
+			<Flex justifyContent={'space-evenly'} my={'4rem'}>
+				<Box>
+					<CardPhotoRandom />
+				</Box>
+				<Box>
+					<CardPhotoRandom />
+				</Box>
+				<Box>
+					<CardPhotoRandom />
+				</Box>
+				<Box>
+					<CardPhotoRandom />
+				</Box>
+			</Flex>
 		</>
 	);
 };

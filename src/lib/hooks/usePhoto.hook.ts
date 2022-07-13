@@ -1,23 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import { TypeErrorPlash } from '~interfaces/ApiSplash.types';
-
-export type TypePhotoSplash = {
-	id?: string;
-};
-
-export interface IUsePhotoResult {
-	photo: any;
-}
+import { IAdapterPhotos } from '~interfaces/photos.types';
+import { ApiPhoto } from '~lib/api/photo.api';
 
 export interface IStatePhoto {
-	photo: any;
+	photo: IAdapterPhotos;
 	error: TypeErrorPlash;
 	isLoading: boolean;
 }
 
 export const EMPTY_STATE_PHOTO: IStatePhoto = {
-	photo: null,
+	photo: {
+		id: '',
+		likes: 0,
+		description: '',
+		images: {
+			small: '',
+			full: '',
+			regular: '',
+		},
+		user: {
+			id: '',
+			name: '',
+			images: {
+				small: '',
+				full: '',
+				regular: '',
+			},
+			bio: '',
+			likes: 0,
+			photos: 0,
+			username: '',
+		},
+	},
 	error: {
 		message: null,
 		isExistError: false,
@@ -30,17 +46,20 @@ export const ACTIONS_PHTOTOS = {
 	_SUCCESS_REQUEST_: '_SUCCESS_REQUEST',
 	_ERROR_REQUEST_: '_ERROR_REQUEST',
 };
+export const _INITIAL_REQUEST_STATE_ = {
+	isLoading: true,
+	error: {
+		message: null,
+		isExistError: false,
+	},
+};
 
-export function reducerPhoto(state: any, action: any): IStatePhoto {
+export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
 	switch (action.type) {
 		case ACTIONS_PHTOTOS._INITIAL_REQUEST_: {
 			return {
 				...state,
-				isLoading: true,
-				error: {
-					message: null,
-					isExistError: false,
-				},
+				..._INITIAL_REQUEST_STATE_,
 			};
 		}
 		case ACTIONS_PHTOTOS._SUCCESS_REQUEST_: {
@@ -64,16 +83,45 @@ export function reducerPhoto(state: any, action: any): IStatePhoto {
 	}
 }
 
-export default function usePhoto(id: any) {
-	// const [photo, setPhoto] = useState<IEmptyStatePhoto>(EMPTY_STATE_PHOTO);
+export default function usePhoto(id?: any): IStatePhoto {
+	const [photo, setPhoto] = useReducer(reducerPhoto, EMPTY_STATE_PHOTO);
+
+	const initialRequesPhoto = () =>
+		setPhoto({
+			type: ACTIONS_PHTOTOS._INITIAL_REQUEST_,
+		});
+
+	const successRequestPhoto = (photo: any) =>
+		setPhoto({
+			type: ACTIONS_PHTOTOS._SUCCESS_REQUEST_,
+			payload: {
+				photo,
+			},
+		});
+
+	const errorRequestPhoto = (err: any) =>
+		setPhoto({
+			type: ACTIONS_PHTOTOS._ERROR_REQUEST_,
+			payload: {
+				error: {
+					message: err,
+					isExistError: true,
+				},
+			},
+		});
 
 	useEffect(() => {
-		if (id) {
-			// setPhoto(id);
-		}
+		ApiPhoto({
+			init: initialRequesPhoto,
+			success: successRequestPhoto,
+			err: errorRequestPhoto,
+			id,
+		});
 	}, [id]);
 
 	return {
-		// photo,
+		photo: photo.photo,
+		error: photo.error,
+		isLoading: photo.isLoading,
 	};
 }

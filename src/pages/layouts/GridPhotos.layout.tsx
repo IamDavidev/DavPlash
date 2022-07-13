@@ -1,14 +1,9 @@
 import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 import CardImage from '~components/CardImage.component';
 
-import { TypeGenericData } from '~interfaces/ApiSplash.types';
 import { IPhotoSplash } from '~interfaces/photos.types';
 
-interface IGridPhotosProps {
-	photos: TypeGenericData;
-}
-
-export const GridPhotos = ({ photos }: IGridPhotosProps) => {
+export const GridPhotos = ({ photos }: any) => {
 	return (
 		<Box width={'100%'} my={'2rem'}>
 			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
