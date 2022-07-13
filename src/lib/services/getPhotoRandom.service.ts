@@ -3,7 +3,7 @@ import { getDataService } from './service';
 
 export async function getPhotoRandom() {
 	const apiData = await getDataService({
-		pathUrl: ' /photos/random',
+		pathUrl: 'photos/random',
 		params: {
 			client_id: ApiUnsplashAccessKey,
 		},
@@ -11,7 +11,7 @@ export async function getPhotoRandom() {
 
 	return {
 		data: apiData.data,
-		error: apiData.err,
+		error: apiData.err || null,
 		isSuccess: apiData.isSuccess,
 	};
 }

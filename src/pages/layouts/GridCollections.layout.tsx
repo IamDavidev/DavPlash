@@ -1,7 +1,16 @@
 import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
+
 import CardCollection from '~components/CardCollection.component';
 
-const GridCollections = ({ collections }: any) => {
+import { IGenericData } from '~interfaces/ApiSplash.types';
+
+import { IAdapterCollection } from '~lib/adapters';
+
+export interface IGridCollectionsProps {
+	collections: IGenericData;
+}
+
+const GridCollections = ({ collections }: IGridCollectionsProps) => {
 	return (
 		<Box py={'2rem'}>
 			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
@@ -16,7 +25,7 @@ const GridCollections = ({ collections }: any) => {
 				width={'100%'}
 				alignItems={'center'}
 				my={'3rem'}>
-				{collections.results.map((collection: any) => {
+				{collections.results.map((collection: IAdapterCollection) => {
 					return (
 						<WrapItem key={collection.shareKey}>
 							<CardCollection
