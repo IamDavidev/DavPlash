@@ -1,11 +1,11 @@
 import { IApiPhotoProps } from '~interfaces/Api.types';
 import { AdapterPhotos } from '~lib/adapters';
-import { getPhotoRandom } from '~lib/services/getPhotoRandom.service';
+import { getPhoto, getPhotoRandom } from '~lib/services';
 
 export async function requesPhoto(id: string | null) {
-	console.log(id);
-	// if (id) {
-	// 	return getPhoto();
+	if (id) {
+		return getPhoto({ id });
+	}
 	return getPhotoRandom();
 }
 
@@ -18,7 +18,9 @@ export async function ApiPhoto({
 	init();
 
 	const { data, error, isSuccess } = await requesPhoto(id);
+
 	if (!isSuccess) {
+		console.log(error);
 		err(error);
 		return;
 	}

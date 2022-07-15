@@ -37,7 +37,7 @@ const CardCollection = ({
 			border={'2px'}
 			borderColor={COLORS_THEME._PURPLE_LIGHT_}
 			borderRadius={'1rem'}>
-			<Flex gap={'1rem'}>
+			<Flex gap={'1rem'} p={3}>
 				<Image
 					src={ImgCollection.src}
 					alt={title}
@@ -47,26 +47,16 @@ const CardCollection = ({
 					minWidth={'120px'}
 					borderRadius={'1rem'}
 				/>
-				<Flex
-					p={'.5rem'}
-					flexDirection={'column'}
-					width={'100%'}
-					// justifyContent={'space-between'}
-				>
+				<Flex p={'.5rem'} flexDirection={'column'} width={'100%'}>
 					<Box display='flex' flexDirection={'column'} gap='4px'>
 						<Heading as={'h3'} fontSize={'lg'} color={'white'}>
 							{title}
 						</Heading>
 						<Text fontSize={'sm'} display={'flex'} color={'cyanTheme.300'}>
-							<Text color={'cyanTheme.500'} mx={'.5rem'}>
-								{totalPhotos}
-							</Text>
-							{'photos '}
+							{totalPhotos} {'photos '}
 						</Text>
 					</Box>
-
 					<Spacer />
-
 					<Flex flexDirection={'row'}>
 						<AvatarGroup size='sm' max={4}>
 							{photos.map(photo => {

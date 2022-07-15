@@ -2,11 +2,11 @@ import { usePhoto } from '~lib/hooks';
 import CardImage from './CardImage.component';
 
 const CardPhotoRandom = () => {
-	const { photo } = usePhoto();
+	const { photo, error, isLoading } = usePhoto();
 
-	console.log({
-		photo,
-	});
+	if (error.isExistError) return <div>{error.message}</div>;
+
+	if (isLoading) return <div>Loading...</div>;
 
 	return (
 		<>

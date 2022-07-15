@@ -16,6 +16,10 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 					colorScheme={'grayTheme'}
 					borderRadius={'.5rem'}
 					border={'2px'}
+					_hover={{
+						backgroundColor: COLORS_THEME._GRAY_,
+						trasition: 'all 0.6s ease-in-out',
+					}}
 					borderColor={COLORS_THEME._PURPLE_LIGHT_}
 					variant={'outline'}
 					rightIcon={
@@ -25,7 +29,9 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 							color={COLORS_THEME._PURPLE_LIGHT_}
 						/>
 					}>
-					<Text fontSize={'sm'}>{text}</Text>
+					<Text fontSize={'sm'} color={'white'}>
+						{text}
+					</Text>
 				</Button>
 			</Link>
 		</>

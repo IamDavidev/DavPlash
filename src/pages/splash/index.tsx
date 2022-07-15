@@ -7,11 +7,6 @@ import HeaderLayout from '~pages/layouts/Header.layout';
 const SplashHome = () => {
 	const { collections, photos, isLoading } = useApiSplah();
 
-	console.log(
-		'🚀 ~ file: index.tsx ~ line 5 ~ SplashHome ~ collections',
-		collections
-	);
-	console.log('🚀 ~ file: index.tsx ~ line 5 ~ SplashHome ~ photos', photos);
 	if (isLoading) return <div>Loading ... </div>;
 
 	return (
