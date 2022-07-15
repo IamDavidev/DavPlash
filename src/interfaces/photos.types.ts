@@ -8,7 +8,7 @@ export interface TypeGenericRequestProps {
 
 export interface requestPhotosApi {
 	data: any[] | [];
-	err: string | null;
+	err: string;
 	isSuccess: boolean;
 }
 
@@ -43,15 +43,15 @@ export type TypeGetPhotosServiceProps = TypeGenericRequestProps;
 
 export type IPhotoSplash = IAdapterPhotos;
 
-export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
-	results: IPhotoSplash[];
-	isLoading: boolean;
-	error: TypeErrorPhotosPlash;
-}
+// export interface TypeEmptyStatePhotosPlash extends TypeGenericRequestProps {
+// 	results: IPhotoSplash[];
+// 	isLoading: boolean;
+// 	error: TypeErrorPhotosPlash;
+// }
 
-export interface usePhotos {
-	photos: TypeEmptyStatePhotosPlash;
-	setPage: (page: number) => void;
-	setPerPage: (perPage: number) => void;
-	setOrderBy: (orderBy: typeOrderBy) => void;
-}
+// export interface usePhotos {
+// 	photos: TypeEmptyStatePhotosPlash;
+// 	setPage: (page: number) => void;
+// 	setPerPage: (perPage: number) => void;
+// 	setOrderBy: (orderBy: typeOrderBy) => void;
+// }

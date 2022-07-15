@@ -1,16 +1,13 @@
 import { ApiUnsplashAccessKey } from '~constants/unsplash.const';
 
-import {
-	requestPhotosApi,
-	TypeGetPhotosServiceProps,
-} from '~interfaces/photos.types';
+import { IGetPhotosProps, IRequestService } from '~interfaces/services.types';
 import { getDataService } from './service';
 
 export async function getPhotos({
 	perPage,
 	page,
 	orderBy,
-}: TypeGetPhotosServiceProps): Promise<requestPhotosApi> {
+}: IGetPhotosProps): Promise<IRequestService> {
 	const apiData = await getDataService({
 		pathUrl: '/photos',
 		params: {
@@ -23,7 +20,7 @@ export async function getPhotos({
 
 	return {
 		data: apiData.data,
-		err: apiData.err,
+		error: apiData.err,
 		isSuccess: apiData.isSuccess,
 	};
 }

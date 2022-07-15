@@ -16,23 +16,25 @@ const HeaderLayout = () => {
 				<Heading
 					as={'h1'}
 					color={'white'}
-					fontSize={'6xl'}
+					fontSize={'5rem'}
 					display='flex'
-					flexDirection={'column'}
+					bgClip={'text'}
+					bgGradient={`linear(to-b,${COLORS_THEME._PURPLE_}, ${COLORS_THEME._BLACK_})`}
 					justifyContent={'center'}
 					alignItems={'center'}
 					textAlign={'center'}
-					width={'30ch'}
+					width={'25ch'}
 					my={'2rem'}>
-					Discover, collect and sale extraordinary NFTs
+					Discover, collect and sale extraordinary Photos
 				</Heading>
 				<Stack direction='row' spacing={4} justifyContent={'center'}>
 					<Button
 						leftIcon={
-							<HeartIcon width={20} height={20} color={COLORS_THEME._WHITE_} />
+							<HeartIcon width={20} height={20} color={COLORS_THEME._BLACK_} />
 						}
 						borderRadius={'1rem'}
 						colorScheme='purpleTheme'
+						color={COLORS_THEME._BLACK_}
 						variant='solid'>
 						get started
 					</Button>
@@ -51,17 +53,17 @@ const HeaderLayout = () => {
 					</Button>
 				</Stack>
 			</Box>
-			<Flex justifyContent={'space-evenly'} my={'4rem'}>
-				<Box>
+			<Flex justifyContent={'center'} gap={'1.5rem'} my={'4rem'}>
+				<Box transform={'rotate(-10deg)'}>
 					<CardPhotoRandom />
 				</Box>
-				<Box>
+				<Box transform={'rotate(10deg)'}>
 					<CardPhotoRandom />
 				</Box>
-				<Box>
+				<Box transform={'rotate(-2deg)'}>
 					<CardPhotoRandom />
 				</Box>
-				<Box>
+				<Box transform={'rotate(10deg)'}>
 					<CardPhotoRandom />
 				</Box>
 			</Flex>

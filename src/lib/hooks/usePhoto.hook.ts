@@ -71,8 +71,13 @@ export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
 			};
 		}
 		case ACTIONS_PHTOTOS._ERROR_REQUEST_: {
+			const { error } = action.payload;
 			return {
 				...state,
+				error: {
+					message: error.message,
+					isExistError: error.isExistError,
+				},
 			};
 		}
 		default: {

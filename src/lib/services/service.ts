@@ -23,10 +23,11 @@ export async function getDataService({
 
 		return {
 			data: response.data,
-			err: null,
+			err: '',
 			isSuccess: true,
 		};
 	} catch (err: any) {
+		console.log(err.message);
 		return {
 			data: [],
 			err: err.message,
