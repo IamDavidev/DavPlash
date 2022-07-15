@@ -44,30 +44,18 @@ function CardImage({ image, likes, userName }: Props) {
 			/>
 			<Box padding={'1rem'}>
 				<Stack spacing={'1rem'}>
-					{/* <Button
-						rightIcon={<VerifiedIcon width={24} height={25} />}
-						textAlign='left'
-						justifyContent={'flex-start'}
-						variant={'ghost'}
-						_hover={{
-							backgroundColor: COLORS_THEME._GRAY_,
-							transition: 'all 0.8s ease-in-out',
-						}}>
-						<Link to={`/plash/user/${userName}`}>
-							<Text color={'cyanTheme.500'}>{userName.split(' ')[0]}</Text>{' '}
-						</Link>
-					</Button> */}
 					<Link to={`/plash/user/${userNameLink}`}>
 						<Box
 							_hover={{
 								backgroundColor: COLORS_THEME._GRAY_,
-								transition: 'all 0.8s ease-in-out',
+								transition: 'all 0.6s ease-in-out',
 							}}
 							display={'flex'}
 							borderRadius={'1rem'}
 							justifyContent={'space-between'}
 							padding={'.5rem'}
 							gap={'2.5rem'}
+							overflow={'hidden'}
 							alignItems={'center'}>
 							<Text color={'cyanTheme.500'}>{userName.split(' ')[0]}</Text>
 							<VerifiedIcon width={24} height={25} />
@@ -80,6 +68,10 @@ function CardImage({ image, likes, userName }: Props) {
 							colorScheme={'grayTheme'}
 							borderRadius={'.5rem'}
 							border={'2px'}
+							_hover={{
+								backgroundColor: COLORS_THEME._GRAY_,
+								transition: 'all 0.6s ease-in-out',
+							}}
 							color={COLORS_THEME._WHITE_}
 							borderColor={COLORS_THEME._PURPLE_LIGHT_}
 							variant={'outline'}

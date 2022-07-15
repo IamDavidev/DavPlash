@@ -14,6 +14,9 @@ export const colors = {
 	navTheme: {
 		500: COLORS_THEME._NAV_,
 	},
+	navLightTheme: {
+		500: COLORS_THEME._NAV_LIGHT_,
+	},
 	grayTheme: {
 		500: COLORS_THEME._GRAY_,
 	},
