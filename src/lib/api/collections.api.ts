@@ -1,4 +1,5 @@
 import { IApiCollectionProps } from '~interfaces/Api.types';
+import { AdapterCollections } from '~lib/adapters';
 import { getCollections } from '~lib/services';
 
 export async function collectionsApi({
@@ -13,7 +14,9 @@ export async function collectionsApi({
 	const { data, error, isSuccess } = await getCollections({ perPage, page });
 
 	if (!isSuccess) {
-		err(error);
+		err({
+			error,
+		});
 	}
-	success(data);
+	success(data.map(AdapterCollections));
 }

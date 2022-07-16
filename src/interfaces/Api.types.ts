@@ -1,7 +1,7 @@
 export interface IApiProps {
 	init: () => void;
 	success: (payload: any) => void;
-	err: (payload: string) => void;
+	err: ({ error, code }: { error: string; code?: string | number }) => void;
 }
 
 export interface IApiPhotoProps extends IApiProps {

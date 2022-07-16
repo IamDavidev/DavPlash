@@ -1,16 +1,12 @@
 import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 
 import CardCollection from '~components/CardCollection.component';
+import { IAdapterCollection } from '~interfaces/Adapters.types';
+import { useColllections } from '~lib/hooks';
 
-import { IGenericData } from '~interfaces/ApiSplash.types';
+const GridCollections = () => {
+	const { collections } = useColllections();
 
-import { IAdapterCollection } from '~lib/adapters';
-
-export interface IGridCollectionsProps {
-	collections: IGenericData;
-}
-
-const GridCollections = ({ collections }: IGridCollectionsProps) => {
 	return (
 		<Box py={'2rem'}>
 			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
@@ -25,18 +21,19 @@ const GridCollections = ({ collections }: IGridCollectionsProps) => {
 				width={'100%'}
 				alignItems={'center'}
 				my={'3rem'}>
-				{collections.results.map((collection: IAdapterCollection) => {
-					return (
-						<WrapItem key={collection.shareKey}>
-							<CardCollection
-								ImgCollection={collection.photos[0]}
-								title={collection.title}
-								totalPhotos={collection.totalPhotos}
-								photos={collection.photos.slice(1)}
-							/>
-						</WrapItem>
-					);
-				})}
+				{collections.length > 0 &&
+					collections?.map((collection: IAdapterCollection) => {
+						return (
+							<WrapItem key={collection.shareKey}>
+								<CardCollection
+									ImgCollection={collection.photos[0]}
+									title={collection.title}
+									totalPhotos={collection.totalPhotos}
+									photos={collection.photos.slice(1)}
+								/>
+							</WrapItem>
+						);
+					})}
 			</Wrap>
 		</Box>
 	);

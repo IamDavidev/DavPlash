@@ -15,12 +15,13 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 				<Button
 					colorScheme={'grayTheme'}
 					borderRadius={'.5rem'}
-					border={'2px'}
+					border={0}
+					// border={'2px'}
 					_hover={{
 						backgroundColor: COLORS_THEME._GRAY_,
 						trasition: 'all 0.6s ease-in-out',
 					}}
-					borderColor={COLORS_THEME._PURPLE_LIGHT_}
+					// borderColor={COLORS_THEME._PURPLE_LIGHT_}
 					variant={'outline'}
 					rightIcon={
 						<ArrowRightIcon

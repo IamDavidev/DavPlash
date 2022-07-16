@@ -11,7 +11,7 @@ export async function getPhotoRandom() {
 
 	return {
 		data: apiData.data,
-		error: apiData.err || null,
+		error: apiData.err,
 		isSuccess: apiData.isSuccess,
 	};
 }

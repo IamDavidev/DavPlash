@@ -1,4 +1,5 @@
 import { IApiPhotosProps } from '~interfaces/Api.types';
+import { AdapterPhotos } from '~lib/adapters';
 import { getPhotos } from '~lib/services';
 
 export async function photosApi({
@@ -18,7 +19,9 @@ export async function photosApi({
 	});
 
 	if (!isSuccess) {
-		err(error);
+		err({
+			error,
+		});
 	}
-	success(data);
+	success(data.map(AdapterPhotos));
 }

@@ -1,2 +1,2 @@
-export * from './AdapterPhotos';
-export * from './collections.adapter';
+export * from './Aphotos.adapter';
+export * from './Acollections.adapter';
