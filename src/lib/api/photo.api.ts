@@ -20,7 +20,6 @@ export async function ApiPhoto({
 	const { data, error, isSuccess } = await requesPhoto(id);
 
 	if (!isSuccess) {
-		console.log(error);
 		err(error);
 		return;
 	}

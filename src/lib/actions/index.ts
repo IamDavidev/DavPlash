@@ -1,1 +1,1 @@
-export * from './photos.actions';
+export * from './Acollections.actions';

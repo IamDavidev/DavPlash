@@ -1,16 +1,7 @@
 import { useEffect, useReducer } from 'react';
-
-import { TypeErrorPlash } from '~interfaces/ApiSplash.types';
-import { IAdapterPhotos } from '~interfaces/photos.types';
 import { ApiPhoto } from '~lib/api/photo.api';
 
-export interface IStatePhoto {
-	photo: IAdapterPhotos;
-	error: TypeErrorPlash;
-	isLoading: boolean;
-}
-
-export const EMPTY_STATE_PHOTO: IStatePhoto = {
+export const EMPTY_STATE_PHOTO = {
 	photo: {
 		id: '',
 		likes: 0,
@@ -54,7 +45,9 @@ export const _INITIAL_REQUEST_STATE_ = {
 	},
 };
 
-export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
+// export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
+
+export function reducerPhoto(state: any, action: any): any {
 	switch (action.type) {
 		case ACTIONS_PHTOTOS._INITIAL_REQUEST_: {
 			return {
@@ -88,7 +81,7 @@ export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
 	}
 }
 
-export default function usePhoto(id?: any): IStatePhoto {
+export default function usePhoto(id?: any) {
 	const [photo, setPhoto] = useReducer(reducerPhoto, EMPTY_STATE_PHOTO);
 
 	const initialRequesPhoto = () =>

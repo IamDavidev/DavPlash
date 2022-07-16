@@ -1,16 +1,4 @@
-type TypePhotoCollection = {
-	src: string;
-	key: string;
-};
-
-export interface IAdapterCollection {
-	totalPhotos: number;
-	title: string;
-	photos: TypePhotoCollection[];
-	id: string;
-	shareKey: string;
-	description: string | '';
-}
+import { IAdapterCollection } from '~interfaces/Adapters.types';
 
 export function AdapterCollections(objApiCollections: any): IAdapterCollection {
 	return {

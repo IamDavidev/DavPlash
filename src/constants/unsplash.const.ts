@@ -1,31 +1,18 @@
-import { IEmptyApiSplash } from '~interfaces/ApiSplash.types';
+import { IStateCollections } from '~interfaces/unsplash.types';
 
 export const ApiUnsplashAccessKey: string = import.meta.env.VITE_ACCESS_KEY;
 export const ApiUnsplashSecretKey: string = import.meta.env.VITE_SECRET_KEY;
 
 export const baseURL: string = 'https://api.unsplash.com';
 
-export const INTITIAL_STATE_EMPTY_API_SPLASH: IEmptyApiSplash = {
-	isLoading: false,
+export const INITIAL_EMPTY_STATE_COLLECTIONS: IStateCollections = {
+	collections: [],
+	page: 1,
+	perPage: 10,
 	error: {
+		code: '',
 		message: '',
-		isExistError: false,
+		isError: false,
 	},
-	photos: {
-		results: [],
-		perPage: 15,
-		page: 1,
-		orderBy: 'latest',
-	},
-	collections: {
-		results: [],
-		perPage: 10,
-		page: 1,
-	},
-	users: {
-		results: [],
-		perPage: 10,
-		page: 1,
-	},
-	query: '',
+	isLoading: false,
 };
