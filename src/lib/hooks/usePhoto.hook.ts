@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from 'react';
+import { IUsePhotoHook } from '~interfaces/hooks.types';
 import { ApiPhoto } from '~lib/api/photo.api';
 
 export const EMPTY_STATE_PHOTO = {
@@ -32,7 +33,7 @@ export const EMPTY_STATE_PHOTO = {
 	isLoading: false,
 };
 
-export const ACTIONS_PHTOTOS = {
+export const ACTIONS_PHOTO = {
 	_INITIAL_REQUEST_: '_INITIAL_REQUEST',
 	_SUCCESS_REQUEST_: '_SUCCESS_REQUEST',
 	_ERROR_REQUEST_: '_ERROR_REQUEST',
@@ -49,13 +50,13 @@ export const _INITIAL_REQUEST_STATE_ = {
 
 export function reducerPhoto(state: any, action: any): any {
 	switch (action.type) {
-		case ACTIONS_PHTOTOS._INITIAL_REQUEST_: {
+		case ACTIONS_PHOTO._INITIAL_REQUEST_: {
 			return {
 				...state,
 				..._INITIAL_REQUEST_STATE_,
 			};
 		}
-		case ACTIONS_PHTOTOS._SUCCESS_REQUEST_: {
+		case ACTIONS_PHOTO._SUCCESS_REQUEST_: {
 			const { photo } = action.payload;
 			return {
 				...state,
@@ -63,7 +64,7 @@ export function reducerPhoto(state: any, action: any): any {
 				photo,
 			};
 		}
-		case ACTIONS_PHTOTOS._ERROR_REQUEST_: {
+		case ACTIONS_PHOTO._ERROR_REQUEST_: {
 			const { error } = action.payload;
 			return {
 				...state,
@@ -81,17 +82,17 @@ export function reducerPhoto(state: any, action: any): any {
 	}
 }
 
-export default function usePhoto(id?: any) {
+export default function usePhoto(id?: any): IUsePhotoHook {
 	const [photo, setPhoto] = useReducer(reducerPhoto, EMPTY_STATE_PHOTO);
 
 	const initialRequesPhoto = () =>
 		setPhoto({
-			type: ACTIONS_PHTOTOS._INITIAL_REQUEST_,
+			type: ACTIONS_PHOTO._INITIAL_REQUEST_,
 		});
 
 	const successRequestPhoto = (photo: any) =>
 		setPhoto({
-			type: ACTIONS_PHTOTOS._SUCCESS_REQUEST_,
+			type: ACTIONS_PHOTO._SUCCESS_REQUEST_,
 			payload: {
 				photo,
 			},
@@ -99,7 +100,7 @@ export default function usePhoto(id?: any) {
 
 	const errorRequestPhoto = (err: any) =>
 		setPhoto({
-			type: ACTIONS_PHTOTOS._ERROR_REQUEST_,
+			type: ACTIONS_PHOTO._ERROR_REQUEST_,
 			payload: {
 				error: {
 					message: err,

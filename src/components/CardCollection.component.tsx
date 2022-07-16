@@ -52,13 +52,21 @@ const CardCollection = ({
 						<Heading as={'h3'} fontSize={'lg'} color={'white'}>
 							{title}
 						</Heading>
-						<Text fontSize={'sm'} display={'flex'} color={'cyanTheme.300'}>
-							{totalPhotos} {'photos '}
-						</Text>
+						<Box
+							fontSize={'sm'}
+							gap={1}
+							display={'flex'}
+							color={'cyanTheme.300'}>
+							<Text color={'blueTheme.500'}>{totalPhotos}</Text>
+							<Text color={'white'} opacity={0.7}>
+								{' '}
+								photos
+							</Text>
+						</Box>
 					</Box>
 					<Spacer />
 					<Flex flexDirection={'row'}>
-						<AvatarGroup size='sm' max={4}>
+						<AvatarGroup size='md' max={4}>
 							{photos.map(photo => {
 								return <Avatar name='' src={photo.src} key={photo.key} />;
 							})}

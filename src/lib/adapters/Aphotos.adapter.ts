@@ -1,4 +1,4 @@
-import { IAdapterPhotos } from '~interfaces/photos.types';
+import { IAdapterPhotos } from '~interfaces/Adapters.types';
 
 export function AdapterPhotos(objApiPhotos: any): IAdapterPhotos {
 	const user = objApiPhotos.user;

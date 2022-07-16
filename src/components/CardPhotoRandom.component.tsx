@@ -17,6 +17,7 @@ const CardPhotoRandom = () => {
 	return (
 		<>
 			<CardImage
+				name={photo.user.name}
 				image={photo.images.regular}
 				likes={photo.likes}
 				userName={photo.user.username}

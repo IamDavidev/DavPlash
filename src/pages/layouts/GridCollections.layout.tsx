@@ -21,18 +21,19 @@ const GridCollections = () => {
 				width={'100%'}
 				alignItems={'center'}
 				my={'3rem'}>
-				{collections?.map((collection: IAdapterCollection) => {
-					return (
-						<WrapItem key={collection.shareKey}>
-							<CardCollection
-								ImgCollection={collection.photos[0]}
-								title={collection.title}
-								totalPhotos={collection.totalPhotos}
-								photos={collection.photos.slice(1)}
-							/>
-						</WrapItem>
-					);
-				})}
+				{collections.length > 0 &&
+					collections?.map((collection: IAdapterCollection) => {
+						return (
+							<WrapItem key={collection.shareKey}>
+								<CardCollection
+									ImgCollection={collection.photos[0]}
+									title={collection.title}
+									totalPhotos={collection.totalPhotos}
+									photos={collection.photos.slice(1)}
+								/>
+							</WrapItem>
+						);
+					})}
 			</Wrap>
 		</Box>
 	);

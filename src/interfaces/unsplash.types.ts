@@ -1,7 +1,6 @@
-import { IAdapterCollection } from './Adapters.types';
+import { IAdapterCollection, IAdapterPhotos } from './Adapters.types';
 
-export interface IStateCollections {
-	collections: IAdapterCollection[];
+export interface IStateGlobalApi {
 	page: number;
 	perPage: number;
 	error: {
@@ -10,4 +9,13 @@ export interface IStateCollections {
 		isError: boolean;
 	};
 	isLoading: boolean;
+}
+
+export interface IStateCollections extends IStateGlobalApi {
+	collections: IAdapterCollection[] | [];
+}
+
+export interface IStatePhotos extends IStateGlobalApi {
+	photos: IAdapterPhotos[] | [];
+	orderBy: string;
 }

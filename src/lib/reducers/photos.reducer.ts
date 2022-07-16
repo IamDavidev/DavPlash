@@ -1,58 +1,49 @@
-import {
-	TypeEmptyStatePhotosPlash,
-	TypeErrorPhotosPlash,
-} from '~interfaces/photos.types';
+import { IStatePhotos } from '~interfaces/unsplash.types';
+import { ACTIONS_PHOTOS } from '~lib/actions/photos.actions';
 
-import { EMPTY_STATE_PHOTOS_PLASH } from '~constants/unsplash.const';
-
-import { ACTIONS_PHOTOS } from '../actions';
-
-type TypeNotError = {
-	error: TypeErrorPhotosPlash;
-};
-
-const notError: TypeNotError = {
-	error: {
-		isExistError: false,
-		message: null,
-	},
-};
-
-export const reducerPhotos = (
-	state: any = EMPTY_STATE_PHOTOS_PLASH,
-	action: any
-): TypeEmptyStatePhotosPlash => {
+export function photosReducer(state: any, action: any): IStatePhotos {
 	switch (action.type) {
-		case ACTIONS_PHOTOS._INTIAL_REQUEST: {
+		case ACTIONS_PHOTOS._INIT_REQUEST_PHOTOS_: {
 			return {
 				...state,
-				...notError,
 				isLoading: true,
-			};
-		}
-
-		case ACTIONS_PHOTOS._SUCCESS_REQUEST: {
-			const { results } = action.payload;
-			return {
-				...state,
-				results,
-				isLoading: false,
-				...notError,
-			};
-		}
-
-		case ACTIONS_PHOTOS._ERROR_REQUEST: {
-			const { ErrorMsg } = action.payload;
-			return {
-				...state,
 				error: {
-					isExistError: true,
-					error: ErrorMsg,
+					message: '',
+					isExistError: false,
 				},
 			};
 		}
+		case ACTIONS_PHOTOS._SUCCESS_REQUEST_PHOTOS_: {
+			const { photos } = action.payload;
+			return {
+				...state,
+				photos,
+				isLoading: false,
+			};
+		}
 
-		case ACTIONS_PHOTOS._SET_PER_PAGE: {
+		case ACTIONS_PHOTOS._FAILURE_REQUEST_PHOTOS_: {
+			const { message, code } = action.payload;
+			return {
+				...state,
+				error: {
+					code,
+					message,
+					isExistError: true,
+				},
+				isLoading: false,
+			};
+		}
+
+		case ACTIONS_PHOTOS._SET_PAGE_PHOTOS_: {
+			const { page } = action.payload;
+			return {
+				...state,
+				page,
+			};
+		}
+
+		case ACTIONS_PHOTOS._SET_PER_PAGE_PHOTOS_: {
 			const { perPage } = action.payload;
 			return {
 				...state,
@@ -60,16 +51,7 @@ export const reducerPhotos = (
 			};
 		}
 
-		case ACTIONS_PHOTOS._SET_PAGE: {
-			const { page } = action.payload;
-			return {
-				...state,
-				page,
-				perPage: 15,
-			};
-		}
-
-		case ACTIONS_PHOTOS._SET_ORDER_BY: {
+		case ACTIONS_PHOTOS._SET_ORDER_BY_PHOTOS_: {
 			const { orderBy } = action.payload;
 			return {
 				...state,
@@ -77,7 +59,8 @@ export const reducerPhotos = (
 			};
 		}
 
-		default:
+		default: {
 			throw new Error(`Unhandled action type: ${action.type}`);
+		}
 	}
-};
+}
