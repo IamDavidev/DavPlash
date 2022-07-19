@@ -1,20 +1,22 @@
-import { Box, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import React from 'react';
+
+import { Box, Wrap, WrapItem } from '@chakra-ui/react';
 
 import CardCollection from '~components/CardCollection.component';
+
 import { IAdapterCollection } from '~interfaces/Adapters.types';
-import { useColllections } from '~lib/hooks';
 
-const GridCollections = () => {
-	const { collections } = useColllections();
+interface IGridCollectionProps {
+	collections: IAdapterCollection[];
+}
 
+const GridCollections: React.FC<IGridCollectionProps> = ({
+	collections,
+}: {
+	collections: IAdapterCollection[];
+}) => {
 	return (
 		<Box py={'2rem'}>
-			<Heading as={'h2'} color={'white'} fontSize={'4xl'}>
-				Top Collections over{' '}
-				<Text color={'purpleTheme.500'} display={'inline-flex'}>
-					Last 7 days
-				</Text>
-			</Heading>
 			<Wrap
 				spacing={'2.5rem'}
 				justify={'center'}
