@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
 	AvatarGroup,
 	Flex,
@@ -6,7 +8,7 @@ import {
 	Spacer,
 } from '@chakra-ui/react';
 
-const CardSkeletonCollection = () => {
+const CardSkeletonCollection: React.FC = () => {
 	return (
 		<>
 			<Flex p={3} width='400px' gap='1rem'>

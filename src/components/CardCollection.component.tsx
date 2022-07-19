@@ -29,6 +29,7 @@ const CardCollection = ({
 	totalPhotos,
 	photos,
 }: CardCollectionProps) => {
+
 	return (
 		<Box
 			minWidth={'100%'}
@@ -66,7 +67,7 @@ const CardCollection = ({
 					</Box>
 					<Spacer />
 					<Flex flexDirection={'row'}>
-						<AvatarGroup size='md' max={4}>
+						<AvatarGroup size='sm' max={4}>
 							{photos.map(photo => {
 								return <Avatar name='' src={photo.src} key={photo.key} />;
 							})}

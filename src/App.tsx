@@ -4,26 +4,27 @@ import '@/styles/global.styles.css';
 import { BrowserRouter } from 'react-router-dom';
 import PrivateRoutes from './routes/Private.routes';
 import PublicRoutes from './routes/Public.routes';
+import { FC, Suspense } from 'react';
+import LoadingSuspense from '~pages/layouts/LoadingSuspense.layout';
 
-// solid - resposibility unique for each function
-const App = () => {
+const App: FC = () => {
 	const isLoggedIn: boolean = true;
-	// const [isLoggedIn, setIsLoggedIn] = useBoolean();
 
 	return (
 		<Box px={'10'} py={'5'} className='App'>
-			<BrowserRouter>
-				{isLoggedIn ? (
-					<>
-						<PrivateRoutes />
-					</>
-				) : (
-					<>
-						<PublicRoutes />
-					</>
-				)}
-			</BrowserRouter>
-			{/* <GridPhotos /> */}
+			<Suspense fallback={<LoadingSuspense />}>
+				<BrowserRouter>
+					{isLoggedIn ? (
+						<>
+							<PrivateRoutes />
+						</>
+					) : (
+						<>
+							<PublicRoutes />
+						</>
+					)}
+				</BrowserRouter>
+			</Suspense>
 		</Box>
 	);
 };

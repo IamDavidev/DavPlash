@@ -86,7 +86,9 @@ export default function usePhotos(): IUsePhotosHook {
 	}, [photos.orderBy, photos.page, photos.perPage]);
 
 	return {
+		totalPhotos: photos.perPage,
 		photos: photos.photos,
+		isLoading: photos.isLoading,
 		setOrderByPhotos,
 		setPagePhotos,
 		setPerPagePhotos,

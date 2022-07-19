@@ -1,6 +1,7 @@
+import React from 'react';
 import { Box, Flex, Skeleton, Spacer } from '@chakra-ui/react';
 
-const CardSkeletonImage = () => {
+const CardSkeletonImage: React.FC = () => {
 	return (
 		<Box borderRadius={'1rem'} width={'250px'} py={'1rem'}>
 			<Skeleton

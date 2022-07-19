@@ -3,6 +3,7 @@ import { useReducer, useEffect } from 'react';
 import { INITIAL_EMPTY_STATE_COLLECTIONS } from '~constants/unsplash.const';
 
 import { IAdapterCollection } from '~interfaces/Adapters.types';
+import { IUseCollectionsHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_COLLECTIONS } from '~lib/actions';
 
@@ -10,24 +11,18 @@ import { collectionsApi } from '~lib/api';
 
 import { collectionsReducer } from '~lib/reducers/Rcollections.reducer';
 
-interface IUseCollectionsHook {
-	collections: IAdapterCollection[];
-	error: any;
-	isLoading: boolean;
-}
-
 export default function useCollections(): IUseCollectionsHook {
 	const [collections, setCollections] = useReducer(
 		collectionsReducer,
 		INITIAL_EMPTY_STATE_COLLECTIONS
 	);
 
-	const initRequestCollections = () =>
+	const initRequestCollections: () => void = (): void =>
 		setCollections({
 			type: ACTIONS_COLLECTIONS._INIT_REQUEST_COLLECTIONS_,
 		});
 
-	const successRequestCollections = (collections: IAdapterCollection) =>
+	const successRequestCollections = (collections: IAdapterCollection): void =>
 		setCollections({
 			type: ACTIONS_COLLECTIONS._SUCCESS_REQUEST_COLLECTIONS_,
 			payload: {
@@ -41,12 +36,27 @@ export default function useCollections(): IUseCollectionsHook {
 	}: {
 		error: string;
 		code?: string | number | undefined;
-	}) =>
+	}): void =>
 		setCollections({
 			type: ACTIONS_COLLECTIONS._FAILURE_REQUEST_COLLECTIONS_,
 			payload: {
 				error,
 				code,
+			},
+		});
+
+	const setPageCollections = (page: number): void =>
+		setCollections({
+			type: ACTIONS_COLLECTIONS._SET_PAGE_COLLECTIONS_,
+			payload: {
+				page,
+			},
+		});
+	const setPerPageCollections = (perPage: number): void =>
+		setCollections({
+			type: ACTIONS_COLLECTIONS._SET_PER_PAGE_COLLECTIONS_,
+			payload: {
+				perPage,
 			},
 		});
 
@@ -61,8 +71,11 @@ export default function useCollections(): IUseCollectionsHook {
 	}, [collections.page, collections.perPage]);
 
 	return {
+		totalCollections: collections.perPage,
 		error: collections.error,
 		collections: collections.collections,
 		isLoading: collections.isLoading,
+		setPerPageCollections,
+		setPageCollections,
 	};
 }
