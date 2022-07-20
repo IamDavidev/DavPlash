@@ -21,7 +21,7 @@ export async function getCollections({
 
 	return {
 		data: apiData.data,
-		error: apiData.err,
+		error: apiData.error,
 		isSuccess: apiData.isSuccess,
 	};
 }

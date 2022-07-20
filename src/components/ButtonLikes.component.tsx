@@ -9,8 +9,7 @@ interface IStateBtnLikes {
 	isLiked: boolean;
 }
 /**
- *
- *
+ * * create a new like
  */
 const setLike = (setLike: Function): void =>
 	setLike(
@@ -20,7 +19,11 @@ const setLike = (setLike: Function): void =>
 		})
 	);
 
-const setDislike = (setDislike: Function) =>
+/**
+ * * remove a like
+ */
+
+const setDislike = (setDislike: Function): void =>
 	setDislike(
 		(prevState: IStateBtnLikes): IStateBtnLikes => ({
 			likes: prevState.likes - 1,
@@ -35,10 +38,7 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 	});
 
 	const toggleLike = (): void => {
-		console.log('toggleLike');
-
 		if (!likes.isLiked) return setLike(setLikes);
-
 		setDislike(setLikes);
 	};
 

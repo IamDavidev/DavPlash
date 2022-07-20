@@ -1,5 +1,6 @@
 import { ApiInstance } from '@/config';
-import { requestPhotosApi } from '~interfaces/photos.types';
+
+import { IRequestService } from '~interfaces/services.types';
 
 interface TypeGetPhotosServiceProps {
 	pathUrl: string;
@@ -15,7 +16,7 @@ interface TypeGetPhotosServiceProps {
 export async function getDataService({
 	pathUrl,
 	params,
-}: TypeGetPhotosServiceProps): Promise<requestPhotosApi> {
+}: TypeGetPhotosServiceProps): Promise<IRequestService> {
 	try {
 		const response = await ApiInstance.get(pathUrl, {
 			params,
@@ -23,14 +24,13 @@ export async function getDataService({
 
 		return {
 			data: response.data,
-			err: '',
+			error: '',
 			isSuccess: true,
 		};
 	} catch (err: any) {
-		console.log(err.message);
 		return {
 			data: [],
-			err: err.message,
+			error: err.message,
 			isSuccess: false,
 		};
 	}
