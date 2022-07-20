@@ -12,7 +12,7 @@ export async function getPhoto({ id }: { id: string }) {
 
 	return {
 		data: apiData.data,
-		error: apiData.err,
+		error: apiData.error,
 		isSuccess: apiData.isSuccess,
 	};
 }

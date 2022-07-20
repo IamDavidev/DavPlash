@@ -1,10 +1,10 @@
 import { ApiUnsplashAccessKey } from '~constants/unsplash.const';
 
-import { requestPhotosApi } from '~interfaces/photos.types';
+import { IRequestService } from '~interfaces/services.types';
 
 import { getDataService } from './service';
 
-export async function getUser(username: string): Promise<requestPhotosApi> {
+export async function getUser(username: string): Promise<IRequestService> {
 	const apiData = await getDataService({
 		pathUrl: `/users/${username}`,
 		params: {
@@ -14,7 +14,7 @@ export async function getUser(username: string): Promise<requestPhotosApi> {
 
 	return {
 		data: apiData.data,
-		err: apiData.err,
+		error: apiData.error,
 		isSuccess: apiData.isSuccess,
 	};
 }

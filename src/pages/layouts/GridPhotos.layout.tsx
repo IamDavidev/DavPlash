@@ -13,7 +13,6 @@ const GridPhotos = ({ photos }: { photos: IAdapterPhotos[] }) => {
 				width={'100%'}>
 				{photos.length > 0 &&
 					photos.map((photo: IAdapterPhotos) => {
-						console.log(photo);
 						return (
 							<WrapItem key={photo.id}>
 								<CardImage

@@ -29,7 +29,6 @@ const CardCollection = ({
 	totalPhotos,
 	photos,
 }: CardCollectionProps) => {
-
 	return (
 		<Box
 			minWidth={'100%'}
@@ -69,12 +68,17 @@ const CardCollection = ({
 					<Flex flexDirection={'row'}>
 						<AvatarGroup size='sm' max={4}>
 							{photos.map(photo => {
-								return <Avatar name='' src={photo.src} key={photo.key} />;
+								return (
+									<Avatar
+										name=''
+										src={photo.src}
+										key={photo.key}
+										objectFit={'cover'}
+									/>
+								);
 							})}
 						</AvatarGroup>
-
 						<Spacer />
-
 						<ButtonMore path='/' text='view' />
 					</Flex>
 				</Flex>
