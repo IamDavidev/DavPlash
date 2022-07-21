@@ -19,3 +19,16 @@ export interface IStatePhotos extends IStateGlobalApi {
 	photos: IAdapterPhotos[] | [];
 	orderBy: string;
 }
+export interface IStateUser extends IStateGlobalApi {
+	users: any[];
+	query: string;
+}
+export interface IStateOnlyPhoto {
+	photo: IAdapterPhotos;
+	error: {
+		code: string | number;
+		message: string;
+		isExistError: boolean;
+	};
+	isLoading: boolean;
+}

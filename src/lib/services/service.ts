@@ -30,6 +30,7 @@ export async function getDataService({
 	} catch (err: any) {
 		return {
 			data: [],
+			code: err.response.status,
 			error: err.message,
 			isSuccess: false,
 		};

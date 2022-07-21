@@ -1,7 +1,10 @@
 export interface IRequestService {
-	data: any;
+	data: any[];
 	error: string;
 	isSuccess: boolean;
+	code?: string | number;
+
+	// TODO: remove code optional
 }
 export interface IGetCollectionProps {
 	perPage: number;

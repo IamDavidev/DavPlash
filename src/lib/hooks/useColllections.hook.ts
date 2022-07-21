@@ -9,7 +9,7 @@ import { ACTIONS_COLLECTIONS } from '~lib/actions';
 
 import { collectionsApi } from '~lib/api';
 
-import { collectionsReducer } from '~lib/reducers/Rcollections.reducer';
+import { collectionsReducer } from '~lib/reducers/collections.reducer';
 
 export default function useCollections(): IUseCollectionsHook {
 	const [collections, setCollections] = useReducer(
@@ -40,7 +40,7 @@ export default function useCollections(): IUseCollectionsHook {
 		setCollections({
 			type: ACTIONS_COLLECTIONS._FAILURE_REQUEST_COLLECTIONS_,
 			payload: {
-				error,
+				message: error,
 				code,
 			},
 		});

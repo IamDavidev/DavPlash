@@ -12,6 +12,7 @@ export function AdapterCollections(objApiCollections: any): IAdapterCollection {
 		}),
 		id: objApiCollections.id,
 		shareKey: objApiCollections.share_key,
-		description: objApiCollections.description || '',
+		description: objApiCollections.description,
+		tags: objApiCollections.tags.map((tag: any) => tag.title),
 	};
 }

@@ -5,8 +5,13 @@ import { IAdapterCollection, IAdapterPhotos } from './Adapters.types';
  */
 export interface IUsePhotosHook {
 	totalPhotos: number;
-	isLoading: boolean;
 	photos: IAdapterPhotos[];
+	isLoading: boolean;
+	error: {
+		message: string;
+		code?: string | number | undefined;
+		isError: boolean;
+	};
 	setPagePhotos: (page: number) => void;
 	setPerPagePhotos: (perPage: number) => void;
 	setOrderByPhotos: (orderBy: string) => void;
@@ -35,4 +40,17 @@ export interface IUseCollectionsHook {
 	collections: IAdapterCollection[];
 	error: any;
 	isLoading: boolean;
+}
+
+/**
+ * - return hook useUser
+ */
+
+export interface IuseUsersHook {
+	users: any[];
+	error: any;
+	isLoading: boolean;
+	setPageUsers: (page: number) => void;
+	setPerPageUsers: (perPage: number) => void;
+	setQueryUsers: (query: string) => void;
 }

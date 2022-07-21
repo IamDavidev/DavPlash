@@ -1,86 +1,16 @@
 import { useEffect, useReducer } from 'react';
+
+import { EMPTY_STATE_PHOTO } from '~constants/unsplash.const';
+import { IAdapterPhotos } from '~interfaces/Adapters.types';
+
 import { IUsePhotoHook } from '~interfaces/hooks.types';
+
+import { ACTIONS_PHOTO } from '~lib/actions';
+
 import { ApiPhoto } from '~lib/api/photo.api';
-
-export const EMPTY_STATE_PHOTO = {
-	photo: {
-		id: '',
-		likes: 0,
-		description: '',
-		images: {
-			small: '',
-			full: '',
-			regular: '',
-		},
-		user: {
-			id: '',
-			name: '',
-			images: {
-				small: '',
-				full: '',
-				regular: '',
-			},
-			bio: '',
-			likes: 0,
-			photos: 0,
-			username: '',
-		},
-	},
-	error: {
-		message: null,
-		isExistError: false,
-	},
-	isLoading: false,
-};
-
-export const ACTIONS_PHOTO = {
-	_INITIAL_REQUEST_: '_INITIAL_REQUEST',
-	_SUCCESS_REQUEST_: '_SUCCESS_REQUEST',
-	_ERROR_REQUEST_: '_ERROR_REQUEST',
-};
-export const _INITIAL_REQUEST_STATE_ = {
-	isLoading: true,
-	error: {
-		message: null,
-		isExistError: false,
-	},
-};
+import { reducerPhoto } from '~lib/reducers';
 
 // export function reducerPhoto(state: IStatePhoto, action: any): IStatePhoto {
-
-export function reducerPhoto(state: any, action: any): any {
-	switch (action.type) {
-		case ACTIONS_PHOTO._INITIAL_REQUEST_: {
-			return {
-				...state,
-				..._INITIAL_REQUEST_STATE_,
-			};
-		}
-		case ACTIONS_PHOTO._SUCCESS_REQUEST_: {
-			const { photo } = action.payload;
-			return {
-				...state,
-				isLoading: false,
-				photo,
-			};
-		}
-		case ACTIONS_PHOTO._ERROR_REQUEST_: {
-			const { error } = action.payload;
-			return {
-				...state,
-				error: {
-					message: error.message,
-					isExistError: error.isExistError,
-				},
-			};
-		}
-		default: {
-			throw new Error(
-				`HOOK > ERROR PHOTO: ${action.type} is not a valid action type.`
-			);
-		}
-	}
-}
 
 export default function usePhoto(id?: any): IUsePhotoHook {
 	const [photo, setPhoto] = useReducer(reducerPhoto, EMPTY_STATE_PHOTO);
@@ -90,7 +20,7 @@ export default function usePhoto(id?: any): IUsePhotoHook {
 			type: ACTIONS_PHOTO._INITIAL_REQUEST_,
 		});
 
-	const successRequestPhoto = (photo: any) =>
+	const successRequestPhoto = (photo: IAdapterPhotos): void =>
 		setPhoto({
 			type: ACTIONS_PHOTO._SUCCESS_REQUEST_,
 			payload: {
@@ -98,14 +28,18 @@ export default function usePhoto(id?: any): IUsePhotoHook {
 			},
 		});
 
-	const errorRequestPhoto = (err: any) =>
+	const errorRequestPhoto = ({
+		error,
+		code,
+	}: {
+		error: string;
+		code?: string | number;
+	}): void =>
 		setPhoto({
 			type: ACTIONS_PHOTO._ERROR_REQUEST_,
 			payload: {
-				error: {
-					message: err,
-					isExistError: true,
-				},
+				message: error,
+				code,
 			},
 		});
 

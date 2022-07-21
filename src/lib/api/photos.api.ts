@@ -12,7 +12,7 @@ export async function photosApi({
 }: IApiPhotosProps): Promise<void> {
 	init();
 
-	const { data, error, isSuccess } = await getPhotos({
+	const { data, error, isSuccess, code } = await getPhotos({
 		orderBy,
 		perPage,
 		page,
@@ -20,6 +20,7 @@ export async function photosApi({
 
 	if (!isSuccess) {
 		err({
+			code,
 			error,
 		});
 	}

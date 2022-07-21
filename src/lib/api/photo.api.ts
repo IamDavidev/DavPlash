@@ -17,10 +17,13 @@ export async function ApiPhoto({
 }: IApiPhotoProps): Promise<any> {
 	init();
 
-	const { data, error, isSuccess } = await requesPhoto(id);
+	const { data, error, isSuccess, code } = await requesPhoto(id);
 
 	if (!isSuccess) {
-		err(error);
+		err({
+			error,
+			code,
+		});
 		return;
 	}
 

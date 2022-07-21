@@ -1,22 +1,45 @@
 import React from 'react';
 
-import { Box, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Code, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 
 import CardCollection from '~components/CardCollection.component';
 
 import { IAdapterCollection } from '~interfaces/Adapters.types';
 
-interface IGridCollectionProps {
-	collections: IAdapterCollection[];
-}
+import useCollections from '~lib/hooks/useColllections.hook';
+import GridCollectionError from '~components/skeletons/error/GridCollectionError.component';
 
-const GridCollections: React.FC<IGridCollectionProps> = ({
-	collections,
-}: {
-	collections: IAdapterCollection[];
-}) => {
+import { GridCollectionSkeleton } from '~components/skeletons';
+
+type GridCollectionsProps = {
+	controls: boolean;
+};
+
+const GridCollections: React.FC<GridCollectionsProps> = ({
+	controls,
+}: GridCollectionsProps) => {
+	const { collections, error, isLoading, totalCollections } = useCollections();
+
+	console.log({
+		collections,
+	});
+
+	if (error.isError)
+		return (
+			<>
+				<Heading>
+					<Code>{error.code}</Code>
+					<Text>{error.message}</Text>
+				</Heading>
+				<GridCollectionError />
+			</>
+		);
+
+	if (isLoading) return <GridCollectionSkeleton length={totalCollections} />;
+
 	return (
 		<Box py={'2rem'}>
+			{controls && <p>controls </p>}
 			<Wrap
 				spacing={'2.5rem'}
 				justify={'center'}

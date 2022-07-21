@@ -13,6 +13,7 @@ export async function getUser(username: string): Promise<IRequestService> {
 	}).then(data => data);
 
 	return {
+		code: apiData.code,
 		data: apiData.data,
 		error: apiData.error,
 		isSuccess: apiData.isSuccess,

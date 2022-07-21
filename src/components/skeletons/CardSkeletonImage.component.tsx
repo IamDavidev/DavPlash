@@ -6,6 +6,9 @@ const CardSkeletonImage: React.FC = () => {
 		<Box borderRadius={'1rem'} width={'250px'} py={'1rem'}>
 			<Skeleton
 				height={'230px'}
+				borderWidth={'1px'}
+				borderStyle={'solid'}
+				borderColor={'red'}
 				width={'230px'}
 				margin={'auto'}
 				startColor={'grayTheme.500'}

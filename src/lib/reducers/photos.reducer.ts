@@ -29,7 +29,7 @@ export function photosReducer(state: any, action: any): IStatePhotos {
 				error: {
 					code,
 					message,
-					isExistError: true,
+					isError: true,
 				},
 				isLoading: false,
 			};
