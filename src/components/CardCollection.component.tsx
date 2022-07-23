@@ -31,6 +31,7 @@ const CardCollection = ({
 }: CardCollectionProps) => {
 	return (
 		<Box
+			bg={'black'}
 			minWidth={'100%'}
 			width={'400px'}
 			maxWidth={'400px'}

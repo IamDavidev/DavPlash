@@ -1,33 +1,25 @@
-import { Box, Spacer, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Image, Text } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
-
-import { useColllections, usePhotos } from '~lib/hooks';
-
-import { ArrowRightIcon } from '~components/icons';
 
 import { COLORS_THEME } from '~constants/theme.const';
 
 import GridCollections from './layouts/GridCollections.layout';
-import GridPhotos from './layouts/GridPhotos.layout';
 import HeaderLayout from './layouts/Header.layout';
-import GridCollectionsSkeleton from '~components/skeletons/GridCollectionSkeleton.component';
-import { GridImagesSkeleton } from '~components/skeletons';
+import GridPhotos from './layouts/GridPhotos.layout';
+
+import heroGlow from '@/assets/svg/hero-glow.svg';
+
+import { ArrowRightIcon } from '~components/icons';
 
 const HomeView = () => {
-	const { photos, isLoading: isLoadingPhotos, totalPhotos } = usePhotos();
-	const {
-		collections,
-		isLoading: isLoadingCollecions,
-		totalCollections,
-	} = useColllections();
-
 	return (
-		<>
+		<Box pos={'relative'}>
 			<HeaderLayout />
-			<Spacer bg={'blueTheme.500'} height={'1'} />{' '}
 			<section>
 				<Box
+					pos={'relative'}
+					zIndex={10}
 					w={'100%'}
 					display={'flex'}
 					alignItems={'center'}
@@ -44,8 +36,8 @@ const HomeView = () => {
 					<Link to='/plash/discover/photos'>
 						{' '}
 						<Box
-							py={'.8rem'}
-							px={'3rem'}
+							py={'.5rem'}
+							px={'1.5rem'}
 							borderRadius={'1rem'}
 							display={'flex'}
 							gap={'1rem'}
@@ -53,6 +45,7 @@ const HomeView = () => {
 							_hover={{
 								bg: 'grayTheme.500',
 								transition: 'all .8s ease-in-out',
+								color: 'blacktheme.500',
 							}}>
 							<Text
 								fontWeight={'semibold'}
@@ -68,13 +61,8 @@ const HomeView = () => {
 						</Box>
 					</Link>
 				</Box>
-				{isLoadingPhotos ? (
-					<GridImagesSkeleton length={totalPhotos} />
-				) : (
-					<GridPhotos photos={photos} />
-				)}
+				<GridPhotos />
 			</section>
-			<Spacer bg={'blueTheme.500'} height={'1'} />
 			<section>
 				<Box
 					w={'100%'}
@@ -92,8 +80,8 @@ const HomeView = () => {
 					<Link to='/plash/discover/collecions'>
 						{' '}
 						<Box
-							py={'.8rem'}
-							px={'3rem'}
+							py={'.5rem'}
+							px={'1.5rem'}
 							borderRadius={'1rem'}
 							display={'flex'}
 							gap={'1rem'}
@@ -101,6 +89,7 @@ const HomeView = () => {
 							_hover={{
 								bg: 'grayTheme.500',
 								transition: 'all .8s ease-in-out',
+								color: 'black',
 							}}>
 							<Text
 								fontWeight={'semibold'}
@@ -109,7 +98,6 @@ const HomeView = () => {
 								View All
 							</Text>
 							<ArrowRightIcon
-								styles='display:inline-flex;'
 								width={25}
 								height={24}
 								color={COLORS_THEME._PURPLE_}
@@ -117,13 +105,33 @@ const HomeView = () => {
 						</Box>
 					</Link>
 				</Box>
-				{isLoadingCollecions ? (
-					<GridCollectionsSkeleton length={totalCollections} />
-				) : (
-					<GridCollections collections={collections} />
-				)}
+				<GridCollections controls={false} />
 			</section>
-		</>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'10%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'45%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'80%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+		</Box>
 	);
 };
 

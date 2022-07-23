@@ -20,6 +20,7 @@ export async function getCollections({
 	});
 
 	return {
+		code: apiData.code,
 		data: apiData.data,
 		error: apiData.error,
 		isSuccess: apiData.isSuccess,

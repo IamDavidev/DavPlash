@@ -6,7 +6,7 @@ interface IGridCollectionSkeletonProps {
 }
 
 const GridCollectionsSkeleton: React.FC<IGridCollectionSkeletonProps> = ({
-	length,
+	length = 10,
 }: IGridCollectionSkeletonProps) => {
 	const skeletons = new Array(length).fill(1);
 	return (

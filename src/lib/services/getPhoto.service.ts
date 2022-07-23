@@ -11,6 +11,7 @@ export async function getPhoto({ id }: { id: string }) {
 	});
 
 	return {
+		code: apiData.code,
 		data: apiData.data,
 		error: apiData.error,
 		isSuccess: apiData.isSuccess,

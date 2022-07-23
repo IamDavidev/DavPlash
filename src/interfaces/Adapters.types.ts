@@ -39,4 +39,5 @@ export interface IAdapterCollection {
 	id: string;
 	shareKey: string;
 	description: string | '';
+	tags: string[];
 }

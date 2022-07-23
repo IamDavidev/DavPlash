@@ -1,11 +1,17 @@
 import { usePhoto } from '~lib/hooks';
 import CardImage from './CardImage.component';
 import { CardSkeletonImage } from './skeletons';
+import { CardErrorImage } from './skeletons/error';
 
 const CardPhotoRandom = () => {
 	const { photo, error, isLoading } = usePhoto();
 
-	if (error.isExistError) return <div>{error.message}</div>;
+	if (error.isExistError)
+		return (
+			<>
+				<CardErrorImage />
+			</>
+		);
 
 	if (isLoading)
 		return (

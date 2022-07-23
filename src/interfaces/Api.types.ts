@@ -17,3 +17,9 @@ export interface IApiPhotosProps extends IApiProps {
 	page: number;
 	orderBy: string;
 }
+
+export interface IApiUsersProps extends IApiProps {
+	query: string;
+	perPage: number;
+	page: number;
+}

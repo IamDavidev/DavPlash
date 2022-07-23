@@ -53,6 +53,14 @@ export const collectionsReducer = (
 			};
 		}
 
+		case ACTIONS_COLLECTIONS._SET_QUERY_COLLECTIONS_: {
+			const { query } = action.payload;
+			return {
+				...state,
+				query,
+			};
+		}
+
 		default:
 			throw new Error(`Unhandled action type: ${action.type}`);
 	}

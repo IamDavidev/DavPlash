@@ -1,12 +1,6 @@
 import React from 'react';
 
-import {
-	AvatarGroup,
-	Flex,
-	Skeleton,
-	SkeletonCircle,
-	Spacer,
-} from '@chakra-ui/react';
+import { Flex, Skeleton, SkeletonCircle, Spacer } from '@chakra-ui/react';
 
 const CardSkeletonCollection: React.FC = () => {
 	return (
@@ -34,29 +28,27 @@ const CardSkeletonCollection: React.FC = () => {
 						my='1'></Skeleton>
 					<Spacer />
 					<Flex>
-						<AvatarGroup max={3} spacing='-1'>
-							<SkeletonCircle
-								startColor={'grayTheme.500'}
-								endColor={'blackTheme.500'}
-								width={'2rem'}
-								height={'2rem'}
-								borderRadius={'50%'}
-							/>
-							<SkeletonCircle
-								startColor={'grayTheme.500'}
-								endColor={'blackTheme.500'}
-								width={'2rem'}
-								height={'2rem'}
-								borderRadius={'50%'}
-							/>
-							<SkeletonCircle
-								startColor={'grayTheme.500'}
-								endColor={'blackTheme.500'}
-								width={'2rem'}
-								height={'2rem'}
-								borderRadius={'50%'}
-							/>
-						</AvatarGroup>
+						<SkeletonCircle
+							startColor={'grayTheme.500'}
+							endColor={'blackTheme.500'}
+							width={'2rem'}
+							height={'2rem'}
+							borderRadius={'50%'}
+						/>
+						<SkeletonCircle
+							startColor={'grayTheme.500'}
+							endColor={'blackTheme.500'}
+							width={'2rem'}
+							height={'2rem'}
+							borderRadius={'50%'}
+						/>
+						<SkeletonCircle
+							startColor={'grayTheme.500'}
+							endColor={'blackTheme.500'}
+							width={'2rem'}
+							height={'2rem'}
+							borderRadius={'50%'}
+						/>
 						<Spacer />
 						<Skeleton
 							startColor={'grayTheme.500'}

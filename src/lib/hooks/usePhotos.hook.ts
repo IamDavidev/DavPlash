@@ -44,7 +44,7 @@ export default function usePhotos(): IUsePhotosHook {
 		setPhotos({
 			type: ACTIONS_PHOTOS._FAILURE_REQUEST_PHOTOS_,
 			payload: {
-				error,
+				message: error,
 				code,
 			},
 		});
@@ -89,6 +89,7 @@ export default function usePhotos(): IUsePhotosHook {
 		totalPhotos: photos.perPage,
 		photos: photos.photos,
 		isLoading: photos.isLoading,
+		error: photos.error,
 		setOrderByPhotos,
 		setPagePhotos,
 		setPerPagePhotos,

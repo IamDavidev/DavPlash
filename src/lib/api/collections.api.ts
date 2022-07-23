@@ -11,12 +11,19 @@ export async function collectionsApi({
 }: IApiCollectionProps) {
 	init();
 
-	const { data, error, isSuccess } = await getCollections({ perPage, page });
+	const { data, error, isSuccess, code } = await getCollections({
+		perPage,
+		page,
+	});
 
 	if (!isSuccess) {
 		err({
+			code,
 			error,
 		});
 	}
+
+	console.log(data);
+
 	success(data.map(AdapterCollections));
 }

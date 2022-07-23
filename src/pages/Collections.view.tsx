@@ -1,21 +1,17 @@
 import React from 'react';
 
-import { Box } from '@chakra-ui/react';
-
-import useCollections from '~lib/hooks/useColllections.hook';
-
+import { Box, Text, Heading } from '@chakra-ui/react';
 import GridCollections from './layouts/GridCollections.layout';
-import { GridCollectionSkeleton } from '~components/skeletons';
 
 const CollectionsView: React.FC = () => {
-	const { collections, isLoading, totalCollections } = useCollections();
-
-	if (isLoading) return <GridCollectionSkeleton length={totalCollections} />;
-
 	return (
 		<>
 			<Box>
-				<GridCollections collections={collections} />
+				<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
+					<Text color={'blueTheme.500'}>Discover</Text>
+					more Collections
+				</Heading>
+				<GridCollections controls={true} />
 			</Box>
 		</>
 	);
