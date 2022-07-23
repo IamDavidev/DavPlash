@@ -6,7 +6,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'standard',
-    'eslint-config-prettier'
+    'eslint-config-prettier',
+    'plugin:react-hooks/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,7 +19,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'testing-library',
   ],
   rules: {
     "react/react-in-jsx-scope": "off",

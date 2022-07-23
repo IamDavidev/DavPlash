@@ -8,8 +8,6 @@ import {
 	Spacer,
 	Text,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { setInterval } from 'timers';
 
 import { COLORS_THEME } from '~constants/theme.const';
 
@@ -25,24 +23,15 @@ interface CardCollectionProps {
 	photos: any[];
 }
 
-function setIntervalImage(maxLength: number) {
-	return 1 + Math.floor(Math.random() * maxLength);
-}
-
 const CardCollection = ({
 	ImgCollection,
 	title,
 	totalPhotos,
 	photos,
 }: CardCollectionProps) => {
-	const [image, setImage] = useState(ImgCollection);
-
-	useEffect(() => {
-		setInterval(() => {}, 3000);
-	}, []);
-
 	return (
 		<Box
+			bg={'black'}
 			minWidth={'100%'}
 			width={'400px'}
 			maxWidth={'400px'}

@@ -60,6 +60,14 @@ export default function useCollections(): IUseCollectionsHook {
 			},
 		});
 
+	const setQueryCollections = (query: string): void =>
+		setCollections({
+			type: ACTIONS_COLLECTIONS._SET_QUERY_COLLECTIONS_,
+			payload: {
+				query,
+			},
+		});
+
 	useEffect(() => {
 		collectionsApi({
 			init: initRequestCollections,
@@ -68,7 +76,7 @@ export default function useCollections(): IUseCollectionsHook {
 			page: collections.page,
 			perPage: collections.perPage,
 		});
-	}, [collections.page, collections.perPage]);
+	}, [collections.page, collections.perPage, collections.query]);
 
 	return {
 		totalCollections: collections.perPage,
@@ -77,5 +85,6 @@ export default function useCollections(): IUseCollectionsHook {
 		isLoading: collections.isLoading,
 		setPerPageCollections,
 		setPageCollections,
+		setQueryCollections,
 	};
 }

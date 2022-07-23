@@ -8,6 +8,8 @@ const HeaderLayout = () => {
 	return (
 		<>
 			<Box
+				pos={'relative'}
+				zIndex={10}
 				width={'100%'}
 				my={'1rem'}
 				display={'flex'}
@@ -66,7 +68,12 @@ const HeaderLayout = () => {
 					</Link>
 				</Stack>
 			</Box>
-			<Flex justifyContent={'center'} gap={'1.5rem'} my={'4rem'}>
+			<Flex
+				justifyContent={'center'}
+				gap={'1.5rem'}
+				my={'4rem'}
+				pos={'relative'}
+				zIndex={20}>
 				<Box transform={'rotate(-10deg)'}>
 					<CardPhotoRandom />
 				</Box>

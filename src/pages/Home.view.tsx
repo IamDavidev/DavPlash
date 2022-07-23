@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading, Image, Text } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
 
@@ -6,16 +6,20 @@ import { COLORS_THEME } from '~constants/theme.const';
 
 import GridCollections from './layouts/GridCollections.layout';
 import HeaderLayout from './layouts/Header.layout';
+import GridPhotos from './layouts/GridPhotos.layout';
+
+import heroGlow from '@/assets/svg/hero-glow.svg';
 
 import { ArrowRightIcon } from '~components/icons';
-import GridPhotos from './layouts/GridPhotos.layout';
 
 const HomeView = () => {
 	return (
-		<>
+		<Box pos={'relative'}>
 			<HeaderLayout />
 			<section>
 				<Box
+					pos={'relative'}
+					zIndex={10}
 					w={'100%'}
 					display={'flex'}
 					alignItems={'center'}
@@ -103,7 +107,31 @@ const HomeView = () => {
 				</Box>
 				<GridCollections controls={false} />
 			</section>
-		</>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'10%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'45%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+			<Image
+				pos={'absolute'}
+				zIndex={1}
+				top={'80%'}
+				left={0}
+				src={heroGlow}
+				alt={'hero-glow'}
+			/>
+		</Box>
 	);
 };
 

@@ -22,6 +22,7 @@ export const INITIAL_EMPTY_STATE_COLLECTIONS: IStateCollections = {
 	perPage: 10,
 	error: ERROR_INITIAL_STATE,
 	isLoading: false,
+	query: '',
 };
 
 export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {

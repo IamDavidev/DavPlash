@@ -28,7 +28,7 @@ const GridPhotos: React.FC = () => {
 	if (isLoading) return <GridImagesSkeleton length={totalPhotos} />;
 
 	return (
-		<Box width={'100%'} my={'2rem'}>
+		<Box width={'100%'} my={'2rem'} pos={'relative'} zIndex={10}>
 			<Wrap
 				py={'2rem'}
 				spacing={'2rem'}

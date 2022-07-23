@@ -35,11 +35,12 @@ export interface IUsePhotoHook {
  */
 export interface IUseCollectionsHook {
 	totalCollections: number;
-	setPerPageCollections: (perPage: number) => void;
-	setPageCollections: (page: number) => void;
+	isLoading: boolean;
 	collections: IAdapterCollection[];
 	error: any;
-	isLoading: boolean;
+	setPerPageCollections: (perPage: number) => void;
+	setPageCollections: (page: number) => void;
+	setQueryCollections: (query: string) => void;
 }
 
 /**
