@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Box, Code, Flex, Text, Wrap, WrapItem } from '@chakra-ui/react';
 
@@ -19,8 +19,15 @@ type GridCollectionsProps = {
 const GridCollections: React.FC<GridCollectionsProps> = ({
 	controls,
 }: GridCollectionsProps) => {
-	const { collections, error, isLoading, totalCollections } = useCollections();
-	const [page, setPage] = useState(1);
+	const {
+		collections,
+		error,
+		isLoading,
+		page,
+		totalCollections,
+		setPageCollections,
+		setQueryCollections,
+	} = useCollections();
 
 	if (error.isError)
 		return (
@@ -37,31 +44,39 @@ const GridCollections: React.FC<GridCollectionsProps> = ({
 			</>
 		);
 
-	if (isLoading) return <GridCollectionSkeleton length={totalCollections} />;
-
 	return (
 		<Box py={'2rem'} pos={'relative'} zIndex={10}>
-			{controls && <Controls page={page} setPage={setPage} />}
-			<Wrap
-				spacing={'2.5rem'}
-				justify={'center'}
-				width={'100%'}
-				alignItems={'center'}
-				my={'3rem'}>
-				{collections.length > 0 &&
-					collections?.map((collection: IAdapterCollection) => {
-						return (
-							<WrapItem key={collection.shareKey}>
-								<CardCollection
-									ImgCollection={collection.photos[0]}
-									title={collection.title}
-									totalPhotos={collection.totalPhotos}
-									photos={collection.photos.slice(1)}
-								/>
-							</WrapItem>
-						);
-					})}
-			</Wrap>
+			{controls && (
+				<Controls
+					page={page}
+					setPage={setPageCollections}
+					setQuery={setQueryCollections}
+				/>
+			)}
+			{isLoading && <GridCollectionSkeleton length={totalCollections} />}
+			{!isLoading && (
+				<Wrap
+					spacing={'2.5rem'}
+					justify={'center'}
+					width={'100%'}
+					alignItems={'center'}
+					my={'3rem'}>
+					{collections.length > 0 &&
+						collections?.map((collection: IAdapterCollection) => {
+							return (
+								<WrapItem key={collection.shareKey}>
+									<CardCollection
+										ImgCollection={collection.photos[0]}
+										title={collection.title}
+										totalPhotos={collection.totalPhotos}
+										photos={collection.photos.slice(1)}
+										tags={collection.tags}
+									/>
+								</WrapItem>
+							);
+						})}
+				</Wrap>
+			)}
 		</Box>
 	);
 };

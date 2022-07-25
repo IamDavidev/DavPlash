@@ -10,9 +10,23 @@ import { GridImagesSkeleton } from '~components/skeletons';
 import GridImageError from '~components/skeletons/error/GridImageError.component';
 
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
+import Controls from '~components/controls.compoenent';
 
-const GridPhotos: React.FC = () => {
-	const { photos, totalPhotos, isLoading, error } = usePhotos();
+interface IGridPhotosProps {
+	controls: boolean;
+}
+
+const GridPhotos: React.FC<IGridPhotosProps> = ({ controls }) => {
+	const {
+		photos,
+		totalPhotos,
+		isLoading,
+		error,
+		page,
+		setPagePhotos,
+		setOrderByPhotos,
+		setQueryPhotos,
+	} = usePhotos();
 
 	if (error.isError)
 		return (
@@ -25,31 +39,41 @@ const GridPhotos: React.FC = () => {
 			</>
 		);
 
-	if (isLoading) return <GridImagesSkeleton length={totalPhotos} />;
-
 	return (
 		<Box width={'100%'} my={'2rem'} pos={'relative'} zIndex={10}>
-			<Wrap
-				py={'2rem'}
-				spacing={'2rem'}
-				spacingX={'3.5rem'}
-				justify='center'
-				width={'100%'}>
-				{photos.length > 0 &&
-					photos.map((photo: IAdapterPhotos) => {
-						return (
-							<WrapItem key={photo.id}>
-								<CardImage
-									image={photo.images.regular}
-									likes={photo.likes}
-									name={photo.user.name}
-									userName={photo.user.username}
-									key={photo.id}
-								/>
-							</WrapItem>
-						);
-					})}
-			</Wrap>
+			{controls && (
+				<Controls
+					page={page}
+					setPage={setPagePhotos}
+					setQuery={setQueryPhotos}
+					setOrderBy={setOrderByPhotos}
+				/>
+			)}
+			{isLoading && <GridImagesSkeleton length={totalPhotos} />}
+			{!isLoading && (
+				<Wrap
+					py={'2rem'}
+					spacing={'2rem'}
+					spacingX={'3.5rem'}
+					justify='center'
+					width={'100%'}>
+					{photos.length > 0 &&
+						photos.map((photo: IAdapterPhotos) => {
+							return (
+								<WrapItem key={photo.id}>
+									<CardImage
+										id={photo.id}
+										image={photo.images.regular}
+										likes={photo.likes}
+										name={photo.user.name}
+										userName={photo.user.username}
+										key={photo.id}
+									/>
+								</WrapItem>
+							);
+						})}
+				</Wrap>
+			)}
 		</Box>
 	);
 };

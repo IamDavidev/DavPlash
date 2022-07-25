@@ -1,0 +1,31 @@
+import {
+	IAdapterPhotoView,
+	TypeRelatedPhoto,
+	TypeTagObjApiPhotoView,
+} from '~interfaces/Adapters.types';
+
+export const AdapterPhotoView = (objApiPhoto: any): IAdapterPhotoView => {
+	// console.log('AdapterPhotoView', objApiPhoto);
+	return {
+		id: objApiPhoto.id,
+		image: objApiPhoto?.urls.regular,
+		likes: objApiPhoto.likes,
+		tags: objApiPhoto.tags.map((tag: TypeTagObjApiPhotoView) => tag.title),
+		color: objApiPhoto.color,
+		width: objApiPhoto.width,
+		height: objApiPhoto.height,
+		user: objApiPhoto.user.name,
+		userName: objApiPhoto.user.username,
+		profileImage: objApiPhoto.user.profile_image.large,
+		instagramUsername: objApiPhoto.user.social?.instagram_username,
+		description: objApiPhoto?.description,
+		relatedPhotos: objApiPhoto.related_collections.results.map(
+			(photo: any): TypeRelatedPhoto => {
+				return {
+					image: photo.preview_photos[0].urls.small,
+					key: photo.id,
+				};
+			}
+		),
+	};
+};

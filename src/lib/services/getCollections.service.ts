@@ -9,13 +9,17 @@ import { getDataService } from './service';
 export async function getCollections({
 	perPage,
 	page,
+	query,
 }: IGetCollectionProps): Promise<IRequestService> {
+	const pathUrl = query !== '' ? 'search/collections' : 'collections';
+
 	const apiData = await getDataService({
-		pathUrl: '/collections',
+		pathUrl,
 		params: {
 			client_id: ApiUnsplashAccessKey,
 			per_page: perPage,
 			page,
+			query,
 		},
 	});
 

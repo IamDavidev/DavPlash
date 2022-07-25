@@ -61,7 +61,7 @@ const HomeView = () => {
 						</Box>
 					</Link>
 				</Box>
-				<GridPhotos />
+				<GridPhotos controls={false} />
 			</section>
 			<section>
 				<Box
@@ -77,8 +77,7 @@ const HomeView = () => {
 						my={'1rem'}>
 						Top Collections
 					</Heading>
-					<Link to='/plash/discover/collecions'>
-						{' '}
+					<Link to='/plash/discover/collections'>
 						<Box
 							py={'.5rem'}
 							px={'1.5rem'}

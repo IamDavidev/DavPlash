@@ -1,10 +1,17 @@
 import {
-	Avatar,
-	AvatarGroup,
+	Badge,
 	Box,
+	Button,
 	Flex,
 	Heading,
 	Image,
+	Popover,
+	PopoverArrow,
+	PopoverBody,
+	PopoverCloseButton,
+	PopoverContent,
+	PopoverHeader,
+	PopoverTrigger,
 	Spacer,
 	Text,
 } from '@chakra-ui/react';
@@ -20,14 +27,15 @@ interface CardCollectionProps {
 	};
 	title: string;
 	totalPhotos: number;
-	photos: any[];
+	photos?: any[];
+	tags: string[];
 }
 
 const CardCollection = ({
 	ImgCollection,
 	title,
 	totalPhotos,
-	photos,
+	tags,
 }: CardCollectionProps) => {
 	return (
 		<Box
@@ -66,19 +74,32 @@ const CardCollection = ({
 						</Box>
 					</Box>
 					<Spacer />
-					<Flex flexDirection={'row'}>
-						<AvatarGroup size='sm' max={4}>
-							{photos.map(photo => {
-								return (
-									<Avatar
-										name=''
-										src={photo.src}
-										key={photo.key}
-										objectFit={'cover'}
-									/>
-								);
-							})}
-						</AvatarGroup>
+					<Flex flexDirection={'row'} alignItems={'center'}>
+						<Popover colorScheme={'blue'}>
+							<PopoverTrigger>
+								<Button colorScheme={'black'}>Tags</Button>
+							</PopoverTrigger>
+							<PopoverContent bg={'black'} borderColor={'purpleTheme.500'}>
+								<PopoverArrow />
+								<PopoverCloseButton color={'purpleTheme.500'} />
+								<PopoverHeader color={'blueTheme.500'}>{title}</PopoverHeader>
+								<PopoverBody>
+									{tags &&
+										tags.map((tag: string) => {
+											return (
+												<Badge
+													key={tag}
+													color={'purpleTheme.500'}
+													mx={2}
+													variant={'outline'}
+													colorScheme={'pink'}>
+													{tag}
+												</Badge>
+											);
+										})}
+								</PopoverBody>
+							</PopoverContent>
+						</Popover>
 						<Spacer />
 						<ButtonMore path='/' text='view' />
 					</Flex>

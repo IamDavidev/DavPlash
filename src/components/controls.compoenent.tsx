@@ -2,20 +2,27 @@
  * @controls {-setPage -search -setPerpage}
  */
 
-import { Flex, Box, Text, Kbd } from '@chakra-ui/react';
+import { Flex, Box, Text, Kbd, Spacer } from '@chakra-ui/react';
 import React from 'react';
 import { ControlPage, ControlQuery } from './controls';
+import ControlOrderBy from './controls/controlOrderBY.coponent';
 
 interface IcontrolsProps {
 	setPage: (page: number) => void;
 	page: number;
 	setQuery: (query: string) => void;
+	setOrderBy?: (orderBy: string) => void;
 }
 
-const Controls: React.FC<IcontrolsProps> = ({ setPage, page, setQuery }) => {
+const Controls: React.FC<IcontrolsProps> = ({
+	setPage,
+	page,
+	setQuery,
+	setOrderBy,
+}) => {
 	return (
 		<>
-			<Flex justifyContent={'space-between'}>
+			<Flex alignItems={'center'}>
 				<Box
 					display={'flex'}
 					flexDir={'column'}
@@ -27,6 +34,12 @@ const Controls: React.FC<IcontrolsProps> = ({ setPage, page, setQuery }) => {
 					</Text>
 					<ControlPage setPage={setPage} page={page} />
 				</Box>
+				{setOrderBy && (
+					<Box>
+						<ControlOrderBy setOrderBy={setOrderBy} />
+					</Box>
+				)}
+				<Spacer />
 				<Box
 					display={'flex'}
 					flexDir={'column'}

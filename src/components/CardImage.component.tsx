@@ -13,9 +13,10 @@ type ICardImageProps = {
 	likes: number;
 	name: string;
 	userName: string;
+	id: string;
 };
 
-function CardImage({ image, likes, name, userName }: ICardImageProps) {
+function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 	return (
 		<Box
 			border={'2px'}
@@ -51,7 +52,11 @@ function CardImage({ image, likes, name, userName }: ICardImageProps) {
 						</Box>
 					</Link>
 					<Flex>
-						<ButtonMore path='/' text='view' key={userName} />
+						<ButtonMore
+							path={`/plash/discover/photos/${id}`}
+							text='view'
+							key={userName}
+						/>
 						<Spacer />
 						<ButtonLikes likesProps={likes} />
 					</Flex>

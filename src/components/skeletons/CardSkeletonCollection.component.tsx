@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Skeleton, SkeletonCircle, Spacer } from '@chakra-ui/react';
+import { Flex, Skeleton, Spacer } from '@chakra-ui/react';
 
 const CardSkeletonCollection: React.FC = () => {
 	return (
@@ -28,27 +28,11 @@ const CardSkeletonCollection: React.FC = () => {
 						my='1'></Skeleton>
 					<Spacer />
 					<Flex>
-						<SkeletonCircle
+						<Skeleton
 							startColor={'grayTheme.500'}
 							endColor={'blackTheme.500'}
-							width={'2rem'}
-							height={'2rem'}
-							borderRadius={'50%'}
-						/>
-						<SkeletonCircle
-							startColor={'grayTheme.500'}
-							endColor={'blackTheme.500'}
-							width={'2rem'}
-							height={'2rem'}
-							borderRadius={'50%'}
-						/>
-						<SkeletonCircle
-							startColor={'grayTheme.500'}
-							endColor={'blackTheme.500'}
-							width={'2rem'}
-							height={'2rem'}
-							borderRadius={'50%'}
-						/>
+							width={'5rem'}
+							height={'2rem'}></Skeleton>
 						<Spacer />
 						<Skeleton
 							startColor={'grayTheme.500'}

@@ -9,7 +9,7 @@ export interface IStateGlobalApi {
 		isError: boolean;
 	};
 	isLoading: boolean;
-	query?: string;
+	query: string;
 }
 
 export interface IStateCollections extends IStateGlobalApi {
@@ -24,7 +24,7 @@ export interface IStateUser extends IStateGlobalApi {
 	users: any[];
 }
 export interface IStateOnlyPhoto {
-	photo: IAdapterPhotos;
+	photo: any;
 	error: {
 		code: string | number;
 		message: string;

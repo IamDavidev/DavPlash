@@ -1,20 +1,25 @@
 import { IAdapterCollection, IAdapterPhotos } from './Adapters.types';
 
-/**
- * - return hook usePhotos
- */
-export interface IUsePhotosHook {
-	totalPhotos: number;
-	photos: IAdapterPhotos[];
-	isLoading: boolean;
+export interface IGenericHook {
+	page: number;
 	error: {
 		message: string;
 		code?: string | number | undefined;
 		isError: boolean;
 	};
+	isLoading: boolean;
+}
+
+/**
+ * - return hook usePhotos
+ */
+export interface IUsePhotosHook extends IGenericHook {
+	totalPhotos: number;
+	photos: IAdapterPhotos[];
 	setPagePhotos: (page: number) => void;
 	setPerPagePhotos: (perPage: number) => void;
 	setOrderByPhotos: (orderBy: string) => void;
+	setQueryPhotos: (query: string) => void;
 }
 
 /**
@@ -22,7 +27,8 @@ export interface IUsePhotosHook {
  */
 
 export interface IUsePhotoHook {
-	photo: IAdapterPhotos;
+	// photo: IAdapterPhotos;
+	photo: any;
 	error: {
 		message: string | null;
 		isExistError: boolean;
@@ -33,11 +39,9 @@ export interface IUsePhotoHook {
 /**
  * - return hook useCollections
  */
-export interface IUseCollectionsHook {
+export interface IUseCollectionsHook extends IGenericHook {
 	totalCollections: number;
-	isLoading: boolean;
 	collections: IAdapterCollection[];
-	error: any;
 	setPerPageCollections: (perPage: number) => void;
 	setPageCollections: (page: number) => void;
 	setQueryCollections: (query: string) => void;

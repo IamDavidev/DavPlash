@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Button } from '@chakra-ui/react';
 import { COLORS_THEME } from '~constants/theme.const';
@@ -33,7 +33,7 @@ const setDislike = (setDislike: Function): void =>
 
 const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 	const [likes, setLikes] = useState<IStateBtnLikes>({
-		likes: likesProps,
+		likes: 0,
 		isLiked: false,
 	});
 
@@ -41,6 +41,13 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 		if (!likes.isLiked) return setLike(setLikes);
 		setDislike(setLikes);
 	};
+
+	useEffect(() => {
+		setLikes({
+			likes: likesProps,
+			isLiked: false,
+		});
+	}, [likesProps]);
 
 	return (
 		<Button

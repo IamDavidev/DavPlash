@@ -41,3 +41,32 @@ export interface IAdapterCollection {
 	description: string | '';
 	tags: string[];
 }
+
+/**
+ * Adapter Photo
+ */
+
+export type TypeTagObjApiPhotoView = {
+	title: string;
+};
+
+export type TypeRelatedPhoto = {
+	key: string;
+	image: string;
+};
+
+export interface IAdapterPhotoView {
+	id: string;
+	image: string;
+	likes: number;
+	tags: string[];
+	color: string;
+	width: number;
+	height: number;
+	user: string;
+	userName: string;
+	instagramUsername: string | null;
+	profileImage: string;
+	description: string | null;
+	relatedPhotos: any[];
+}

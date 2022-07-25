@@ -41,14 +41,6 @@ const CardErrorCollection: React.FC = () => {
 							border={'1px solid red'}
 							borderRadius={'50%'}
 						/>
-						<Box bg={'grayTheme.500'} height={'2rem'} borderRadius={'50%'} />
-						<Box
-							bg={'grayTheme.500'}
-							width={'2rem'}
-							height={'2rem'}
-							border={'1px solid red'}
-							borderRadius={'50%'}
-						/>
 						<Spacer />
 						<Box
 							border={'1px solid red'}

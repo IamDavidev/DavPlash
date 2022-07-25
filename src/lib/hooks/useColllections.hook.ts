@@ -1,6 +1,5 @@
 import { useReducer, useEffect } from 'react';
-
-import { INITIAL_EMPTY_STATE_COLLECTIONS } from '~constants/unsplash.const';
+import { INITIAL_EMPTY_STATE_COLLECTIONS } from '~constants/EmptyStates.const';
 
 import { IAdapterCollection } from '~interfaces/Adapters.types';
 import { IUseCollectionsHook } from '~interfaces/hooks.types';
@@ -75,10 +74,12 @@ export default function useCollections(): IUseCollectionsHook {
 			err: failureRequestCollections,
 			page: collections.page,
 			perPage: collections.perPage,
+			query: collections.query,
 		});
 	}, [collections.page, collections.perPage, collections.query]);
 
 	return {
+		page: collections.page,
 		totalCollections: collections.perPage,
 		error: collections.error,
 		collections: collections.collections,

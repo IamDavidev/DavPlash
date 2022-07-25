@@ -59,6 +59,15 @@ export function photosReducer(state: any, action: any): IStatePhotos {
 			};
 		}
 
+		case ACTIONS_PHOTOS._SET_QUERY_PHOTOS_: {
+			const { query } = action.payload;
+			return {
+				...state,
+				query,
+				page: 1,
+			};
+		}
+
 		default: {
 			throw new Error(`Unhandled action type: ${action.type}`);
 		}

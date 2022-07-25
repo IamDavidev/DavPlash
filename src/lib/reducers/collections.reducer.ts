@@ -17,6 +17,7 @@ export const collectionsReducer = (
 				},
 			};
 		}
+
 		case ACTIONS_COLLECTIONS._SUCCESS_REQUEST_COLLECTIONS_: {
 			const { collections } = action.payload;
 			return {
@@ -25,8 +26,10 @@ export const collectionsReducer = (
 				isLoading: false,
 			};
 		}
+
 		case ACTIONS_COLLECTIONS._FAILURE_REQUEST_COLLECTIONS_: {
 			const { message, code } = action.payload;
+
 			return {
 				...state,
 				error: {
@@ -41,6 +44,7 @@ export const collectionsReducer = (
 			const { page } = action.payload;
 			return {
 				...state,
+				perPage: 12,
 				page,
 			};
 		}
@@ -58,6 +62,7 @@ export const collectionsReducer = (
 			return {
 				...state,
 				query,
+				page: 1,
 			};
 		}
 

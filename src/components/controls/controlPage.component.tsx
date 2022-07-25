@@ -10,7 +10,7 @@ interface IcontrolsPageProps {
 }
 
 const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
-	const maxPage = 4;
+	const maxPage = 10;
 	const setPageNext = (): void => {
 		if (page === maxPage) return setPage(1);
 		setPage(page + 1);
@@ -31,6 +31,7 @@ const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 			</Button>
 			<Text minW={'50px'} textAlign={'center'} color={'white'}>
 				{page}
+				{' / 10'}
 			</Text>
 			<Button
 				colorScheme={'purpleTheme.500'}
