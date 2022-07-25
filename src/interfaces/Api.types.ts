@@ -2,6 +2,7 @@ export interface IApiProps {
 	init: () => void;
 	success: (payload: any) => void;
 	err: ({ error, code }: { error: string; code?: string | number }) => void;
+	query?: string;
 }
 
 export interface IApiPhotoProps extends IApiProps {
@@ -13,6 +14,7 @@ export interface IApiCollectionProps extends IApiProps {
 	page: number;
 }
 export interface IApiPhotosProps extends IApiProps {
+	query?: string;
 	perPage: number;
 	page: number;
 	orderBy: string;

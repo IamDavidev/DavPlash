@@ -9,12 +9,14 @@ export async function photosApi({
 	orderBy,
 	perPage,
 	page,
+	query,
 }: IApiPhotosProps): Promise<void> {
 	init();
 
 	const { data, error, isSuccess, code } = await getPhotos({
 		orderBy,
 		perPage,
+		query,
 		page,
 	});
 
@@ -24,5 +26,9 @@ export async function photosApi({
 			error,
 		});
 	}
+	if (data.results) {
+		return success(data.results.map(AdapterPhotos));
+	}
+
 	success(data.map(AdapterPhotos));
 }

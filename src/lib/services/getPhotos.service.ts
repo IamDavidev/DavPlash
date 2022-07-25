@@ -7,14 +7,19 @@ export async function getPhotos({
 	perPage,
 	page,
 	orderBy,
+	query,
 }: IGetPhotosProps): Promise<IRequestService> {
+	const pathUrl = query !== '' ? 'search/photos' : 'photos';
+
+	// const pathUrl = query !== '' ? 'search/collections' : 'collections';
 	const apiData = await getDataService({
-		pathUrl: '/photos',
+		pathUrl,
 		params: {
 			client_id: ApiUnsplashAccessKey,
 			per_page: perPage,
 			page,
 			order_by: orderBy,
+			query,
 		},
 	});
 

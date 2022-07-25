@@ -8,12 +8,14 @@ export async function collectionsApi({
 	err,
 	perPage,
 	page,
+	query,
 }: IApiCollectionProps) {
 	init();
 
 	const { data, error, isSuccess, code } = await getCollections({
 		perPage,
 		page,
+		query,
 	});
 
 	if (!isSuccess) {
@@ -23,7 +25,8 @@ export async function collectionsApi({
 		});
 	}
 
-	console.log(data);
-
+	if (data.results) {
+		return success(data.results.map(AdapterCollections));
+	}
 	success(data.map(AdapterCollections));
 }

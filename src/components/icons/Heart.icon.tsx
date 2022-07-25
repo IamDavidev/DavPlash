@@ -1,6 +1,13 @@
+import React from 'react';
+
 import { TypeIconsProps } from '~interfaces/icons.types';
 
-const HeartIcon = ({ width, height, color, styles }: TypeIconsProps) => {
+const HeartIcon: React.FC<TypeIconsProps> = ({
+	width,
+	height,
+	color,
+	styles,
+}) => {
 	return (
 		<svg
 			className={styles}

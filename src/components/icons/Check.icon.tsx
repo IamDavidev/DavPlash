@@ -1,6 +1,12 @@
+import React from 'react';
 import { TypeIconsProps } from '~interfaces/icons.types';
 
-const CheckIcon = ({ width, height, color, styles }: TypeIconsProps) => {
+const CheckIcon: React.FC<TypeIconsProps> = ({
+	width,
+	height,
+	color,
+	styles,
+}) => {
 	return (
 		<svg
 			className={styles}

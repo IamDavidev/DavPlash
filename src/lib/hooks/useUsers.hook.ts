@@ -1,8 +1,12 @@
 import { useEffect, useReducer } from 'react';
-import { INITIAL_EMPTY_STATE_USERS } from '~constants/unsplash.const';
+import { INITIAL_EMPTY_STATE_USERS } from '~constants/EmptyStates.const';
+
 import { IuseUsersHook } from '~interfaces/hooks.types';
+
 import { ACTIONS_USERS } from '~lib/actions/users.actions';
+
 import { usersApi } from '~lib/api';
+
 import { usersReducer } from '~lib/reducers/users.reducer';
 
 export default function useUsers(): IuseUsersHook {

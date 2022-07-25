@@ -1,20 +1,16 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
-import { GridImagesSkeleton } from '~components/skeletons';
-
-import { usePhotos } from '~lib/hooks';
-
 import GridPhotos from './layouts/GridPhotos.layout';
 
 const PhotosView: React.FC = () => {
-	const { photos, isLoading, totalPhotos } = usePhotos();
-
-	if (isLoading) return <GridImagesSkeleton length={totalPhotos} />;
-
 	return (
 		<>
 			<Box>
-				<GridPhotos photos={photos} />
+				<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
+					<Text color={'blueTheme.500'}>Discover</Text>
+					more Collections
+				</Heading>
+				<GridPhotos controls={true} />
 			</Box>
 		</>
 	);

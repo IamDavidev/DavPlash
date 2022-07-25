@@ -1,6 +1,5 @@
 import { useReducer, useEffect } from 'react';
-
-import { INITIAL_EMPTY_STATE_PHOTOS } from '~constants/unsplash.const';
+import { INITIAL_EMPTY_STATE_PHOTOS } from '~constants/EmptyStates.const';
 
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
 import { IUsePhotosHook } from '~interfaces/hooks.types';
@@ -73,6 +72,14 @@ export default function usePhotos(): IUsePhotosHook {
 			},
 		});
 
+	const setQueryPhotos = (query: string): void =>
+		setPhotos({
+			type: ACTIONS_PHOTOS._SET_QUERY_PHOTOS_,
+			payload: {
+				query,
+			},
+		});
+
 	useEffect(() => {
 		photosApi({
 			init: initRequestPhotos,
@@ -81,11 +88,13 @@ export default function usePhotos(): IUsePhotosHook {
 			orderBy: photos.orderBy,
 			perPage: photos.perPage,
 			page: photos.page,
+			query: photos.query,
 		});
 		return () => {};
-	}, [photos.orderBy, photos.page, photos.perPage]);
+	}, [photos.orderBy, photos.page, photos.perPage, photos.query]);
 
 	return {
+		page: photos.page,
 		totalPhotos: photos.perPage,
 		photos: photos.photos,
 		isLoading: photos.isLoading,
@@ -93,5 +102,6 @@ export default function usePhotos(): IUsePhotosHook {
 		setOrderByPhotos,
 		setPagePhotos,
 		setPerPagePhotos,
+		setQueryPhotos,
 	};
 }

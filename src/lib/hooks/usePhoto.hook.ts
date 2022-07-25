@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
+import { EMPTY_STATE_PHOTO } from '~constants/EmptyStates.const';
 
-import { EMPTY_STATE_PHOTO } from '~constants/unsplash.const';
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
 
 import { IUsePhotoHook } from '~interfaces/hooks.types';
