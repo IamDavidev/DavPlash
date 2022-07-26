@@ -1,5 +1,4 @@
 import {
-	Badge,
 	Box,
 	Button,
 	Flex,
@@ -13,12 +12,14 @@ import {
 	PopoverHeader,
 	PopoverTrigger,
 	Spacer,
+	Tag,
 	Text,
 } from '@chakra-ui/react';
 
 import { COLORS_THEME } from '~constants/theme.const';
 
 import ButtonMore from './ButtonMore.component';
+import { TagIcon } from './icons';
 
 interface CardCollectionProps {
 	ImgCollection: {
@@ -77,7 +78,14 @@ const CardCollection = ({
 					<Flex flexDirection={'row'} alignItems={'center'}>
 						<Popover colorScheme={'blue'}>
 							<PopoverTrigger>
-								<Button colorScheme={'black'}>Tags</Button>
+								<Button colorScheme={'black'}>
+									<Text mx={'.5rem'}>Tags</Text>
+									<TagIcon
+										width={20}
+										height={21}
+										color={COLORS_THEME._PURPLE_}
+									/>
+								</Button>
 							</PopoverTrigger>
 							<PopoverContent bg={'black'} borderColor={'purpleTheme.500'}>
 								<PopoverArrow />
@@ -87,14 +95,14 @@ const CardCollection = ({
 									{tags &&
 										tags.map((tag: string) => {
 											return (
-												<Badge
+												<Tag
 													key={tag}
 													color={'purpleTheme.500'}
 													mx={2}
 													variant={'outline'}
 													colorScheme={'pink'}>
 													{tag}
-												</Badge>
+												</Tag>
 											);
 										})}
 								</PopoverBody>

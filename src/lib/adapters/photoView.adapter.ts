@@ -5,9 +5,11 @@ import {
 } from '~interfaces/Adapters.types';
 
 export const AdapterPhotoView = (objApiPhoto: any): IAdapterPhotoView => {
-	// console.log('AdapterPhotoView', objApiPhoto);
+	const objectFit =
+		objApiPhoto.width > objApiPhoto.height ? 'cover' : 'contain';
 	return {
 		id: objApiPhoto.id,
+		objectFit,
 		image: objApiPhoto?.urls.regular,
 		likes: objApiPhoto.likes,
 		tags: objApiPhoto.tags.map((tag: TypeTagObjApiPhotoView) => tag.title),

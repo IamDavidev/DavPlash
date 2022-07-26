@@ -2,7 +2,7 @@ import { IStateCollections } from '~interfaces/unsplash.types';
 import { ACTIONS_COLLECTIONS } from '~lib/actions';
 
 export const collectionsReducer = (
-	state: any,
+	state: IStateCollections,
 	action: any
 ): IStateCollections => {
 	switch (action.type) {

@@ -1,4 +1,8 @@
-import { IAdapterCollection, IAdapterPhotos } from './Adapters.types';
+import {
+	IAdapterCollection,
+	IAdapterPhotos,
+	IAdapterUsers,
+} from './Adapters.types';
 
 export interface IGenericHook {
 	page: number;
@@ -52,7 +56,11 @@ export interface IUseCollectionsHook extends IGenericHook {
  */
 
 export interface IuseUsersHook {
-	users: any[];
+	users: {
+		results: IAdapterUsers[];
+		total: number;
+		total_page: number;
+	};
 	error: any;
 	isLoading: boolean;
 	setPageUsers: (page: number) => void;

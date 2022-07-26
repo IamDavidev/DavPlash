@@ -3,6 +3,7 @@ import {
 	IStateOnlyPhoto,
 	IStatePhotos,
 	IStateUser,
+	IStateUsers,
 } from '~interfaces/unsplash.types';
 import { OPTIONS_ORDER_BY } from './unsplash.const';
 
@@ -31,17 +32,28 @@ export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {
 	isLoading: false,
 };
 
-export const INITIAL_EMPTY_STATE_USERS: IStateUser = {
-	users: [],
+export const INITIAL_EMPTY_STATE_USERS: IStateUsers = {
+	users: {
+		results: [],
+		totalPages: 0,
+		total: 0,
+	},
 	isLoading: false,
 	query: 'coffee',
-	error: {
-		code: '',
-		message: '',
-		isError: false,
-	},
-	perPage: 12,
+	error: ERROR_INITIAL_STATE,
+	perPage: 24,
 	page: 1,
+};
+
+export const INITIAL_EMPTY_STATE_USER: IStateUser = {
+	user: {
+		data: {},
+		photos: [],
+	},
+	error: ERROR_INITIAL_STATE,
+	isLoading: false,
+	orderByPhotos: OPTIONS_ORDER_BY._LATESTS_,
+	perPagePhotos: 12,
 };
 
 export const EMPTY_STATE_PHOTO: IStateOnlyPhoto = {

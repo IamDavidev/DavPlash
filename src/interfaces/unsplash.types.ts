@@ -20,9 +20,6 @@ export interface IStatePhotos extends IStateGlobalApi {
 	photos: IAdapterPhotos[] | [];
 	orderBy: string;
 }
-export interface IStateUser extends IStateGlobalApi {
-	users: any[];
-}
 export interface IStateOnlyPhoto {
 	photo: any;
 	error: {
@@ -31,4 +28,23 @@ export interface IStateOnlyPhoto {
 		isExistError: boolean;
 	};
 	isLoading: boolean;
+}
+
+export interface IStateUsers extends IStateGlobalApi {
+	users: any;
+}
+
+export interface IStateUser {
+	user: {
+		data: any;
+		photos: any[];
+	};
+	isLoading: boolean;
+	error: {
+		code: string | number;
+		message: string;
+		isError: boolean;
+	};
+	perPagePhotos: number;
+	orderByPhotos: string;
 }
