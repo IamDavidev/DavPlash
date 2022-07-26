@@ -32,7 +32,7 @@ export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {
 };
 
 export const INITIAL_EMPTY_STATE_USERS: IStateUser = {
-	users: [],
+	users: {},
 	isLoading: false,
 	query: 'coffee',
 	error: {

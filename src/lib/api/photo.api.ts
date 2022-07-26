@@ -16,18 +16,17 @@ export async function ApiPhoto({
 	success,
 	err,
 	id,
-}: IApiPhotoProps): Promise<any> {
+}: IApiPhotoProps): Promise<void> {
 	init();
 
 	const { data, error, isSuccess, code } = await requesPhoto(id);
 
-	if (!isSuccess) {
-		err({
+	if (!isSuccess)
+		return err({
 			error,
 			code,
 		});
-		return;
-	}
+
 	if (id) return success(AdapterPhotoView(data));
 
 	success(AdapterPhotos(data));

@@ -21,7 +21,7 @@ export interface IStatePhotos extends IStateGlobalApi {
 	orderBy: string;
 }
 export interface IStateUser extends IStateGlobalApi {
-	users: any[];
+	users: any;
 }
 export interface IStateOnlyPhoto {
 	photo: any;

@@ -52,7 +52,11 @@ export interface IUseCollectionsHook extends IGenericHook {
  */
 
 export interface IuseUsersHook {
-	users: any[];
+	users: {
+		results: any[];
+		total: number;
+		total_page: number;
+	};
 	error: any;
 	isLoading: boolean;
 	setPageUsers: (page: number) => void;

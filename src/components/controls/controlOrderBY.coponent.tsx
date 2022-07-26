@@ -16,7 +16,6 @@ const ControlOrderBy: React.FC<IControlOrderBYProps> = ({ setOrderBy }) => {
 			<Select
 				variant='filled'
 				onChange={handleOrderBy}
-				_hover={{ bg: 'grayTheme.500', borderColor: 'grayTheme.500' }}
 				bg='purpleTheme.300'
 				borderColor='purpleTheme.300'
 				color='black'>

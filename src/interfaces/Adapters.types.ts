@@ -1,3 +1,5 @@
+import { ResponsiveValue } from '@chakra-ui/react';
+
 /**
  * Adapter Phtos
  */
@@ -57,6 +59,7 @@ export type TypeRelatedPhoto = {
 
 export interface IAdapterPhotoView {
 	id: string;
+	objectFit: ResponsiveValue<string>;
 	image: string;
 	likes: number;
 	tags: string[];
