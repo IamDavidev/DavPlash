@@ -1,14 +1,15 @@
 import React from 'react';
 
 import {
-	Badge,
 	Box,
 	Breadcrumb,
 	BreadcrumbItem,
 	Divider,
 	Flex,
+	Heading,
 	Image,
 	Spacer,
+	Tag,
 	Text,
 	Wrap,
 	WrapItem,
@@ -62,26 +63,29 @@ const PhotoView: React.FC = () => {
 								height={'100%'}
 							/>
 						</Box>
-
 						<Box width={'50%'} px={'2rem'} pos={'sticky'} top={0}>
 							<Flex
 								wrap={'wrap'}
 								justifyContent={'flex-start'}
 								alignItems={'center'}>
 								<ButtonLikes likesProps={photo.likes} />
-								<Divider orientation={'horizontal'} my={'1rem'} bg={'white'} />
+								<Divider
+									orientation={'horizontal'}
+									my={'1rem'}
+									bg={photo.color}
+								/>
 								<Spacer />
 								<Wrap justifyContent={'flex-end'} alignItems={'flex-end'}>
 									{photo.tags &&
 										photo.tags.map((tag: string) => {
 											return (
 												<WrapItem key={tag}>
-													<Badge
+													<Tag
 														colorScheme={'pink'}
 														variant={'outline'}
 														color={photo.color}>
 														{tag}
-													</Badge>
+													</Tag>
 												</WrapItem>
 											);
 										})}
@@ -119,11 +123,11 @@ const PhotoView: React.FC = () => {
 										width={'6rem'}
 										objectFit={'cover'}
 									/>
-									<Box my={'2rem'} textAlign={'end'}>
-										<Text color={'purpleTheme.500'}>
+									<Box my={'2rem'} color={'purpleTheme.500'} textAlign={'end'}>
+										<Link to={`/plash/discover/users/${photo.userName}`}>
 											{'@'}
 											{photo.userName}
-										</Text>
+										</Link>
 										<Text color={'white'}>{photo.user}</Text>
 										<Box color={'white'} my={'.5rem'}>
 											{photo.description ? (
@@ -135,7 +139,14 @@ const PhotoView: React.FC = () => {
 									</Box>
 								</Flex>
 							</Flex>
-							<Divider orientation={'horizontal'} bg={'white'} />
+							<Divider
+								orientation={'horizontal'}
+								bg={photo.color}
+								mb={'1rem'}
+							/>
+							<Heading as={'h3'} color={'purpleTheme.500'} fontSize={'3xl'}>
+								{'Related photos'}
+							</Heading>
 							<Flex
 								wrap={'wrap'}
 								gap={'2rem'}

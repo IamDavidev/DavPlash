@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { Box, Button, Image, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+	Box,
+	Button,
+	Flex,
+	Image,
+	Text,
+	Wrap,
+	WrapItem,
+} from '@chakra-ui/react';
 
 import { useUsers } from '~lib/hooks';
 
@@ -8,6 +16,8 @@ import { ArrowRightIcon } from '~components/icons';
 
 import { COLORS_THEME } from '~constants/theme.const';
 import { Link } from 'react-router-dom';
+import { IAdapterUsers } from '~interfaces/Adapters.types';
+import VerifiedIcon from '~components/icons/verified.icon';
 
 const GridUsers: React.FC = () => {
 	const { users } = useUsers();
@@ -25,14 +35,15 @@ const GridUsers: React.FC = () => {
 	 */
 	return (
 		<>
+			<h2>users</h2>
 			{users.results.length > 0 && (
 				<Wrap spacingX={'1rem'} spacingY={'2rem'}>
-					{users.results.map(user => {
+					{users.results.map((user: IAdapterUsers) => {
 						return (
 							<WrapItem key={user.id}>
 								<Box
 									display={'flex'}
-									width={'300px'}
+									width={'310px'}
 									alignItems={'center'}
 									overflow={'hidden'}
 									flexWrap={'wrap'}
@@ -40,22 +51,38 @@ const GridUsers: React.FC = () => {
 									gap={'1rem'}
 									justifyContent={'center'}>
 									<Image
-										src={user.profile_image.large}
-										alt={user.username}
+										src={user.profileImage}
+										alt={user.firstName}
+										borderWidth={'1px'}
+										borderStyle={'solid'}
+										borderColor={'white'}
 										objectFit={'cover'}
 										borderRadius={'50%'}
 									/>
-									<Box display={'flex'} flexDir={'column'} gap={'2px'}>
-										<Text>{user.first_name}</Text>
-										<Box color={'white'} display={'flex'} opacity={'.4'}>
-											<Text fontWeight={'bold'}>{user.total_photos}</Text>
-											<Text mx={'.5rem'}>{'photos'}</Text>
+									<Box display={'flex'} flexDir={'column'} gap={'.5rem'}>
+										<Box color={'white'} display={'flex'} flexDir={'column'}>
+											<Text
+												maxW={'120px'}
+												display={'flex'}
+												gap={'4px'}
+												alignItems={'center'}>
+												{user.firstName} <VerifiedIcon width={25} height={25} />
+											</Text>
+											<Flex flexDir={'row'}>
+												<Text fontWeight={'bold'} opacity={0.8}>
+													{user.totalPhotos}
+												</Text>
+												<Text mx={'.5rem'} opacity={0.6}>
+													{'photos'}
+												</Text>
+											</Flex>
 										</Box>
 										<Link to='/plash'>
 											<Button
 												border={'none'}
 												variant={'outline'}
-												padding={0}
+												py={2}
+												px={6}
 												_hover={{
 													bg: 'grayTheme.500',
 												}}>

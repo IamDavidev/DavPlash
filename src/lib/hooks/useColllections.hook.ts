@@ -1,7 +1,9 @@
 import { useReducer, useEffect } from 'react';
+
 import { INITIAL_EMPTY_STATE_COLLECTIONS } from '~constants/EmptyStates.const';
 
 import { IAdapterCollection } from '~interfaces/Adapters.types';
+
 import { IUseCollectionsHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_COLLECTIONS } from '~lib/actions';

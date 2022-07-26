@@ -34,7 +34,7 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 			/>
 			<Box padding={'1rem'}>
 				<Stack spacing={'1rem'}>
-					<Link to={`/plash/user/${userName}`}>
+					<Link to={`/plash/discover/users/${userName}`}>
 						<Box
 							_hover={{
 								backgroundColor: COLORS_THEME._GRAY_,

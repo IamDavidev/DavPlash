@@ -7,3 +7,5 @@ export { default as NextIcon } from './Next.icon';
 export { default as PrevIcon } from './Prev.icon';
 export { default as SearchIcon } from './Search.icon';
 export { default as ArrowCircleRight } from './ArrowCircleRight.icon';
+export { default as ArrowCircleLeft } from './ArrowCircleLeft.icon';
+export { default as TagIcon } from './Tag.icon';

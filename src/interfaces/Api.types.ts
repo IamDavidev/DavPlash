@@ -9,10 +9,6 @@ export interface IApiPhotoProps extends IApiProps {
 	id: string;
 }
 
-export interface IApiCollectionProps extends IApiProps {
-	perPage: number;
-	page: number;
-}
 export interface IApiPhotosProps extends IApiProps {
 	query?: string;
 	perPage: number;
@@ -20,8 +16,17 @@ export interface IApiPhotosProps extends IApiProps {
 	orderBy: string;
 }
 
+export interface IApiCollectionProps extends IApiProps {
+	perPage: number;
+	page: number;
+}
+
 export interface IApiUsersProps extends IApiProps {
 	query: string;
 	perPage: number;
 	page: number;
+}
+
+export interface IApiUserProps extends IApiProps {
+	username?: string;
 }

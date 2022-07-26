@@ -17,7 +17,6 @@ export default function useUsers(): IuseUsersHook {
 			type: ACTIONS_USERS._INIT_REQUEST_USERS_,
 		});
 
-	// changed
 	const successRequestUsers = (users: any) =>
 		setUsers({
 			type: ACTIONS_USERS._SUCCESS_REQUEST_USERS_,

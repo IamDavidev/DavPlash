@@ -16,9 +16,10 @@ const ControlOrderBy: React.FC<IControlOrderBYProps> = ({ setOrderBy }) => {
 			<Select
 				variant='filled'
 				onChange={handleOrderBy}
-				bg='purpleTheme.300'
+				_hover={{ bg: 'grayTheme.500', color: 'grayTheme.500' }}
+				bg='grayTheme.500'
 				borderColor='purpleTheme.300'
-				color='black'>
+				color='white'>
 				<option value={OPTIONS_ORDER_BY._LATESTS_}>
 					{OPTIONS_ORDER_BY._LATESTS_}
 				</option>

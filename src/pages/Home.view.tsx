@@ -65,6 +65,8 @@ const HomeView = () => {
 			</section>
 			<section>
 				<Box
+					pos={'relative'}
+					zIndex={10}
 					w={'100%'}
 					display={'flex'}
 					alignItems={'center'}

@@ -1,6 +1,7 @@
 import { Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
-import { NextIcon, PrevIcon } from '~components/icons';
+import { ArrowCircleRight } from '~components/icons';
+import ArrowCircleLeft from '~components/icons/ArrowCircleLeft.icon';
 import { COLORS_THEME } from '~constants/theme.const';
 
 interface IcontrolsPageProps {
@@ -11,6 +12,7 @@ interface IcontrolsPageProps {
 
 const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 	const maxPage = 10;
+
 	const setPageNext = (): void => {
 		if (page === maxPage) return setPage(1);
 		setPage(page + 1);
@@ -27,7 +29,11 @@ const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 				onClick={() => setPagePrev()}
 				border={'none'}
 				colorScheme={'purpleTheme.500'}>
-				<PrevIcon width={25} height={25} color={COLORS_THEME._PURPLE_300} />
+				<ArrowCircleLeft
+					width={25}
+					height={25}
+					color={COLORS_THEME._PURPLE_300}
+				/>
 			</Button>
 			<Text minW={'50px'} textAlign={'center'} color={'white'}>
 				{page}
@@ -37,7 +43,12 @@ const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 				colorScheme={'purpleTheme.500'}
 				border={'none'}
 				onClick={() => setPageNext()}>
-				<NextIcon width={25} height={25} color={COLORS_THEME._PURPLE_300} />
+				{/* <NextIcon width={25} height={25} color={COLORS_THEME._PURPLE_300} /> */}
+				<ArrowCircleRight
+					width={25}
+					height={25}
+					color={COLORS_THEME._PURPLE_300}
+				/>
 			</Button>
 		</Flex>
 	);

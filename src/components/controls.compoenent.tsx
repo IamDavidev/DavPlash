@@ -27,6 +27,7 @@ const Controls: React.FC<IcontrolsProps> = ({
 					display={'flex'}
 					flexDir={'column'}
 					justifyContent={'center'}
+					mx={'2rem'}
 					gap={'.5rem'}
 					alignItems={'center'}>
 					<Text color={'purpleTheme.300'} fontSize={'1.4rem'}>

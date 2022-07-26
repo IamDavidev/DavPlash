@@ -73,3 +73,11 @@ export interface IAdapterPhotoView {
 	description: string | null;
 	relatedPhotos: any[];
 }
+
+export interface IAdapterUsers {
+	id: string;
+	profileImage: string;
+	userName: string;
+	firstName: string;
+	totalPhotos: number;
+}
