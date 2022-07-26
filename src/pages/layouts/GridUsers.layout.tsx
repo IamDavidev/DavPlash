@@ -77,7 +77,7 @@ const GridUsers: React.FC = () => {
 												</Text>
 											</Flex>
 										</Box>
-										<Link to='/plash'>
+										<Link to={`/plash/discover/users/${user.userName}`}>
 											<Button
 												border={'none'}
 												variant={'outline'}

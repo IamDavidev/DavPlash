@@ -9,3 +9,7 @@ export { default as SearchIcon } from './Search.icon';
 export { default as ArrowCircleRight } from './ArrowCircleRight.icon';
 export { default as ArrowCircleLeft } from './ArrowCircleLeft.icon';
 export { default as TagIcon } from './Tag.icon';
+export { default as AtSymbolIcon } from './AtSymbol.icon';
+export { default as LineIcon } from './Line.icon';
+export { default as TwitterIcon } from './twitter.icon';
+export { default as InstagramIcon } from './instagram.icon';
