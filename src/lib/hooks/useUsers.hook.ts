@@ -76,6 +76,7 @@ export default function useUsers(): IuseUsersHook {
 	}, [users.page, users.perPage, users.query]);
 
 	return {
+		page: users.page,
 		users: users.users,
 		error: users.error,
 		isLoading: users.isLoading,

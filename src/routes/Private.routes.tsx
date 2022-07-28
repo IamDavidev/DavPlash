@@ -7,7 +7,7 @@ const Photos = lazy(() => import('~pages/photos.view'));
 const Collections = lazy(() => import('~pages/Collections.view'));
 const User = lazy(() => import('~pages/User.view'));
 const Photo = lazy(() => import('~pages/Photo.view'));
-const Users = lazy(() => import('~pages/layouts/GridUsers.layout'));
+const Users = lazy(() => import('~pages/Users.view'));
 
 const PrivateRoutes = () => {
 	return (

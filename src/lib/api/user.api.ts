@@ -7,7 +7,6 @@ export async function userApi({ init, success, err, username }: IApiUserProps) {
 	init();
 
 	const { data, error, isSuccess, code } = await getUser(username);
-	console.log('🚀 ~ file: user.api.ts ~ line 9 ~ userApi ~ data', data);
 
 	const {
 		data: dataPhotos,
