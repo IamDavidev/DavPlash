@@ -1,4 +1,4 @@
-import { IStateUser } from '~interfaces/unsplash.types';
+import { IStateUsers } from '~interfaces/unsplash.types';
 import { ACTIONS_USERS } from '~lib/actions';
 
 interface IActionReducerUsers {
@@ -7,9 +7,9 @@ interface IActionReducerUsers {
 }
 
 export function usersReducer(
-	state: IStateUser,
+	state: IStateUsers,
 	action: IActionReducerUsers
-): IStateUser {
+): IStateUsers {
 	switch (action.type) {
 		case ACTIONS_USERS._INIT_REQUEST_USERS_: {
 			return {

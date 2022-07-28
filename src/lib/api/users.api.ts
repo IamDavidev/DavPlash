@@ -16,11 +16,12 @@ export async function usersApi({
 
 	if (!isSuccess) return err({ error });
 
-	console.log('data', data.results.map(AdapterUser));
-	// success(data.results.map(AdapterUser));
-	success({
-		results: data.results.map(AdapterUser),
-		totalPages: data.total_pages,
-		total: data.total,
-	});
+	setTimeout(() => {
+		console.log('setTimeout');
+		success({
+			results: data.results.map(AdapterUser),
+			totalPages: data.total_pages,
+			total: data.total,
+		});
+	}, 2000);
 }

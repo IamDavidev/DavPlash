@@ -6,7 +6,7 @@ import { CardErrorImage } from './skeletons/error';
 const CardPhotoRandom = () => {
 	const { photo, error, isLoading } = usePhoto();
 
-	if (error.isExistError)
+	if (error.isError)
 		return (
 			<>
 				<CardErrorImage />

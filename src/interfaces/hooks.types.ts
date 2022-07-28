@@ -34,8 +34,9 @@ export interface IUsePhotoHook {
 	// photo: IAdapterPhotos;
 	photo: any;
 	error: {
+		code: string | number;
 		message: string | null;
-		isExistError: boolean;
+		isError: boolean;
 	};
 	isLoading: boolean;
 }
@@ -55,14 +56,12 @@ export interface IUseCollectionsHook extends IGenericHook {
  * - return hook useUser
  */
 
-export interface IuseUsersHook {
+export interface IuseUsersHook extends IGenericHook {
 	users: {
 		results: IAdapterUsers[];
 		total: number;
 		total_page: number;
 	};
-	error: any;
-	isLoading: boolean;
 	setPageUsers: (page: number) => void;
 	setPerPageUsers: (perPage: number) => void;
 	setQueryUsers: (query: string) => void;

@@ -1,15 +1,16 @@
 import { IStatePhotos } from '~interfaces/unsplash.types';
 import { ACTIONS_PHOTOS } from '~lib/actions/photos.actions';
 
-export function photosReducer(state: any, action: any): IStatePhotos {
+export function photosReducer(state: IStatePhotos, action: any): IStatePhotos {
 	switch (action.type) {
 		case ACTIONS_PHOTOS._INIT_REQUEST_PHOTOS_: {
 			return {
 				...state,
 				isLoading: true,
 				error: {
+					code: '',
 					message: '',
-					isExistError: false,
+					isError: false,
 				},
 			};
 		}

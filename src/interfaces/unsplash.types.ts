@@ -25,7 +25,7 @@ export interface IStateOnlyPhoto {
 	error: {
 		code: string | number;
 		message: string;
-		isExistError: boolean;
+		isError: boolean;
 	};
 	isLoading: boolean;
 }

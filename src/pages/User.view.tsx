@@ -14,22 +14,34 @@ import {
 	Wrap,
 	WrapItem,
 } from '@chakra-ui/react';
+
 import {
 	AtSymbolIcon,
 	InstagramIcon,
 	LineIcon,
 	TwitterIcon,
 } from '~components/icons';
+
 import VerifiedIcon from '~components/icons/verified.icon';
+
 import { COLORS_THEME } from '~constants/theme.const';
+
 import useUser from '~lib/hooks/useUser.hook';
+
+import { CardSkeletonUserView } from '~components/skeletons';
 
 const UserView: React.FC = () => {
 	const { username } = useParams();
 
-	const { user, photos } = useUser(username);
-	console.log('🚀 ~ file: User.view.tsx ~ line 31 ~ user', user);
-	console.log('🚀 ~ file: User.view.tsx ~ line 32 ~ photos', user.tags);
+	const { user, photos, isLoading } = useUser(username);
+
+	if (isLoading)
+		return (
+			<>
+				<CardSkeletonUserView />
+			</>
+		);
+
 	return (
 		<>
 			<Breadcrumb fontWeight={'bold'} fontSize={'xl'} color={'white'}>
@@ -45,6 +57,7 @@ const UserView: React.FC = () => {
 					<Text>{username}</Text>
 				</BreadcrumbItem>
 			</Breadcrumb>
+
 			<Flex flexDir={'column'}>
 				<Flex
 					width={'100%'}

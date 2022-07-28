@@ -1,108 +1,66 @@
 import React from 'react';
 
-import {
-	Box,
-	Button,
-	Flex,
-	Image,
-	Text,
-	Wrap,
-	WrapItem,
-} from '@chakra-ui/react';
+import { Box, Wrap, WrapItem } from '@chakra-ui/react';
 
 import { useUsers } from '~lib/hooks';
 
-import { ArrowRightIcon } from '~components/icons';
-
-import { COLORS_THEME } from '~constants/theme.const';
-import { Link } from 'react-router-dom';
 import { IAdapterUsers } from '~interfaces/Adapters.types';
-import VerifiedIcon from '~components/icons/verified.icon';
 
-const GridUsers: React.FC = () => {
-	const { users } = useUsers();
+import CardUser from '~components/CardUser.component';
+import Controls from '~components/controls.compoenent';
+import GridUserSkeletons from '~components/skeletons/GriUsersSkeleton.component';
 
-	console.log(
-		'🚀 ~ file: GridUsers.layout.tsx ~ line 7 ~ GridUsers ~ users',
-		users
-	);
+type TypeGridUsersProps = {
+	controls: boolean;
+};
 
-	/**
-	 * @image {string}
-	 * @name {string}
-	 * @followers {number}
-	 * @id {string}
-	 */
+const GridUsers: React.FC<TypeGridUsersProps> = ({ controls }) => {
+	const { users, isLoading, error, page, setPageUsers, setQueryUsers } =
+		useUsers();
+
+	if (error.isError) return <>{error.message}</>;
+
 	return (
 		<>
-			<h2>users</h2>
-			{users.results.length > 0 && (
-				<Wrap spacingX={'1rem'} spacingY={'2rem'}>
-					{users.results.map((user: IAdapterUsers) => {
-						return (
-							<WrapItem key={user.id}>
-								<Box
-									display={'flex'}
-									width={'310px'}
-									alignItems={'center'}
-									overflow={'hidden'}
-									flexWrap={'wrap'}
-									color={'white'}
-									gap={'1rem'}
-									justifyContent={'center'}>
-									<Image
-										src={user.profileImage}
-										alt={user.firstName}
-										borderWidth={'1px'}
-										borderStyle={'solid'}
-										borderColor={'white'}
-										objectFit={'cover'}
-										borderRadius={'50%'}
-									/>
-									<Box display={'flex'} flexDir={'column'} gap={'.5rem'}>
-										<Box color={'white'} display={'flex'} flexDir={'column'}>
-											<Text
-												maxW={'120px'}
-												display={'flex'}
-												gap={'4px'}
-												alignItems={'center'}>
-												{user.firstName} <VerifiedIcon width={25} height={25} />
-											</Text>
-											<Flex flexDir={'row'}>
-												<Text fontWeight={'bold'} opacity={0.8}>
-													{user.totalPhotos}
-												</Text>
-												<Text mx={'.5rem'} opacity={0.6}>
-													{'photos'}
-												</Text>
-											</Flex>
-										</Box>
-										<Link to={`/plash/discover/users/${user.userName}`}>
-											<Button
-												border={'none'}
-												variant={'outline'}
-												py={2}
-												px={6}
-												_hover={{
-													bg: 'grayTheme.500',
-												}}>
-												<Text mr={'.5rem'} color={'purpleTheme.500'}>
-													Follow
-												</Text>
-												<ArrowRightIcon
-													width={25}
-													height={25}
-													color={COLORS_THEME._PURPLE_}
-												/>
-											</Button>
-										</Link>
-									</Box>
-								</Box>{' '}
-							</WrapItem>
-						);
-					})}
-				</Wrap>
-			)}
+			<Box width={'100%'} my={'2rem'} pos={'relative'} zIndex={10}>
+				<Box>
+					{controls && (
+						<Controls
+							page={page}
+							setPage={setPageUsers}
+							setQuery={setQueryUsers}
+						/>
+					)}
+				</Box>
+				{isLoading && (
+					<>
+						<GridUserSkeletons length={24} />
+					</>
+				)}
+				{!isLoading && (
+					<>
+						<Wrap
+							spacingX={'1rem'}
+							spacingY={'2rem'}
+							my={'3rem'}
+							justify={'center'}>
+							{users.results.map((user: IAdapterUsers) => {
+								return (
+									<WrapItem key={user.id}>
+										<CardUser
+											firstName={user.firstName}
+											profileImage={user.profileImage}
+											totalPhotos={user.totalPhotos}
+											userName={user.userName}
+											key={user.id}
+										/>
+									</WrapItem>
+								);
+							})}
+						</Wrap>
+					</>
+				)}
+			</Box>
 		</>
 	);
 };

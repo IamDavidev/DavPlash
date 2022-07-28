@@ -19,7 +19,7 @@ export function reducerPhoto(
 				error: {
 					code: '',
 					message: '',
-					isExistError: false,
+					isError: false,
 				},
 			};
 		}
@@ -38,7 +38,7 @@ export function reducerPhoto(
 				error: {
 					code,
 					message,
-					isExistError: true,
+					isError: true,
 				},
 			};
 		}

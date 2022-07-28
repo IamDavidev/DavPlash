@@ -58,10 +58,6 @@ export const INITIAL_EMPTY_STATE_USER: IStateUser = {
 
 export const EMPTY_STATE_PHOTO: IStateOnlyPhoto = {
 	photo: {},
-	error: {
-		code: '',
-		message: '',
-		isExistError: false,
-	},
+	error: ERROR_INITIAL_STATE,
 	isLoading: false,
 };
