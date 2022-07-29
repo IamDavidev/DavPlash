@@ -11,7 +11,6 @@ export async function getPhotos({
 }: IGetPhotosProps): Promise<IRequestService> {
 	const pathUrl = query !== '' ? 'search/photos' : 'photos';
 
-	// const pathUrl = query !== '' ? 'search/collections' : 'collections';
 	const apiData = await getDataService({
 		pathUrl,
 		params: {

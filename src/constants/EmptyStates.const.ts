@@ -1,10 +1,12 @@
 import {
+	IStateCollection,
 	IStateCollections,
 	IStateOnlyPhoto,
 	IStatePhotos,
 	IStateUser,
 	IStateUsers,
 } from '~interfaces/unsplash.types';
+
 import { OPTIONS_ORDER_BY } from './unsplash.const';
 
 export const ERROR_INITIAL_STATE = {
@@ -20,6 +22,13 @@ export const INITIAL_EMPTY_STATE_COLLECTIONS: IStateCollections = {
 	error: ERROR_INITIAL_STATE,
 	isLoading: false,
 	query: '',
+};
+
+export const INITIAL_EMPTY_STATE_COLLECTION: IStateCollection = {
+	collection: {},
+	error: ERROR_INITIAL_STATE,
+	isLoading: false,
+	id: '',
 };
 
 export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {

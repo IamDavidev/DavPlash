@@ -4,7 +4,7 @@ import { INITIAL_EMPTY_STATE_COLLECTIONS } from '~constants/EmptyStates.const';
 
 import { IAdapterCollection } from '~interfaces/Adapters.types';
 
-import { IUseCollectionsHook } from '~interfaces/hooks.types';
+import { IErrorRequest, IUseCollectionsHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_COLLECTIONS } from '~lib/actions';
 
@@ -31,13 +31,7 @@ export default function useCollections(): IUseCollectionsHook {
 			},
 		});
 
-	const failureRequestCollections = ({
-		error,
-		code,
-	}: {
-		error: string;
-		code?: string | number | undefined;
-	}): void =>
+	const failureRequestCollections = ({ error, code }: IErrorRequest): void =>
 		setCollections({
 			type: ACTIONS_COLLECTIONS._FAILURE_REQUEST_COLLECTIONS_,
 			payload: {
@@ -53,6 +47,7 @@ export default function useCollections(): IUseCollectionsHook {
 				page,
 			},
 		});
+
 	const setPerPageCollections = (perPage: number): void =>
 		setCollections({
 			type: ACTIONS_COLLECTIONS._SET_PER_PAGE_COLLECTIONS_,

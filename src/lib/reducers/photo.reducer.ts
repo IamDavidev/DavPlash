@@ -1,29 +1,22 @@
+import { ERROR_INITIAL_STATE } from '~constants/EmptyStates.const';
+import { IActionReducer } from '~interfaces/reducer.types';
 import { IStateOnlyPhoto } from '~interfaces/unsplash.types';
 
 import { ACTIONS_PHOTO } from '~lib/actions';
 
-interface IActionPhoto {
-	type: string;
-	payload?: any;
-}
-
 export function reducerPhoto(
 	state: IStateOnlyPhoto,
-	action: IActionPhoto
+	action: IActionReducer
 ): IStateOnlyPhoto {
 	switch (action.type) {
-		case ACTIONS_PHOTO._INITIAL_REQUEST_: {
+		case ACTIONS_PHOTO._INITIAL_REQUEST_PHOTO_: {
 			return {
 				...state,
 				isLoading: true,
-				error: {
-					code: '',
-					message: '',
-					isError: false,
-				},
+				error: ERROR_INITIAL_STATE,
 			};
 		}
-		case ACTIONS_PHOTO._SUCCESS_REQUEST_: {
+		case ACTIONS_PHOTO._SUCCESS_REQUEST_PHOTO_: {
 			const { photo } = action.payload;
 			return {
 				...state,
@@ -31,7 +24,7 @@ export function reducerPhoto(
 				photo,
 			};
 		}
-		case ACTIONS_PHOTO._ERROR_REQUEST_: {
+		case ACTIONS_PHOTO._FAILURE_REQUEST_PHOTO_: {
 			const { message, code } = action.payload;
 			return {
 				...state,

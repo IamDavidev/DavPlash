@@ -3,7 +3,7 @@ import { EMPTY_STATE_PHOTO } from '~constants/EmptyStates.const';
 
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
 
-import { IUsePhotoHook } from '~interfaces/hooks.types';
+import { IErrorRequest, IUsePhotoHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_PHOTO } from '~lib/actions';
 
@@ -17,26 +17,20 @@ export default function usePhoto(id?: any): IUsePhotoHook {
 
 	const initialRequesPhoto = () =>
 		setPhoto({
-			type: ACTIONS_PHOTO._INITIAL_REQUEST_,
+			type: ACTIONS_PHOTO._INITIAL_REQUEST_PHOTO_,
 		});
 
 	const successRequestPhoto = (photo: IAdapterPhotos): void =>
 		setPhoto({
-			type: ACTIONS_PHOTO._SUCCESS_REQUEST_,
+			type: ACTIONS_PHOTO._SUCCESS_REQUEST_PHOTO_,
 			payload: {
 				photo,
 			},
 		});
 
-	const errorRequestPhoto = ({
-		error,
-		code,
-	}: {
-		error: string;
-		code?: string | number;
-	}): void =>
+	const errorRequestPhoto = ({ error, code }: IErrorRequest): void =>
 		setPhoto({
-			type: ACTIONS_PHOTO._ERROR_REQUEST_,
+			type: ACTIONS_PHOTO._FAILURE_REQUEST_PHOTO_,
 			payload: {
 				message: error,
 				code,

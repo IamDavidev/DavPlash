@@ -2,7 +2,7 @@ import { useReducer, useEffect } from 'react';
 import { INITIAL_EMPTY_STATE_PHOTOS } from '~constants/EmptyStates.const';
 
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
-import { IUsePhotosHook } from '~interfaces/hooks.types';
+import { IErrorRequest, IUsePhotosHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_PHOTOS } from '~lib/actions/photos.actions';
 
@@ -33,13 +33,7 @@ export default function usePhotos(): IUsePhotosHook {
 			},
 		});
 
-	const errorRequestPhotos = ({
-		error,
-		code,
-	}: {
-		error: string;
-		code?: string | number | undefined;
-	}): void =>
+	const errorRequestPhotos = ({ error, code }: IErrorRequest): void =>
 		setPhotos({
 			type: ACTIONS_PHOTOS._FAILURE_REQUEST_PHOTOS_,
 			payload: {
