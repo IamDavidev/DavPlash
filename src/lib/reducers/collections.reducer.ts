@@ -1,20 +1,18 @@
+import { ERROR_INITIAL_STATE } from '~constants/EmptyStates.const';
+import { IActionReducer } from '~interfaces/reducer.types';
 import { IStateCollections } from '~interfaces/unsplash.types';
 import { ACTIONS_COLLECTIONS } from '~lib/actions';
 
 export const collectionsReducer = (
 	state: IStateCollections,
-	action: any
+	action: IActionReducer
 ): IStateCollections => {
 	switch (action.type) {
 		case ACTIONS_COLLECTIONS._INIT_REQUEST_COLLECTIONS_: {
 			return {
 				...state,
 				isLoading: true,
-				error: {
-					code: '',
-					message: '',
-					isError: false,
-				},
+				error: ERROR_INITIAL_STATE,
 			};
 		}
 

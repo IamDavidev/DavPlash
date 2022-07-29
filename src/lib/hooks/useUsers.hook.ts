@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { INITIAL_EMPTY_STATE_USERS } from '~constants/EmptyStates.const';
 
-import { IuseUsersHook } from '~interfaces/hooks.types';
+import { IErrorRequest, IuseUsersHook } from '~interfaces/hooks.types';
 
 import { ACTIONS_USERS } from '~lib/actions/users.actions';
 
@@ -25,13 +25,7 @@ export default function useUsers(): IuseUsersHook {
 			},
 		});
 
-	const errorRequestUsers = ({
-		error,
-		code,
-	}: {
-		error: string;
-		code?: string | number;
-	}): void =>
+	const errorRequestUsers = ({ error, code }: IErrorRequest): void =>
 		setUsers({
 			type: ACTIONS_USERS._FAILURE_REQUEST_USERS_,
 			payload: {

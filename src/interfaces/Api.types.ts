@@ -1,7 +1,9 @@
+import { IErrorRequest } from './hooks.types';
+
 export interface IApiProps {
 	init: () => void;
 	success: (payload: any) => void;
-	err: ({ error, code }: { error: string; code?: string | number }) => void;
+	err: ({ error, code }: IErrorRequest) => void;
 	query?: string;
 }
 
@@ -16,9 +18,13 @@ export interface IApiPhotosProps extends IApiProps {
 	orderBy: string;
 }
 
-export interface IApiCollectionProps extends IApiProps {
+export interface IApiCollectionsProps extends IApiProps {
 	perPage: number;
 	page: number;
+}
+
+export interface IApiCollectionProps extends IApiProps {
+	id: string;
 }
 
 export interface IApiUsersProps extends IApiProps {

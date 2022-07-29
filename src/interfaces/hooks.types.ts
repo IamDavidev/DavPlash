@@ -14,6 +14,11 @@ export interface IGenericHook {
 	isLoading: boolean;
 }
 
+export interface IErrorRequest {
+	error: string;
+	code: string | number | undefined;
+}
+
 /**
  * - return hook usePhotos
  */
@@ -34,8 +39,8 @@ export interface IUsePhotoHook {
 	// photo: IAdapterPhotos;
 	photo: any;
 	error: {
-		code: string | number;
-		message: string | null;
+		code?: string | number | undefined;
+		message: string;
 		isError: boolean;
 	};
 	isLoading: boolean;

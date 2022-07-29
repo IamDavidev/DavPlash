@@ -1,25 +1,19 @@
-import { IStateUser } from '~interfaces/unsplash.types';
 import { ACTIONS_USER } from '~lib/actions/user.actions';
 
-interface IActionUser {
-	type: string;
-	payload?: any;
-}
+import { IActionReducer } from '~interfaces/reducer.types';
+import { IStateUser } from '~interfaces/unsplash.types';
+import { ERROR_INITIAL_STATE } from '~constants/EmptyStates.const';
 
 export function reducerUser(
 	state: IStateUser,
-	action: IActionUser
+	action: IActionReducer
 ): IStateUser {
 	switch (action.type) {
 		case ACTIONS_USER._INIT_REQUEST_USER_: {
 			return {
 				...state,
 				isLoading: true,
-				error: {
-					code: '',
-					message: '',
-					isError: false,
-				},
+				error: ERROR_INITIAL_STATE,
 			};
 		}
 
