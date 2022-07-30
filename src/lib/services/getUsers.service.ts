@@ -1,5 +1,7 @@
-import { ApiUnsplashAccessKey } from '~constants/unsplash.const';
 import { IRequestService } from '~interfaces/services.types';
+
+import { AdapterServiceFromApi } from '~lib/adapters/service.adapter';
+
 import { getDataService } from './service';
 
 export async function getUsers({
@@ -12,19 +14,13 @@ export async function getUsers({
 	perPage: number;
 }): Promise<IRequestService> {
 	const apiData = await getDataService({
+		pathUrl: 'search/users',
 		params: {
-			client_id: ApiUnsplashAccessKey,
 			query,
 			page,
 			per_page: perPage,
 		},
-		pathUrl: 'search/users',
 	});
 
-	return {
-		code: apiData.code,
-		data: apiData.data,
-		error: apiData.error,
-		isSuccess: apiData.isSuccess,
-	};
+	return AdapterServiceFromApi(apiData);
 }
