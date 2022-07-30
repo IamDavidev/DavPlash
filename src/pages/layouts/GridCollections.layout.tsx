@@ -66,6 +66,7 @@ const GridCollections: React.FC<GridCollectionsProps> = ({
 							return (
 								<WrapItem key={collection.shareKey}>
 									<CardCollection
+										id={collection.id}
 										ImgCollection={collection.photos[0]}
 										title={collection.title}
 										totalPhotos={collection.totalPhotos}

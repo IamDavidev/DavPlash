@@ -1,6 +1,8 @@
-import { IApiCollectionsProps } from '~interfaces/Api.types';
-import { AdapterCollections } from '~lib/adapters';
 import { getCollections } from '~lib/services';
+
+import { IApiCollectionsProps } from '~interfaces/Api.types';
+
+import { AdapterCollections } from '~lib/adapters';
 
 export async function collectionsApi({
 	init,
@@ -9,7 +11,7 @@ export async function collectionsApi({
 	perPage,
 	page,
 	query,
-}: IApiCollectionsProps) {
+}: IApiCollectionsProps): Promise<void> {
 	init();
 
 	const { data, error, isSuccess, code } = await getCollections({

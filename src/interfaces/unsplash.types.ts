@@ -33,7 +33,7 @@ export interface IStateCollection {
 	collection: any;
 	error: IErrorStateGlobal;
 	isLoading: boolean;
-	id: string;
+	id: string | null;
 }
 /**
  * - @end  collection states

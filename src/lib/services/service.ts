@@ -1,11 +1,11 @@
 import { ApiInstance } from '@/config';
+import { ApiUnsplashAccessKey } from '~constants/unsplash.const';
 
 import { IRequestService } from '~interfaces/services.types';
 
 interface TypeGetPhotosServiceProps {
 	pathUrl: string;
-	params: {
-		client_id: string;
+	params?: {
 		per_page?: number;
 		page?: number;
 		order_by?: string;
@@ -19,7 +19,10 @@ export async function getDataService({
 }: TypeGetPhotosServiceProps): Promise<IRequestService> {
 	try {
 		const response = await ApiInstance.get(pathUrl, {
-			params,
+			params: {
+				client_id: ApiUnsplashAccessKey,
+				...params,
+			},
 		});
 
 		return {

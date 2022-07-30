@@ -2,9 +2,9 @@ import { AdapterServiceFromApi } from '~lib/adapters/service.adapter';
 
 import { getDataService } from './service';
 
-export async function getPhotoRandom() {
+export async function getCollectionPhotos({ id }: { id: string }) {
 	const apiData = await getDataService({
-		pathUrl: 'photos/random',
+		pathUrl: `collections/${id}/photos`,
 	});
 
 	return AdapterServiceFromApi(apiData);

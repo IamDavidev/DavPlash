@@ -19,6 +19,7 @@ import {
 import { COLORS_THEME } from '~constants/theme.const';
 
 import ButtonMore from './ButtonMore.component';
+
 import { TagIcon } from './icons';
 
 interface CardCollectionProps {
@@ -30,6 +31,7 @@ interface CardCollectionProps {
 	totalPhotos: number;
 	photos?: any[];
 	tags: string[];
+	id: string;
 }
 
 const CardCollection = ({
@@ -37,6 +39,7 @@ const CardCollection = ({
 	title,
 	totalPhotos,
 	tags,
+	id,
 }: CardCollectionProps) => {
 	return (
 		<Box
@@ -109,7 +112,10 @@ const CardCollection = ({
 							</PopoverContent>
 						</Popover>
 						<Spacer />
-						<ButtonMore path='/' text='view' />
+						<ButtonMore
+							path={`/plash/discover/collections/${id}`}
+							text='view'
+						/>
 					</Flex>
 				</Flex>
 			</Flex>

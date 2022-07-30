@@ -28,7 +28,7 @@ export const INITIAL_EMPTY_STATE_COLLECTION: IStateCollection = {
 	collection: {},
 	error: ERROR_INITIAL_STATE,
 	isLoading: false,
-	id: '',
+	id: null,
 };
 
 export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {
