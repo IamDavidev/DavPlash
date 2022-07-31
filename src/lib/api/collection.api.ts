@@ -1,23 +1,46 @@
 import { IApiCollectionProps } from '~interfaces/Api.types';
+import { AdapterPhotos } from '~lib/adapters';
+import { AdapterCollection } from '~lib/adapters/collection.adapter';
+
 import { getCollection } from '~lib/services/getCollection.service';
+
+import { getCollectionPhotos } from '~lib/services/getCollectionPhotos.service';
 
 export async function collectionApi({
 	id,
 	init,
-	success,
 	err,
-}: IApiCollectionProps): Promise<void> {
+	success,
+	perPage,
+}: IApiCollectionProps) {
 	init();
-	const { data, error, isSuccess, code } = await getCollection({
+
+	const {
+		data: dataCollection,
+		error: ErrorCollection,
+		isSuccess: isSuccessCollection,
+		code: codeCollection,
+	} = await getCollection({
 		id,
 	});
 
-	if (!isSuccess) {
-		err({
-			code,
-			error,
-		});
-	}
+	const {
+		data: dataCollectionPhotos,
+		error: ErrorCollectionPhotos,
+		isSuccess: isSuccessCollectionPhotos,
+		code: codeCollectionPhotos,
+	} = await getCollectionPhotos({
+		id,
+		perPage,
+	});
 
-	success(data);
+	if (!isSuccessCollection)
+		return err({ error: ErrorCollection, code: codeCollection });
+
+	if (!isSuccessCollectionPhotos)
+		return err({ error: ErrorCollectionPhotos, code: codeCollectionPhotos });
+	success({
+		data: AdapterCollection(dataCollection),
+		photos: dataCollectionPhotos.map(AdapterPhotos),
+	});
 }

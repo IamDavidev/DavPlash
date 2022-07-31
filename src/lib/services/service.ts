@@ -31,9 +31,10 @@ export async function getDataService({
 			isSuccess: true,
 		};
 	} catch (err: any) {
+		console.log(err);
 		return {
 			data: [],
-			code: err.response.status,
+			code: 403,
 			error: err.message,
 			isSuccess: false,
 		};

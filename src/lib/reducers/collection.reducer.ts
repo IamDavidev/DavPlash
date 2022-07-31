@@ -46,6 +46,14 @@ export function collectionReducer(
 			};
 		}
 
+		case ACTIONS_COLLECTION._SET_PER_PAGE_PHOTOS_COLLECTION_: {
+			const { perPage } = action.payload;
+			return {
+				...state,
+				perPagePhotosCollection: perPage,
+			};
+		}
+
 		default: {
 			throw new Error(
 				`HOOK > ERROR COLLECTION: ${action.type} is not a valid action type.`

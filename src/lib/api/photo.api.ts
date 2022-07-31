@@ -1,6 +1,6 @@
 import { IApiPhotoProps } from '~interfaces/Api.types';
 import { AdapterPhotos } from '~lib/adapters';
-import { AdapterPhotoView } from '~lib/adapters/photoView.adapter';
+import { AdapterPhoto } from '~lib/adapters/photoView.adapter';
 // import { AdapterPhotoView } from '~lib/adapters/photoView.adapter';
 import { getPhoto, getPhotoRandom } from '~lib/services';
 
@@ -27,7 +27,7 @@ export async function ApiPhoto({
 			code,
 		});
 
-	if (id) return success(AdapterPhotoView(data));
+	if (id) return success(AdapterPhoto(data));
 
 	success(AdapterPhotos(data));
 }

@@ -12,8 +12,11 @@ import heroGlow from '@/assets/svg/hero-glow.svg';
 
 import { ArrowRightIcon } from '~components/icons';
 import GridUsers from './layouts/GridUsers.layout';
+import { usePhotos } from '~lib/hooks';
 
 const HomeView = () => {
+	const { photos } = usePhotos();
+
 	return (
 		<Box pos={'relative'}>
 			<HeaderLayout />
@@ -62,7 +65,7 @@ const HomeView = () => {
 						</Box>
 					</Link>
 				</Box>
-				<GridPhotos controls={false} />
+				<GridPhotos photos={photos} />
 			</section>
 			<section>
 				<Box

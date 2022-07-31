@@ -1,6 +1,15 @@
-export function AdapterCollection(objApiCollection: any) {
+import { IAdapterCollectionData } from '~interfaces/Adapters.types';
+
+export function AdapterCollection(
+	objApiCollection: any
+): IAdapterCollectionData {
 	return {
-		bannerPhoto: objApiCollection.cover_photo.urls.regular,
+		photosCollection: objApiCollection.preview_photos.map((photo: any) => {
+			return {
+				photo: photo.urls.regular,
+				id: photo.id,
+			};
+		}),
 		title: objApiCollection.title,
 		tags: objApiCollection.tags.map((tag: any) => {
 			return {
@@ -11,5 +20,6 @@ export function AdapterCollection(objApiCollection: any) {
 		id: objApiCollection.id,
 		private: objApiCollection.private,
 		description: objApiCollection.description,
+		totalPhotos: objApiCollection.total_photos,
 	};
 }

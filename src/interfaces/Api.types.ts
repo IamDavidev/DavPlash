@@ -25,6 +25,7 @@ export interface IApiCollectionsProps extends IApiProps {
 
 export interface IApiCollectionProps extends IApiProps {
 	id: string;
+	perPage: number;
 }
 
 export interface IApiUsersProps extends IApiProps {

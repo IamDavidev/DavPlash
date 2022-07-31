@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 
 import { INITIAL_EMPTY_STATE_COLLECTION } from '~constants/EmptyStates.const';
 
-import { IErrorRequest } from '~interfaces/hooks.types';
+import { IErrorRequest, IUseCollection } from '~interfaces/hooks.types';
 
 import { ACTIONS_COLLECTION } from '~lib/actions';
 
@@ -10,7 +10,7 @@ import { collectionApi } from '~lib/api/collection.api';
 
 import { collectionReducer } from '~lib/reducers/collection.reducer';
 
-export default function useCollection() {
+export default function useCollection(): IUseCollection {
 	const [collection, setCollection] = useReducer(
 		collectionReducer,
 		INITIAL_EMPTY_STATE_COLLECTION
@@ -46,6 +46,14 @@ export default function useCollection() {
 			},
 		});
 
+	const setPerPagePhotosCollection = (perPage: number) =>
+		setCollection({
+			type: ACTIONS_COLLECTION._SET_PER_PAGE_PHOTOS_COLLECTION_,
+			payload: {
+				perPage,
+			},
+		});
+
 	useEffect(() => {
 		if (!collection.id) return;
 
@@ -54,11 +62,15 @@ export default function useCollection() {
 			success: successRequestCollection,
 			err: failureRequestCollection,
 			id: collection.id,
+			perPage: collection.perPagePhotosCollection,
 		});
-	}, [collection.id]);
+	}, [collection.id, collection.perPagePhotosCollection]);
 
 	return {
-		collection: collection.collection,
+		perPage: collection.perPagePhotosCollection,
+		collection: collection.collection.data,
+		photosCollection: collection.collection.photos,
 		setId: setIdCollection,
+		setPerPage: setPerPagePhotosCollection,
 	};
 }
