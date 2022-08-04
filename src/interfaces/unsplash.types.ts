@@ -34,6 +34,7 @@ export interface IStateCollection {
 	error: IErrorStateGlobal;
 	isLoading: boolean;
 	id: string | null;
+	perPagePhotosCollection: number
 }
 /**
  * - @end  collection states

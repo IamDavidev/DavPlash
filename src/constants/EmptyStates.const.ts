@@ -25,10 +25,14 @@ export const INITIAL_EMPTY_STATE_COLLECTIONS: IStateCollections = {
 };
 
 export const INITIAL_EMPTY_STATE_COLLECTION: IStateCollection = {
-	collection: {},
+	collection: {
+		data: {},
+		photosCollection: [],
+	},
 	error: ERROR_INITIAL_STATE,
 	isLoading: false,
 	id: null,
+	perPagePhotosCollection: 12,
 };
 
 export const INITIAL_EMPTY_STATE_PHOTOS: IStatePhotos = {

@@ -14,3 +14,5 @@ export { default as LineIcon } from './Line.icon';
 export { default as TwitterIcon } from './twitter.icon';
 export { default as InstagramIcon } from './instagram.icon';
 export { default as VerifiedIcon } from './verified.icon';
+export { default as LightThemeIcon } from './LightTheme.icon';
+export { default as DarkThemeIcon } from './DarkTheme.icon';

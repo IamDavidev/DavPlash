@@ -17,6 +17,7 @@ import {
 } from '@chakra-ui/react';
 
 import { COLORS_THEME } from '~constants/theme.const';
+import { useIsDarkMode } from '~lib/hooks';
 
 import ButtonMore from './ButtonMore.component';
 
@@ -41,9 +42,11 @@ const CardCollection = ({
 	tags,
 	id,
 }: CardCollectionProps) => {
+	const isDarkMode = useIsDarkMode();
+
 	return (
 		<Box
-			bg={'black'}
+			bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 			minWidth={'100%'}
 			width={'400px'}
 			maxWidth={'400px'}
@@ -62,7 +65,10 @@ const CardCollection = ({
 				/>
 				<Flex p={'.5rem'} flexDirection={'column'} width={'100%'}>
 					<Box display='flex' flexDirection={'column'} gap='4px'>
-						<Heading as={'h3'} fontSize={'lg'} color={'white'}>
+						<Heading
+							as={'h3'}
+							fontSize={'lg'}
+							color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
 							{title}
 						</Heading>
 						<Box
@@ -70,8 +76,13 @@ const CardCollection = ({
 							gap={1}
 							display={'flex'}
 							color={'cyanTheme.300'}>
-							<Text color={'blueTheme.500'}>{totalPhotos}</Text>
-							<Text color={'white'} opacity={0.7}>
+							<Text
+								color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
+								{totalPhotos}
+							</Text>
+							<Text
+								color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}
+								opacity={0.7}>
 								{' '}
 								photos
 							</Text>
@@ -81,8 +92,16 @@ const CardCollection = ({
 					<Flex flexDirection={'row'} alignItems={'center'}>
 						<Popover colorScheme={'blue'}>
 							<PopoverTrigger>
-								<Button colorScheme={'black'}>
-									<Text mx={'.5rem'}>Tags</Text>
+								<Button
+									bg={isDarkMode ? 'blackDark' : 'whiteLight'}
+									_hover={{ bg: 'none' }}>
+									<Text
+										mx={'.5rem'}
+										color={
+											isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'
+										}>
+										Tags
+									</Text>
 									<TagIcon
 										width={20}
 										height={21}

@@ -4,7 +4,7 @@ import {
 	TypeTagObjApiPhotoView,
 } from '~interfaces/Adapters.types';
 
-export const AdapterPhotoView = (objApiPhoto: any): IAdapterPhotoView => {
+export const AdapterPhoto = (objApiPhoto: any): IAdapterPhotoView => {
 	const objectFit =
 		objApiPhoto.width > objApiPhoto.height ? 'cover' : 'contain';
 	return {

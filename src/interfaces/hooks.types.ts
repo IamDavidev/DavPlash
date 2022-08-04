@@ -1,5 +1,6 @@
 import {
 	IAdapterCollection,
+	IAdapterCollectionData,
 	IAdapterPhotos,
 	IAdapterUsers,
 } from './Adapters.types';
@@ -55,6 +56,13 @@ export interface IUseCollectionsHook extends IGenericHook {
 	setPerPageCollections: (perPage: number) => void;
 	setPageCollections: (page: number) => void;
 	setQueryCollections: (query: string) => void;
+}
+export interface IUseCollection {
+	perPage: number;
+	collection: IAdapterCollectionData;
+	photosCollection: IAdapterPhotos[];
+	setId: (id: string) => void;
+	setPerPage: (perPage: number) => void;
 }
 
 /**

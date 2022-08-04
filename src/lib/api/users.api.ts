@@ -12,16 +12,17 @@ export async function usersApi({
 }: IApiUsersProps) {
 	init();
 
-	const { data, isSuccess, error } = await getUsers({ query, perPage, page });
+	const { data, isSuccess, error, code } = await getUsers({
+		query,
+		perPage,
+		page,
+	});
 
-	if (!isSuccess) return err({ error });
+	if (!isSuccess) return err({ error, code });
 
-	setTimeout(() => {
-		console.log('setTimeout');
-		success({
-			results: data.results.map(AdapterUser),
-			totalPages: data.total_pages,
-			total: data.total,
-		});
-	}, 2000);
+	success({
+		results: data.results.map(AdapterUser),
+		totalPages: data.total_pages,
+		total: data.total,
+	});
 }

@@ -1,7 +1,7 @@
 import { ResponsiveValue } from '@chakra-ui/react';
 
 /**
- * Adapter Phtos
+ * Adapter Photos
  */
 export type TypeImagesAdapterPhotos = {
 	small: string;
@@ -42,6 +42,26 @@ export interface IAdapterCollection {
 	shareKey: string;
 	description: string | '';
 	tags: string[];
+}
+
+export interface IAdapterCollectionData {
+	photosCollection: [
+		{
+			id: string;
+			photo: string;
+		}
+	];
+	title: string;
+	tags: [
+		{
+			key: string;
+			value: string;
+		}
+	];
+	id: string;
+	private: boolean;
+	description: string | null;
+	totalPhotos: number;
 }
 
 /**

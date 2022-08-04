@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@chakra-ui/react';
 import { COLORS_THEME } from '~constants/theme.const';
+import { useIsDarkMode } from '~lib/hooks';
 import { HeartIcon } from './icons';
 
 interface IStateBtnLikes {
@@ -32,6 +33,7 @@ const setDislike = (setDislike: Function): void =>
 	);
 
 const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
+	const isDarkMode = useIsDarkMode();
 	const [likes, setLikes] = useState<IStateBtnLikes>({
 		likes: 0,
 		isLiked: false,
@@ -52,15 +54,21 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 	return (
 		<Button
 			width={'80px'}
-			colorScheme={'grayTheme'}
 			borderRadius={'.5rem'}
 			border={0}
-			color={COLORS_THEME._WHITE_}
+			color={isDarkMode ? 'secondaryDark.500' : 'secondaryLight.500'}
 			variant={'outline'}
-			_hover={{
-				backgroundColor: COLORS_THEME._GRAY_,
-				transition: 'all 0.6s ease-in-out',
-			}}
+			_hover={
+				isDarkMode
+					? {
+							backgroundColor: COLORS_THEME.DARK._BG_,
+							transition: 'all 0.6s ease-in-out',
+					  }
+					: {
+							backgroundColor: COLORS_THEME.LIGHT._PRIMARY_,
+							transition: 'all 0.6s ease-in-out',
+					  }
+			}
 			onClick={toggleLike}
 			rightIcon={
 				<HeartIcon
