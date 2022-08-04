@@ -4,6 +4,7 @@ import {
 	Box,
 	Breadcrumb,
 	BreadcrumbItem,
+	Code,
 	Divider,
 	Flex,
 	Heading,
@@ -17,27 +18,39 @@ import {
 
 import { Link, useParams } from 'react-router-dom';
 
-import { usePhoto } from '~lib/hooks';
+import { useIsDarkMode, usePhoto } from '~lib/hooks';
 
 import ButtonLikes from '~components/ButtonLikes.component';
 
 import BoxImageDimensions from '~components/ImageDimensions.component';
-import {
-	IAdapterPhotoView,
-	TypeRelatedPhoto,
-} from '~interfaces/Adapters.types';
+import { TypeRelatedPhoto } from '~interfaces/Adapters.types';
 
 const PhotoView: React.FC = () => {
-	const { id } = useParams();
-	const {
-		photo,
-	}: {
-		photo: IAdapterPhotoView;
-	} = usePhoto(id);
+	const isDarkMode = useIsDarkMode();
 
+	const { id } = useParams();
+	const { photo, error } = usePhoto(id);
+
+	if (error.isError) {
+		return (
+			<>
+				<Box
+					minH={'100vh'}
+					display={'flex'}
+					flexDirection={'column'}
+					alignItems={'center'}>
+					<Heading as={'h2'}>{error.message}</Heading>
+					<Code>{error?.code}</Code>
+				</Box>
+			</>
+		);
+	}
 	return (
 		<>
-			<Breadcrumb fontWeight={'bold'} fontSize={'md'} color={'white'}>
+			<Breadcrumb
+				fontWeight={'bold'}
+				fontSize={'md'}
+				color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
 				<BreadcrumbItem>
 					<Link to='/plash'>Discover</Link>
 				</BreadcrumbItem>
@@ -46,7 +59,9 @@ const PhotoView: React.FC = () => {
 					<Link to='/plash/discover/photos'>Photos</Link>
 				</BreadcrumbItem>
 
-				<BreadcrumbItem isCurrentPage color={'purpleTheme.500'}>
+				<BreadcrumbItem
+					isCurrentPage
+					color={isDarkMode ? 'primaryDark.500' : 'cyanLight.500'}>
 					<Link to={`/plash/discover/photos/${id}`}>{id}</Link>
 				</BreadcrumbItem>
 			</Breadcrumb>
@@ -101,17 +116,35 @@ const PhotoView: React.FC = () => {
 									alignItems={'center'}
 									gap={'.5rem'}
 									my={'2rem'}>
-									<Text color={'purpleTheme.500'}>{photo.width}</Text>
+									<Text
+										color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
+										{photo.width}
+									</Text>
 									<Box display={'flex'} alignItems={'center'} gap={'.5rem'}>
-										<Text color={'purpleTheme.500'}>{photo.height}</Text>
+										<Text
+											color={
+												isDarkMode ? 'primaryDark.500' : 'primaryLight.500'
+											}>
+											{photo.height}
+										</Text>
 										<BoxImageDimensions
 											width={photo.width}
 											height={photo.height}
 											color={photo.color}
 										/>
-										<Text color={'purpleTheme.500'}>{photo.height}</Text>
+										<Text
+											color={
+												isDarkMode ? 'primaryDark.500' : 'primaryLight.500'
+											}>
+											{photo.height}
+										</Text>
 									</Box>
-									<Text color={'purpleTheme.500'}>{photo.width}</Text>
+									<Text
+										color={
+											isDarkMode ? 'primaryDark.500' : 'primaryLight.5000'
+										}>
+										{photo.width}
+									</Text>
 								</Flex>
 								<Flex
 									gap={'1rem'}
@@ -123,13 +156,22 @@ const PhotoView: React.FC = () => {
 										width={'6rem'}
 										objectFit={'cover'}
 									/>
-									<Box my={'2rem'} color={'purpleTheme.500'} textAlign={'end'}>
+									<Box my={'2rem'} color={'primaryDark.500'} textAlign={'end'}>
 										<Link to={`/plash/discover/users/${photo.userName}`}>
 											{'@'}
 											{photo.userName}
 										</Link>
-										<Text color={'white'}>{photo.user}</Text>
-										<Box color={'white'} my={'.5rem'}>
+										<Text
+											color={
+												isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'
+											}>
+											{photo.user}
+										</Text>
+										<Box
+											color={
+												isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'
+											}
+											my={'.5rem'}>
 											{photo.description ? (
 												<Text>{photo.description}</Text>
 											) : (
@@ -144,7 +186,10 @@ const PhotoView: React.FC = () => {
 								bg={photo.color}
 								mb={'1rem'}
 							/>
-							<Heading as={'h3'} color={'purpleTheme.500'} fontSize={'3xl'}>
+							<Heading
+								as={'h3'}
+								color={isDarkMode ? 'primaryDark' : 'primarySecondary'}
+								fontSize={'3xl'}>
 								{'Related photos'}
 							</Heading>
 							<Flex

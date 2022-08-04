@@ -2,7 +2,8 @@ import { Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { ArrowCircleRight } from '~components/icons';
 import ArrowCircleLeft from '~components/icons/ArrowCircleLeft.icon';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
+import { useIsDarkMode } from '~lib/hooks';
 
 interface IcontrolsPageProps {
 	setPage: (page: number) => void;
@@ -10,7 +11,8 @@ interface IcontrolsPageProps {
 	maxPage?: number;
 }
 
-const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
+const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
+	const isDarkMode = useIsDarkMode();
 	const maxPage = 10;
 
 	const setPageNext = (): void => {
@@ -28,30 +30,40 @@ const controlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 			<Button
 				onClick={() => setPagePrev()}
 				border={'none'}
-				colorScheme={'purpleTheme.500'}>
+				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
 				<ArrowCircleLeft
 					width={25}
 					height={25}
-					color={COLORS_THEME._PURPLE_300}
+					color={
+						isDarkMode
+							? COLORS_THEME.DARK._PRIMARY_
+							: COLORS_THEME.LIGHT._PRIMARY_
+					}
 				/>
 			</Button>
-			<Text minW={'50px'} textAlign={'center'} color={'white'}>
+			<Text
+				minW={'50px'}
+				textAlign={'center'}
+				color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
 				{page}
 				{' / 10'}
 			</Text>
 			<Button
-				colorScheme={'purpleTheme.500'}
+				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 				border={'none'}
 				onClick={() => setPageNext()}>
-				{/* <NextIcon width={25} height={25} color={COLORS_THEME._PURPLE_300} /> */}
 				<ArrowCircleRight
 					width={25}
 					height={25}
-					color={COLORS_THEME._PURPLE_300}
+					color={
+						isDarkMode
+							? COLORS_THEME.DARK._PRIMARY_
+							: COLORS_THEME.LIGHT._PRIMARY_
+					}
 				/>
 			</Button>
 		</Flex>
 	);
 };
 
-export default controlsPage;
+export default ControlsPage;

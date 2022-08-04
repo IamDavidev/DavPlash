@@ -1,6 +1,6 @@
 import { Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
 import { ArrowRightIcon } from './icons';
 
@@ -20,12 +20,11 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 					_hover={
 						isDarkMode
 							? {
-									backgroundColor: COLORS_THEME.LIGHT._WHITE_,
-									color: COLORS_THEME.DARK._SECONDARY_,
+									backgroundColor: COLORS_THEME.DARK._HOVER_,
 									transition: 'all 0.6s ease-in-out',
 							  }
 							: {
-									backgroundColor: COLORS_THEME.DARK._BG_,
+									backgroundColor: COLORS_THEME.LIGHT._HOVER_,
 									transition: 'all 0.6s ease-in-out',
 							  }
 					}
@@ -39,7 +38,7 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 					}>
 					<Text
 						fontSize={'sm'}
-						color={isDarkMode ? 'secondaryDark.500' : 'secondaryLight.500'}>
+						color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
 						{text}
 					</Text>
 				</Button>

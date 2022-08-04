@@ -24,14 +24,16 @@ import {
 
 import VerifiedIcon from '~components/icons/verified.icon';
 
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 
 import useUser from '~lib/hooks/useUser.hook';
 
 import { CardSkeletonUserView } from '~components/skeletons';
+import { useIsDarkMode } from '~lib/hooks';
 
 const UserView: React.FC = () => {
 	const { username } = useParams();
+	const isDarkMode = useIsDarkMode();
 
 	const { user, photos, isLoading } = useUser(username);
 
@@ -44,7 +46,10 @@ const UserView: React.FC = () => {
 
 	return (
 		<>
-			<Breadcrumb fontWeight={'bold'} fontSize={'xl'} color={'white'}>
+			<Breadcrumb
+				fontWeight={'bold'}
+				fontSize={'xl'}
+				color={isDarkMode ? 'white' : 'black'}>
 				<BreadcrumbItem>
 					<LinkNav to='/plash'>Discover</LinkNav>
 				</BreadcrumbItem>
@@ -53,7 +58,9 @@ const UserView: React.FC = () => {
 					<LinkNav to={`/plash/discover/users`}>Users</LinkNav>
 				</BreadcrumbItem>
 
-				<BreadcrumbItem isCurrentPage color={'purpleTheme.500'}>
+				<BreadcrumbItem
+					isCurrentPage
+					color={isDarkMode ? 'primaryDark.500' : 'cyanLight.500'}>
 					<Text>{username}</Text>
 				</BreadcrumbItem>
 			</Breadcrumb>
@@ -69,7 +76,7 @@ const UserView: React.FC = () => {
 						<Image
 							src={user.profileImage}
 							borderWidth={'1px'}
-							borderColor={'purpleTheme.500'}
+							borderColor={'primaryDark.500'}
 							borderRadius={'50%'}
 							alt={user.username}
 							objectFit={'cover'}
@@ -78,7 +85,7 @@ const UserView: React.FC = () => {
 							<VerifiedIcon
 								width={25}
 								height={25}
-								color={COLORS_THEME._PURPLE_}
+								color={COLORS_THEME.DARK._PRIMARY_}
 							/>
 						</Box>
 					</Box>
@@ -87,7 +94,7 @@ const UserView: React.FC = () => {
 					width={'100%'}
 					justifyContent={'center'}
 					alignItems={'center'}
-					color={'white'}
+					color={isDarkMode ? 'white' : 'black'}
 					flexDirection={'column'}
 					gap={'.2rem'}>
 					<Text textAlign={'center'} fontSize={'3xl'}>
@@ -95,6 +102,7 @@ const UserView: React.FC = () => {
 					</Text>
 					<Box
 						display={'flex'}
+						color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 						justifyContent={'center'}
 						gap={'.2rem'}
 						alignItems={'center'}
@@ -102,7 +110,7 @@ const UserView: React.FC = () => {
 						<AtSymbolIcon
 							width={30}
 							height={29}
-							color={COLORS_THEME._PURPLE_}
+							color={COLORS_THEME.DARK._PRIMARY_}
 						/>
 						<Text>{user.username}</Text>
 					</Box>
@@ -116,16 +124,25 @@ const UserView: React.FC = () => {
 					{user.twitter && (
 						<>
 							<Link href={user.twitter} isExternal>
-								<TwitterIcon width={30} height={30} color={'#fff'} />
+								<TwitterIcon
+									width={30}
+									height={30}
+									color={isDarkMode ? 'white' : 'dark'}
+								/>
 							</Link>
 						</>
 					)}
+
 					{user.instagram && (
 						<>
 							<Link
 								href={`https://www.instagram.com/${user.instagram}`}
 								isExternal>
-								<InstagramIcon width={30} height={30} color={'#fff'} />
+								<InstagramIcon
+									width={30}
+									height={30}
+									color={isDarkMode ? 'white' : 'dark'}
+								/>
 							</Link>
 						</>
 					)}
@@ -141,52 +158,61 @@ const UserView: React.FC = () => {
 					alignItems={'center'}
 					gap={'2rem'}
 					borderRadius={'2rem'}
-					borderColor={'blueTheme.500'}
+					borderColor={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 					borderWidth={'1px'}
-					color={'white'}
+					color={isDarkMode ? 'white' : 'black'}
 					borderStyle={'solid'}>
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
 						alignItems={'center'}>
 						<Text>Followers</Text>
-						<Text color={'purpleTheme.500'}>{user.followers}</Text>
+						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
+							{user.followers}
+						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME._BLUE_} />
+					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
 
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
 						alignItems={'center'}>
 						<Text>Following</Text>
-						<Text color={'purpleTheme.500'}>{user.following}</Text>
+						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
+							{user.following}
+						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME._BLUE_} />
-
+					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
 						alignItems={'center'}>
 						<Text>Location</Text>
-						<Text color={'purpleTheme.500'}>{user.location ?? 'Unknown'}</Text>
+						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
+							{user.location ?? 'Unknown'}
+						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME._BLUE_} />
 
+					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
 						alignItems={'center'}>
 						<Text>Likes</Text>
-						<Text color={'purpleTheme.500'}>{user.totalLikes}</Text>
+						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
+							{user.totalLikes}
+						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME._BLUE_} />
 
+					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
 						alignItems={'center'}>
 						<Text>Photos</Text>
-						<Text color={'purpleTheme.500'}>{user.totalPhotos}</Text>
+						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
+							{user.totalPhotos}
+						</Text>
 					</Flex>
 				</Box>
 				<Box
@@ -209,7 +235,7 @@ const UserView: React.FC = () => {
 								<WrapItem key={tag.key}>
 									<Tag
 										color={'purpleTheme.500'}
-										border={`1px solid ${COLORS_THEME._WHITE_}`}
+										border={`1px solid ${COLORS_THEME.DARK._PRIMARY_}`}
 										variant={'outline'}>
 										{tag.value}
 									</Tag>
@@ -217,7 +243,11 @@ const UserView: React.FC = () => {
 							);
 						})}
 				</Wrap>
-				<Divider colorScheme={'white'} my={'1rem'} />
+				<Divider
+					colorScheme={isDarkMode ? 'white' : 'black'}
+					my={'1rem'}
+					height={'2px'}
+				/>
 				<Wrap justify={'center'} spacing={'.5rem'}>
 					{photos.length > 0 &&
 						photos.map((photo: any) => {

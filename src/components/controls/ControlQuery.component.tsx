@@ -9,7 +9,8 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { ArrowCircleRight, SearchIcon } from '~components/icons';
 
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
+import { useIsDarkMode } from '~lib/hooks';
 
 interface IcontrolQueryProps {
 	setQuery: (query: string) => void;
@@ -17,6 +18,7 @@ interface IcontrolQueryProps {
 
 const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
 	const queryValue = useRef<HTMLInputElement>(null);
+	const isDarkMode = useIsDarkMode();
 
 	const [focusState, setFocusState] = useState(false);
 
@@ -36,34 +38,42 @@ const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
 		<form onSubmit={handleSetQuery}>
 			<InputGroup
 				width={'200px'}
-				borderColor={'grayTheme.500'}
+				borderColor={COLORS_THEME.DARK._HOVER_}
 				onFocus={() => setFocusState(true)}
 				onBlur={() => setFocusState(false)}>
 				<InputLeftElement pointerEvents='none'>
 					<SearchIcon
 						width={25}
 						height={25}
-						color={focusState ? COLORS_THEME._PURPLE_ : COLORS_THEME._GRAY_}
+						color={
+							focusState
+								? COLORS_THEME.DARK._PRIMARY_
+								: COLORS_THEME.DARK._HOVER_
+						}
 					/>
 				</InputLeftElement>
 				<Input
 					type='text'
 					colorScheme={'red'}
 					_placeholder={{
-						color: COLORS_THEME._GRAY_,
+						color: COLORS_THEME.DARK._HOVER_,
 					}}
-					color={'white'}
+					color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}
 					placeholder='coffe'
 					ref={queryValue}
 					htmlSize={30}
 					borderWidth={1}
-					focusBorderColor={COLORS_THEME._PURPLE_}
+					focusBorderColor={COLORS_THEME.DARK._PRIMARY_}
 				/>
 				<InputRightElement onClick={handleSetQuery}>
 					<ArrowCircleRight
 						width={25}
 						height={25}
-						color={focusState ? COLORS_THEME._PURPLE_ : COLORS_THEME._GRAY_}
+						color={
+							focusState
+								? COLORS_THEME.DARK._PRIMARY_
+								: COLORS_THEME.DARK._HOVER_
+						}
 					/>
 				</InputRightElement>
 			</InputGroup>

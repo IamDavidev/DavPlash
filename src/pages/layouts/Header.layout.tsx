@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { ArrowRightIcon, HeartIcon } from '~components/icons';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
 
 const HeaderLayout = () => {
@@ -40,14 +40,25 @@ const HeaderLayout = () => {
 					<Link to='/plash/discover/collections'>
 						<Box
 							borderRadius={'1rem'}
-							borderColor={isDarkMode ? 'primraryDark' : 'secondaryLight'}
+							borderColor={isDarkMode ? 'primraryDark.500' : 'primaryLight.500'}
 							borderWidth={2}
 							display={'flex'}
 							py={'.5rem'}
+							_hover={
+								isDarkMode
+									? {
+											boxShadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+									: {
+											boxShadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+							}
 							px={'1rem'}
 							alignItems={'center'}
 							justifyContent={'center'}
-							bg={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
+							bg={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 							color={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
 							<Text mx={'2px'}>Get Started</Text>
 							<HeartIcon
@@ -61,6 +72,17 @@ const HeaderLayout = () => {
 						<Box
 							borderRadius={'1rem'}
 							borderColor={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}
+							_hover={
+								isDarkMode
+									? {
+											boxShadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+									: {
+											boxShadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+							}
 							borderWidth={2}
 							display={'flex'}
 							py={'.5rem'}
@@ -76,7 +98,11 @@ const HeaderLayout = () => {
 							<ArrowRightIcon
 								width={20}
 								height={20}
-								color={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}
+								color={
+									isDarkMode
+										? COLORS_THEME.DARK._TERTIARY_
+										: COLORS_THEME.LIGHT._PRIMARY_
+								}
 							/>
 						</Box>
 					</Link>

@@ -1,9 +1,10 @@
 import React from 'react';
 
+import { COLORS_THEME } from '@/config/theme.config';
 import { Box, Button, Flex, Image, Text } from '@chakra-ui/react';
-import { ArrowRightIcon, VerifiedIcon } from './icons';
 import { Link } from 'react-router-dom';
-import { COLORS_THEME } from '~constants/theme.const';
+import { useIsDarkMode } from '~lib/hooks';
+import { ArrowRightIcon, VerifiedIcon } from './icons';
 
 interface ICardUserProps {
 	profileImage: string;
@@ -18,6 +19,7 @@ const CardUser: React.FC<ICardUserProps> = ({
 	totalPhotos,
 	userName,
 }) => {
+	const isDarkMode = useIsDarkMode();
 	return (
 		<>
 			<Box
@@ -26,7 +28,7 @@ const CardUser: React.FC<ICardUserProps> = ({
 				alignItems={'center'}
 				overflow={'hidden'}
 				flexWrap={'wrap'}
-				color={'white'}
+				color={isDarkMode ? 'white' : 'black'}
 				gap={'1rem'}
 				justifyContent={'center'}>
 				<Image
@@ -34,12 +36,15 @@ const CardUser: React.FC<ICardUserProps> = ({
 					alt={firstName}
 					borderWidth={'1px'}
 					borderStyle={'solid'}
-					borderColor={'white'}
+					borderColor={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 					objectFit={'cover'}
 					borderRadius={'50%'}
 				/>
 				<Box display={'flex'} flexDir={'column'} gap={'.5rem'}>
-					<Box color={'white'} display={'flex'} flexDir={'column'}>
+					<Box
+						color={isDarkMode ? 'white' : 'black'}
+						display={'flex'}
+						flexDir={'column'}>
 						<Text
 							maxW={'120px'}
 							display={'flex'}
@@ -71,7 +76,7 @@ const CardUser: React.FC<ICardUserProps> = ({
 							<ArrowRightIcon
 								width={25}
 								height={25}
-								color={COLORS_THEME._PURPLE_}
+								color={COLORS_THEME.DARK._PRIMARY_}
 							/>
 						</Button>
 					</Link>

@@ -2,7 +2,14 @@ import { Box, Heading, Image, Text } from '@chakra-ui/react';
 
 import { Link } from 'react-router-dom';
 
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
+
+import {
+	useColllections,
+	useIsDarkMode,
+	usePhotos,
+	useUsers,
+} from '~lib/hooks';
 
 import GridCollections from './layouts/GridCollections.layout';
 import GridPhotos from './layouts/GridPhotos.layout';
@@ -11,14 +18,19 @@ import HeaderLayout from './layouts/Header.layout';
 import heroGlow from '@/assets/svg/hero-glow.svg';
 
 import { ArrowRightIcon } from '~components/icons';
-import { usePhotos } from '~lib/hooks';
-import useCollections from '~lib/hooks/useColllections.hook';
+import GridCollectionError from '~components/skeletons/error/GridCollectionError.component';
+import GridImageError from '~components/skeletons/error/GridImageError.component';
+import GridUserSkeletons from '~components/skeletons/GriUsersSkeleton.component';
+
 import GridUsers from './layouts/GridUsers.layout';
 
 const HomeView = () => {
-	const { photos } = usePhotos();
+	const isDarkMode = useIsDarkMode();
 
-	const { collections } = useCollections();
+	const { photos, error: errorPhotos } = usePhotos();
+	const { collections, error: errorCollections } = useColllections();
+	const { users, error: errorUsers } = useUsers();
+
 	return (
 		<Box pos={'relative'}>
 			<HeaderLayout />
@@ -35,7 +47,9 @@ const HomeView = () => {
 						size={'3xl'}
 						color={'purpleTheme.500'}
 						my={'1rem'}
-						bgGradient={`linear(to-b,${COLORS_THEME._PURPLE_},${COLORS_THEME._NAV_})`}
+						bgGradient={`linear(to-b,${
+							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
+						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
 						bgClip={'text'}>
 						Top Photos
 					</Heading>
@@ -62,11 +76,12 @@ const HomeView = () => {
 							<ArrowRightIcon
 								width={25}
 								height={24}
-								color={COLORS_THEME._PURPLE_}
+								color={COLORS_THEME.DARK._PRIMARY_}
 							/>
 						</Box>
 					</Link>
 				</Box>
+				{errorPhotos.isError && <GridImageError />}
 				<GridPhotos photos={photos} />
 			</section>
 			<section>
@@ -80,7 +95,9 @@ const HomeView = () => {
 					<Heading
 						as={'h2'}
 						size={'3xl'}
-						bgGradient={`linear(to-b,${COLORS_THEME._PURPLE_},${COLORS_THEME._NAV_})`}
+						bgGradient={`linear(to-b,${
+							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
+						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
 						bgClip={'text'}
 						my={'1rem'}>
 						Top Collections
@@ -94,24 +111,29 @@ const HomeView = () => {
 							gap={'1rem'}
 							alignItems={'center'}
 							_hover={{
-								bg: 'grayTheme.500',
+								bg: COLORS_THEME.DARK._HOVER_,
 								transition: 'all .8s ease-in-out',
 								color: 'black',
 							}}>
 							<Text
 								fontWeight={'semibold'}
-								color={'purpleTheme.500'}
+								color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 								fontSize={'1.2rem'}>
 								View All
 							</Text>
 							<ArrowRightIcon
 								width={25}
 								height={24}
-								color={COLORS_THEME._PURPLE_}
+								color={COLORS_THEME.DARK._PRIMARY_}
 							/>
 						</Box>
 					</Link>
 				</Box>
+				{errorCollections.isError && (
+					<>
+						<GridCollectionError />
+					</>
+				)}
 				<GridCollections collections={collections} />
 			</section>
 			<section>
@@ -125,7 +147,9 @@ const HomeView = () => {
 					<Heading
 						as={'h2'}
 						size={'3xl'}
-						bgGradient={`linear(to-b,${COLORS_THEME._PURPLE_},${COLORS_THEME._NAV_})`}
+						bgGradient={`linear(to-b,${
+							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
+						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
 						bgClip={'text'}
 						my={'1rem'}>
 						Users
@@ -152,14 +176,18 @@ const HomeView = () => {
 							<ArrowRightIcon
 								width={25}
 								height={24}
-								color={COLORS_THEME._PURPLE_}
+								color={COLORS_THEME.DARK._PRIMARY_}
 							/>
 						</Box>
 					</Link>
 				</Box>
-				<GridUsers controls={false} />
+				{errorUsers.isError && (
+					<>
+						<GridUserSkeletons length={10} />
+					</>
+				)}
+				<GridUsers users={users.results} />
 			</section>
-			{/* <CardSkeletonUser /> */}
 			<Image
 				pos={'absolute'}
 				zIndex={1}

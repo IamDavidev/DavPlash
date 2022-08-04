@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 import { ArrowCircleRight } from '~components/icons';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 
 interface IcontrolPerPageProps {
 	setPerPage: (perPage: number) => void;

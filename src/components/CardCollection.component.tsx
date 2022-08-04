@@ -16,7 +16,6 @@ import {
 	Text,
 } from '@chakra-ui/react';
 
-import { COLORS_THEME } from '~constants/theme.const';
 import { useIsDarkMode } from '~lib/hooks';
 
 import ButtonMore from './ButtonMore.component';
@@ -51,7 +50,7 @@ const CardCollection = ({
 			width={'400px'}
 			maxWidth={'400px'}
 			border={'2px'}
-			borderColor={COLORS_THEME._PURPLE_LIGHT_}
+			borderColor={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 			borderRadius={'1rem'}>
 			<Flex gap={'1rem'} p={3}>
 				<Image
@@ -105,11 +104,13 @@ const CardCollection = ({
 									<TagIcon
 										width={20}
 										height={21}
-										color={COLORS_THEME._PURPLE_}
+										color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 									/>
 								</Button>
 							</PopoverTrigger>
-							<PopoverContent bg={'black'} borderColor={'purpleTheme.500'}>
+							<PopoverContent
+								bg={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}
+								borderColor={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}>
 								<PopoverArrow />
 								<PopoverCloseButton color={'purpleTheme.500'} />
 								<PopoverHeader color={'blueTheme.500'}>{title}</PopoverHeader>
@@ -122,7 +123,7 @@ const CardCollection = ({
 													color={'purpleTheme.500'}
 													mx={2}
 													variant={'outline'}
-													colorScheme={'pink'}>
+													colorScheme={isDarkMode ? 'pink' : 'blue'}>
 													{tag}
 												</Tag>
 											);

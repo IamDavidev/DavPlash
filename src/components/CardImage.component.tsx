@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Spacer, Stack, Text } from '@chakra-ui/react';
 
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 
 import VerifiedIcon from './icons/verified.icon';
 
@@ -23,7 +23,9 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 	return (
 		<Box
 			border={'2px'}
-			borderColor={COLORS_THEME._PURPLE_LIGHT_}
+			borderColor={
+				isDarkMode ? COLORS_THEME.DARK._PRIMARY_ : COLORS_THEME.LIGHT._PRIMARY_
+			}
 			borderRadius={'1rem'}
 			bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 			width={'250px'}
@@ -42,11 +44,11 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 							_hover={
 								isDarkMode
 									? {
-											backgroundColor: COLORS_THEME.DARK._BG_,
+											backgroundColor: COLORS_THEME.DARK._HOVER_,
 											transition: 'all 0.6s ease-in-out',
 									  }
 									: {
-											backgroundColor: COLORS_THEME.LIGHT._PRIMARY_,
+											backgroundColor: COLORS_THEME.LIGHT._HOVER_,
 											transition: 'all 0.6s ease-in-out',
 									  }
 							}
@@ -58,8 +60,8 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 							overflow={'hidden'}
 							alignItems={'center'}>
 							<Text
-								color={isDarkMode ? 'secondaryDark.500' : 'secondaryLight.500'}>
-								{name}
+								color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
+								{name.split(' ')[0]}
 							</Text>
 							<VerifiedIcon width={24} height={25} />
 						</Box>
