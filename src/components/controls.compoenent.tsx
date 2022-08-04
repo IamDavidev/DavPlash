@@ -1,11 +1,10 @@
-/**
- * @controls {-setPage -search -setPerpage}
- */
-
 import { Flex, Box, Text, Kbd, Spacer } from '@chakra-ui/react';
+
 import React from 'react';
-import { ControlPage, ControlQuery } from './controls';
-import ControlOrderBy from './controls/controlOrderBY.coponent';
+
+import { useIsDarkMode } from '~lib/hooks';
+
+import { ControlPage, ControlQuery, ControlOrderBy } from './controls';
 
 interface IcontrolsProps {
 	setPage: (page: number) => void;
@@ -20,6 +19,7 @@ const Controls: React.FC<IcontrolsProps> = ({
 	setQuery,
 	setOrderBy,
 }) => {
+	const isDarkMode = useIsDarkMode();
 	return (
 		<>
 			<Flex alignItems={'center'}>
@@ -48,7 +48,19 @@ const Controls: React.FC<IcontrolsProps> = ({
 					justifyContent={'center'}
 					alignItems={'center'}>
 					<Text color={'purpleTheme.300'} fontSize={'1.2rem'}>
-						<Kbd color='black'>ctrl</Kbd> + <Kbd color='black'>K</Kbd>
+						<Kbd
+							color={isDarkMode ? 'black' : 'white'}
+							border='none'
+							bg={isDarkMode ? 'white' : 'black'}>
+							ctrl
+						</Kbd>{' '}
+						+
+						<Kbd
+							border={'none'}
+							color={isDarkMode ? 'black' : 'white'}
+							bg={isDarkMode ? 'white' : 'black'}>
+							K
+						</Kbd>
 					</Text>
 					<ControlQuery setQuery={setQuery} />
 				</Box>

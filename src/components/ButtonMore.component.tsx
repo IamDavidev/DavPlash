@@ -1,6 +1,7 @@
 import { Button, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { COLORS_THEME } from '~constants/theme.const';
+import { useIsDarkMode } from '~lib/hooks';
 import { ArrowRightIcon } from './icons';
 
 interface ButtonMoreProps {
@@ -9,28 +10,36 @@ interface ButtonMoreProps {
 }
 
 const ButtonMore = ({ path, text }: ButtonMoreProps) => {
+	const isDarkMode = useIsDarkMode();
 	return (
 		<>
 			<Link to={path}>
 				<Button
-					colorScheme={'grayTheme'}
 					borderRadius={'.5rem'}
 					border={0}
-					// border={'2px'}
-					_hover={{
-						backgroundColor: COLORS_THEME._GRAY_,
-						trasition: 'all 0.6s ease-in-out',
-					}}
-					// borderColor={COLORS_THEME._PURPLE_LIGHT_}
+					_hover={
+						isDarkMode
+							? {
+									backgroundColor: COLORS_THEME.LIGHT._WHITE_,
+									color: COLORS_THEME.DARK._SECONDARY_,
+									transition: 'all 0.6s ease-in-out',
+							  }
+							: {
+									backgroundColor: COLORS_THEME.DARK._BG_,
+									transition: 'all 0.6s ease-in-out',
+							  }
+					}
 					variant={'outline'}
 					rightIcon={
 						<ArrowRightIcon
 							width={20}
 							height={20}
-							color={COLORS_THEME._PURPLE_LIGHT_}
+							color={COLORS_THEME.DARK._PRIMARY_}
 						/>
 					}>
-					<Text fontSize={'sm'} color={'white'}>
+					<Text
+						fontSize={'sm'}
+						color={isDarkMode ? 'secondaryDark.500' : 'secondaryLight.500'}>
 						{text}
 					</Text>
 				</Button>

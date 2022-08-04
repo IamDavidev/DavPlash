@@ -1,5 +1,5 @@
 import { Image } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 type TypePhoto = {
 	id: string;
@@ -28,15 +28,18 @@ function changePhoto({
 const CardImageRotate: React.FC<ICardImageRotateProps> = ({ photos }) => {
 	const [indexPhoto, setIndexPhoto] = useState(0);
 
-	useEffect(() => {
-		setTimeout(() => {
-			changePhoto({
-				index: indexPhoto,
-				length: photos.length,
-				setIndex: setIndexPhoto,
-			});
-		}, 1000);
-	}, [photos, indexPhoto]);
+	// useEffect(() => {
+	// 	const index = setTimeout(() => {
+	// 		changePhoto({
+	// 			index: indexPhoto,
+	// 			length: photos.length,
+	// 			setIndex: setIndexPhoto,
+	// 		});
+	// 	}, 1000);
+	// 	return () => {
+	// 		clearTimeout(index);
+	// 	};
+	// }, [photos, indexPhoto]);
 
 	if (!photos.length) return null;
 

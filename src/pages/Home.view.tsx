@@ -11,12 +11,14 @@ import HeaderLayout from './layouts/Header.layout';
 import heroGlow from '@/assets/svg/hero-glow.svg';
 
 import { ArrowRightIcon } from '~components/icons';
-import GridUsers from './layouts/GridUsers.layout';
 import { usePhotos } from '~lib/hooks';
+import useCollections from '~lib/hooks/useColllections.hook';
+import GridUsers from './layouts/GridUsers.layout';
 
 const HomeView = () => {
 	const { photos } = usePhotos();
 
+	const { collections } = useCollections();
 	return (
 		<Box pos={'relative'}>
 			<HeaderLayout />
@@ -110,7 +112,7 @@ const HomeView = () => {
 						</Box>
 					</Link>
 				</Box>
-				<GridCollections controls={false} />
+				<GridCollections collections={collections} />
 			</section>
 			<section>
 				<Box

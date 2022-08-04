@@ -2,16 +2,44 @@ import React from 'react';
 
 import {
 	Box,
-	Text,
-	Heading,
 	Breadcrumb,
 	BreadcrumbItem,
+	Flex,
+	Heading,
+	Text,
 } from '@chakra-ui/react';
-import GridCollections from './layouts/GridCollections.layout';
 import { Link } from 'react-router-dom';
+import Controls from '~components/controls.compoenent';
 import { NextIcon, PrevIcon } from '~components/icons';
+import { GridCollectionSkeleton } from '~components/skeletons';
+import GridCollectionError from '~components/skeletons/error/GridCollectionError.component';
+import useCollections from '~lib/hooks/useColllections.hook';
+import GridCollections from './layouts/GridCollections.layout';
 
 const CollectionsView: React.FC = () => {
+	const {
+		collections,
+		error,
+		isLoading,
+		page,
+		totalCollections,
+		setPageCollections,
+		setQueryCollections,
+	} = useCollections();
+	if (error.isError)
+		return (
+			<>
+				<Flex
+					width={'100%'}
+					justifyContent={'space-between'}
+					fontSize={'2.5rem'}
+					alignItems={'center'}>
+					<Text>{error.message}</Text>
+				</Flex>
+				<GridCollectionError />
+			</>
+		);
+
 	return (
 		<>
 			<Box>
@@ -30,7 +58,16 @@ const CollectionsView: React.FC = () => {
 					</Text>
 					more Collections <NextIcon width={'4rem'} height={'4.5rem'} />
 				</Heading>
-				<GridCollections controls={true} />
+				<>
+					<Controls
+						page={page}
+						setPage={setPageCollections}
+						setQuery={setQueryCollections}
+					/>
+					{isLoading && <GridCollectionSkeleton length={totalCollections} />}
+				</>
+				{isLoading && <GridCollectionSkeleton length={totalCollections} />}
+				<GridCollections collections={collections} />
 			</Box>
 		</>
 	);

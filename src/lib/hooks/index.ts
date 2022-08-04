@@ -6,3 +6,5 @@ export { default as useCollection } from './useCollection.hook';
 
 export { default as useUsers } from './useUsers.hook';
 export { default as useUser } from './useUser.hook';
+
+export { default as useIsDarkMode } from './useIsDarkMode.hook';

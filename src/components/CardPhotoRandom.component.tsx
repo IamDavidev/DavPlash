@@ -13,7 +13,7 @@ const CardPhotoRandom = () => {
 			</>
 		);
 
-	if (isLoading)
+	if (isLoading || !photo)
 		return (
 			<>
 				<CardSkeletonImage />

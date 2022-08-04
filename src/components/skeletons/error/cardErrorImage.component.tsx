@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { Box, Flex, Spacer } from '@chakra-ui/react';
+import { useIsDarkMode } from '~lib/hooks';
 
 const CardErrorImage: React.FC = () => {
+	const isDarkMode = useIsDarkMode();
+
 	return (
 		<Box
 			border={'1px solid red'}
@@ -15,13 +18,13 @@ const CardErrorImage: React.FC = () => {
 				border={'1px solid red'}
 				width={'230px'}
 				margin={'auto'}
-				bg={'grayTheme.500'}
+				bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
 				borderRadius={'10px'}></Box>
 			<Box
 				width={'auto'}
 				border={'1px solid red'}
 				height={'2rem'}
-				bg={'grayTheme.500'}
+				bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
 				borderRadius={'1rem'}
 				my={'1rem'}
 				mx={'1rem'}></Box>
@@ -30,14 +33,14 @@ const CardErrorImage: React.FC = () => {
 					border={'1px solid red'}
 					width={'60%'}
 					borderRadius={'1rem'}
-					bg={'grayTheme.500'}
+					bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
 					height={'2rem'}></Box>
 				<Spacer />
 				<Box
 					border={'1px solid red'}
 					width={'30%'}
 					borderRadius={'1rem'}
-					bg={'grayTheme.500'}
+					bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
 					height={'2rem'}></Box>
 			</Flex>
 		</Box>
