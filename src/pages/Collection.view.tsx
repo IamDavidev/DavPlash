@@ -15,7 +15,7 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CardImage from '~components/CardImage.component';
 import CardImageRotate from '~components/CardImageRotate.component';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
 import { useCollection } from '~lib/hooks';
 

@@ -30,7 +30,9 @@ const Controls: React.FC<IcontrolsProps> = ({
 					mx={'2rem'}
 					gap={'.5rem'}
 					alignItems={'center'}>
-					<Text color={'purpleTheme.300'} fontSize={'1.4rem'}>
+					<Text
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
+						fontSize={'1.4rem'}>
 						Page
 					</Text>
 					<ControlPage setPage={setPage} page={page} />

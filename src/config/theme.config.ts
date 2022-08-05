@@ -1,3 +1,5 @@
+import { extendTheme } from '@chakra-ui/react';
+
 export const COLORS_THEME = {
 	DARK: {
 		_PRIMARY_: '#746CFE',
@@ -5,6 +7,7 @@ export const COLORS_THEME = {
 		_TERTIARY_: '#3071e7',
 		_BG_: '#010202',
 		_BLACK_: '#000000',
+		_HOVER_: '#222222',
 	},
 	LIGHT: {
 		_PRIMARY_: '#000000',
@@ -13,50 +16,12 @@ export const COLORS_THEME = {
 		_BG_: '#F9F3EE',
 		_BLUR_: '#ffeeff73',
 		_WHITE_: '#ffffff',
+		_HOVER_: '#fffacd',
 	},
-	_NAV_: '#080c25',
-	_NAV_LIGHT_: '#242132',
-	_GRAY_: '#161e35',
-	_BLUE_: '#3071e7',
-	_WHITE_: '#fff',
-	_BLACK_: '#010202',
-	_CYAN_: '#a6b2ec',
-	_PURPLE_: '#746cfe',
-	_PURPLE_300: '#9c8ffc',
-	_PURPLE_LIGHT_: '#ae8cfa',
+	_BLUE_: '#63b3ed',
 };
 
 export const colors = {
-	navTheme: {
-		500: COLORS_THEME._NAV_,
-	},
-	navLightTheme: {
-		500: COLORS_THEME._NAV_LIGHT_,
-	},
-	grayTheme: {
-		500: COLORS_THEME._GRAY_,
-	},
-	blueTheme: {
-		500: COLORS_THEME._BLUE_,
-	},
-	whiteTheme: {
-		500: COLORS_THEME._WHITE_,
-	},
-	blackTheme: {
-		500: COLORS_THEME._BLACK_,
-	},
-	cyanTheme: {
-		500: COLORS_THEME._CYAN_,
-	},
-	bgTheme: {
-		500: COLORS_THEME._NAV_LIGHT_,
-	},
-	purpleTheme: {
-		200: COLORS_THEME._PURPLE_300,
-		300: COLORS_THEME._PURPLE_300,
-		500: COLORS_THEME._PURPLE_,
-		600: COLORS_THEME._PURPLE_,
-	},
 	primaryDark: {
 		200: COLORS_THEME.DARK._PRIMARY_,
 		300: COLORS_THEME.DARK._PRIMARY_,
@@ -87,6 +52,12 @@ export const colors = {
 		500: COLORS_THEME.DARK._BLACK_,
 		600: COLORS_THEME.DARK._BLACK_,
 	},
+	hoverDark: {
+		200: COLORS_THEME.DARK._HOVER_,
+		300: COLORS_THEME.DARK._HOVER_,
+		500: COLORS_THEME.DARK._HOVER_,
+		600: COLORS_THEME.DARK._HOVER_,
+	},
 	primaryLight: {
 		200: COLORS_THEME.LIGHT._PRIMARY_,
 		300: COLORS_THEME.LIGHT._PRIMARY_,
@@ -99,7 +70,6 @@ export const colors = {
 		500: COLORS_THEME.LIGHT._SECONDARY_,
 		600: COLORS_THEME.LIGHT._SECONDARY_,
 	},
-
 	cyanLight: {
 		200: COLORS_THEME.LIGHT._CYAN_,
 		300: COLORS_THEME.LIGHT._CYAN_,
@@ -124,8 +94,36 @@ export const colors = {
 		500: COLORS_THEME.LIGHT._WHITE_,
 		600: COLORS_THEME.LIGHT._WHITE_,
 	},
+	hoverLight: {
+		200: COLORS_THEME.LIGHT._HOVER_,
+		300: COLORS_THEME.LIGHT._HOVER_,
+		500: COLORS_THEME.LIGHT._HOVER_,
+		600: COLORS_THEME.LIGHT._HOVER_,
+	},
+	blueG: {
+		200: COLORS_THEME._BLUE_,
+		300: COLORS_THEME._BLUE_,
+		500: COLORS_THEME._BLUE_,
+		600: COLORS_THEME._BLUE_,
+	},
 };
+
 export const fonts = {
 	body: `Poppins, sans-serif`,
 	heading: `Poppins, sans-serif`,
 };
+
+export const shadows = {
+	shadowDark: `0px 0px 10px 2px ${COLORS_THEME.DARK._PRIMARY_}`,
+	shadowLight: `0px 0px 10px 2px ${COLORS_THEME.LIGHT._PRIMARY_}`,
+};
+
+export const theme = extendTheme({
+	config: {
+		initialColorMode: 'light',
+		useSystemColorMode: true,
+	},
+	colors, // colors: colors
+	shadows, // shadows: shadows
+	fonts, // fonts: fonts
+});

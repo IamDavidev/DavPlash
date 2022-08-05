@@ -15,8 +15,10 @@ import { GridCollectionSkeleton } from '~components/skeletons';
 import GridCollectionError from '~components/skeletons/error/GridCollectionError.component';
 import useCollections from '~lib/hooks/useColllections.hook';
 import GridCollections from './layouts/GridCollections.layout';
+import { useIsDarkMode } from '~lib/hooks';
 
 const CollectionsView: React.FC = () => {
+	const isDarkMode = useIsDarkMode();
 	const {
 		collections,
 		error,
@@ -43,12 +45,17 @@ const CollectionsView: React.FC = () => {
 	return (
 		<>
 			<Box>
-				<Breadcrumb fontWeight={'bold'} fontSize={'xl'} color={'white'}>
+				<Breadcrumb
+					fontWeight={'bold'}
+					fontSize={'xl'}
+					color={isDarkMode ? 'white' : 'black'}>
 					<BreadcrumbItem>
 						<Link to='/plash'>Discover</Link>
 					</BreadcrumbItem>
 
-					<BreadcrumbItem isCurrentPage color={'purpleTheme.500'}>
+					<BreadcrumbItem
+						isCurrentPage
+						color={isDarkMode ? 'primaryDark.500' : 'cyanLight.500'}>
 						<Text>Collections</Text>
 					</BreadcrumbItem>
 				</Breadcrumb>

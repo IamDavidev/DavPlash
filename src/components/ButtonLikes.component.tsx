@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Button } from '@chakra-ui/react';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
 import { HeartIcon } from './icons';
 
@@ -34,6 +34,7 @@ const setDislike = (setDislike: Function): void =>
 
 const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 	const isDarkMode = useIsDarkMode();
+
 	const [likes, setLikes] = useState<IStateBtnLikes>({
 		likes: 0,
 		isLiked: false,
@@ -56,16 +57,16 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 			width={'80px'}
 			borderRadius={'.5rem'}
 			border={0}
-			color={isDarkMode ? 'secondaryDark.500' : 'secondaryLight.500'}
+			color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}
 			variant={'outline'}
 			_hover={
 				isDarkMode
 					? {
-							backgroundColor: COLORS_THEME.DARK._BG_,
+							backgroundColor: COLORS_THEME.DARK._HOVER_,
 							transition: 'all 0.6s ease-in-out',
 					  }
 					: {
-							backgroundColor: COLORS_THEME.LIGHT._PRIMARY_,
+							backgroundColor: COLORS_THEME.LIGHT._HOVER_,
 							transition: 'all 0.6s ease-in-out',
 					  }
 			}
@@ -74,9 +75,7 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 				<HeartIcon
 					width={'20'}
 					height={20}
-					color={
-						likes.isLiked ? COLORS_THEME._BLUE_ : COLORS_THEME._PURPLE_LIGHT_
-					}
+					color={likes.isLiked ? 'red' : 'purple'}
 				/>
 			}>
 			{likes.likes}

@@ -11,13 +11,17 @@ import {
 
 import { Link } from 'react-router-dom';
 
-import GridPhotos from './layouts/GridPhotos.layout';
-import { NextIcon, PrevIcon } from '~components/icons';
-import { COLORS_THEME } from '~constants/theme.const';
-import Controls from '~components/controls.compoenent';
-import { GridImagesSkeleton } from '~components/skeletons';
-import GridImageError from '~components/skeletons/error/GridImageError.component';
 import { usePhotos } from '~lib/hooks';
+
+import { COLORS_THEME } from '@/config/theme.config';
+
+import Controls from '~components/controls.compoenent';
+import { NextIcon, PrevIcon } from '~components/icons';
+import { GridImagesSkeleton } from '~components/skeletons';
+
+import GridImageError from '~components/skeletons/error/GridImageError.component';
+
+import GridPhotos from './layouts/GridPhotos.layout';
 
 const PhotosView: React.FC = () => {
 	const {
@@ -31,6 +35,7 @@ const PhotosView: React.FC = () => {
 		setQueryPhotos,
 	} = usePhotos();
 
+	console.log(error.isError);
 	if (error.isError)
 		return (
 			<>
@@ -58,14 +63,14 @@ const PhotosView: React.FC = () => {
 					<PrevIcon
 						width={'4rem'}
 						height={'4.5rem'}
-						color={COLORS_THEME._PURPLE_}
+						color={COLORS_THEME.DARK._PRIMARY_}
 					/>
 					<Text color={'blueTheme.500'}>Discover</Text>
 					more Photos
 					<NextIcon
 						width={'4rem'}
 						height={'4.5rem'}
-						color={COLORS_THEME._PURPLE_}
+						color={COLORS_THEME.DARK._PRIMARY_}
 					/>
 				</Heading>
 				<Box>

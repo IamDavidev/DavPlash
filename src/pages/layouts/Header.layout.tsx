@@ -2,11 +2,16 @@ import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { ArrowRightIcon, HeartIcon } from '~components/icons';
-import { COLORS_THEME } from '~constants/theme.const';
+import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
+import { useContext } from 'react';
+import { LoggedInContext } from '~lib/context/loggenIn.context';
 
 const HeaderLayout = () => {
+	const { loggedIn } = useContext(LoggedInContext);
+
 	const isDarkMode = useIsDarkMode();
+
 	return (
 		<>
 			<Box
@@ -37,19 +42,30 @@ const HeaderLayout = () => {
 					Discover, collect and sale extraordinary Photos
 				</Heading>
 				<Stack direction='row' spacing={4} justifyContent={'center'}>
-					<Link to='/plash/discover/collections'>
+					<Link to={loggedIn ? '/plash/discover/collections' : '/plash/login'}>
 						<Box
 							borderRadius={'1rem'}
-							borderColor={isDarkMode ? 'primraryDark' : 'secondaryLight'}
+							borderColor={isDarkMode ? 'primraryDark.500' : 'primaryLight.500'}
 							borderWidth={2}
 							display={'flex'}
 							py={'.5rem'}
+							_hover={
+								isDarkMode
+									? {
+											boxShadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+									: {
+											boxShadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+							}
 							px={'1rem'}
 							alignItems={'center'}
 							justifyContent={'center'}
-							bg={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
+							bg={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 							color={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
-							<Text mx={'2px'}>Get Started</Text>
+							<Text mx={'2px'}>Get Started Collections</Text>
 							<HeartIcon
 								width={20}
 								height={20}
@@ -57,10 +73,21 @@ const HeaderLayout = () => {
 							/>
 						</Box>
 					</Link>
-					<Link to='/plash/discover/photos'>
+					<Link to={loggedIn ? '/plash/discover/photos' : '/plash/login'}>
 						<Box
 							borderRadius={'1rem'}
 							borderColor={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}
+							_hover={
+								isDarkMode
+									? {
+											boxShadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+									: {
+											boxShadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+							}
 							borderWidth={2}
 							display={'flex'}
 							py={'.5rem'}
@@ -71,12 +98,16 @@ const HeaderLayout = () => {
 							<Text
 								mx={'2px'}
 								color={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}>
-								Learn More
+								Learn More Photos
 							</Text>
 							<ArrowRightIcon
 								width={20}
 								height={20}
-								color={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}
+								color={
+									isDarkMode
+										? COLORS_THEME.DARK._TERTIARY_
+										: COLORS_THEME.LIGHT._PRIMARY_
+								}
 							/>
 						</Box>
 					</Link>

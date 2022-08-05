@@ -18,13 +18,13 @@ const CardErrorImage: React.FC = () => {
 				border={'1px solid red'}
 				width={'230px'}
 				margin={'auto'}
-				bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
+				bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 				borderRadius={'10px'}></Box>
 			<Box
 				width={'auto'}
 				border={'1px solid red'}
 				height={'2rem'}
-				bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
+				bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 				borderRadius={'1rem'}
 				my={'1rem'}
 				mx={'1rem'}></Box>
@@ -33,14 +33,14 @@ const CardErrorImage: React.FC = () => {
 					border={'1px solid red'}
 					width={'60%'}
 					borderRadius={'1rem'}
-					bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
+					bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 					height={'2rem'}></Box>
 				<Spacer />
 				<Box
 					border={'1px solid red'}
 					width={'30%'}
 					borderRadius={'1rem'}
-					bg={isDarkMode ? 'blackTheme.500' : 'whiteLight.500'}
+					bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 					height={'2rem'}></Box>
 			</Flex>
 		</Box>
