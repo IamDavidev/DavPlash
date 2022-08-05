@@ -1,6 +1,6 @@
-import { Button, Text } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 import { COLORS_THEME } from '@/config/theme.config';
+import { Box, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { useIsDarkMode } from '~lib/hooks';
 import { ArrowRightIcon } from './icons';
 
@@ -14,8 +14,13 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 	return (
 		<>
 			<Link to={path}>
-				<Button
+				<Box
 					borderRadius={'.5rem'}
+					display={'flex'}
+					flexDir={'row'}
+					gap={'.5rem'}
+					py={'.5rem'}
+					px={'1rem'}
 					border={0}
 					_hover={
 						isDarkMode
@@ -27,21 +32,18 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 									backgroundColor: COLORS_THEME.LIGHT._HOVER_,
 									transition: 'all 0.6s ease-in-out',
 							  }
-					}
-					variant={'outline'}
-					rightIcon={
-						<ArrowRightIcon
-							width={20}
-							height={20}
-							color={COLORS_THEME.DARK._PRIMARY_}
-						/>
 					}>
 					<Text
 						fontSize={'sm'}
 						color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
 						{text}
 					</Text>
-				</Button>
+					<ArrowRightIcon
+						width={20}
+						height={20}
+						color={COLORS_THEME.DARK._PRIMARY_}
+					/>
+				</Box>
 			</Link>
 		</>
 	);

@@ -1,4 +1,6 @@
+import { useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { signUpWithEmailAndPassword } from '~lib/auth/signUpWithEmailAndPassword.auth';
 import {
 	checkingIsValidEmail,
 	checkingIsValidName,
@@ -93,29 +95,13 @@ export function isValidForm({
 }
 
 export default function useForm() {
+	const toast = useToast();
 	const [form, setForm] = useState(INITIAL_STATE_FORM);
 	const [formValid, setFormValid] = useState(false);
-	console.log(
-		'🚀 ~ file: useForm.hook.js ~ line 47 ~ useForm ~ formValid',
-		formValid
-	);
 
 	const ValidationsFields = (e: any) => {
 		e.preventDefault();
-		console.log('🚀 ~ file: useForm.hook.js ~ line 51 ~ ValidationsFiels', e);
 		const { password, email, confirmPassword, username, name } = e.target;
-		console.log(
-			'🚀 ~ file: useForm.hook.ts ~ line 95 ~ ValidationsFiels ~ confirmPassword',
-			confirmPassword
-		);
-		console.log(
-			'🚀 ~ file: useForm.hook.ts ~ line 95 ~ ValidationsFiels ~ email',
-			email
-		);
-		console.log(
-			'🚀 ~ file: useForm.hook.ts ~ line 95 ~ ValidationsFiels ~ password',
-			password
-		);
 		isValidForm({
 			setForm,
 			name,
@@ -128,12 +114,28 @@ export default function useForm() {
 	};
 
 	useEffect(() => {
-		formValid &&
-			console.log(
-				'🚀 ~ file: useForm.hook.js ~ line 58 ~ formValid',
-				formValid
-			);
-	}, [form, formValid]);
+		if (formValid) {
+			signUpWithEmailAndPassword({
+				email: form.email.value,
+				name: form.name.value,
+				password: form.password.value,
+				userName: form.username.value,
+			});
+			if (!toast.isActive('signUp')) {
+				toast({
+					id: 'signUp',
+					title: 'Account created.',
+					description:
+						'You need to confirm your email address. For continue, please check your email.',
+					status: 'warning',
+					colorScheme: 'orange',
+					variant: 'top-accent',
+					duration: 12000,
+					isClosable: true,
+				});
+			}
+		}
+	}, [form, formValid, toast]);
 
 	return {
 		form,

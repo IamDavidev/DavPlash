@@ -1,6 +1,6 @@
 import { Box, Button, HStack, Tooltip, useColorMode } from '@chakra-ui/react';
 
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import { DarkThemeIcon, LightThemeIcon } from '~components/icons';
@@ -11,9 +11,11 @@ import UserIcon from '~components/icons/User.icon';
 
 import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
+import { LoggedInContext } from '~lib/context/loggenIn.context';
+import { signOut } from '~lib/auth/signOut.auth';
 
 const Nabvar: React.FC = () => {
-	const loggedIn = false;
+	const { loggedIn } = useContext(LoggedInContext);
 	const { toggleColorMode } = useColorMode();
 	const isDarkMode = useIsDarkMode();
 	return (
@@ -66,9 +68,11 @@ const Nabvar: React.FC = () => {
 								isDarkMode
 									? {
 											shadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
 									  }
 									: {
 											shadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
 									  }
 							}
 							border={'none'}>
@@ -94,6 +98,7 @@ const Nabvar: React.FC = () => {
 					<HStack spacing={'.5rem'}>
 						{loggedIn ? (
 							<Button
+								onClick={() => signOut()}
 								_hover={
 									isDarkMode
 										? {

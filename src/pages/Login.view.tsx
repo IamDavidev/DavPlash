@@ -14,6 +14,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { GoogleIcon } from '~components/icons';
+import { signInWithGoogle } from '~lib/auth/signInWithGoogle.auth';
 import { useIsDarkMode } from '~lib/hooks';
 import useForm from '~lib/hooks/useForm.hook';
 
@@ -137,12 +138,39 @@ const Login = () => {
 								</Box>
 							</Box>
 						</InputGroup>
-						<Button type='submit' mx={'auto'} my={'1rem'}>
+						<Button
+							_hover={
+								isDarkMode
+									? {
+											shadow: 'shadowDark',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+									: {
+											shadow: 'shadowLight',
+											transition: 'box-shadow 0.35s ease-in-out',
+									  }
+							}
+							colorScheme={'blueG'}
+							type='submit'
+							mx={'auto'}
+							my={'1rem'}>
 							Sign In
 						</Button>
 					</form>
 					<Divider color={isDarkMode ? 'white' : 'black'} my={'2rem'} />
 					<Button
+						_hover={
+							isDarkMode
+								? {
+										shadow: 'shadowDark',
+										transition: 'box-shadow 0.35s ease-in-out',
+								  }
+								: {
+										shadow: 'shadowLight',
+										transition: 'box-shadow 0.35s ease-in-out',
+								  }
+						}
+						onClick={() => signInWithGoogle()}
 						border={isDarkMode ? '1px solid white' : '1px solid black'}
 						leftIcon={<GoogleIcon width={30} height={30} />}
 						width={'100%'}>
