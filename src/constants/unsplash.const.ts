@@ -1,5 +1,7 @@
-export const ApiUnsplashAccessKey: string = import.meta.env.VITE_ACCESS_KEY;
-export const ApiUnsplashSecretKey: string = import.meta.env.VITE_SECRET_KEY;
+export const ApiUnsplashAccessKey: string = import.meta.env
+	.VITE_ACCESS_KEY_API_;
+export const ApiUnsplashSecretKey: string = import.meta.env
+	.VITE_SECRET_KEY_API_;
 
 export const baseURL: string = 'https://api.unsplash.com';
 

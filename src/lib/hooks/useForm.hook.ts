@@ -1,6 +1,6 @@
 import { useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { signUpWithEmailAndPassword } from '~lib/auth/signUpWithEmailAndPassword.auth';
+// import { signUpWithEmailAndPassword } from '~lib/auth/signUpWithEmailAndPassword.auth';
 import {
 	checkingIsValidEmail,
 	checkingIsValidName,
@@ -115,12 +115,12 @@ export default function useForm() {
 
 	useEffect(() => {
 		if (formValid) {
-			signUpWithEmailAndPassword({
-				email: form.email.value,
-				name: form.name.value,
-				password: form.password.value,
-				userName: form.username.value,
-			});
+			// signUpWithEmailAndPassword({
+			// 	email: form.email.value,
+			// 	name: form.name.value,
+			// 	password: form.password.value,
+			// 	userName: form.username.value,
+			// });
 			if (!toast.isActive('signUp')) {
 				toast({
 					id: 'signUp',

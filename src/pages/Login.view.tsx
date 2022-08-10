@@ -53,7 +53,11 @@ const Login = () => {
 									placeholder={'Enter your name'}
 									py={15}
 								/>
-								<Box h={3} fontWeight={'bold'} color={'red'}>
+								<Box
+									h={3}
+									fontWeight={'bold'}
+									color={'purple'}
+									fontSize='.8rem'>
 									{!form.name.isValid && <Text>{form.name.message}</Text>}
 								</Box>
 							</Box>
@@ -62,10 +66,15 @@ const Login = () => {
 									name={'username'}
 									type={'text'}
 									py={15}
+									errorBorderColor={'red.500'}
 									placeholder='Enter UserName'
 									isInvalid={!form.username.isValid}
 								/>
-								<Box h={3} fontWeight={'bold'} color={'red'}>
+								<Box
+									h={3}
+									fontWeight={'bold'}
+									color={'purple'}
+									fontSize='.8rem'>
 									{!form.username.isValid && (
 										<Text>{form.username.message}</Text>
 									)}
@@ -80,6 +89,7 @@ const Login = () => {
 										placeholder='Enter password'
 										py={15}
 										isInvalid={!form.password.isValid}
+										errorBorderColor={'red.500'}
 										name={'password'}
 									/>
 									<InputRightElement width='4.5rem'>
@@ -91,7 +101,7 @@ const Login = () => {
 										</Button>
 									</InputRightElement>
 								</InputGroup>
-								<Box h={3} color={'red'}>
+								<Box h={3} color={'purple'} fontSize='.8rem'>
 									{!form.password.isValid && (
 										<Text>{form.password.message}</Text>
 									)}
@@ -103,6 +113,7 @@ const Login = () => {
 										type={showConfirmPassword ? 'text' : 'password'}
 										placeholder='Confirm password'
 										name={'confirmPassword'}
+										errorBorderColor={'red.500'}
 										py={15}
 										isInvalid={!form.confirmPassword.isValid}
 									/>
@@ -117,7 +128,11 @@ const Login = () => {
 										</Button>
 									</InputRightElement>
 								</InputGroup>
-								<Box h={3} color={'red'}>
+								<Box
+									h={3}
+									color={'purple'}
+									fontSize='.8rem'
+									fontWeight={'bold'}>
 									{!form.confirmPassword.isValid && (
 										<Text>{form.confirmPassword.message}</Text>
 									)}
@@ -131,9 +146,14 @@ const Login = () => {
 									py={15}
 									name='email'
 									placeholder='Enter email'
+									errorBorderColor={'red.500'}
 									isInvalid={!form.email.isValid}
 								/>
-								<Box h={3} color={'red'} fontWeight={'bold'}>
+								<Box
+									h={3}
+									color={'purple'}
+									fontSize='.8rem'
+									fontWeight={'bold'}>
 									{!form.email.isValid && <Text>{form.email.message}</Text>}
 								</Box>
 							</Box>
