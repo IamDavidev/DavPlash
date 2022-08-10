@@ -1,4 +1,15 @@
 import { IStateForm, valueValid } from '~lib/hooks/useForm.hook';
+import {
+	hasAtLeastOneLowercaseLetter,
+	hasAtLeastOneNumber,
+	hasAtLeastOneUppercaseLetter,
+	hasLessEightCharacters,
+	hasMoreSixtyFourCharacters,
+	hasSpace,
+	isEqualValues,
+	isExixting,
+	isFormatCorrectTheEmail,
+} from './form.validations';
 
 export function checkingIsValidPassword(
 	setPassword: Function,
@@ -24,25 +35,25 @@ export function checkingIsValidPassword(
 	 * @validations password
 	 */
 
-	if (value === '') return setErrorPassword('Password is required');
+	if (!isExixting(value)) return setErrorPassword('Password is required');
 
-	if (value.length < 8)
+	if (hasLessEightCharacters(value))
 		return setErrorPassword('Password must be at least 8 characters');
 
-	if (value.length > 64)
+	if (hasMoreSixtyFourCharacters(value))
 		return setErrorPassword('Password must be less than 64 characters');
 
-	if (value.search(/[a-z]/) === -1)
+	if (!hasAtLeastOneLowercaseLetter(value))
 		return setErrorPassword(
 			'Password must contain at least one lowercase letter'
 		);
 
-	if (value.search(/[A-Z]/) === -1)
+	if (!hasAtLeastOneUppercaseLetter(value))
 		return setErrorPassword(
 			'Password must contain at least one uppercase letter'
 		);
 
-	if (value.search(/[0-9]/) === -1)
+	if (!hasAtLeastOneNumber(value))
 		return setErrorPassword('Password must contain at least one number');
 
 	/**
@@ -87,10 +98,10 @@ export function checkingIsValidPasswordConfirmation(
 	/**
 	 * @validations confirmPassword
 	 */
-	if (value === '')
+	if (!isExixting(value))
 		return setErrorConfirmPassword('Password confirmation is required');
 
-	if (value !== valuePassword)
+	if (!isEqualValues(value, valuePassword))
 		return setErrorConfirmPassword("password doesn't match");
 
 	/**
@@ -135,17 +146,13 @@ export function checkingIsValidEmail(
 	 * @validations email
 	 */
 
-	if (value === '') return setErrorEmail('Email is required');
+	if (!isExixting(value)) return setErrorEmail('Email is required');
 
-	if (
-		value.search(
-			/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-		) === -1
-	)
+	if (isFormatCorrectTheEmail(value))
 		return setErrorEmail('Email is not valid');
 
-	if (value.length > 64)
-		return setErrorEmail('Email must be less than 64 characters');
+	// if (value.length > 64)
+	// 	return setErrorEmail('Email must be less than 64 characters');
 
 	/**
 	 * @set State email Valid
@@ -189,12 +196,12 @@ export function checkingIsValidUsername(
 	/**
 	 * @validations username
 	 */
-	if (value === '') return setErrorUserName('Username is required');
+	if (!isExixting(value)) return setErrorUserName('Username is required');
 
-	if (value.length < 8)
+	if (hasLessEightCharacters(value))
 		return setErrorUserName('Username must be at least 8 characters');
 
-	if (value.length > 64)
+	if (hasMoreSixtyFourCharacters(value))
 		return setErrorUserName('Username must be less than 64 characters');
 
 	if (value.search(/[a-z]/) === -1)
@@ -203,7 +210,7 @@ export function checkingIsValidUsername(
 		);
 
 	//  search for spaces with regex
-	if (value.search(/\s/) !== -1)
+	if (hasSpace(value))
 		return setErrorUserName('Username must not contain spaces');
 
 	/**
@@ -244,11 +251,12 @@ export function checkingIsValidName(
 	/**
 	 * @validations name
 	 */
-	if (value === '') return setErrorName('Name is required');
+	if (!isExixting(value)) return setErrorName('Name is required');
 
 	/**
 	 * @set State name Valid
 	 */
+
 	setName(
 		(prev: IStateForm): IStateForm => ({
 			...prev,
