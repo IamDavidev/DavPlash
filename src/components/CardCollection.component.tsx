@@ -47,8 +47,8 @@ const CardCollection = ({
 		<Box
 			bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 			minWidth={'100%'}
-			width={'400px'}
-			maxWidth={'400px'}
+			width={'380px'}
+			maxWidth={'390x'}
 			border={'2px'}
 			borderColor={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 			borderRadius={'1rem'}>
