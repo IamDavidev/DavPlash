@@ -36,6 +36,7 @@ const Login = () => {
 			</Link>
 			<Heading>Login</Heading>
 			<Flex
+				id='login-form'
 				flexDir={'row'}
 				flexWrap={'wrap'}
 				justifyContent={'space-evenly'}
@@ -191,10 +192,10 @@ const Login = () => {
 								  }
 						}
 						onClick={() => signInWithGoogle()}
-						border={isDarkMode ? '1px solid white' : '1px solid black'}
+						// border={isDarkMode ? '1px solid white' : '1px solid black'}
 						leftIcon={<GoogleIcon width={30} height={30} />}
 						width={'100%'}>
-						Google
+						Login With Google
 					</Button>
 				</Box>
 				<Box

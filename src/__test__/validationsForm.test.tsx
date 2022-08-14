@@ -1,6 +1,5 @@
-import { execPath } from 'process';
-import { isGeneratorFunction } from 'util/types';
 import { describe, expect, it } from 'vitest';
+
 import {
 	hasAtLeastOneLowercaseLetter,
 	hasAtLeastOneNumber,

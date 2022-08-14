@@ -37,7 +37,6 @@ const HeaderLayout = () => {
 					justifyContent={'center'}
 					alignItems={'center'}
 					textAlign={'center'}
-					width={'25ch'}
 					my={'2rem'}>
 					Discover, collect and sale extraordinary Photos
 				</Heading>

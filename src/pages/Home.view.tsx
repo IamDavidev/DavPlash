@@ -4,12 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { COLORS_THEME } from '@/config/theme.config';
 
-import {
-	useColllections,
-	useIsDarkMode,
-	usePhotos,
-	useUsers,
-} from '~lib/hooks';
+import { useCollections, useIsDarkMode, usePhotos, useUsers } from '~lib/hooks';
 
 import GridCollections from './layouts/GridCollections.layout';
 import GridPhotos from './layouts/GridPhotos.layout';
@@ -28,7 +23,7 @@ const HomeView = () => {
 	const isDarkMode = useIsDarkMode();
 
 	const { photos, error: errorPhotos } = usePhotos();
-	const { collections, error: errorCollections } = useColllections();
+	const { collections, error: errorCollections } = useCollections();
 	const { users, error: errorUsers } = useUsers();
 
 	return (

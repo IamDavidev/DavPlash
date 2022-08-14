@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { Box, Wrap, WrapItem } from '@chakra-ui/react';
 
@@ -10,14 +10,14 @@ interface IGridPhotosProps {
 	photos: IAdapterPhotos[];
 }
 
-const GridPhotos: React.FC<IGridPhotosProps> = ({ photos }) => {
+const GridPhotos: FC<IGridPhotosProps> = ({ photos }) => {
 	return (
 		<Box width={'100%'} my={'2rem'} pos={'relative'} zIndex={10}>
 			<Wrap
 				py={'2rem'}
 				spacing={'2rem'}
 				spacingX={'3.5rem'}
-				justify='center'
+				justify={'space-around'}
 				width={'100%'}>
 				{photos.length > 0 &&
 					photos.map((photo: IAdapterPhotos) => {

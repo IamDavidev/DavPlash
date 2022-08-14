@@ -23,6 +23,7 @@ module.exports = {
     'testing-library',
   ],
   rules: {
+    "no-use-before-define": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       "warn", {

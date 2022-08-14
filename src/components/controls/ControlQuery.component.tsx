@@ -59,7 +59,7 @@ const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
 						color: COLORS_THEME.DARK._HOVER_,
 					}}
 					color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}
-					placeholder='coffe'
+					placeholder='coffee'
 					ref={queryValue}
 					htmlSize={30}
 					borderWidth={1}

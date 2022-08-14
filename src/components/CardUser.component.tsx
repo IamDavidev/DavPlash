@@ -24,7 +24,7 @@ const CardUser: React.FC<ICardUserProps> = ({
 		<>
 			<Box
 				display={'flex'}
-				width={'305px'}
+				width={'295px'}
 				alignItems={'center'}
 				overflow={'hidden'}
 				flexWrap={'wrap'}

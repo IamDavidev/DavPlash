@@ -28,6 +28,7 @@ const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 	return (
 		<Flex justifyContent={'center'} gap={'.5rem'} alignItems={'center'}>
 			<Button
+				data-testid='control-page-prev'
 				onClick={() => setPagePrev()}
 				border={'none'}
 				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
@@ -49,6 +50,7 @@ const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 				{' / 10'}
 			</Text>
 			<Button
+				data-testid='control-page-next'
 				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 				border={'none'}
 				onClick={() => setPageNext()}>

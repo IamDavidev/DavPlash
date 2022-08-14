@@ -1,15 +1,6 @@
 import React from 'react';
 
-import {
-	Box,
-	Breadcrumb,
-	BreadcrumbItem,
-	Code,
-	Heading,
-	Text,
-} from '@chakra-ui/react';
-
-import { Link } from 'react-router-dom';
+import { Box, Code, Heading, Text } from '@chakra-ui/react';
 
 import { usePhotos } from '~lib/hooks';
 
@@ -35,54 +26,50 @@ const PhotosView: React.FC = () => {
 		setQueryPhotos,
 	} = usePhotos();
 
-	console.log(error.isError);
-	if (error.isError)
-		return (
-			<>
-				<Heading>
-					<Code>{error.code}</Code>
-					<Text>{error.message}</Text>
-				</Heading>
-				<GridImageError />
-			</>
-		);
-
 	return (
 		<>
 			<Box>
-				<Breadcrumb fontWeight={'bold'} fontSize={'xl'} color={'white'}>
-					<BreadcrumbItem>
-						<Link to='/plash'>Discover</Link>
-					</BreadcrumbItem>
-
-					<BreadcrumbItem isCurrentPage color={'purpleTheme.500'}>
-						<Text>Photos</Text>
-					</BreadcrumbItem>
-				</Breadcrumb>
-				<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
-					<PrevIcon
-						width={'4rem'}
-						height={'4.5rem'}
-						color={COLORS_THEME.DARK._PRIMARY_}
-					/>
-					<Text color={'blueTheme.500'}>Discover</Text>
-					more Photos
-					<NextIcon
-						width={'4rem'}
-						height={'4.5rem'}
-						color={COLORS_THEME.DARK._PRIMARY_}
-					/>
-				</Heading>
-				<Box>
-					<Controls
-						page={page}
-						setPage={setPagePhotos}
-						setQuery={setQueryPhotos}
-						setOrderBy={setOrderByPhotos}
-					/>
+				<>
+					<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
+						<PrevIcon
+							width={'4rem'}
+							height={'4.5rem'}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+						<Text color={'blueTheme.500'}>Discover More Photos</Text>
+						<NextIcon
+							width={'4rem'}
+							height={'4.5rem'}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+					</Heading>
+				</>
+				<>
+					{error.isError && (
+						<>
+							<Text color={'red.500'}>{error.message}</Text>
+							<>
+								<Heading>
+									<Code>{error.code}</Code>
+									<Text>{error.message}</Text>
+								</Heading>
+								<GridImageError />
+							</>
+						</>
+					)}
+					{!error.isError && (
+						<Controls
+							page={page}
+							setPage={setPagePhotos}
+							setOrderBy={setOrderByPhotos}
+							setQuery={setQueryPhotos}
+						/>
+					)}
+				</>
+				<>
 					{isLoading && <GridImagesSkeleton length={totalPhotos} />}
-				</Box>
-				{photos && <GridPhotos photos={photos} />}
+					{photos && <GridPhotos photos={photos} />}
+				</>
 			</Box>
 		</>
 	);

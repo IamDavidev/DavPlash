@@ -15,7 +15,7 @@ import PublicRoutes from './routes/Public.routes';
 
 const App: FC = () => {
 	const isDarkMode = useIsDarkMode();
-	const isLoggedIn: boolean = false;
+	const isLoggedIn: boolean = true;
 	return (
 		<Box
 			px={'10'}

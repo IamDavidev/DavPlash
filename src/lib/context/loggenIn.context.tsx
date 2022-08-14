@@ -1,5 +1,12 @@
 import { supabase } from '@/config/clients';
-import React, { createContext, useEffect, useState } from 'react';
+import {
+	Context,
+	createContext,
+	FC,
+	ReactNode,
+	useEffect,
+	useState,
+} from 'react';
 import { EVENTS_ON_AUTH_STATE_CHAGE } from '~constants/events.const';
 import { getCurrentUser } from '~lib/services/getCurrentUser.service';
 
@@ -8,13 +15,16 @@ interface contextLoggen {
 	toggleLoggedIn: () => void;
 }
 
-export const LoggedInContext: React.Context<contextLoggen> =
+export const LoggedInContext: Context<contextLoggen> =
 	createContext<contextLoggen>({
 		loggedIn: false,
 		toggleLoggedIn: () => {},
 	});
+interface providerLoggen {
+	children: ReactNode;
+}
 
-const ProviderLoggendIn = ({ children }: { children: React.ReactNode }) => {
+const ProviderLoggendIn: FC<providerLoggen> = ({ children }) => {
 	const user = getCurrentUser();
 	console.log(
 		'🚀 ~ file: loggenIn.context.tsx ~ line 19 ~ ProviderLoggendIn ~ user',

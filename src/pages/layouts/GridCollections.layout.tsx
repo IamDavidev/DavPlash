@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 import { Box, Wrap, WrapItem } from '@chakra-ui/react';
 
@@ -10,12 +10,11 @@ type GridCollectionsProps = {
 	collections: IAdapterCollection[];
 };
 
-const GridCollections: React.FC<GridCollectionsProps> = ({
-	collections,
-}: GridCollectionsProps) => {
+const GridCollections: FC<GridCollectionsProps> = ({ collections }) => {
 	return (
 		<Box py={'2rem'} pos={'relative'} zIndex={10}>
 			<Wrap
+				id='test-home-container-card-photos'
 				spacing={'2.5rem'}
 				justify={'center'}
 				width={'100%'}
