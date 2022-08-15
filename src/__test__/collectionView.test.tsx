@@ -1,5 +1,5 @@
 import { MockCollectionsView } from '@/__mocks__/discoverViews.mock';
-import { prettyDOM, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
 describe('collections page ', () => {
@@ -8,7 +8,6 @@ describe('collections page ', () => {
 
 		/**
 		 * controls page
-		 *
 		 */
 		const controlPage = wrapperCollectionPage.getByText('Page');
 

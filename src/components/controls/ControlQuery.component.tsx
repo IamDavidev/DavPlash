@@ -7,6 +7,8 @@ import {
 
 import React, { useEffect, useRef, useState } from 'react';
 
+import { useHotkeys } from 'react-hotkeys-hook';
+
 import { ArrowCircleRight, SearchIcon } from '~components/icons';
 
 import { COLORS_THEME } from '@/config/theme.config';
@@ -29,6 +31,9 @@ const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
 
 		queryValue.current && (queryValue.current.value = '');
 	};
+	useHotkeys('ctrl+K', () => {
+		console.log('ctrl+K');
+	});
 
 	useEffect(() => {
 		queryValue.current && queryValue.current.focus();
