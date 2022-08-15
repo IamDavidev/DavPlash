@@ -12,11 +12,12 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { GoogleIcon } from '~components/icons';
+
 import { signInWithGoogle } from '~lib/auth/signInWithGoogle.auth';
-import { useIsDarkMode } from '~lib/hooks';
-import useForm from '~lib/hooks/useForm.hook';
+import { useIsDarkMode, useForm } from '~lib/hooks';
 
 const Login = () => {
 	const isDarkMode = useIsDarkMode();
@@ -54,11 +55,7 @@ const Login = () => {
 									placeholder={'Enter your name'}
 									py={15}
 								/>
-								<Box
-									h={3}
-									fontWeight={'bold'}
-									color={'purple'}
-									fontSize='.8rem'>
+								<Box h={3} color={'red'} fontSize='.8rem'>
 									{!form.name.isValid && <Text>{form.name.message}</Text>}
 								</Box>
 							</Box>
@@ -71,11 +68,7 @@ const Login = () => {
 									placeholder='Enter UserName'
 									isInvalid={!form.username.isValid}
 								/>
-								<Box
-									h={3}
-									fontWeight={'bold'}
-									color={'purple'}
-									fontSize='.8rem'>
+								<Box h={3} color={'red'} fontSize='.8rem'>
 									{!form.username.isValid && (
 										<Text>{form.username.message}</Text>
 									)}
@@ -102,7 +95,7 @@ const Login = () => {
 										</Button>
 									</InputRightElement>
 								</InputGroup>
-								<Box h={3} color={'purple'} fontSize='.8rem'>
+								<Box h={3} color={'red'} fontSize='.8rem'>
 									{!form.password.isValid && (
 										<Text>{form.password.message}</Text>
 									)}
@@ -129,11 +122,7 @@ const Login = () => {
 										</Button>
 									</InputRightElement>
 								</InputGroup>
-								<Box
-									h={3}
-									color={'purple'}
-									fontSize='.8rem'
-									fontWeight={'bold'}>
+								<Box h={3} color={'red'} fontSize='.8rem'>
 									{!form.confirmPassword.isValid && (
 										<Text>{form.confirmPassword.message}</Text>
 									)}
@@ -150,11 +139,7 @@ const Login = () => {
 									errorBorderColor={'red.500'}
 									isInvalid={!form.email.isValid}
 								/>
-								<Box
-									h={3}
-									color={'purple'}
-									fontSize='.8rem'
-									fontWeight={'bold'}>
+								<Box h={3} color={'red'} fontSize='.8rem'>
 									{!form.email.isValid && <Text>{form.email.message}</Text>}
 								</Box>
 							</Box>

@@ -1,19 +1,35 @@
-import { lazy } from 'react';
+import { FC, lazy, LazyExoticComponent } from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import HomeView from '~pages/Home.view';
 
-const Photos = lazy(() => import('~pages/photos.view'));
-const Photo = lazy(() => import('~pages/Photo.view'));
+const Photos: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/photos.view')
+);
+const Photo: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Photo.view')
+);
 
-const Collections = lazy(() => import('~pages/Collections.view'));
-const Collection = lazy(() => import('~pages/Collection.view'));
+const Collections: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Collections.view')
+);
+const Collection: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Collection.view')
+);
 
-const Users = lazy(() => import('~pages/Users.view'));
-const User = lazy(() => import('~pages/User.view'));
+const Users: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Users.view')
+);
+const User: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/User.view')
+);
 
-const PrivateRoutes = () => {
+const Profile: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Profile.view')
+);
+
+const PrivateRoutes: FC = () => {
 	return (
 		<Routes>
 			<Route path='/plash/' element={<HomeView />} />
@@ -30,6 +46,9 @@ const PrivateRoutes = () => {
 
 			<Route path='/plash/discover/users' element={<Users />} />
 			<Route path='/plash/discover/users/:username' element={<User />} />
+
+			<Route path='/plash/user/:user' element={<Profile />} />
+
 			<Route path='*' element={<Navigate to='/plash/' replace />} />
 		</Routes>
 	);

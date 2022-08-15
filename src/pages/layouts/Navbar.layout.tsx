@@ -10,14 +10,20 @@ import DavPlashIcon from '~components/icons/Davplash.icon';
 import UserIcon from '~components/icons/User.icon';
 
 import { COLORS_THEME } from '@/config/theme.config';
-import { useIsDarkMode } from '~lib/hooks';
-import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { signOut } from '~lib/auth/signOut.auth';
+import { LoggedInContext } from '~lib/context/loggenIn.context';
+import { useIsDarkMode } from '~lib/hooks';
+import { getCurrentUser } from '~lib/services/getCurrentUser.service';
 
 const Nabvar: React.FC = () => {
+	const user = getCurrentUser();
+	console.log('🚀 ~ file: Navbar.layout.tsx ~ line 20 ~ user', user);
+
 	const { loggedIn } = useContext(LoggedInContext);
 	const { toggleColorMode } = useColorMode();
-	const isDarkMode = useIsDarkMode();
+	const isDarkMode: boolean = useIsDarkMode();
+	const profileUser: string = user?.user_metadata.name.replaceAll(' ', '-');
+
 	return (
 		<>
 			<Box
@@ -149,7 +155,7 @@ const Nabvar: React.FC = () => {
 								borderRadius={'.5rem'}
 								bg={isDarkMode ? 'primaryDark' : 'cyanLight.500'}
 								color={isDarkMode ? 'white' : 'black'}>
-								<Link to={'/plash/user/me'}>
+								<Link to={`/plash/user/${profileUser}`}>
 									<UserIcon
 										width={'30'}
 										height={'30'}

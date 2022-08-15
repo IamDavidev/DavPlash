@@ -1,4 +1,4 @@
-import { FC, lazy } from 'react';
+import { FC, lazy, LazyExoticComponent } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import HomeView from '~pages/Home.view';
@@ -7,9 +7,15 @@ import HomeView from '~pages/Home.view';
  * lazy loading in Pages
  */
 
-const Login = lazy(() => import('~pages/Login.view'));
-const NoAccess = lazy(() => import('~pages/NoAccess.view'));
-const Page404 = lazy(() => import('~pages/404.view'));
+const Login: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/Login.view')
+);
+const NoAccess: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/NoAccess.view')
+);
+const Page404: LazyExoticComponent<FC<{}>> = lazy(
+	() => import('~pages/404.view')
+);
 
 const PublicRoutes: FC = () => {
 	return (

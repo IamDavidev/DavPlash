@@ -26,10 +26,6 @@ interface providerLoggen {
 
 const ProviderLoggendIn: FC<providerLoggen> = ({ children }) => {
 	const user = getCurrentUser();
-	console.log(
-		'🚀 ~ file: loggenIn.context.tsx ~ line 19 ~ ProviderLoggendIn ~ user',
-		user
-	);
 
 	const [loggedIn, setLoggedIn] = useState(false);
 
@@ -37,22 +33,15 @@ const ProviderLoggendIn: FC<providerLoggen> = ({ children }) => {
 
 	useEffect(() => {
 		const { data } = supabase.auth.onAuthStateChange(
-			(evt /* evento */, sesion): void => {
+			(evt /* evento */, _ /* sesion */): void => {
 				if (evt === EVENTS_ON_AUTH_STATE_CHAGE._SIGNED_OUT_)
 					return setLoggedIn(false);
-				console.log(
-					'🚀 ~ file: loggenIn.context.tsx ~ line 22 ~ supabase.auth.onAuthStateChange ~ evt',
-					evt
-				);
-				console.log(
-					'🚀 ~ file: loggenIn.context.tsx ~ line 22 ~ supabase.auth.onAuthStateChange ~ sesion',
-					sesion
-				);
+				if (evt === 'SIGNED_IN') return setLoggedIn(true);
 			}
 		);
-		if (user) {
-			return setLoggedIn(true);
-		}
+
+		if (user) return setLoggedIn(true);
+
 		return () => {
 			data?.unsubscribe();
 		};

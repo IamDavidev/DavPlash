@@ -8,4 +8,4 @@ export { default as useUsers } from './useUsers.hook';
 export { default as useUser } from './useUser.hook';
 
 export { default as useIsDarkMode } from './useIsDarkMode.hook';
-export { default as useFomr } from './useForm.hook';
+export { default as useForm } from './useForm.hook';
