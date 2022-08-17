@@ -47,7 +47,7 @@ const PrivateRoutes: FC = () => {
 			<Route path='/plash/discover/users' element={<Users />} />
 			<Route path='/plash/discover/users/:username' element={<User />} />
 
-			<Route path='/plash/user/:user' element={<Profile />} />
+			<Route path='/plash/user/me' element={<Profile />} />
 
 			<Route path='*' element={<Navigate to='/plash/' replace />} />
 		</Routes>

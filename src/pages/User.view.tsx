@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link as LinkNav } from 'react-router-dom';
+import { Link as LinkNav, useParams } from 'react-router-dom';
 
 import {
 	Box,
@@ -15,20 +15,15 @@ import {
 	WrapItem,
 } from '@chakra-ui/react';
 
-import {
-	AtSymbolIcon,
-	InstagramIcon,
-	LineIcon,
-	TwitterIcon,
-} from '~components/icons';
-
-import VerifiedIcon from '~components/icons/verified.icon';
+import { AtSymbolIcon, InstagramIcon, TwitterIcon } from '~components/icons';
 
 import { COLORS_THEME } from '@/config/theme.config';
 
 import useUser from '~lib/hooks/useUser.hook';
 
+import ImageUser from '~components/ImageUser.component';
 import { CardSkeletonUserView } from '~components/skeletons';
+import StatsUser from '~components/statsUser.component';
 import { useIsDarkMode } from '~lib/hooks';
 
 const UserView: React.FC = () => {
@@ -66,7 +61,7 @@ const UserView: React.FC = () => {
 			</Breadcrumb>
 
 			<Flex flexDir={'column'}>
-				<Flex
+				{/* <Flex
 					width={'100%'}
 					justifyContent={'center'}
 					mb={'1rem'}
@@ -89,7 +84,8 @@ const UserView: React.FC = () => {
 							/>
 						</Box>
 					</Box>
-				</Flex>
+				</Flex> */}
+				<ImageUser profileImage={user.profileImage} username={user.username} />
 				<Box
 					width={'100%'}
 					justifyContent={'center'}
@@ -147,7 +143,7 @@ const UserView: React.FC = () => {
 						</>
 					)}
 				</Box>
-				<Box
+				{/* <Box
 					max-width={'80%'}
 					mx={'auto'}
 					my={'2rem'}
@@ -214,7 +210,14 @@ const UserView: React.FC = () => {
 							{user.totalPhotos}
 						</Text>
 					</Flex>
-				</Box>
+				</Box> */}
+				<StatsUser
+					followers={user.followers}
+					following={user.following}
+					location={user.location}
+					likes={user.likes}
+					photos={user.totalPhotos}
+				/>
 				<Box
 					textAlign={'center'}
 					color={'whiteTheme.500'}
@@ -253,7 +256,7 @@ const UserView: React.FC = () => {
 						photos.map((photo: any) => {
 							return (
 								<>
-									<WrapItem key={photo.id}>
+									<WrapItem key={photo.id} className='masonry-image'>
 										<Image
 											borderRadius={'1rem'}
 											src={photo.urls.small}

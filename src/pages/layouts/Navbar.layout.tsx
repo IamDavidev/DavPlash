@@ -13,16 +13,11 @@ import { COLORS_THEME } from '@/config/theme.config';
 import { signOut } from '~lib/auth/signOut.auth';
 import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { useIsDarkMode } from '~lib/hooks';
-import { getCurrentUser } from '~lib/services/getCurrentUser.service';
 
 const Nabvar: React.FC = () => {
-	const user = getCurrentUser();
-	console.log('🚀 ~ file: Navbar.layout.tsx ~ line 20 ~ user', user);
-
 	const { loggedIn } = useContext(LoggedInContext);
 	const { toggleColorMode } = useColorMode();
 	const isDarkMode: boolean = useIsDarkMode();
-	const profileUser: string = user?.user_metadata.name.replaceAll(' ', '-');
 
 	return (
 		<>
@@ -109,16 +104,14 @@ const Nabvar: React.FC = () => {
 									isDarkMode
 										? {
 												boxShadow: 'shadowDark',
-												borderRadius: '1rem',
+												transition: 'box-shadow 0.35s ease-in-out',
 										  }
 										: {
 												boxShadow: `shadowLight`,
-												borderRadius: '1rem',
+												transition: 'box-shadow 0.35s ease-in-out',
 										  }
 								}
-								colorScheme={
-									isDarkMode ? 'primaryDark.500' : 'primaryLight.500'
-								}>
+								colorScheme={isDarkMode ? 'primaryDark' : 'primaryLight'}>
 								Logout
 							</Button>
 						) : (
@@ -150,12 +143,12 @@ const Nabvar: React.FC = () => {
 							<Tooltip
 								hasArrow
 								zIndex={'99'}
-								boxShadow={isDarkMode ? 'shadowDark' : 'shadowLight'}
+								// boxShadow={}
 								label='User profile'
 								borderRadius={'.5rem'}
 								bg={isDarkMode ? 'primaryDark' : 'cyanLight.500'}
 								color={isDarkMode ? 'white' : 'black'}>
-								<Link to={`/plash/user/${profileUser}`}>
+								<Link to={`/plash/user/me`}>
 									<UserIcon
 										width={'30'}
 										height={'30'}
