@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { GoogleIcon } from '~components/icons';
 
-import { signInWithGoogle } from '~lib/auth/signInWithGoogle.auth';
+import { signInWithGoogle } from '~lib/services';
 import { useIsDarkMode, useForm } from '~lib/hooks';
 
 const Login = () => {

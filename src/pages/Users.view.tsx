@@ -12,9 +12,9 @@ const UsersView = () => {
 		<>
 			<Box>
 				<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
-					<PrevIcon width={'4rem'} height={'4.5rem'} />
+					<PrevIcon width={50} height={90} />
 					<Text>Discover more Users</Text>
-					<NextIcon width={'4rem'} height={'4.5rem'} />
+					<NextIcon width={50} height={90} />
 				</Heading>
 				{error.isError && (
 					<>

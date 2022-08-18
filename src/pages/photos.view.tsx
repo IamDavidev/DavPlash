@@ -32,14 +32,14 @@ const PhotosView: React.FC = () => {
 				<>
 					<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
 						<PrevIcon
-							width={'4rem'}
-							height={'4.5rem'}
+							width={50}
+							height={90}
 							color={COLORS_THEME.DARK._PRIMARY_}
 						/>
 						<Text color={'blueTheme.500'}>Discover More Photos</Text>
 						<NextIcon
-							width={'4rem'}
-							height={'4.5rem'}
+							width={50}
+							height={90}
 							color={COLORS_THEME.DARK._PRIMARY_}
 						/>
 					</Heading>

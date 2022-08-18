@@ -1,5 +1,7 @@
 // has === tiene
 
+import { emitWarning } from 'process';
+
 const FORMAT_EMAIL =
 	"/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/";
 
@@ -86,7 +88,7 @@ export function isEqualValues(value: any, valueToBeCompared: any): boolean {
  * @returns if Email has the format correct return @true else return @false
  */
 export function isFormatCorrectTheEmail(email: string): boolean {
-	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) return true;
+	if (email.match(FORMAT_EMAIL)) return true;
 
 	return false;
 }
