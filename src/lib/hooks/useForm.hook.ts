@@ -1,6 +1,8 @@
 import { useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-// import { signUpWithEmailAndPassword } from '~lib/auth/signUpWithEmailAndPassword.auth';
+import { INITIAL_STATE_FORM } from '~constants/form.const';
+import { signUpWithEmailAndPassword } from '~lib/services';
+
 import {
 	checkingIsValidEmail,
 	checkingIsValidName,
@@ -8,57 +10,6 @@ import {
 	checkingIsValidPasswordConfirmation,
 	checkingIsValidUsername,
 } from '~lib/validations/form.valid';
-
-export type valueValid = {
-	value: string;
-	isValid: boolean;
-	message: string | null;
-};
-
-export interface IStateForm {
-	username: valueValid;
-	email: valueValid;
-	password: valueValid;
-	confirmPassword: valueValid;
-	name: valueValid;
-	profilePicture: valueValid;
-	formIsValid: boolean;
-}
-
-export const INITIAL_STATE_FORM: IStateForm = {
-	password: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-	name: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-	confirmPassword: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-	username: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-	email: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-	profilePicture: {
-		message: null,
-		isValid: true,
-		value: '',
-	},
-
-	formIsValid: false,
-};
 
 export function isValidForm({
 	setForm,
@@ -87,8 +38,6 @@ export function isValidForm({
 		isValidEmail,
 	];
 
-	console.log('🚀 ~ file: useForm.hook.js ~ line 35 ~ validForm', validForm);
-
 	if (validForm.includes(false)) return setFormValid(false);
 
 	setFormValid(true);
@@ -115,18 +64,18 @@ export default function useForm() {
 
 	useEffect(() => {
 		if (formValid) {
-			// signUpWithEmailAndPassword({
-			// 	email: form.email.value,
-			// 	name: form.name.value,
-			// 	password: form.password.value,
-			// 	userName: form.username.value,
-			// });
+			signUpWithEmailAndPassword({
+				email: form.email.value,
+				name: form.name.value,
+				password: form.password.value,
+				userName: form.username.value,
+			});
 			if (!toast.isActive('signUp')) {
 				toast({
 					id: 'signUp',
 					title: 'Account created.',
 					description:
-						'You need to confirm your email address. For continue, please check your email.',
+						'You need to confirm your email address. For continue, please check your email And reload the page.',
 					status: 'warning',
 					colorScheme: 'orange',
 					variant: 'top-accent',

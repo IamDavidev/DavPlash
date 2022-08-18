@@ -10,7 +10,7 @@ import DavPlashIcon from '~components/icons/Davplash.icon';
 import UserIcon from '~components/icons/User.icon';
 
 import { COLORS_THEME } from '@/config/theme.config';
-import { signOut } from '~lib/auth/signOut.auth';
+import { signOut } from '~lib/services';
 import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { useIsDarkMode } from '~lib/hooks';
 

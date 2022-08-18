@@ -1,5 +1,4 @@
-import { FC, useRef } from 'react';
-
+import { COLORS_THEME } from '@/config/theme.config';
 import {
 	FormLabel,
 	Input,
@@ -8,44 +7,43 @@ import {
 	useDisclosure,
 	useToast,
 } from '@chakra-ui/react';
-
+import { FC, useRef } from 'react';
 import { AtSymbolIcon } from '~components/icons';
 import { useIsDarkMode } from '~lib/hooks';
-import { updateUserName } from '~lib/services/updateUsername.service';
+import { updateName } from '~lib/services';
 import DrawerCustom from './DrwerCustom.component';
-import { COLORS_THEME } from '@/config/theme.config';
 
-const DrawerUserName: FC = () => {
-	const refUserName = useRef<HTMLInputElement>(null);
-	const { onClose, isOpen, onOpen } = useDisclosure();
+const DrawerName: FC = () => {
 	const toast = useToast();
 	const isDarkMode = useIsDarkMode();
+	const refName = useRef<HTMLInputElement>(null);
+	const { onClose, isOpen, onOpen } = useDisclosure();
 
 	return (
 		<>
 			<DrawerCustom
-				onOpen={onOpen}
-				placement='right'
-				schemaColor={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}
-				title='UserName'
+				title={'Name'}
 				onClose={onClose}
+				onOpen={onOpen}
+				schemaColor={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}
+				isOpen={isOpen}
 				action={() => {
 					toast({
-						title: 'Success Update User',
-						description: `Your user name(${refUserName.current?.value}) has been updated`,
+						title: 'Success',
+						description: `Your name(${refName?.current?.value}) has been updated`,
 						status: 'success',
 						duration: 9000,
 						isClosable: true,
 					});
-					updateUserName({
-						userName: refUserName.current?.value,
+					updateName({
+						newName: refName?.current?.value,
 					});
 				}}
-				isOpen={isOpen}>
-				<FormLabel htmlFor={'username'}>Edit </FormLabel>
+				placement='right'>
+				<FormLabel htmlFor='user'>Edit</FormLabel>
 				<InputGroup>
 					<InputLeftElement
-						pointerEvents='none'
+						pointerEvents={'none'}
 						// eslint-disable-next-line react/no-children-prop
 						children={
 							<AtSymbolIcon
@@ -57,9 +55,9 @@ const DrawerUserName: FC = () => {
 					/>
 					<Input
 						type={'text'}
-						placeholder={'coffeeMaster500'}
-						id='username'
-						ref={refUserName}
+						placeholder={'juanito ref'}
+						id={'name'}
+						ref={refName}
 					/>
 				</InputGroup>
 			</DrawerCustom>
@@ -67,4 +65,4 @@ const DrawerUserName: FC = () => {
 	);
 };
 
-export default DrawerUserName;
+export default DrawerName;

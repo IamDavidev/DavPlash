@@ -1,3 +1,4 @@
+export * from './createUserData.service';
 export * from './getCollection.service';
 export * from './getCollectionPhotos.service';
 export * from './getCollections.service';
@@ -9,5 +10,9 @@ export * from './getPhotosUser.service';
 export * from './getUser.service';
 export * from './getUsers.service';
 export * from './service';
+export * from './signInWithGoogle.auth';
+export * from './signOut.auth';
+export * from './signUpWithEmailAndPassword.auth';
 export * from './updateBio.service';
-export * from './updateUser.service';
+export * from './updateName.service';
+export * from './updateUsername.service';

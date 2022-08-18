@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { EditIcon } from '~components/icons';
+import { useIsDarkMode } from '~lib/hooks';
 
 interface IDrawerCustomProps {
 	placement: 'left' | 'right' | 'top' | 'bottom';
@@ -34,9 +35,10 @@ const DrawerCustom: FC<IDrawerCustomProps> = ({
 	schemaColor,
 	action,
 }) => {
+	const isDarkMode = useIsDarkMode();
 	return (
 		<>
-			<Button variant={'outline'} onClick={onOpen}>
+			<Button bg={isDarkMode ? '#000' : '#fff'} border='none' onClick={onOpen}>
 				<EditIcon width={20} height={20} color={COLORS_THEME._BLUE_} />
 			</Button>
 

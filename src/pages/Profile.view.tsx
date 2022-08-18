@@ -2,8 +2,10 @@ import { COLORS_THEME } from '@/config/theme.config';
 import { Box, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 import DrawerBio from '~components/drawers/DrawerBio.component';
+import DrawerName from '~components/drawers/DrawerName.component';
 import DrawerUserName from '~components/drawers/DrawerUserName.component';
 import { AtSymbolIcon } from '~components/icons';
+import StatsUser from '~components/statsUser.component';
 import { useIsDarkMode } from '~lib/hooks';
 import { getCurrentUser } from '~lib/services/getCurrentUser.service';
 
@@ -12,6 +14,7 @@ import { getCurrentUser } from '~lib/services/getCurrentUser.service';
  *  - username : string
  *	- bio  : string
  *  - profileImage : string
+ *  - name: string
  *  @database
  * 	- followers : number
  *  - following : number
@@ -23,14 +26,32 @@ import { getCurrentUser } from '~lib/services/getCurrentUser.service';
  *
  */
 
+// async function foo() {
+// 	const { data, error } = await supabase.from('usersData').select();
+// 	console.log('🚀 ~ file: Profile.view.tsx ~ line 32 ~ foo ~ error', error);
+// 	console.log('🚀 ~ file: Profile.view.tsx ~ line 32 ~ foo ~ data', data);
+// }
+
+// async function boo() {
+// 	const idUser = getCurrentUser()?.id;
+// 	const { data, error } = await supabase.from('usersData').insert([
+// 		{
+// 			followers: 0,
+// 			following: 0,
+// 			location: 'mx',
+// 			likes: 0,
+// 			photos: 0,
+// 			id_user: idUser,
+// 		},
+// 	]);
+// }
+
 const Profile: FC = () => {
 	const isDarkMode = useIsDarkMode();
 	const user = getCurrentUser();
-	console.log('🚀 ~ file: Profile.view.tsx ~ line 29 ~ user', user);
 
 	return (
 		<>
-			User
 			<Box
 				width={'100%'}
 				justifyContent={'center'}
@@ -40,6 +61,7 @@ const Profile: FC = () => {
 				gap={'.2rem'}>
 				<Text textAlign={'center'} fontSize={'3xl'}>
 					{user?.user_metadata.name}
+					<DrawerName />
 				</Text>
 				<Box
 					display={'flex'}
@@ -63,7 +85,14 @@ const Profile: FC = () => {
 					{/* <Text>user.username</Text> */}
 					<DrawerUserName />
 				</Box>
-				<>stats</>
+
+				<StatsUser
+					followers={0}
+					following={0}
+					likes={0}
+					location={'Knowhere'}
+					photos={0}
+				/>
 				<Box
 					textAlign={'center'}
 					color={'whiteTheme.500'}
