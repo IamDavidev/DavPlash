@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+	Link as ExternalLink,
 	Box,
 	Breadcrumb,
 	BreadcrumbItem,
@@ -23,13 +24,25 @@ import { useIsDarkMode, usePhoto } from '~lib/hooks';
 import ButtonLikes from '~components/ButtonLikes.component';
 
 import BoxImageDimensions from '~components/ImageDimensions.component';
-import { TypeRelatedPhoto } from '~interfaces/Adapters.types';
+import {
+	IAdapterPhotoView,
+	TypeRelatedPhoto,
+} from '~interfaces/Adapters.types';
+import { TypeErrorHook } from '~interfaces/hooks.types';
 
-const PhotoView: React.FC = () => {
+const PhotoView: React.FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	const { id } = useParams();
-	const { photo, error } = usePhoto(id);
+	const {
+		photo,
+		error,
+		isLoading,
+	}: {
+		photo: IAdapterPhotoView;
+		error: TypeErrorHook;
+		isLoading: boolean;
+	} = usePhoto(id);
 
 	if (error.isError) {
 		return (
@@ -65,20 +78,25 @@ const PhotoView: React.FC = () => {
 					<Link to={`/plash/discover/photos/${id}`}>{id}</Link>
 				</BreadcrumbItem>
 			</Breadcrumb>
+			{isLoading && <Box minH={'90vh'}></Box>}
 			{photo.image && (
 				<>
 					<Flex p={'2rem'} h={'100%'} minH={'90vh'}>
 						<Box width={'50%'} display={'flex'} alignItems={'center'}>
-							<Image
-								src={photo.image}
-								alt={photo.id}
-								w={'100%'}
-								objectFit={'contain'}
-								maxH={'100vh'}
-								height={'100%'}
-							/>
+							<ExternalLink isExternal href={photo.photoUrl}>
+								<Image
+									src={photo.image}
+									borderRadius={'1.5rem'}
+									border={`1px solid ${isDarkMode ? '#fff' : '#000'}`}
+									alt={photo.id}
+									w={'100%'}
+									objectFit={photo.objectFit}
+									maxH={'700px'}
+									height={'100%'}
+								/>
+							</ExternalLink>
 						</Box>
-						<Box width={'50%'} px={'2rem'} pos={'sticky'} top={0}>
+						<Box width={'50%'} h={'100%'} px={'2rem'} pos={'sticky'} top={0}>
 							<Flex
 								wrap={'wrap'}
 								justifyContent={'flex-start'}
@@ -197,18 +215,23 @@ const PhotoView: React.FC = () => {
 								gap={'2rem'}
 								justifyContent={'center'}
 								my={'1rem'}>
-								{photo.relatedPhotos.map((photo: TypeRelatedPhoto) => {
-									return (
-										<Box key={photo.key}>
-											<Image
-												src={photo.image}
-												width={'10rem'}
-												borderRadius={'1rem'}
-												objectFit={'contain'}
-											/>
-										</Box>
-									);
-								})}
+								{photo.relatedPhotos.map(
+									(photo: TypeRelatedPhoto): JSX.Element => {
+										return (
+											<Box key={photo.key}>
+												<Link to={`/plash/discover/photos/${photo.id}`}>
+													<Image
+														src={photo.image}
+														border={`1px solid ${isDarkMode ? '#fff' : '#000'}`}
+														width={'10rem'}
+														borderRadius={'1rem'}
+														objectFit={'contain'}
+													/>
+												</Link>
+											</Box>
+										);
+									}
+								)}
 							</Flex>
 						</Box>
 					</Flex>

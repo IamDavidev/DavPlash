@@ -16,12 +16,12 @@ export default function useCollection(): IUseCollection {
 		INITIAL_EMPTY_STATE_COLLECTION
 	);
 
-	const initRequestCollection = () =>
+	const initRequestCollection = (): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._INIT_REQUEST_COLLECTION_,
 		});
 
-	const successRequestCollection = (collection: any) =>
+	const successRequestCollection = (collection: any): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._SUCCESS_REQUEST_COLLECTION_,
 			payload: {
@@ -29,7 +29,7 @@ export default function useCollection(): IUseCollection {
 			},
 		});
 
-	const failureRequestCollection = ({ code, error }: IErrorRequest) =>
+	const failureRequestCollection = ({ code, error }: IErrorRequest): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._FAILURE_REQUEST_COLLECTION_,
 			payload: {
@@ -38,7 +38,7 @@ export default function useCollection(): IUseCollection {
 			},
 		});
 
-	const setIdCollection = (id: string) =>
+	const setIdCollection = (id: string): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._SET_ID_COLLECTION_,
 			payload: {
@@ -46,7 +46,7 @@ export default function useCollection(): IUseCollection {
 			},
 		});
 
-	const setPerPagePhotosCollection = (perPage: number) =>
+	const setPerPagePhotosCollection = (perPage: number): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._SET_PER_PAGE_PHOTOS_COLLECTION_,
 			payload: {
@@ -54,7 +54,7 @@ export default function useCollection(): IUseCollection {
 			},
 		});
 
-	useEffect(() => {
+	useEffect((): void => {
 		if (!collection.id) return;
 
 		collectionApi({
@@ -67,6 +67,8 @@ export default function useCollection(): IUseCollection {
 	}, [collection.id, collection.perPagePhotosCollection]);
 
 	return {
+		isLoading: collection.isLoading,
+		error: collection.error,
 		perPage: collection.perPagePhotosCollection,
 		collection: collection.collection.data,
 		photosCollection: collection.collection.photos,

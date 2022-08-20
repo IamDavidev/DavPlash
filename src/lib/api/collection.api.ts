@@ -39,6 +39,7 @@ export async function collectionApi({
 
 	if (!isSuccessCollectionPhotos)
 		return err({ error: ErrorCollectionPhotos, code: codeCollectionPhotos });
+
 	success({
 		data: AdapterCollection(dataCollection),
 		photos: dataCollectionPhotos.map(AdapterPhotos),

@@ -24,9 +24,9 @@ const Nabvar: React.FC = () => {
 			<Box
 				p={'2'}
 				px={'1rem'}
-				pos={'sticky'}
-				zIndex={'30'}
-				top={'1rem'}
+				// pos={'sticky'}
+				// zIndex={'30'}
+				// top={'1rem'}
 				bg={isDarkMode ? 'blurDark.500' : 'blurLight.500'}
 				backdropFilter={'blur(1rem)'}
 				borderRadius={'1rem'}

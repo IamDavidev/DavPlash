@@ -73,13 +73,15 @@ export type TypeTagObjApiPhotoView = {
 };
 
 export type TypeRelatedPhoto = {
+	id: string;
 	key: string;
 	image: string;
 };
 
+type objectFit = 'cover' | 'contain';
 export interface IAdapterPhotoView {
 	id: string;
-	objectFit: ResponsiveValue<string>;
+	objectFit: ResponsiveValue<objectFit> | undefined;
 	image: string;
 	likes: number;
 	tags: string[];
@@ -92,6 +94,7 @@ export interface IAdapterPhotoView {
 	profileImage: string;
 	description: string | null;
 	relatedPhotos: any[];
+	photoUrl: string;
 }
 
 export interface IAdapterUsers {

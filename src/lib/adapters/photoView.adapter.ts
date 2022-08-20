@@ -5,9 +5,14 @@ import {
 } from '~interfaces/Adapters.types';
 
 export const AdapterPhoto = (objApiPhoto: any): IAdapterPhotoView => {
+	console.log(
+		'🚀 ~ file: photoView.adapter.ts ~ line 8 ~ AdapterPhoto ~ objApiPhoto',
+		objApiPhoto
+	);
 	const objectFit =
 		objApiPhoto.width > objApiPhoto.height ? 'cover' : 'contain';
 	return {
+		photoUrl: objApiPhoto.links.html || '',
 		id: objApiPhoto.id,
 		objectFit,
 		image: objApiPhoto?.urls.regular,
@@ -24,6 +29,7 @@ export const AdapterPhoto = (objApiPhoto: any): IAdapterPhotoView => {
 		relatedPhotos: objApiPhoto.related_collections.results.map(
 			(photo: any): TypeRelatedPhoto => {
 				return {
+					id: photo.preview_photos[0].id,
 					image: photo.preview_photos[0].urls.small,
 					key: photo.id,
 				};

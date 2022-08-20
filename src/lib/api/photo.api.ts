@@ -5,9 +5,15 @@ import { AdapterPhoto } from '~lib/adapters/photoView.adapter';
 import { getPhoto, getPhotoRandom } from '~lib/services';
 
 export async function requesPhoto(id: string | null) {
+	/**
+	 * return photo by id
+	 */
 	if (id) {
 		return getPhoto({ id });
 	}
+	/**
+	 * return photo random
+	 */
 	return getPhotoRandom();
 }
 
@@ -27,7 +33,13 @@ export async function ApiPhoto({
 			code,
 		});
 
+	/**
+	 * photo response by id
+	 */
 	if (id) return success(AdapterPhoto(data));
 
+	/**
+	 * photo random
+	 */
 	success(AdapterPhotos(data));
 }

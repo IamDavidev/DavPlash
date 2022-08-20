@@ -15,7 +15,7 @@ import { reducerPhoto } from '~lib/reducers';
 export default function usePhoto(id?: any): IUsePhotoHook {
 	const [photo, setPhoto] = useReducer(reducerPhoto, EMPTY_STATE_PHOTO);
 
-	const initialRequesPhoto = () =>
+	const initialRequesPhoto = (): void =>
 		setPhoto({
 			type: ACTIONS_PHOTO._INITIAL_REQUEST_PHOTO_,
 		});
@@ -37,7 +37,7 @@ export default function usePhoto(id?: any): IUsePhotoHook {
 			},
 		});
 
-	useEffect(() => {
+	useEffect((): void => {
 		ApiPhoto({
 			init: initialRequesPhoto,
 			success: successRequestPhoto,
