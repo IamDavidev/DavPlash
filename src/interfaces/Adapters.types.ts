@@ -44,20 +44,21 @@ export interface IAdapterCollection {
 	tags: string[];
 }
 
+export type AdapterTag = {
+	key: string;
+	value: string;
+	id?: string;
+};
+
+export type AdapterPhotoCollection = {
+	id: string;
+	photo: string;
+};
+
 export interface IAdapterCollectionData {
-	photosCollection: [
-		{
-			id: string;
-			photo: string;
-		}
-	];
+	photosCollection: AdapterPhotoCollection[];
 	title: string;
-	tags: [
-		{
-			key: string;
-			value: string;
-		}
-	];
+	tags: AdapterTag[];
 	id: string;
 	private: boolean;
 	description: string | null;

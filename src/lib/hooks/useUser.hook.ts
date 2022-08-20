@@ -63,7 +63,7 @@ export default function useUser(): IuseUserHook {
 			},
 		});
 
-	const setOrderByUserPhotos = (orderByPhotos: any): void =>
+	const setOrderByUserPhotos = (orderByPhotos: string): void =>
 		setUser({
 			type: ACTIONS_USER._SET_ORDER_BY_PHOTOS_USER_,
 			payload: {

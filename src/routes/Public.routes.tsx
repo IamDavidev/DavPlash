@@ -17,7 +17,7 @@ const Page404: LazyExoticComponent<FC<{}>> = lazy(
 	() => import('~pages/404.view')
 );
 
-const PublicRoutes: FC = () => {
+const PublicRoutes: FC = (): JSX.Element => {
 	return (
 		<Routes>
 			<Route path='/' element={<Navigate to='/plash/' replace />} />

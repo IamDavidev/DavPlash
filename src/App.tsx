@@ -19,23 +19,21 @@ const App: FC = () => {
 	const isDarkMode = useIsDarkMode();
 	const { loggedIn } = useContext(LoggedInContext);
 	return (
-		<Box
-			px={'10'}
-			py={'5'}
-			minH={'100vh'}
-			bg={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
+		<Box px={'10'} py={'5'} bg={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
 			<Suspense fallback={<LoadingSuspense />}>
 				<BrowserRouter>
 					<Nabvar />
-					{loggedIn ? (
-						<>
-							<PrivateRoutes />
-						</>
-					) : (
-						<>
-							<PublicRoutes />
-						</>
-					)}
+					<Box minH={'100vh'}>
+						{loggedIn ? (
+							<>
+								<PrivateRoutes />
+							</>
+						) : (
+							<>
+								<PublicRoutes />
+							</>
+						)}
+					</Box>
 					<Footer />
 				</BrowserRouter>
 			</Suspense>

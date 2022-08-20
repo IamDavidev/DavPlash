@@ -9,7 +9,7 @@ export async function usersApi({
 	query,
 	perPage,
 	page,
-}: IApiUsersProps) {
+}: IApiUsersProps): Promise<void> {
 	init();
 
 	const { data, isSuccess, error, code } = await getUsers({

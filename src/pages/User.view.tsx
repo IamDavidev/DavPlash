@@ -61,7 +61,6 @@ const UserView: React.FC = (): JSX.Element => {
 					<CardSkeletonUserView />
 				</>
 			)}
-			{!user.profileImage && !isLoading && <Box minH={'100vh'}></Box>}
 			{user.profileImage && (
 				<Flex flexDir={'column'}>
 					<ImageUser

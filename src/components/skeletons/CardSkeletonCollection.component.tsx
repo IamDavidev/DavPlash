@@ -10,8 +10,8 @@ const CardSkeletonCollection: React.FC = () => {
 					minWidth={'150px'}
 					borderRadius={'1rem'}
 					height={'150px'}
-					startColor={'grayTheme.500'}
-					endColor={'blackTheme.500'}
+					startColor={'hoverDark.500'}
+					endColor={'blackDark.500'}
 				/>
 				<Flex flexDirection={'column'} width='100%'>
 					<Skeleton

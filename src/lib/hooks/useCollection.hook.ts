@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from 'react';
 
 import { INITIAL_EMPTY_STATE_COLLECTION } from '~constants/EmptyStates.const';
+import { IAdapterCollection, IAdapterPhotos } from '~interfaces/Adapters.types';
 
 import { IErrorRequest, IUseCollection } from '~interfaces/hooks.types';
 
@@ -21,7 +22,10 @@ export default function useCollection(): IUseCollection {
 			type: ACTIONS_COLLECTION._INIT_REQUEST_COLLECTION_,
 		});
 
-	const successRequestCollection = (collection: any): void =>
+	const successRequestCollection = (collection: {
+		data: IAdapterCollection;
+		photos: IAdapterPhotos[];
+	}): void =>
 		setCollection({
 			type: ACTIONS_COLLECTION._SUCCESS_REQUEST_COLLECTION_,
 			payload: {
