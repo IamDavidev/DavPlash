@@ -5,13 +5,15 @@ import {
 	IAdapterUsers,
 } from './Adapters.types';
 
+export type TypeErrorHook = {
+	message: string;
+	code?: string | number | undefined;
+	isError: boolean;
+};
+
 export interface IGenericHook {
 	page: number;
-	error: {
-		message: string;
-		code?: string | number | undefined;
-		isError: boolean;
-	};
+	error: TypeErrorHook;
 	isLoading: boolean;
 }
 
@@ -39,11 +41,7 @@ export interface IUsePhotosHook extends IGenericHook {
 export interface IUsePhotoHook {
 	// photo: IAdapterPhotos;
 	photo: any;
-	error: {
-		code?: string | number | undefined;
-		message: string;
-		isError: boolean;
-	};
+	error: TypeErrorHook;
 	isLoading: boolean;
 }
 
@@ -58,6 +56,8 @@ export interface IUseCollectionsHook extends IGenericHook {
 	setQueryCollections: (query: string) => void;
 }
 export interface IUseCollection {
+	isLoading: boolean;
+	error: TypeErrorHook;
 	perPage: number;
 	collection: IAdapterCollectionData;
 	photosCollection: IAdapterPhotos[];

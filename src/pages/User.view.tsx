@@ -257,12 +257,14 @@ const UserView: React.FC = () => {
 							return (
 								<>
 									<WrapItem key={photo.id} className='masonry-image'>
-										<Image
-											borderRadius={'1rem'}
-											src={photo.urls.small}
-											alt={photo.description}
-											objectFit={'contain'}
-										/>
+										<LinkNav to={`/plash/discover/photos/${photo.id}`}>
+											<Image
+												borderRadius={'1rem'}
+												src={photo.urls.small}
+												alt={photo.description}
+												objectFit={'contain'}
+											/>
+										</LinkNav>
 									</WrapItem>
 								</>
 							);

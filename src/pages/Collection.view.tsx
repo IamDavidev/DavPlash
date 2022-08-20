@@ -10,29 +10,40 @@ import {
 	Wrap,
 	WrapItem,
 } from '@chakra-ui/react';
+import { jsx } from '@emotion/react';
 import React, { useEffect } from 'react';
 
 import { Link, useParams } from 'react-router-dom';
 import CardImage from '~components/CardImage.component';
 import CardImageRotate from '~components/CardImageRotate.component';
-import { COLORS_THEME } from '@/config/theme.config';
 import { IAdapterPhotos } from '~interfaces/Adapters.types';
-import { useCollection } from '~lib/hooks';
+import { useCollection, useIsDarkMode } from '~lib/hooks';
 
-const CollectionView: React.FC = () => {
+const CollectionView: React.FC = (): JSX.Element => {
 	const { id } = useParams();
-	console.log('🚀 ~ file: collection.layout.tsx ~ line 8 ~ id', id);
 
-	const { collection, setId, photosCollection, setPerPage, perPage } =
-		useCollection();
-	useEffect(() => {
+	const isDarkMode = useIsDarkMode();
+
+	const {
+		collection,
+		setId,
+		photosCollection,
+		setPerPage,
+		perPage,
+		isLoading,
+	} = useCollection();
+
+	useEffect((): void => {
 		if (id) setId(id as string);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id]);
 
 	return (
 		<>
-			<Breadcrumb fontWeight={'bold'} fontSize={'xl'} color={'white'}>
+			<Breadcrumb
+				fontWeight={'bold'}
+				fontSize={'xl'}
+				color={isDarkMode ? '#fff' : '#000'}>
 				<BreadcrumbItem>
 					<Link to='/plash'>Discover</Link>
 				</BreadcrumbItem>
@@ -45,6 +56,7 @@ const CollectionView: React.FC = () => {
 					<Text>collection</Text>
 				</BreadcrumbItem>
 			</Breadcrumb>
+			{isLoading && <Box minH={'100vh'}></Box>}
 			<Box>
 				<Flex
 					flexDir={'row'}
@@ -62,7 +74,10 @@ const CollectionView: React.FC = () => {
 								as={'h2'}
 								fontSize={'6xl'}
 								bgClip={'text'}
-								bgGradient={`linear(to-b,${COLORS_THEME._PURPLE_},${COLORS_THEME._NAV_LIGHT_})`}>
+								bgGradient={`linear(to-b,${
+									isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
+								},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
+								backgroundClip={'text'}>
 								{collection.title}
 							</Heading>
 							{collection.description && (
@@ -70,7 +85,7 @@ const CollectionView: React.FC = () => {
 							)}
 							<Wrap>
 								{collection.tags &&
-									collection?.tags.map((tag: any) => {
+									collection?.tags.map((tag: any): JSX.Element => {
 										return (
 											<Tag
 												key={tag.key}
@@ -90,7 +105,7 @@ const CollectionView: React.FC = () => {
 				</Flex>
 				<Box mt={'1rem'} mb={'4rem'}>
 					<Heading as={'h3'} color={'purpleTheme.500'}>
-						{collection.totalPhotos}
+						{collection.totalPhotos} photos
 					</Heading>
 				</Box>
 				<Wrap
@@ -116,8 +131,8 @@ const CollectionView: React.FC = () => {
 						})}
 				</Wrap>
 				<Button
-					onClick={() => setPerPage(perPage + 12)}
-					colorScheme={'purpleTheme'}>
+					onClick={(): void => setPerPage(perPage + 12)}
+					colorScheme={'blue'}>
 					<Text>Load more</Text>
 				</Button>
 			</Box>

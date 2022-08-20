@@ -30,5 +30,13 @@ module.exports = {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     ]
-  }
+  }, overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
+
 }

@@ -1,5 +1,5 @@
 import { COLORS_THEME } from '@/config/theme.config';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Divider, Text } from '@chakra-ui/react';
 import { FC } from 'react';
 import DrawerBio from '~components/drawers/DrawerBio.component';
 import DrawerName from '~components/drawers/DrawerName.component';
@@ -105,6 +105,11 @@ const Profile: FC = () => {
 					</Text>
 					<DrawerBio />
 				</Box>
+				<Divider
+					colorScheme={isDarkMode ? 'white' : 'black'}
+					my={'1rem'}
+					height={'2px'}
+				/>
 			</Box>
 		</>
 	);
