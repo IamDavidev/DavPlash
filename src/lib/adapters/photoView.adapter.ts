@@ -5,10 +5,6 @@ import {
 } from '~interfaces/Adapters.types';
 
 export const AdapterPhoto = (objApiPhoto: any): IAdapterPhotoView => {
-	console.log(
-		'🚀 ~ file: photoView.adapter.ts ~ line 8 ~ AdapterPhoto ~ objApiPhoto',
-		objApiPhoto
-	);
 	const objectFit =
 		objApiPhoto.width > objApiPhoto.height ? 'cover' : 'contain';
 	return {

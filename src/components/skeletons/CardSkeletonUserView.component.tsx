@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const CardSkeletonUserView: React.FC = () => {
+const CardSkeletonUserView: React.FC = (): JSX.Element => {
 	return (
 		<>
 			<Box

@@ -63,6 +63,7 @@ export const INITIAL_EMPTY_STATE_USER: IStateUser = {
 		data: {},
 		photos: [],
 	},
+	userName: null,
 	error: ERROR_INITIAL_STATE,
 	isLoading: false,
 	orderByPhotos: OPTIONS_ORDER_BY._LATESTS_,

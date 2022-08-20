@@ -3,7 +3,12 @@ import { AdapterUserView } from '~lib/adapters';
 import { getUser } from '~lib/services';
 import { getPhotosUser } from '~lib/services/getPhotosUser.service';
 
-export async function userApi({ init, success, err, username }: IApiUserProps) {
+export async function userApi({
+	init,
+	success,
+	err,
+	username,
+}: IApiUserProps): Promise<void> {
 	init();
 
 	const { data, error, isSuccess, code } = await getUser(username);
