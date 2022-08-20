@@ -114,9 +114,9 @@ const PhotoView: React.FC = (): JSX.Element => {
 											return (
 												<WrapItem key={tag}>
 													<Tag
-														colorScheme={'pink'}
+														border={`1px solid ${photo.color}`}
 														variant={'outline'}
-														color={photo.color}>
+														color={'blueG.500'}>
 														{tag}
 													</Tag>
 												</WrapItem>
