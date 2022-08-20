@@ -11,12 +11,8 @@ function AdapterCreateUserStats(id: string) {
 		id_user: id,
 	};
 }
-
-export async function createUserData({ id }: any) {
-	console.log(
-		'🚀 ~ file: createUserData.service.ts ~ line 16 ~ createUserData ~ id',
-		id
-	);
+export async function createUserData({ id }: { id: string }): Promise<void> {
+	if (!id) throw new Error('Error: id is required');
 
 	try {
 		await supabase

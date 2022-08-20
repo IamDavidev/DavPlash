@@ -7,9 +7,10 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"test": "vitest",
+		"vitest::run": "vitest",
 		"cypress": "npx cypress open",
-		"cypress:open": "cypress open",
-		"cypress:run": "cypress run",
+		"cypress::open": "cypress open",
+		"cypress::run": "cypress run",
 		"coverage": "vitest --coverage",
 		"preview": "vite preview"
 	},

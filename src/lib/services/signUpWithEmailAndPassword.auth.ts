@@ -17,23 +17,25 @@ export async function signUpWithEmailAndPassword({
 	if (!password) throw new Error('Erorr: password is required');
 
 	try {
-		const { user }: { user: User | null } = await supabase.auth.signUp(
-			{
-				email,
-				password,
-			},
-			{
-				data: {
-					userName,
-					name,
+		await supabase.auth
+			.signUp(
+				{
+					email,
+					password,
 				},
-			}
-		);
-		console.log(
-			'🚀 ~ file: signUpWithEmailAndPassword.auth.ts ~ line 21 ~ user',
-			user
-		);
-		await createUserData(user?.id);
+				{
+					data: {
+						userName,
+						name,
+					},
+				}
+			)
+			.then(async ({ user }: { user: User | null }): Promise<void> => {
+				if (user)
+					return createUserData({
+						id: user?.id,
+					});
+			});
 	} catch (err) {
 		throw new Error('Failed to sign up with email');
 	}

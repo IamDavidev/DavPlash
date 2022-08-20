@@ -13,6 +13,7 @@ import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { useIsDarkMode } from '~lib/hooks';
 import PrivateRoutes from './routes/Private.routes';
 import PublicRoutes from './routes/Public.routes';
+import Footer from '~pages/layouts/Footer.layout';
 
 const App: FC = () => {
 	const isDarkMode = useIsDarkMode();
@@ -35,6 +36,7 @@ const App: FC = () => {
 							<PublicRoutes />
 						</>
 					)}
+					<Footer />
 				</BrowserRouter>
 			</Suspense>
 		</Box>

@@ -23,6 +23,7 @@ const ImageUser: FC<ImageUserProps> = ({ profileImage, username }) => {
 					borderColor={'primaryDark.500'}
 					borderRadius={'50%'}
 					alt={username}
+					bg={'#fff'}
 					objectFit={'cover'}
 				/>
 				<Box pos={'absolute'} right={4} bottom={'20px'}>
