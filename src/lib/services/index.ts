@@ -1,3 +1,4 @@
+export * from './SignInWithEmailAndPassword.auth';
 export * from './createUserData.service';
 export * from './getCollection.service';
 export * from './getCollectionPhotos.service';

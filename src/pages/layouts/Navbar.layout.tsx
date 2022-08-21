@@ -60,7 +60,7 @@ const Nabvar: React.FC = () => {
 				<Box display={'flex'} gap='3rem'>
 					<HStack>
 						<Button
-							onClick={() => toggleColorMode()}
+							onClick={(): void => toggleColorMode()}
 							colorScheme={'transparent'}
 							variant={'outline'}
 							margin={0}
@@ -99,7 +99,7 @@ const Nabvar: React.FC = () => {
 					<HStack spacing={'.5rem'}>
 						{loggedIn ? (
 							<Button
-								onClick={() => signOut()}
+								onClick={(): Promise<void> => signOut()}
 								_hover={
 									isDarkMode
 										? {
@@ -162,7 +162,7 @@ const Nabvar: React.FC = () => {
 							</Tooltip>
 						) : (
 							<>
-								<Link to={'/plash/signup'}>
+								<Link to={'/plash/signin'}>
 									<Box
 										_hover={
 											isDarkMode
@@ -180,7 +180,7 @@ const Nabvar: React.FC = () => {
 										px={'1.5rem'}
 										bg={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 										color={'bgLight.500'}>
-										Sign Up
+										Sign In
 									</Box>
 								</Link>
 							</>

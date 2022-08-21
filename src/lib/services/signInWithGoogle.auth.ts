@@ -4,11 +4,17 @@ import { createUserData } from './createUserData.service';
 
 export async function signInWithGoogle(): Promise<void> {
 	try {
-		const { user }: { user: User | null } = await supabase.auth.signIn({
-			provider: 'google',
-		});
-
-		await createUserData(user?.id);
+		await supabase.auth
+			.signIn({
+				provider: 'google',
+			})
+			.then(async ({ user }: { user: User | null }): Promise<void> => {
+				if (user)
+					return createUserData({
+						id: user?.id,
+						name: user?.app_metadata?.name,
+					});
+			});
 	} catch (err) {
 		throw new Error('Failed to sign in with Google');
 	}

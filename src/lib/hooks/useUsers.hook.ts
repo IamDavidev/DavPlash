@@ -12,12 +12,12 @@ import { usersReducer } from '~lib/reducers/users.reducer';
 export default function useUsers(): IuseUsersHook {
 	const [users, setUsers] = useReducer(usersReducer, INITIAL_EMPTY_STATE_USERS);
 
-	const initialRequestUsers = () =>
+	const initialRequestUsers = (): void =>
 		setUsers({
 			type: ACTIONS_USERS._INIT_REQUEST_USERS_,
 		});
 
-	const successRequestUsers = (users: any) =>
+	const successRequestUsers = (users: any): void =>
 		setUsers({
 			type: ACTIONS_USERS._SUCCESS_REQUEST_USERS_,
 			payload: {

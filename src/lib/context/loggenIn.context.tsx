@@ -29,15 +29,12 @@ const ProviderLoggendIn: FC<providerLoggen> = ({ children }) => {
 
 	const [loggedIn, setLoggedIn] = useState(false);
 
-	const toggleLoggedIn = () => setLoggedIn((prev: boolean) => !prev);
+	const toggleLoggedIn = (): void =>
+		setLoggedIn((prev: boolean): boolean => !prev);
 
-	useEffect(() => {
+	useEffect((): void | (() => void) => {
 		const { data } = supabase.auth.onAuthStateChange(
 			(evt /* evento */, _ /* sesion */): void => {
-				console.log(
-					'🚀 ~ file: loggenIn.context.tsx ~ line 37 ~ useEffect ~ evt',
-					evt
-				);
 				if (evt === EVENTS_ON_AUTH_STATE_CHAGE._SIGNED_OUT_)
 					return setLoggedIn(false);
 				if (evt === 'SIGNED_IN') return setLoggedIn(true);
@@ -46,7 +43,7 @@ const ProviderLoggendIn: FC<providerLoggen> = ({ children }) => {
 
 		if (user) return setLoggedIn(true);
 
-		return () => {
+		return (): void => {
 			data?.unsubscribe();
 		};
 	}, [user]);

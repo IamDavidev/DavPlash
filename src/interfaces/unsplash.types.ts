@@ -34,7 +34,7 @@ export interface IStateCollection {
 	error: IErrorStateGlobal;
 	isLoading: boolean;
 	id: string | null;
-	perPagePhotosCollection: number
+	perPagePhotosCollection: number;
 }
 /**
  * - @end  collection states
@@ -79,6 +79,7 @@ export interface IStateUser {
 	};
 	perPagePhotos: number;
 	orderByPhotos: string;
+	userName: string | null;
 }
 /**
  * - @end  users states

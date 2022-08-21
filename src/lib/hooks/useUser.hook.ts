@@ -20,12 +20,13 @@ interface IuseUserHook {
 		message: string;
 		isError: boolean;
 	};
+	setUserName: (userName: string) => void;
 }
 
-export default function useUser(username?: string): IuseUserHook {
+export default function useUser(): IuseUserHook {
 	const [user, setUser] = useReducer(reducerUser, INITIAL_EMPTY_STATE_USER);
 
-	const initRequestUser = () =>
+	const initRequestUser = (): void =>
 		setUser({
 			type: ACTIONS_USER._INIT_REQUEST_USER_,
 		});
@@ -36,7 +37,7 @@ export default function useUser(username?: string): IuseUserHook {
 	}: {
 		user: any;
 		photos: any[];
-	}) => {
+	}): void => {
 		setUser({
 			type: ACTIONS_USER._SUCCESS_REQUEST_USER_,
 			payload: {
@@ -45,7 +46,7 @@ export default function useUser(username?: string): IuseUserHook {
 			},
 		});
 	};
-	const errorRequestUser = ({ error, code }: IErrorRequest) =>
+	const errorRequestUser = ({ error, code }: IErrorRequest): void =>
 		setUser({
 			type: ACTIONS_USER._FAILURE_REQUEST_USER_,
 			payload: {
@@ -54,7 +55,7 @@ export default function useUser(username?: string): IuseUserHook {
 			},
 		});
 
-	const setPerPageUserPhotos = (perPagePhotos: number) =>
+	const setPerPageUserPhotos = (perPagePhotos: number): void =>
 		setUser({
 			type: ACTIONS_USER._SET_PER_PAGE_PHOTOS_USER_,
 			payload: {
@@ -62,7 +63,7 @@ export default function useUser(username?: string): IuseUserHook {
 			},
 		});
 
-	const setOrderByUserPhotos = (orderByPhotos: any) =>
+	const setOrderByUserPhotos = (orderByPhotos: string): void =>
 		setUser({
 			type: ACTIONS_USER._SET_ORDER_BY_PHOTOS_USER_,
 			payload: {
@@ -70,14 +71,23 @@ export default function useUser(username?: string): IuseUserHook {
 			},
 		});
 
-	useEffect(() => {
+	const setUserName = (userName: string): void =>
+		setUser({
+			type: ACTIONS_USER._SET_USERNAME_,
+			payload: {
+				userName,
+			},
+		});
+
+	useEffect((): void => {
+		if (!user.userName) return;
 		userApi({
 			init: initRequestUser,
 			success: successRequestUser,
 			err: errorRequestUser,
-			username,
+			username: user.userName,
 		});
-	}, [username, user.orderByPhotos, user.perPagePhotos]);
+	}, [user.userName, user.orderByPhotos, user.perPagePhotos]);
 
 	return {
 		user: user.user.data,
@@ -86,5 +96,6 @@ export default function useUser(username?: string): IuseUserHook {
 		setOrderByUserPhotos,
 		isLoading: user.isLoading,
 		error: user.error,
+		setUserName,
 	};
 }

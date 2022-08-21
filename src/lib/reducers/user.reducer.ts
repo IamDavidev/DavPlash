@@ -57,6 +57,14 @@ export function reducerUser(
 			};
 		}
 
+		case ACTIONS_USER._SET_USERNAME_: {
+			const { userName } = action.payload;
+			return {
+				...state,
+				userName,
+			};
+		}
+
 		default: {
 			throw new Error(
 				`HOOK > ERROR USER : ${action.type} is not a valid action type.`

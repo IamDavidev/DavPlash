@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-const CardSkeletonUserView: React.FC = () => {
+const CardSkeletonUserView: React.FC = (): JSX.Element => {
 	return (
 		<>
 			<Box
@@ -20,28 +20,28 @@ const CardSkeletonUserView: React.FC = () => {
 				width={'100%'}
 				my={'3rem'}>
 				<SkeletonCircle
-					startColor={'grayTheme.500'}
-					endColor={'blackTheme.500'}
+					startColor={'hoverDark.500'}
+					endColor={'blackDark.500'}
 					size='8rem'
 					mb={'1rem'}
 				/>
 				<Skeleton
 					width='300px'
-					startColor={'grayTheme.500'}
-					endColor={'blackTheme.500'}
+					startColor={'grayDark.500'}
+					endColor={'blackDark.500'}
 					height={'50px'}
 				/>
 				<Skeleton
 					width='200px'
-					startColor={'grayTheme.500'}
-					endColor={'blackTheme.500'}
+					startColor={'grayDark.500'}
+					endColor={'blackDark.500'}
 					height={'35px'}
 					my={'.2rem'}
 				/>
 				<Skeleton
 					width='700px'
-					startColor={'grayTheme.500'}
-					endColor={'blackTheme.500'}
+					startColor={'hoverDark.500'}
+					endColor={'blackDark.500'}
 					height={'70px'}
 					my={'1.5rem'}
 				/>

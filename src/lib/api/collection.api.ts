@@ -12,7 +12,7 @@ export async function collectionApi({
 	err,
 	success,
 	perPage,
-}: IApiCollectionProps) {
+}: IApiCollectionProps): Promise<void> {
 	init();
 
 	const {
