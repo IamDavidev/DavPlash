@@ -15,7 +15,7 @@ import PrivateRoutes from './routes/Private.routes';
 import PublicRoutes from './routes/Public.routes';
 import Footer from '~pages/layouts/Footer.layout';
 
-const App: FC = () => {
+const App: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const { loggedIn } = useContext(LoggedInContext);
 	return (

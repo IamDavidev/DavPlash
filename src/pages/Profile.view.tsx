@@ -1,21 +1,20 @@
 import { COLORS_THEME } from '@/config/theme.config';
 import { Box, Divider, Text } from '@chakra-ui/react';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import DrawerBio from '~components/drawers/DrawerBio.component';
 import DrawerName from '~components/drawers/DrawerName.component';
 import DrawerUserName from '~components/drawers/DrawerUserName.component';
 import { AtSymbolIcon } from '~components/icons';
 import StatsUser from '~components/statsUser.component';
 import { useIsDarkMode } from '~lib/hooks';
-import { getCurrentUser } from '~lib/services/getCurrentUser.service';
+import { getDataUser } from '~lib/services/getDataUser.service';
 
-/***
- * @metadata
+/**
+ *  @database
  *  - username : string
  *	- bio  : string
  *  - profileImage : string
  *  - name: string
- *  @database
  * 	- followers : number
  *  - following : number
  *  - location : number
@@ -25,31 +24,39 @@ import { getCurrentUser } from '~lib/services/getCurrentUser.service';
  * - photos: string[] // based on the photos of the user
  *
  */
+interface IUserData {
+	bio: string;
+	followers: number;
+	following: number;
+	id: number;
+	id_user: string;
+	likes: number;
+	location: string;
+	name: string;
+	photos: number;
+	user_name: string;
+}
 
-// async function foo() {
-// 	const { data, error } = await supabase.from('usersData').select();
-// 	console.log('🚀 ~ file: Profile.view.tsx ~ line 32 ~ foo ~ error', error);
-// 	console.log('🚀 ~ file: Profile.view.tsx ~ line 32 ~ foo ~ data', data);
-// }
+const INITIAL_STATE_DATA_USER = {
+	bio: '',
+	followers: 0,
+	following: 0,
+	id: 0,
+	id_user: '',
+	likes: 0,
+	location: '',
+	name: '',
+	photos: 0,
+	user_name: '',
+};
 
-// async function boo() {
-// 	const idUser = getCurrentUser()?.id;
-// 	const { data, error } = await supabase.from('usersData').insert([
-// 		{
-// 			followers: 0,
-// 			following: 0,
-// 			location: 'mx',
-// 			likes: 0,
-// 			photos: 0,
-// 			id_user: idUser,
-// 		},
-// 	]);
-// }
-
-const Profile: FC = () => {
+const Profile: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
-	const user = getCurrentUser();
+	const [user, setUser] = useState<IUserData>(INITIAL_STATE_DATA_USER);
 
+	useEffect(() => {
+		getDataUser().then(res => setUser(res.user));
+	}, []);
 	return (
 		<>
 			<Box
@@ -59,15 +66,21 @@ const Profile: FC = () => {
 				color={isDarkMode ? 'white' : 'black'}
 				flexDirection={'column'}
 				gap={'.2rem'}>
-				<Text textAlign={'center'} fontSize={'3xl'}>
-					{user?.user_metadata.name}
+				<Box
+					fontSize={'3xl'}
+					justifyContent={'center'}
+					alignItems={'center'}
+					gap={'1rem'}
+					display={'flex'}>
+					{user.name === '' && <Text>No name</Text>}
+					{user.name !== '' && <Text>{user.name}</Text>}
 					<DrawerName />
-				</Text>
+				</Box>
 				<Box
 					display={'flex'}
 					color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 					justifyContent={'center'}
-					gap={'.2rem'}
+					gap={'1rem'}
 					alignItems={'center'}
 					fontSize='2xl'>
 					<AtSymbolIcon
@@ -75,33 +88,28 @@ const Profile: FC = () => {
 						height={29}
 						color={COLORS_THEME.DARK._PRIMARY_}
 					/>
-					{user?.user_metadata.userName && (
-						<Text>{user?.user_metadata.userName}</Text>
-					)}
-					{!user?.user_metadata.userName && (
-						// <Text>{user?.user_metadata.name}</Text>
-						<Text>UserName</Text>
-					)}
-					{/* <Text>user.username</Text> */}
+					{user.user_name === '' && <Text>No User Name</Text>}
+					{user.user_name !== '' && <Text>{user.user_name}</Text>}
 					<DrawerUserName />
 				</Box>
 
 				<StatsUser
-					followers={0}
-					following={0}
-					likes={0}
-					location={'Knowhere'}
-					photos={0}
+					followers={user.followers}
+					following={user.following}
+					likes={user.likes}
+					location={user.location}
+					photos={user.photos}
 				/>
 				<Box
 					textAlign={'center'}
 					color={'whiteTheme.500'}
 					display='flex'
+					gap={'1rem'}
+					alignItems={'center'}
 					justifyContent={'center'}>
 					<Text width={'35ch'} textAlign={'center'} fontSize='xl'>
-						{/* {user.bio} */}
-						{user?.user_metadata.bio && user?.user_metadata.bio}
-						{!user?.user_metadata.bio && 'No bio'}
+						{user.bio === '' && <>No Bio</>}
+						{user.bio !== '' && <>{user.bio}</>}
 					</Text>
 					<DrawerBio />
 				</Box>
@@ -116,25 +124,3 @@ const Profile: FC = () => {
 };
 
 export default Profile;
-
-/**
- * <Wrap
-					justify={'center'}
-					spacing={'1rem'}
-					my={'1rem'}
-					alignItems={'center'}>
-					{user.tags &&
-						user?.tags?.map((tag: any) => {
-							return (
-								<WrapItem key={tag.key}>
-									<Tag
-										color={'purpleTheme.500'}
-										border={`1px solid ${COLORS_THEME.DARK._PRIMARY_}`}
-										variant={'outline'}>
-										{tag.value}
-									</Tag>
-								</WrapItem>
-							);
-						})}
-				</Wrap>
- */

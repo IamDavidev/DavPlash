@@ -29,7 +29,7 @@ const Profile: LazyExoticComponent<FC<{}>> = lazy(
 	() => import('~pages/Profile.view')
 );
 
-const PrivateRoutes: FC = () => {
+const PrivateRoutes: FC = (): JSX.Element => {
 	return (
 		<Routes>
 			<Route path='/plash/' element={<HomeView />} />

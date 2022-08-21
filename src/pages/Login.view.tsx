@@ -14,10 +14,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
-import { GoogleIcon } from '~components/icons';
 
-import { signInWithGoogle } from '~lib/services';
-import { useIsDarkMode, useForm } from '~lib/hooks';
+import { useForm, useIsDarkMode } from '~lib/hooks';
 
 const Login = () => {
 	const isDarkMode = useIsDarkMode();
@@ -164,7 +162,7 @@ const Login = () => {
 						</Button>
 					</form>
 					<Divider color={isDarkMode ? 'white' : 'black'} my={'2rem'} />
-					<Button
+					{/* <Button
 						_hover={
 							isDarkMode
 								? {
@@ -181,7 +179,7 @@ const Login = () => {
 						leftIcon={<GoogleIcon width={30} height={30} />}
 						width={'100%'}>
 						Login With Google
-					</Button>
+					</Button> */}
 				</Box>
 				<Box
 					width={'30%'}
