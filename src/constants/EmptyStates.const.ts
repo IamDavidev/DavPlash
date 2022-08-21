@@ -57,7 +57,6 @@ export const INITIAL_EMPTY_STATE_USERS: IStateUsers = {
 	perPage: 24,
 	page: 1,
 };
-
 export const INITIAL_EMPTY_STATE_USER: IStateUser = {
 	user: {
 		data: {},

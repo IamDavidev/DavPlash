@@ -6,11 +6,11 @@ import {
 	InputGroup,
 	InputRightElement,
 } from '@chakra-ui/react';
-import { FC, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 import { SignInWithEmailAndPassword } from '~lib/services';
 
-const handleSignIn = (e: any): void => {
+const handleSignIn = (e: ChangeEvent<HTMLFormElement>): void => {
 	e.preventDefault();
 	const { email, password } = e.target;
 	SignInWithEmailAndPassword({

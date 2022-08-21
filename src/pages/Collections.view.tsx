@@ -7,11 +7,12 @@ import { NextIcon, PrevIcon } from '~components/icons';
 import { GridCollectionSkeleton } from '~components/skeletons';
 import GridCollectionError from '~components/skeletons/error/GridCollectionError.component';
 
-import { useCollections } from '~lib/hooks';
+import { useCollections, useIsDarkMode } from '~lib/hooks';
 
 import GridCollections from './layouts/GridCollections.layout';
 
 const CollectionsView: React.FC = () => {
+	const isDarkMode = useIsDarkMode();
 	const {
 		collections,
 		error,
@@ -39,7 +40,10 @@ const CollectionsView: React.FC = () => {
 		<>
 			<Box>
 				<>
-					<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
+					<Heading
+						as={'h2'}
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
+						fontSize={'4.5rem'}>
 						<PrevIcon width={50} height={90} />
 						<Text color={'blueTheme.500'}>Discover More Collections</Text>
 						<NextIcon width={50} height={90} />
