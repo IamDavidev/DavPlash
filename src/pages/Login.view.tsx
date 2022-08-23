@@ -10,14 +10,14 @@ import {
 	InputRightElement,
 	Text,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 
 import { useForm, useIsDarkMode } from '~lib/hooks';
 
-const Login = () => {
+const Login: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const { form, ValidationsFields } = useForm();
 
@@ -43,7 +43,7 @@ const Login = () => {
 				minH={'60vh'}>
 				<Box width={'40%'}>
 					<form onSubmit={e => ValidationsFields(e)}>
-						<InputGroup gap={'1rem'} my={'1rem'}>
+						<InputGroup gap={'1rem'} my={'1.5rem'}>
 							<Box>
 								<Input
 									name={'name'}
@@ -73,7 +73,7 @@ const Login = () => {
 								</Box>
 							</Box>
 						</InputGroup>
-						<InputGroup gap={'1rem'} my={'1rem'}>
+						<InputGroup gap={'1rem'} my={'1.5rem'}>
 							<Box>
 								<InputGroup size='md'>
 									<Input
@@ -113,7 +113,7 @@ const Login = () => {
 										<Button
 											h='1.75rem'
 											size='sm'
-											onClick={() =>
+											onClick={(): void =>
 												setShowConfirmPassword(!showConfirmPassword)
 											}>
 											{showConfirmPassword ? 'Hide' : 'Show'}

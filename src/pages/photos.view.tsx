@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Code, Heading, Text } from '@chakra-ui/react';
 
-import { usePhotos } from '~lib/hooks';
+import { useIsDarkMode, usePhotos } from '~lib/hooks';
 
 import { COLORS_THEME } from '@/config/theme.config';
 
@@ -14,7 +14,8 @@ import GridImageError from '~components/skeletons/error/GridImageError.component
 
 import GridPhotos from './layouts/GridPhotos.layout';
 
-const PhotosView: React.FC = () => {
+const PhotosView: React.FC = (): JSX.Element => {
+	const isDarkMode = useIsDarkMode();
 	const {
 		photos,
 		totalPhotos,
@@ -30,7 +31,10 @@ const PhotosView: React.FC = () => {
 		<>
 			<Box>
 				<>
-					<Heading as={'h2'} color={'purpleTheme.500'} fontSize={'4.5rem'}>
+					<Heading
+						as={'h2'}
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
+						fontSize={'4.5rem'}>
 						<PrevIcon
 							width={50}
 							height={90}

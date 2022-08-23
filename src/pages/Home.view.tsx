@@ -40,12 +40,8 @@ const HomeView = () => {
 					<Heading
 						as={'h2'}
 						size={'3xl'}
-						color={'purpleTheme.500'}
 						my={'1rem'}
-						bgGradient={`linear(to-b,${
-							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
-						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
-						bgClip={'text'}>
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
 						Top Photos
 					</Heading>
 					<Link to='/plash/discover/photos'>
@@ -90,10 +86,10 @@ const HomeView = () => {
 					<Heading
 						as={'h2'}
 						size={'3xl'}
-						bgGradient={`linear(to-b,${
-							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
-						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
-						bgClip={'text'}
+						// bgGradient={`linear(to-b,${
+						// 	isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
+						// },${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 						my={'1rem'}>
 						Top Collections
 					</Heading>
@@ -142,10 +138,7 @@ const HomeView = () => {
 					<Heading
 						as={'h2'}
 						size={'3xl'}
-						bgGradient={`linear(to-b,${
-							isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
-						},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
-						bgClip={'text'}
+						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 						my={'1rem'}>
 						Users
 					</Heading>

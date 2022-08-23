@@ -7,17 +7,10 @@ import {
 	InputRightElement,
 } from '@chakra-ui/react';
 import { FC, useState } from 'react';
-import CardPhotoRandom from '~components/CardPhotoRandom.component';
-import { SignInWithEmailAndPassword } from '~lib/services';
 
-const handleSignIn = (e: any): void => {
-	e.preventDefault();
-	const { email, password } = e.target;
-	SignInWithEmailAndPassword({
-		email: email.value,
-		password: password.value,
-	});
-};
+import CardPhotoRandom from '~components/CardPhotoRandom.component';
+
+import { singInAdapter } from '~lib/adapters';
 
 const SignIn: FC = (): JSX.Element => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +31,7 @@ const SignIn: FC = (): JSX.Element => {
 				</>
 				<>
 					<Box>
-						<form onSubmit={handleSignIn}>
+						<form onSubmit={singInAdapter}>
 							<Box my={'2rem'}>
 								<FormLabel htmlFor='email'>Email</FormLabel>
 								<Input

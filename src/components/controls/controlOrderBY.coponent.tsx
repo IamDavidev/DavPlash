@@ -1,12 +1,14 @@
 import { Select } from '@chakra-ui/react';
 import React from 'react';
 import { OPTIONS_ORDER_BY } from '~constants/unsplash.const';
+import { useIsDarkMode } from '~lib/hooks';
 
 interface IControlOrderBYProps {
 	setOrderBy: (orderBy: string) => void;
 }
 
 const ControlOrderBy: React.FC<IControlOrderBYProps> = ({ setOrderBy }) => {
+	const isDarkMode = useIsDarkMode();
 	const handleOrderBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setOrderBy(e.target.value);
 	};
@@ -16,10 +18,9 @@ const ControlOrderBy: React.FC<IControlOrderBYProps> = ({ setOrderBy }) => {
 			<Select
 				variant='filled'
 				onChange={handleOrderBy}
-				_hover={{ bg: 'grayTheme.500', color: 'grayTheme.500' }}
-				bg='grayTheme.500'
-				borderColor='purpleTheme.300'
-				color='white'>
+				color={isDarkMode ? 'white' : 'black'}
+				bg={isDarkMode ? 'tertiaryDark.500' : 'secondaryLight.500'}
+				borderColor={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
 				<option value={OPTIONS_ORDER_BY._LATESTS_}>
 					{OPTIONS_ORDER_BY._LATESTS_}
 				</option>

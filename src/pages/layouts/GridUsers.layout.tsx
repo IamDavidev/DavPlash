@@ -10,7 +10,7 @@ type TypeGridUsersProps = {
 	users: IAdapterUsers[];
 };
 
-const GridUsers: React.FC<TypeGridUsersProps> = ({ users }) => {
+const GridUsers: React.FC<TypeGridUsersProps> = ({ users }): JSX.Element => {
 	return (
 		<>
 			<Box width={'100%'} my={'2rem'} pos={'relative'} zIndex={10}>
@@ -19,8 +19,8 @@ const GridUsers: React.FC<TypeGridUsersProps> = ({ users }) => {
 						spacingX={'1rem'}
 						spacingY={'2rem'}
 						my={'3rem'}
-						justify={'center'}>
-						{users.map((user: IAdapterUsers) => {
+						justify={'space-around'}>
+						{users.map((user: IAdapterUsers): JSX.Element => {
 							return (
 								<WrapItem key={user.id}>
 									<CardUser

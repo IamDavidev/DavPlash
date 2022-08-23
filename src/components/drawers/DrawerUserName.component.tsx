@@ -35,6 +35,7 @@ const DrawerUserName: FC = () => {
 						description: `Your user name(${refUserName.current?.value}) has been updated`,
 						status: 'success',
 						duration: 9000,
+						position: 'top',
 						isClosable: true,
 					});
 					updateUserName({

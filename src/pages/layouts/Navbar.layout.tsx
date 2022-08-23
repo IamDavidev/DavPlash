@@ -14,7 +14,7 @@ import { signOut } from '~lib/services';
 import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { useIsDarkMode } from '~lib/hooks';
 
-const Nabvar: React.FC = () => {
+const Nabvar: React.FC = (): JSX.Element => {
 	const { loggedIn } = useContext(LoggedInContext);
 	const { toggleColorMode } = useColorMode();
 	const isDarkMode: boolean = useIsDarkMode();
@@ -24,9 +24,6 @@ const Nabvar: React.FC = () => {
 			<Box
 				p={'2'}
 				px={'1rem'}
-				// pos={'sticky'}
-				// zIndex={'30'}
-				// top={'1rem'}
 				bg={isDarkMode ? 'blurDark.500' : 'blurLight.500'}
 				backdropFilter={'blur(1rem)'}
 				borderRadius={'1rem'}
@@ -35,13 +32,13 @@ const Nabvar: React.FC = () => {
 				display={'flex'}
 				justifyContent={'space-between'}
 				alignItems={'center'}>
-				<Box>
+				<Link to={'/plash/'}>
 					<DavPlashIcon
 						width={'40'}
 						height={'40'}
 						color={COLORS_THEME.DARK._PRIMARY_}
 					/>
-				</Box>
+				</Link>
 				<HStack
 					spacing={'.5rem'}
 					fontWeight={'bold'}
@@ -54,12 +51,19 @@ const Nabvar: React.FC = () => {
 							<Link to={'/plash/discover/users'}>Users</Link>
 						</>
 					) : (
-						<Link to={'/plash/'}>Home</Link>
+						<Link
+							data-test-id='nav-link-home'
+							id='nav-link-home'
+							to={'/plash/'}>
+							Home
+						</Link>
 					)}
 				</HStack>
 				<Box display={'flex'} gap='3rem'>
 					<HStack>
 						<Button
+							data-test-id='nav-btn-change-theme'
+							id='nav-btn-change-theme'
 							onClick={(): void => toggleColorMode()}
 							colorScheme={'transparent'}
 							variant={'outline'}
@@ -99,6 +103,7 @@ const Nabvar: React.FC = () => {
 					<HStack spacing={'.5rem'}>
 						{loggedIn ? (
 							<Button
+								id='nav-logout'
 								onClick={(): Promise<void> => signOut()}
 								_hover={
 									isDarkMode
@@ -118,6 +123,8 @@ const Nabvar: React.FC = () => {
 							<>
 								<Link to={'/plash/login'}>
 									<Box
+										data-test-id='nav-login'
+										id='nav-login'
 										_hover={
 											isDarkMode
 												? {
@@ -164,6 +171,8 @@ const Nabvar: React.FC = () => {
 							<>
 								<Link to={'/plash/signin'}>
 									<Box
+										data-test-id='nav-sign-in'
+										id='nav-sign-in'
 										_hover={
 											isDarkMode
 												? {
