@@ -15,15 +15,13 @@ describe('App change theme ', (): void => {
 		cy.get('[data-test-id="nav-link-home"]').contains('Home');
 	});
 
-	// it('Should change theme for app ', (): void => {
-	// 	const btnChangeTheme = cy
-	// 		.get('button')
-	// 		.should('have.id', 'nav-btn-change-theme"');
+	it('Should change theme for app ', (): void => {
+		// const btnChangeTheme = cy.get('[data-test-id="nav-btn-change-theme"]');
 
-	// 	btnChangeTheme.click();
-	// 	cy.get('body').should('have.class', classDark);
+		cy.get('[data-test-id="nav-btn-change-theme"]').click();
+		cy.get('body').should('have.class', classDark);
 
-	// 	btnChangeTheme.click();
-	// 	cy.get('body').should('have.class', classLight);
-	// });
+		cy.get('[data-test-id="nav-btn-change-theme"]').click();
+		cy.get('body').should('have.class', classLight);
+	});
 });

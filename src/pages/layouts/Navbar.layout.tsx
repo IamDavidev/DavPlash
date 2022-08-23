@@ -62,7 +62,7 @@ const Nabvar: React.FC = (): JSX.Element => {
 				<Box display={'flex'} gap='3rem'>
 					<HStack>
 						<Button
-							data-test-id='nav-btn-change-them'
+							data-test-id='nav-btn-change-theme'
 							id='nav-btn-change-theme'
 							onClick={(): void => toggleColorMode()}
 							colorScheme={'transparent'}
