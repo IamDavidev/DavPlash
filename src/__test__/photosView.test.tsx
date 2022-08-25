@@ -4,8 +4,8 @@ import { MockPhotosView } from '@/__mocks__/discoverViews.mock';
 import { render } from '@testing-library/react';
 import { OPTIONS_ORDER_BY } from '~constants/unsplash.const';
 
-describe('photos', () => {
-	it('controls photos', () => {
+describe('photos', (): void => {
+	it('controls photos', (): void => {
 		const wrapperPhotosPage = render(<MockPhotosView />);
 		/**
 		 * controls page
@@ -44,7 +44,7 @@ describe('photos', () => {
 
 		expect(controlSearch).toBeDefined();
 	});
-	it('title photos', () => {
+	it('title photos', (): void => {
 		const wrapperPhotosPage = render(<MockPhotosView />);
 
 		/**

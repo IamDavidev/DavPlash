@@ -3,12 +3,12 @@ import { render, screen } from '@testing-library/react';
 
 import { beforeAll, describe, expect, it } from 'vitest';
 
-describe('Login Form', () => {
-	beforeAll(() => {
+describe('Login Form', (): void => {
+	beforeAll((): void => {
 		render(<MockComponentLoginForm />);
 	});
 
-	it('should inputs', () => {
+	it('should inputs', (): void => {
 		const inputName = screen.getByPlaceholderText('Enter your name');
 		const inputUserName = screen.getByPlaceholderText('Enter UserName');
 		const inputPassword = screen.getByPlaceholderText('Enter password');
@@ -24,14 +24,14 @@ describe('Login Form', () => {
 	});
 });
 
-describe('Button Sign In And Button Login With Google ', () => {
+describe('Button Sign In And Button Login With Google ', (): void => {
 	let component: any;
 
-	beforeAll(() => {
+	beforeAll((): void => {
 		component = render(<MockComponentLoginForm />);
 	});
 
-	it('should button  Sign In', async () => {
+	it('should button  Sign In', async (): Promise<void> => {
 		const btnLogin = await component.findByText('Sign In');
 		const btnLoginWithGoogle = await component.findByText('Login With Google');
 		expect(btnLogin).toBeDefined();
@@ -39,7 +39,7 @@ describe('Button Sign In And Button Login With Google ', () => {
 	});
 });
 
-it('Button Home ', async () => {
+it('Button Home ', async (): Promise<void> => {
 	const component = render(<MockComponentLoginForm />);
 	const btnHome = await component.findByText('Home');
 	expect(btnHome).toBeDefined();

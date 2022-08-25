@@ -2,31 +2,31 @@ import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/react';
 import { MockUsersView } from '@/__mocks__/discoverViews.mock';
 
-describe('users page', () => {
-	// it('controls users', () => {
-	// 	const wrapperUsersPage = render(<MockUsersView />);
+describe('users page', (): void => {
+	it('controls users', (): void => {
+		const wrapperUsersPage = render(<MockUsersView />);
 
-	// 	const controlPage = wrapperUsersPage.getByText('Page');
-	// 	const controlNextPage = wrapperUsersPage.getByTestId('control-page-next');
-	// 	const controlPrevPage = wrapperUsersPage.getByTestId('control-page-prev');
+		const controlPage = wrapperUsersPage.getByText('Page');
+		const controlNextPage = wrapperUsersPage.getByTestId('control-page-next');
+		const controlPrevPage = wrapperUsersPage.getByTestId('control-page-prev');
 
-	// 	expect(controlPage).toBeDefined();
-	// 	expect(controlNextPage).toBeDefined();
-	// 	expect(controlPrevPage).toBeDefined();
+		expect(controlPage).toBeDefined();
+		expect(controlNextPage).toBeDefined();
+		expect(controlPrevPage).toBeDefined();
 
-	// 	const contorlSearch = wrapperUsersPage.getByPlaceholderText('coffee');
-	// 	expect(contorlSearch).toBeDefined();
-	// });
+		const contorlSearch = wrapperUsersPage.getByPlaceholderText('coffee');
+		expect(contorlSearch).toBeDefined();
+	});
 
-	// it('title users', () => {
-	// 	const wrapperUsersPage = render(<MockUsersView />);
+	it('title users', (): void => {
+		const wrapperUsersPage = render(<MockUsersView />);
 
-	// 	const titleUsers = wrapperUsersPage.getByText('Discover More Users');
+		const titleUsers = wrapperUsersPage.getByText('Discover More Users');
 
-	// 	expect(titleUsers).toBeDefined();
-	// });
+		expect(titleUsers).toBeDefined();
+	});
 
-	it('true is true', () => {
+	it('true is true', (): void => {
 		expect(true).toBe(true);
 	});
 });
