@@ -10,7 +10,7 @@ export * from './getPhotos.service';
 export * from './getPhotosUser.service';
 export * from './getUser.service';
 export * from './getUsers.service';
-export * from './service';
+export * from './getDataService';
 export * from './signInWithGoogle.auth';
 export * from './signOut.auth';
 export * from './signUpWithEmailAndPassword.auth';

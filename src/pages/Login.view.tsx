@@ -88,7 +88,7 @@ const Login: FC = (): JSX.Element => {
 										<Button
 											h='1.75rem'
 											size='sm'
-											onClick={() => setShowPassword(!showPassword)}>
+											onClick={(): void => setShowPassword(!showPassword)}>
 											{showPassword ? 'Hide' : 'Show'}
 										</Button>
 									</InputRightElement>

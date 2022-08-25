@@ -118,6 +118,14 @@ export const shadows = {
 	shadowLight: `0px 0px 10px 2px ${COLORS_THEME.LIGHT._PRIMARY_}`,
 };
 
+export const breakpoints = {
+	sm: '100px',
+	md: '425px',
+	lg: '768px',
+	xl: '1024px',
+	desk: '1440px',
+};
+
 export const theme = extendTheme({
 	config: {
 		initialColorMode: 'light',
@@ -126,4 +134,5 @@ export const theme = extendTheme({
 	colors, // colors: colors
 	shadows, // shadows: shadows
 	fonts, // fonts: fonts
+	breakpoints,
 });
