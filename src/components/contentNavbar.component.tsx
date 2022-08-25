@@ -1,60 +1,47 @@
-import { Box, Button, HStack, Tooltip, useColorMode } from '@chakra-ui/react';
-
-import React, { useContext } from 'react';
-
-import { Link } from 'react-router-dom';
-import { DarkThemeIcon, LightThemeIcon } from '~components/icons';
-
-import DavPlashIcon from '~components/icons/Davplash.icon';
-
-import UserIcon from '~components/icons/User.icon';
-
 import { COLORS_THEME } from '@/config/theme.config';
-import { signOut } from '~lib/services';
+import { Box, Button, HStack, Tooltip, useColorMode } from '@chakra-ui/react';
+import { FC, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { LoggedInContext } from '~lib/context/loggenIn.context';
 import { useIsDarkMode } from '~lib/hooks';
+import { signOut } from '~lib/services';
+import { DarkThemeIcon, LightThemeIcon } from './icons';
+import DavPlashIcon from './icons/Davplash.icon';
+import UserIcon from './icons/User.icon';
 
-const Nabvar: React.FC = (): JSX.Element => {
+const ContentNavbar: FC = (): JSX.Element => {
 	const { loggedIn } = useContext(LoggedInContext);
 	const { toggleColorMode } = useColorMode();
 	const isDarkMode: boolean = useIsDarkMode();
 
 	return (
 		<>
-			<Box
-				p={'2'}
-				px={'1rem'}
-				bg={isDarkMode ? 'blurDark.500' : 'blurLight.500'}
-				backdropFilter={'blur(1rem)'}
-				borderRadius={'1rem'}
-				mb={'1rem'}
-				as='nav'
-				gap={'1rem'}
+			<Link to={'/plash/'}>
+				<DavPlashIcon
+					width={'40'}
+					height={'40'}
+					color={COLORS_THEME.DARK._PRIMARY_}
+				/>
+			</Link>
+			<HStack
+				spacing={'.5rem'}
+				fontWeight={'bold'}
 				display={'flex'}
-				justifyContent={'space-between'}
-				flexDirection={{
-					sm: 'column',
-					lg: 'row',
-				}}
-				alignItems={'center'}>
-				<HStack
-					display={'flex'}
-					gap={'1rem'}
-					width={{
-						sm: '100%',
-						lg: 'auto',
-					}}
-					justifyContent={{
-						sm: 'space-between',
-						lg: 'initial',
-					}}>
-					<Link to={'/plash/'}>
-						<DavPlashIcon
-							width={'40'}
-							height={'40'}
-							color={COLORS_THEME.DARK._PRIMARY_}
-						/>
+				color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
+				{loggedIn ? (
+					<>
+						<Link to={'/plash/discover/photos'}>Photos</Link>
+						<Link to={'/plash/discover/collections'}>Collections</Link>
+						<Link to={'/plash/discover/users'}>Users</Link>
+					</>
+				) : (
+					<Link data-test-id='nav-link-home' id='nav-link-home' to={'/plash/'}>
+						Home
 					</Link>
+				)}
+			</HStack>
+			<Box display={'flex'} gap='3rem'>
+				<HStack>
 					<Button
 						data-test-id='nav-btn-change-theme'
 						id='nav-btn-change-theme'
@@ -94,37 +81,7 @@ const Nabvar: React.FC = (): JSX.Element => {
 						)}
 					</Button>
 				</HStack>
-				<HStack
-					spacing={'.5rem'}
-					fontWeight={'bold'}
-					display={'flex'}
-					color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
-					{loggedIn ? (
-						<>
-							<Link to={'/plash/discover/photos'}>Photos</Link>
-							<Link to={'/plash/discover/collections'}>Collections</Link>
-							<Link to={'/plash/discover/users'}>Users</Link>
-						</>
-					) : (
-						<Link
-							data-test-id='nav-link-home'
-							id='nav-link-home'
-							to={'/plash/'}>
-							Home
-						</Link>
-					)}
-				</HStack>
-				<HStack
-					display={'flex'}
-					gap={'1rem'}
-					width={{
-						sm: '100%',
-						lg: 'auto',
-					}}
-					justifyContent={{
-						sm: 'space-between',
-						lg: 'initial',
-					}}>
+				<HStack spacing={'.5rem'}>
 					{loggedIn ? (
 						<Button
 							id='nav-logout'
@@ -174,6 +131,7 @@ const Nabvar: React.FC = (): JSX.Element => {
 						<Tooltip
 							hasArrow
 							zIndex={'99'}
+							// boxShadow={}
 							label='User profile'
 							borderRadius={'.5rem'}
 							bg={isDarkMode ? 'primaryDark' : 'cyanLight.500'}
@@ -223,17 +181,4 @@ const Nabvar: React.FC = (): JSX.Element => {
 	);
 };
 
-export default Nabvar;
-
-/**
- *  * * * * * * *
- *  l           *
- *   -  -  - - -
- *   []  [ ]
- */
-
-/**
- *  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  l *                  --- --- ---                [  ] [  ]
- *
- */
+export default ContentNavbar;

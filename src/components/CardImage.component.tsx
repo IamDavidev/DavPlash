@@ -22,6 +22,7 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 
 	return (
 		<Box
+			data-test-id='image-card'
 			border={'2px'}
 			borderColor={
 				isDarkMode ? COLORS_THEME.DARK._PRIMARY_ : COLORS_THEME.LIGHT._PRIMARY_

@@ -2,8 +2,8 @@ import { MockCollectionsView } from '@/__mocks__/discoverViews.mock';
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-describe('collections page ', () => {
-	it('controls view colllection', () => {
+describe('collections page ', (): void => {
+	it('controls view colllection', (): void => {
 		const wrapperCollectionPage = render(<MockCollectionsView />);
 
 		/**
@@ -37,7 +37,7 @@ describe('collections page ', () => {
 		expect(controlSerch).toBeDefined();
 	});
 
-	it('Title', () => {
+	it('Title', (): void => {
 		const wrapperCollectionPage = render(<MockCollectionsView />);
 
 		/**

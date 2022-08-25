@@ -19,7 +19,17 @@ const App: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const { loggedIn } = useContext(LoggedInContext);
 	return (
-		<Box px={'10'} py={'5'} bg={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
+		<Box
+			minH='100vh'
+			display={'flex'}
+			flexDir={'column'}
+			justifyContent={'space-between'}
+			px={{
+				sm: '.5rem',
+				lg: '10',
+			}}
+			py={'5'}
+			bg={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
 			<Suspense fallback={<LoadingSuspense />}>
 				<BrowserRouter>
 					<Nabvar />

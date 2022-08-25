@@ -1,6 +1,6 @@
 import { AdapterServiceFromApi } from '~lib/adapters/service.adapter';
 
-import { getDataService } from './service';
+import { getDataService } from './getDataService';
 
 export async function getPhotosUser(userName?: string) {
 	const apiData = await getDataService({

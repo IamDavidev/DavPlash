@@ -1,10 +1,10 @@
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { FC } from 'react';
-
-import { COLORS_THEME } from '@/config/theme.config';
-import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
-const NoAccess: FC = () => {
+import { COLORS_THEME } from '@/config/theme.config';
+
+const NoAccess: FC = (): JSX.Element => {
 	return (
 		<>
 			<Flex
@@ -18,6 +18,7 @@ const NoAccess: FC = () => {
 				<Heading as={'h2'} fontSize={'5rem'}>
 					No Access
 				</Heading>
+				<Text>You can logged in the app</Text>
 				<Link to='/plash/login'>
 					<Box
 						background={COLORS_THEME._BLUE_}
@@ -29,14 +30,14 @@ const NoAccess: FC = () => {
 						Login
 					</Box>
 				</Link>
-				<Image
+				{/* <Image
 					src='/noAccess.svg'
 					alt='noAccess'
 					width={'25rem'}
 					pos={'absolute'}
 					top={0}
 					right={0}
-				/>
+				/> */}
 			</Flex>
 		</>
 	);

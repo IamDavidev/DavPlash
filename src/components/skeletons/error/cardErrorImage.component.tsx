@@ -3,11 +3,12 @@ import React from 'react';
 import { Box, Flex, Spacer } from '@chakra-ui/react';
 import { useIsDarkMode } from '~lib/hooks';
 
-const CardErrorImage: React.FC = () => {
+const CardErrorImage: React.FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	return (
 		<Box
+			data-test-id='card-image-error'
 			border={'1px solid red'}
 			borderRadius={'1rem'}
 			width={'250px'}

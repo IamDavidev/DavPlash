@@ -1,8 +1,8 @@
-import { URL_LOGIN_IN_LOCALHOST } from '~constants/cypress.const';
+import { URL_APP_IN_LOCALHOST } from '~constants/cypress.const';
 
 describe('Login Test Inputs', (): void => {
 	beforeEach((): void => {
-		cy.visit(URL_LOGIN_IN_LOCALHOST);
+		cy.visit(URL_APP_IN_LOCALHOST);
 	});
 
 	it('Login failed sign up', (): void => {
