@@ -22,7 +22,12 @@ const Controls: React.FC<IcontrolsProps> = ({
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>
-			<Flex alignItems={'center'}>
+			<Flex
+				flexDir={{
+					sm: 'column',
+					lg: 'row',
+				}}
+				alignItems={'center'}>
 				<Box
 					display={'flex'}
 					flexDir={'column'}
@@ -51,6 +56,7 @@ const Controls: React.FC<IcontrolsProps> = ({
 					alignItems={'center'}>
 					<Text color={'purpleTheme.300'} fontSize={'1.2rem'}>
 						<Kbd
+							p={'.3rem'}
 							color={isDarkMode ? 'black' : 'white'}
 							border='none'
 							bg={isDarkMode ? 'white' : 'black'}>
@@ -58,6 +64,7 @@ const Controls: React.FC<IcontrolsProps> = ({
 						</Kbd>{' '}
 						+
 						<Kbd
+							p={'.3rem'}
 							border={'none'}
 							color={isDarkMode ? 'black' : 'white'}
 							bg={isDarkMode ? 'white' : 'black'}>

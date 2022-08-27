@@ -17,6 +17,6 @@ describe('navigation no logged', (): void => {
 		/**
 		 * test card images page login
 		 */
-		cy.get('[data-test-id="card-image-error"]').should('have.length', 2);
+		cy.get('[data-test-id="card-image"]').should('have.length', 2);
 	});
 });

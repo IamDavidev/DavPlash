@@ -22,8 +22,17 @@ const Footer: FC = () => {
 				p={'1.5rem'}
 				mt={'5rem'}
 				display={'flex'}
+				flexDir={{
+					sm: 'column',
+					lg: 'row',
+				}}
 				bg={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}>
-				<Box w={'40%'} p={'1rem'}>
+				<Box
+					w={{
+						sm: '100%',
+						lg: '40%',
+					}}
+					p={'1rem'}>
 					<Image src={'/ITSDAVIDEV.svg'} alt={'davplashApp'} boxSize={24} />
 					<Heading
 						as={'h3'}

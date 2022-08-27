@@ -40,19 +40,30 @@ const CardCollection = ({
 	totalPhotos,
 	tags,
 	id,
-}: CardCollectionProps) => {
+}: CardCollectionProps): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	return (
 		<Box
 			bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
 			minWidth={'100%'}
-			width={'380px'}
-			maxWidth={'390x'}
+			width={{
+				sm: '100%',
+				md: '380px',
+			}}
+			maxWidth={'390px'}
 			border={'2px'}
 			borderColor={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 			borderRadius={'1rem'}>
-			<Flex gap={'1rem'} p={3}>
+			<Flex
+				gap={'1rem'}
+				p={3}
+				flexDir={{
+					sm: 'column',
+					md: 'row',
+				}}
+				alignItems={'center'}
+				justifyContent={'center'}>
 				<Image
 					src={ImgCollection.src}
 					alt={title}
@@ -68,7 +79,7 @@ const CardCollection = ({
 							as={'h3'}
 							fontSize={'lg'}
 							color={isDarkMode ? 'secondaryDark.500' : 'primaryLight.500'}>
-							{title}
+							{title.length >= 12 ? title.substring(0, 20) + '...' : title}
 						</Heading>
 						<Box
 							fontSize={'sm'}
@@ -93,6 +104,9 @@ const CardCollection = ({
 							<PopoverTrigger>
 								<Button
 									bg={isDarkMode ? 'blackDark' : 'whiteLight'}
+									padding={{
+										sm: '0',
+									}}
 									_hover={{ bg: 'none' }}>
 									<Text
 										mx={'.5rem'}
@@ -116,7 +130,7 @@ const CardCollection = ({
 								<PopoverHeader color={'blueTheme.500'}>{title}</PopoverHeader>
 								<PopoverBody>
 									{tags &&
-										tags.map((tag: string) => {
+										tags.map((tag: string): JSX.Element => {
 											return (
 												<Tag
 													key={tag}

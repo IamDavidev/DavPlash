@@ -18,12 +18,21 @@ const GridCollections: FC<GridCollectionsProps> = ({ collections }) => {
 				spacing={'2.5rem'}
 				justify={'center'}
 				width={'100%'}
+				p={{
+					sm: '1rem',
+					md: '.5rem',
+				}}
 				alignItems={'center'}
 				my={'3rem'}>
 				{collections.length > 0 &&
 					collections?.map((collection: IAdapterCollection) => {
 						return (
-							<WrapItem key={collection.shareKey}>
+							<WrapItem
+								w={{
+									sm: '100%',
+									md: 'auto',
+								}}
+								key={collection.shareKey}>
 								<CardCollection
 									id={collection.id}
 									ImgCollection={collection.photos[0]}

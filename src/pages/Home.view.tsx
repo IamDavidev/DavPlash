@@ -35,6 +35,10 @@ const HomeView = () => {
 					zIndex={10}
 					w={'100%'}
 					display={'flex'}
+					flexDir={{
+						sm: 'column',
+						lg: 'row',
+					}}
 					alignItems={'center'}
 					justifyContent={'space-between'}>
 					<Heading
@@ -82,13 +86,17 @@ const HomeView = () => {
 					w={'100%'}
 					display={'flex'}
 					alignItems={'center'}
+					flexDir={{
+						sm: 'column',
+						lg: 'row',
+					}}
 					justifyContent={'space-between'}>
 					<Heading
 						as={'h2'}
-						size={'3xl'}
-						// bgGradient={`linear(to-b,${
-						// 	isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
-						// },${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
+						size={{
+							sm: '2xl',
+							md: '3xl',
+						}}
 						color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 						my={'1rem'}>
 						Top Collections
@@ -132,6 +140,10 @@ const HomeView = () => {
 					pos={'relative'}
 					zIndex={10}
 					w={'100%'}
+					flexDir={{
+						sm: 'column',
+						lg: 'row',
+					}}
 					display={'flex'}
 					alignItems={'center'}
 					justifyContent={'space-between'}>

@@ -69,6 +69,7 @@ function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
 					</Link>
 					<Flex>
 						<ButtonMore
+							data-test-id='card-image-btn-view'
 							path={`/plash/discover/photos/${id}`}
 							text='view'
 							key={userName}

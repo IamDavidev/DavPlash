@@ -7,6 +7,8 @@ export async function SignInWithEmailAndPassword({
 	email: string;
 	password: string;
 }): Promise<void> {
+	if (!email) throw new Error('Error: in Sign Up');
+	if (!password) throw new Error('Error: in sign UP');
 	try {
 		await supabase.auth.signIn({
 			email,
