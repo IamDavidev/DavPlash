@@ -49,9 +49,9 @@ const CardCollection = ({
 			minWidth={'100%'}
 			width={{
 				sm: '100%',
-				md: '380px',
+				md: '365px',
 			}}
-			maxWidth={'390px'}
+			maxWidth={'370px'}
 			border={'2px'}
 			borderColor={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 			borderRadius={'1rem'}>

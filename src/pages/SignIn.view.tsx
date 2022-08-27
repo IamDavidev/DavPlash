@@ -18,9 +18,15 @@ const SignIn: FC = (): JSX.Element => {
 		<>
 			<Box
 				display={'flex'}
-				h={'80vh'}
-				flexDir={'row'}
-				flexWrap={'wrap'}
+				minH={'80vh'}
+				my={{
+					sm: '1rem',
+					lg: 0,
+				}}
+				flexDir={{
+					sm: 'column-reverse',
+					lg: 'row',
+				}}
 				justifyContent={'center'}
 				gap={'5rem'}
 				alignItems={'center'}>
