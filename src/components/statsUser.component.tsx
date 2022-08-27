@@ -18,7 +18,8 @@ const StatsUser: FC<StatsUserProps> = ({
 	location,
 	likes,
 	photos,
-}) => {
+}): JSX.Element => {
+	console.log('🚀 ~ file: statsUser.component.tsx ~ line 22 ~ likes', likes);
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>
@@ -32,7 +33,15 @@ const StatsUser: FC<StatsUserProps> = ({
 					display={'flex'}
 					justifyContent={'center'}
 					alignItems={'center'}
-					gap={'2rem'}
+					flexDir={{
+						sm: 'column',
+						lg: 'row',
+					}}
+					gap={{
+						sm: '.2rem',
+						lg: '1rem',
+						xl: '2rem',
+					}}
 					borderRadius={'2rem'}
 					borderColor={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
 					borderWidth={'1px'}
@@ -47,8 +56,13 @@ const StatsUser: FC<StatsUserProps> = ({
 							{followers}
 						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
-
+					<Box display={{ sm: 'none', lg: 'block' }}>
+						<LineIcon
+							height={30}
+							width={2}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+					</Box>
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
@@ -58,7 +72,13 @@ const StatsUser: FC<StatsUserProps> = ({
 							{following}
 						</Text>
 					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
+					<Box display={{ sm: 'none', lg: 'block' }}>
+						<LineIcon
+							height={30}
+							width={2}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+					</Box>
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
@@ -69,7 +89,13 @@ const StatsUser: FC<StatsUserProps> = ({
 						</Text>
 					</Flex>
 
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
+					<Box display={{ sm: 'none', lg: 'block' }}>
+						<LineIcon
+							height={30}
+							width={2}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+					</Box>
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}
@@ -81,7 +107,13 @@ const StatsUser: FC<StatsUserProps> = ({
 						</Text>
 					</Flex>
 
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
+					<Box display={{ sm: 'none', lg: 'block' }}>
+						<LineIcon
+							height={30}
+							width={2}
+							color={COLORS_THEME.DARK._PRIMARY_}
+						/>
+					</Box>
 					<Flex
 						flexDir={'column'}
 						justifyContent={'center'}

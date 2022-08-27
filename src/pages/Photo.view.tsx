@@ -81,8 +81,25 @@ const PhotoView: React.FC = (): JSX.Element => {
 			{isLoading && <Box minH={'90vh'}></Box>}
 			{photo.image && (
 				<>
-					<Flex p={'2rem'} h={'100%'} minH={'90vh'}>
-						<Box width={'50%'} display={'flex'} alignItems={'center'}>
+					<Flex
+						p={{
+							sm: '.5rem',
+							xl: '2rem',
+						}}
+						h={'100%'}
+						flexWrap={'wrap'}
+						flexDir={{
+							sm: 'column',
+							lg: 'row',
+						}}
+						minH={'90vh'}>
+						<Box
+							width={{
+								sm: '100%',
+								lg: '50%',
+							}}
+							display={'flex'}
+							alignItems={'center'}>
 							<ExternalLink isExternal href={photo.photoUrl}>
 								<Image
 									src={photo.image}
@@ -96,7 +113,18 @@ const PhotoView: React.FC = (): JSX.Element => {
 								/>
 							</ExternalLink>
 						</Box>
-						<Box width={'50%'} h={'100%'} px={'2rem'} pos={'sticky'} top={0}>
+						<Box
+							width={{
+								sm: '100%',
+								lg: '50%',
+							}}
+							h={'100%'}
+							px={{
+								sm: '1rem',
+								xl: '2rem',
+							}}
+							pos={'sticky'}
+							top={0}>
 							<Flex
 								wrap={'wrap'}
 								justifyContent={'flex-start'}
@@ -110,7 +138,7 @@ const PhotoView: React.FC = (): JSX.Element => {
 								<Spacer />
 								<Wrap justifyContent={'flex-end'} alignItems={'flex-end'}>
 									{photo.tags &&
-										photo.tags.map((tag: string) => {
+										photo.tags.map((tag: string): JSX.Element => {
 											return (
 												<WrapItem key={tag}>
 													<Tag
@@ -128,10 +156,19 @@ const PhotoView: React.FC = (): JSX.Element => {
 							<Flex
 								alignItems={'center'}
 								justifyContent='space-between'
-								gap={'1rem'}>
+								// wrap={'wrap'}
+								flexDir={{
+									md: 'column',
+									xl: 'row',
+								}}
+								gap={{
+									sm: '0',
+									lg: '1rem',
+								}}>
 								<Flex
 									flexDir={'column'}
 									alignItems={'center'}
+									wrap={'wrap'}
 									gap={'.5rem'}
 									my={'2rem'}>
 									<Text

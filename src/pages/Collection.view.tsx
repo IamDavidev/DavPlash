@@ -10,7 +10,6 @@ import {
 	Wrap,
 	WrapItem,
 } from '@chakra-ui/react';
-import { jsx } from '@emotion/react';
 import React, { useEffect } from 'react';
 
 import { Link, useParams } from 'react-router-dom';
@@ -53,7 +52,7 @@ const CollectionView: React.FC = (): JSX.Element => {
 				</BreadcrumbItem>
 
 				<BreadcrumbItem isCurrentPage color={'purpleTheme.500'}>
-					<Text>collection</Text>
+					<Text>{collection.title.replaceAll(' ', '-')}</Text>
 				</BreadcrumbItem>
 			</Breadcrumb>
 			{isLoading && <Box minH={'100vh'}></Box>}
@@ -61,6 +60,10 @@ const CollectionView: React.FC = (): JSX.Element => {
 				<Flex
 					flexDir={'row'}
 					justifyContent={'space-between'}
+					flexDirection={{
+						sm: 'column',
+						lg: 'row',
+					}}
 					alignItems={'center'}>
 					<Box width={'100%'} height={'100%'}>
 						<Flex
@@ -73,11 +76,7 @@ const CollectionView: React.FC = (): JSX.Element => {
 							<Heading
 								as={'h2'}
 								fontSize={'6xl'}
-								bgClip={'text'}
-								bgGradient={`linear(to-b,${
-									isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'
-								},${isDarkMode ? 'bgDark.500' : 'bgLight.500'})`}
-								backgroundClip={'text'}>
+								color={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
 								{collection.title}
 							</Heading>
 							{collection.description && (

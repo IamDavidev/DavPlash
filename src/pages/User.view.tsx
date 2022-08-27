@@ -31,11 +31,13 @@ const UserView: React.FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	const { user, photos, isLoading, setUserName } = useUser();
+	console.log('🚀 ~ file: User.view.tsx ~ line 34 ~ user', user);
 
 	useEffect((): void => {
 		if (!username) return;
 		setUserName(username);
-	});
+	}, []);
+
 	return (
 		<>
 			<Breadcrumb
@@ -124,79 +126,11 @@ const UserView: React.FC = (): JSX.Element => {
 							</>
 						)}
 					</Box>
-					{/* <Box
-					max-width={'80%'}
-					mx={'auto'}
-					my={'2rem'}
-					px={'4rem'}
-					py={'1rem'}
-					display={'flex'}
-					justifyContent={'center'}
-					alignItems={'center'}
-					gap={'2rem'}
-					borderRadius={'2rem'}
-					borderColor={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}
-					borderWidth={'1px'}
-					color={isDarkMode ? 'white' : 'black'}
-					borderStyle={'solid'}>
-					<Flex
-						flexDir={'column'}
-						justifyContent={'center'}
-						alignItems={'center'}>
-						<Text>Followers</Text>
-						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
-							{user.followers}
-						</Text>
-					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
-
-					<Flex
-						flexDir={'column'}
-						justifyContent={'center'}
-						alignItems={'center'}>
-						<Text>Following</Text>
-						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
-							{user.following}
-						</Text>
-					</Flex>
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
-					<Flex
-						flexDir={'column'}
-						justifyContent={'center'}
-						alignItems={'center'}>
-						<Text>Location</Text>
-						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
-							{user.location ?? 'Unknown'}
-						</Text>
-					</Flex>
-
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
-					<Flex
-						flexDir={'column'}
-						justifyContent={'center'}
-						alignItems={'center'}>
-						<Text>Likes</Text>
-						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
-							{user.totalLikes}
-						</Text>
-					</Flex>
-
-					<LineIcon height={30} width={2} color={COLORS_THEME.DARK._PRIMARY_} />
-					<Flex
-						flexDir={'column'}
-						justifyContent={'center'}
-						alignItems={'center'}>
-						<Text>Photos</Text>
-						<Text color={isDarkMode ? 'primaryDark.500' : 'secondaryLight.500'}>
-							{user.totalPhotos}
-						</Text>
-					</Flex>
-				</Box> */}
 					<StatsUser
 						followers={user.followers}
 						following={user.following}
 						location={user.location}
-						likes={user.likes}
+						likes={user.totalLikes}
 						photos={user.totalPhotos}
 					/>
 					<Box
