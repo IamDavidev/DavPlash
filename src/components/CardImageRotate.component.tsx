@@ -25,7 +25,9 @@ function changePhoto({
 // length = 10
 // index = 10
 
-const CardImageRotate: React.FC<ICardImageRotateProps> = ({ photos }) => {
+const CardImageRotate: React.FC<ICardImageRotateProps> = ({
+	photos,
+}): JSX.Element => {
 	const [indexPhoto, setIndexPhoto] = useState(0);
 
 	// useEffect(() => {
@@ -41,7 +43,7 @@ const CardImageRotate: React.FC<ICardImageRotateProps> = ({ photos }) => {
 	// 	};
 	// }, [photos, indexPhoto]);
 
-	if (!photos.length) return null;
+	if (!photos.length) return <>no image</>;
 
 	return (
 		<>

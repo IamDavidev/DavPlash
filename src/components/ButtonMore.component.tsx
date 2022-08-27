@@ -9,7 +9,7 @@ interface ButtonMoreProps {
 	path: string;
 }
 
-const ButtonMore = ({ path, text }: ButtonMoreProps) => {
+const ButtonMore = ({ path, text }: ButtonMoreProps): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>

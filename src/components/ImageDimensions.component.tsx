@@ -11,7 +11,7 @@ const BoxImageDimensions: React.FC<ImageDimensionsProps> = ({
 	width,
 	height,
 	color,
-}) => {
+}): JSX.Element => {
 	if (width > height) {
 		return (
 			<Box

@@ -18,7 +18,7 @@ const Controls: React.FC<IcontrolsProps> = ({
 	page,
 	setQuery,
 	setOrderBy,
-}) => {
+}): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>

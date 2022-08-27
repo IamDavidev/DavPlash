@@ -11,7 +11,7 @@ import {
 import { FC } from 'react';
 import { useIsDarkMode } from '~lib/hooks';
 
-const Footer: FC = () => {
+const Footer: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>

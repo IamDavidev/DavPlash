@@ -13,7 +13,7 @@ import { useIsDarkMode } from '~lib/hooks';
 import { updateName } from '~lib/services';
 import DrawerCustom from './DrwerCustom.component';
 
-const DrawerName: FC = () => {
+const DrawerName: FC = (): JSX.Element => {
 	const toast = useToast();
 	const isDarkMode = useIsDarkMode();
 	const refName = useRef<HTMLInputElement>(null);
@@ -27,7 +27,7 @@ const DrawerName: FC = () => {
 				onOpen={onOpen}
 				schemaColor={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}
 				isOpen={isOpen}
-				action={() => {
+				action={(): void => {
 					toast({
 						title: 'Success',
 						description: `Your name(${refName?.current?.value}) has been updated`,

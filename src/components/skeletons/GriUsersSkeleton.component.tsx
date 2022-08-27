@@ -6,7 +6,9 @@ interface IGridUsersSkeletonProps {
 	length: number;
 }
 
-const GridUserSkeletons: React.FC<IGridUsersSkeletonProps> = ({ length }) => {
+const GridUserSkeletons: React.FC<IGridUsersSkeletonProps> = ({
+	length,
+}): JSX.Element => {
 	const skeletons = new Array(length).fill('');
 	return (
 		<>

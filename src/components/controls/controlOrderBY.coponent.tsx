@@ -7,9 +7,11 @@ interface IControlOrderBYProps {
 	setOrderBy: (orderBy: string) => void;
 }
 
-const ControlOrderBy: React.FC<IControlOrderBYProps> = ({ setOrderBy }) => {
+const ControlOrderBy: React.FC<IControlOrderBYProps> = ({
+	setOrderBy,
+}): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
-	const handleOrderBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
+	const handleOrderBy = (e: React.ChangeEvent<HTMLSelectElement>): void => {
 		setOrderBy(e.target.value);
 	};
 

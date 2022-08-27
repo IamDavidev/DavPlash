@@ -3,7 +3,7 @@ import CardImage from './CardImage.component';
 import { CardSkeletonImage } from './skeletons';
 import { CardErrorImage } from './skeletons/error';
 
-const CardPhotoRandom = () => {
+const CardPhotoRandom = (): JSX.Element => {
 	const { photo, error, isLoading } = usePhoto();
 
 	if (error.isError)

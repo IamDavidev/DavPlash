@@ -18,7 +18,7 @@ const CardUser: React.FC<ICardUserProps> = ({
 	firstName,
 	totalPhotos,
 	userName,
-}) => {
+}): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>

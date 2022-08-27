@@ -34,7 +34,7 @@ const DrawerCustom: FC<IDrawerCustomProps> = ({
 	onOpen,
 	schemaColor,
 	action,
-}) => {
+}): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>
@@ -58,7 +58,7 @@ const DrawerCustom: FC<IDrawerCustomProps> = ({
 						<Button
 							colorScheme={'green'}
 							ml={'.5rem'}
-							onClick={() => {
+							onClick={(): void => {
 								action();
 								onClose();
 							}}>

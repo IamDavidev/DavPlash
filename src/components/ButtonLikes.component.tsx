@@ -32,7 +32,7 @@ const setDislike = (setDislike: Function): void =>
 		})
 	);
 
-const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
+const ButtonLikes = ({ likesProps }: { likesProps: number }): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	const [likes, setLikes] = useState<IStateBtnLikes>({
@@ -45,7 +45,7 @@ const ButtonLikes = ({ likesProps }: { likesProps: number }) => {
 		setDislike(setLikes);
 	};
 
-	useEffect(() => {
+	useEffect((): void => {
 		setLikes({
 			likes: likesProps,
 			isLiked: false,

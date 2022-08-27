@@ -6,7 +6,7 @@ import { useIsDarkMode } from '~lib/hooks';
 import { updateBio } from '~lib/services';
 import DrawerCustom from './DrwerCustom.component';
 
-const DrawerBio: FC = () => {
+const DrawerBio: FC = (): JSX.Element => {
 	const valueTextarea = useRef<HTMLTextAreaElement>(null);
 	const { isOpen, onClose, onOpen } = useDisclosure();
 	const isDarkMode = useIsDarkMode();
@@ -21,7 +21,7 @@ const DrawerBio: FC = () => {
 				title={'Change your  Bio'}
 				placement={'right'}
 				schemaColor={isDarkMode ? 'hoverDark.500' : 'hoverLight.500'}
-				action={() => {
+				action={(): void => {
 					toast({
 						description: `Your bio has been updated`,
 						status: 'success',

@@ -7,7 +7,7 @@ interface IGridCollectionSkeletonProps {
 
 const GridCollectionsSkeleton: React.FC<IGridCollectionSkeletonProps> = ({
 	length = 10,
-}: IGridCollectionSkeletonProps) => {
+}: IGridCollectionSkeletonProps): JSX.Element => {
 	const skeletons = new Array(length).fill(1);
 	return (
 		<Wrap

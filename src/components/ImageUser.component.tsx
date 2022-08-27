@@ -8,7 +8,10 @@ interface ImageUserProps {
 	username: string;
 }
 
-const ImageUser: FC<ImageUserProps> = ({ profileImage, username }) => {
+const ImageUser: FC<ImageUserProps> = ({
+	profileImage,
+	username,
+}): JSX.Element => {
 	return (
 		<Flex
 			width={'100%'}

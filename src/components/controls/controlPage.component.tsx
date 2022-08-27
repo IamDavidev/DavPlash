@@ -1,8 +1,8 @@
+import { COLORS_THEME } from '@/config/theme.config';
 import { Button, Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { ArrowCircleRight } from '~components/icons';
 import ArrowCircleLeft from '~components/icons/ArrowCircleLeft.icon';
-import { COLORS_THEME } from '@/config/theme.config';
 import { useIsDarkMode } from '~lib/hooks';
 
 interface IcontrolsPageProps {
@@ -11,7 +11,10 @@ interface IcontrolsPageProps {
 	maxPage?: number;
 }
 
-const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
+const ControlsPage: React.FC<IcontrolsPageProps> = ({
+	setPage,
+	page,
+}): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const maxPage = 10;
 
@@ -29,7 +32,7 @@ const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 		<Flex justifyContent={'center'} gap={'.5rem'} alignItems={'center'}>
 			<Button
 				data-testid='control-page-prev'
-				onClick={() => setPagePrev()}
+				onClick={(): void => setPagePrev()}
 				border={'none'}
 				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}>
 				<ArrowCircleLeft
@@ -53,7 +56,7 @@ const ControlsPage: React.FC<IcontrolsPageProps> = ({ setPage, page }) => {
 				data-testid='control-page-next'
 				colorScheme={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 				border={'none'}
-				onClick={() => setPageNext()}>
+				onClick={(): void => setPageNext()}>
 				<ArrowCircleRight
 					width={25}
 					height={25}

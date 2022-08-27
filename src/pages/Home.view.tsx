@@ -19,7 +19,7 @@ import GridUserSkeletons from '~components/skeletons/GriUsersSkeleton.component'
 
 import GridUsers from './layouts/GridUsers.layout';
 
-const HomeView = () => {
+const HomeView = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 
 	const { photos, error: errorPhotos } = usePhotos();
