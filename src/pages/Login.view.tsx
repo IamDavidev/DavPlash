@@ -36,14 +36,31 @@ const Login: FC = (): JSX.Element => {
 			<Heading>Login</Heading>
 			<Flex
 				id='login-form'
-				flexDir={'row'}
+				flexDir={{
+					sm: 'column',
+					lg: 'row',
+				}}
 				flexWrap={'wrap'}
 				justifyContent={'space-evenly'}
 				alignItems={'center'}
 				minH={'60vh'}>
-				<Box width={'40%'}>
+				<Box
+					width={{
+						sm: '100%',
+						lg: '60%',
+					}}>
 					<form onSubmit={e => ValidationsFields(e)}>
-						<InputGroup gap={'1rem'} my={'1.5rem'}>
+						<InputGroup
+							gap={'1rem'}
+							my={'1.5rem'}
+							px={{
+								sm: '1rem',
+								lg: '0',
+							}}
+							flexDir={{
+								sm: 'column',
+								lg: 'row',
+							}}>
 							<Box>
 								<Input
 									name={'name'}
@@ -73,7 +90,17 @@ const Login: FC = (): JSX.Element => {
 								</Box>
 							</Box>
 						</InputGroup>
-						<InputGroup gap={'1rem'} my={'1.5rem'}>
+						<InputGroup
+							gap={'1rem'}
+							my={'1.5rem'}
+							px={{
+								sm: '1rem',
+								lg: '0',
+							}}
+							flexDir={{
+								sm: 'column',
+								lg: 'row',
+							}}>
 							<Box>
 								<InputGroup size='md'>
 									<Input
@@ -127,7 +154,11 @@ const Login: FC = (): JSX.Element => {
 								</Box>
 							</Box>
 						</InputGroup>
-						<InputGroup>
+						<InputGroup
+							px={{
+								sm: '1rem',
+								lg: '0',
+							}}>
 							<Box display={'flex'} flexDir={'column'} w={'100%'}>
 								<Input
 									type='email'
@@ -156,7 +187,10 @@ const Login: FC = (): JSX.Element => {
 							}
 							colorScheme={'blueG'}
 							type='submit'
-							mx={'auto'}
+							mx={{
+								sm: '1rem',
+								lg: 'auto',
+							}}
 							my={'1rem'}>
 							Sign In
 						</Button>
@@ -182,12 +216,19 @@ const Login: FC = (): JSX.Element => {
 					</Button> */}
 				</Box>
 				<Box
-					width={'30%'}
+					width={{
+						sm: '100%',
+					}}
 					gap={'1rem'}
 					display={'flex'}
 					justifyContent={'center'}
 					alignItems={'center'}>
-					<Box transform={'rotate(10deg)'}>
+					<Box
+						transform={'rotate(10deg)'}
+						display={{
+							sm: 'none',
+							lg: 'block',
+						}}>
 						<CardPhotoRandom />
 					</Box>
 					<Box transform={'rotate(-10deg)'}>
