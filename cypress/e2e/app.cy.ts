@@ -1,6 +1,8 @@
+import { EXTENDS_APP_HOME } from '~constants/cypress.const';
+
 describe('App can be lauched', (): void => {
 	it('should be lauched', (): void => {
-		cy.visit('/');
+		cy.visit(EXTENDS_APP_HOME);
 
 		/**
 		 * title and btns header layout

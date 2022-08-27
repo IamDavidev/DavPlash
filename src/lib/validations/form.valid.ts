@@ -1,4 +1,4 @@
-import { IStateForm, valueValid } from '~lib/hooks/useForm.hook';
+import { IStateForm } from '~interfaces/form.types';
 import {
 	hasAtLeastOneLowercaseLetter,
 	hasAtLeastOneNumber,
@@ -13,7 +13,7 @@ import {
 
 export function checkingIsValidPassword(
 	setPassword: Function,
-	password: valueValid
+	password: any
 ): boolean {
 	const value = password.value;
 
@@ -75,8 +75,8 @@ export function checkingIsValidPassword(
 
 export function checkingIsValidPasswordConfirmation(
 	setConfirmPassword: Function,
-	password: valueValid,
-	confirmPassword: valueValid
+	password: any,
+	confirmPassword: any
 ): boolean {
 	const value = confirmPassword.value;
 	const valuePassword = password.value;
@@ -122,10 +122,7 @@ export function checkingIsValidPasswordConfirmation(
 	return true;
 }
 
-export function checkingIsValidEmail(
-	setEmail: Function,
-	email: valueValid
-): boolean {
+export function checkingIsValidEmail(setEmail: Function, email: any): boolean {
 	const value = email.value;
 
 	const setErrorEmail = (msg: string): boolean => {
@@ -175,7 +172,7 @@ export function checkingIsValidEmail(
 
 export function checkingIsValidUsername(
 	setUserName: Function,
-	username: valueValid
+	username: any
 ): boolean {
 	const value = username.value;
 
@@ -229,10 +226,7 @@ export function checkingIsValidUsername(
 	return true;
 }
 
-export function checkingIsValidName(
-	setName: Function,
-	name: valueValid
-): boolean {
+export function checkingIsValidName(setName: Function, name: any): boolean {
 	const value = name.value;
 
 	const setErrorName = (msg: string): boolean => {

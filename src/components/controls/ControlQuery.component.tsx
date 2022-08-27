@@ -17,7 +17,9 @@ interface IcontrolQueryProps {
 	setQuery: (query: string) => void;
 }
 
-const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
+const ControlQuery: React.FC<IcontrolQueryProps> = ({
+	setQuery,
+}): JSX.Element => {
 	const queryValue = useRef<HTMLInputElement>(null);
 	const isDarkMode = useIsDarkMode();
 
@@ -31,8 +33,8 @@ const ControlQuery: React.FC<IcontrolQueryProps> = ({ setQuery }) => {
 		queryValue.current && (queryValue.current.value = '');
 	};
 
-	useEffect(() => {
-		eventListenerKeyBoard(['control', 'k'], () => {
+	useEffect((): void => {
+		eventListenerKeyBoard(['control', 'k'], (): void => {
 			queryValue.current && queryValue.current.focus();
 		});
 	}, []);

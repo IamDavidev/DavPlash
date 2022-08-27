@@ -1,6 +1,8 @@
-describe('navigation no logged', (): void => {
+import { EXTENDS_APP_HOME } from '~constants/cypress.const';
+
+describe('navigation no looged', (): void => {
 	beforeEach((): void => {
-		cy.visit('/'); // localhost: 3000;
+		cy.visit(EXTENDS_APP_HOME); // localhost: 3000;
 	});
 
 	it('visit login', (): void => {

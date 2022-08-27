@@ -1,6 +1,4 @@
-import { IStateForm } from '~interfaces/form.types';
-
-export const INITIAL_STATE_FORM: IStateForm = {
+export const INITIAL_STATE_FORM: any = {
 	password: {
 		message: null,
 		isValid: true,

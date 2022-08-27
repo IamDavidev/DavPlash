@@ -52,7 +52,11 @@ const Nabvar: React.FC = (): JSX.Element => {
 						<DavPlashIcon
 							width={'40'}
 							height={'40'}
-							color={COLORS_THEME.DARK._PRIMARY_}
+							color={
+								isDarkMode
+									? COLORS_THEME.DARK._PRIMARY_
+									: COLORS_THEME.LIGHT._PRIMARY_
+							}
 						/>
 					</Link>
 					<Button
@@ -88,7 +92,7 @@ const Nabvar: React.FC = (): JSX.Element => {
 								<DarkThemeIcon
 									width={20}
 									height={20}
-									color={COLORS_THEME.LIGHT._SECONDARY_}
+									color={COLORS_THEME.LIGHT._PRIMARY_}
 								/>
 							</>
 						)}
