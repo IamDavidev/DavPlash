@@ -11,7 +11,7 @@ import { useCollections, useIsDarkMode } from '~lib/hooks';
 
 import GridCollections from './layouts/GridCollections.layout';
 
-const CollectionsView: React.FC = () => {
+const CollectionsView: React.FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const {
 		collections,

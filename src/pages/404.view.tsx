@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useIsDarkMode } from '~lib/hooks';
 
-const PageNotFound = () => {
+const PageNotFound = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	return (
 		<>

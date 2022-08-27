@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex, Skeleton, Spacer } from '@chakra-ui/react';
 
-const CardSkeletonCollection: React.FC = () => {
+const CardSkeletonCollection: React.FC = (): JSX.Element => {
 	return (
 		<>
 			<Flex p={3} width='400px' gap='1rem'>

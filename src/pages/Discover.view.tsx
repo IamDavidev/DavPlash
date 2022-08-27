@@ -14,12 +14,12 @@ function calculatePath(path: string, navigate: any) {
 	throw new Error('Invalid Tab');
 }
 
-const DiscoverView: React.FC = () => {
+const DiscoverView: React.FC = (): JSX.Element => {
 	const path = window.location.pathname.split('/')[3];
 	const navigate = useNavigate();
 	const [index, setIndex] = useState(0);
 
-	useEffect(() => {
+	useEffect((): void => {
 		setIndex(calculatePath(path, navigate));
 	}, []);
 

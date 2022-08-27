@@ -17,7 +17,13 @@ type ICardImageProps = {
 	id: string;
 };
 
-function CardImage({ image, likes, name, userName, id }: ICardImageProps) {
+function CardImage({
+	image,
+	likes,
+	name,
+	userName,
+	id,
+}: ICardImageProps): JSX.Element {
 	const isDarkMode = useIsDarkMode();
 
 	return (

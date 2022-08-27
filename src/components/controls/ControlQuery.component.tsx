@@ -44,8 +44,8 @@ const ControlQuery: React.FC<IcontrolQueryProps> = ({
 			<InputGroup
 				width={'200px'}
 				borderColor={COLORS_THEME.DARK._HOVER_}
-				onFocus={() => setFocusState(true)}
-				onBlur={() => setFocusState(false)}>
+				onFocus={(): void => setFocusState(true)}
+				onBlur={(): void => setFocusState(false)}>
 				<InputLeftElement pointerEvents='none'>
 					<SearchIcon
 						width={25}
