@@ -13,7 +13,12 @@ const NoAccess: FC = (): JSX.Element => {
 				justifyContent={'center'}
 				minH={'80vh'}
 				pos={'relative'}
-				p={'5rem'}
+				p={{
+					sm: '0',
+					md: '1rem',
+					lg: '2rem',
+					xl: '4rem',
+				}}
 				h={'100%'}>
 				<Heading as={'h2'} fontSize={'5rem'}>
 					No Access

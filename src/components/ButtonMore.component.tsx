@@ -20,7 +20,10 @@ const ButtonMore = ({ path, text }: ButtonMoreProps) => {
 					flexDir={'row'}
 					gap={'.5rem'}
 					py={'.5rem'}
-					px={'1rem'}
+					px={{
+						sm: '0',
+						md: '.5rem',
+					}}
 					border={0}
 					_hover={
 						isDarkMode
