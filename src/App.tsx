@@ -17,8 +17,8 @@ import Footer from '~pages/layouts/Footer.layout';
 
 const App: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
-	// const { loggedIn } = useContext(LoggedInContext);
-	const loggedIn = true;
+	const { loggedIn } = useContext(LoggedInContext);
+	// const loggedIn = true;
 	return (
 		<Box
 			minH='100vh'
