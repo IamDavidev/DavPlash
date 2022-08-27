@@ -11,20 +11,15 @@ interface IcontrolPerPageProps {
 const ControlPerPage: React.FC<IcontrolPerPageProps> = ({
 	setPerPage,
 	perPage,
-}) => {
+}): JSX.Element => {
 	return (
 		<>
 			<Button
-				colorScheme={'purpleTheme'}
 				color={'white'}
 				variant={'outline'}
-				onClick={() => setPerPage(perPage + 10)}>
+				onClick={(): void => setPerPage(perPage + 10)}>
 				10 more{' '}
-				<ArrowCircleRight
-					width={25}
-					height={25}
-					color={COLORS_THEME._PURPLE_300}
-				/>
+				<ArrowCircleRight width={25} height={25} color={COLORS_THEME._BLUE_} />
 			</Button>
 		</>
 	);

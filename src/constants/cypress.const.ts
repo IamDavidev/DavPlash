@@ -1,6 +1,7 @@
 type urlApp = string;
 
 export const URL_APP_IN_LOCALHOST: urlApp = 'http://localhost:3000';
+export const EXTENDS_APP_HOME: urlApp = '/';
 
 export const EXTENDS_APP_LOGIN: urlApp = '/login';
 export const EXTENDS_APP_SIGN_IN: urlApp = '/signin';
