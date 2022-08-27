@@ -48,7 +48,6 @@ const PrivateRoutes: FC = (): JSX.Element => {
 			<Route path='/plash/discover/users/:username' element={<User />} />
 
 			<Route path='/plash/user/me' element={<Profile />} />
-
 			<Route path='*' element={<Navigate to='/plash/' replace />} />
 		</Routes>
 	);
