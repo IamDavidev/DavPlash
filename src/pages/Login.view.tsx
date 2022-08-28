@@ -95,7 +95,7 @@ const Login: FC = (): JSX.Element => {
 							my={'1.5rem'}
 							px={{
 								sm: '1rem',
-								lg: '0',
+								lg: '1rem',
 							}}
 							flexDir={{
 								sm: 'column',
@@ -157,7 +157,7 @@ const Login: FC = (): JSX.Element => {
 						<InputGroup
 							px={{
 								sm: '1rem',
-								lg: '0',
+								lg: '1rem',
 							}}>
 							<Box display={'flex'} flexDir={'column'} w={'100%'}>
 								<Input
@@ -174,6 +174,8 @@ const Login: FC = (): JSX.Element => {
 							</Box>
 						</InputGroup>
 						<Button
+							display={'flex'}
+							justifyContent={'flex-end'}
 							_hover={
 								isDarkMode
 									? {
@@ -189,7 +191,7 @@ const Login: FC = (): JSX.Element => {
 							type='submit'
 							mx={{
 								sm: '1rem',
-								lg: 'auto',
+								lg: '1rem',
 							}}
 							my={'1rem'}>
 							Sign In
@@ -218,6 +220,7 @@ const Login: FC = (): JSX.Element => {
 				<Box
 					width={{
 						sm: '100%',
+						desk: '40%',
 					}}
 					gap={'1rem'}
 					display={'flex'}

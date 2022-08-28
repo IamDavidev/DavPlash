@@ -96,7 +96,7 @@ const PhotoView: React.FC = (): JSX.Element => {
 						<Box
 							width={{
 								sm: '100%',
-								lg: '50%',
+								lg: '45%',
 							}}
 							display={'flex'}
 							alignItems={'center'}>
@@ -116,7 +116,7 @@ const PhotoView: React.FC = (): JSX.Element => {
 						<Box
 							width={{
 								sm: '100%',
-								lg: '50%',
+								lg: '55%',
 							}}
 							h={'100%'}
 							px={{
