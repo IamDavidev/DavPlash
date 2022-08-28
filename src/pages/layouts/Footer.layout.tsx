@@ -33,7 +33,12 @@ const Footer: FC = (): JSX.Element => {
 						lg: '40%',
 					}}
 					p={'1rem'}>
-					<Image src={'/ITSDAVIDEV.svg'} alt={'davplashApp'} boxSize={24} />
+					<Image
+						src={'/ITSDAVIDEV.svg'}
+						my={'1rem'}
+						alt={'davplashApp'}
+						boxSize={24}
+					/>
 					<Heading
 						as={'h3'}
 						fontSize={'1.5rem'}
@@ -42,11 +47,11 @@ const Footer: FC = (): JSX.Element => {
 						DavPlash App
 					</Heading>
 					<Text>
-						This is a app of photos,collections,and more. Your can`t discover
-						all of this.
+						In this app you can share photos, create collection with your photos
+						and discover new people with same hobby for photos.
 					</Text>
 				</Box>
-				<Flex gap={'3rem'} wrap={'wrap'}>
+				<Flex gap={'3rem'} wrap={'wrap'} justifyContent='center'>
 					<Box>
 						<Heading color={'blueG.500'} mb={'1rem'} as='h4' fontSize={'1rem'}>
 							Inspiration figma

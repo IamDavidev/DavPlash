@@ -1,6 +1,3 @@
-# Davplash
+# TODO: changes
 
-## Technologies
-
-- React
-- TypeScript
+- add btn

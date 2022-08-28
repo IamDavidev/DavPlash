@@ -11,7 +11,6 @@ import {
 	Text,
 } from '@chakra-ui/react';
 import { FC, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import CardPhotoRandom from '~components/CardPhotoRandom.component';
 
@@ -26,13 +25,6 @@ const Login: FC = (): JSX.Element => {
 
 	return (
 		<>
-			<Link to='/plash'>
-				<Box
-					my={'1rem'}
-					color={isDarkMode ? 'primaryDark.500' : 'cyanLight.500'}>
-					Home
-				</Box>
-			</Link>
 			<Heading>Login</Heading>
 			<Flex
 				id='login-form'
@@ -40,14 +32,18 @@ const Login: FC = (): JSX.Element => {
 					sm: 'column',
 					lg: 'row',
 				}}
-				flexWrap={'wrap'}
 				justifyContent={'space-evenly'}
 				alignItems={'center'}
 				minH={'60vh'}>
 				<Box
+					px={{
+						sm: '0',
+						md: '1rem',
+						lg: '1.5rem',
+					}}
 					width={{
 						sm: '100%',
-						lg: '60%',
+						lg: '50%',
 					}}>
 					<form onSubmit={e => ValidationsFields(e)}>
 						<InputGroup
@@ -55,7 +51,7 @@ const Login: FC = (): JSX.Element => {
 							my={'1.5rem'}
 							px={{
 								sm: '1rem',
-								lg: '0',
+								lg: '1rem',
 							}}
 							flexDir={{
 								sm: 'column',
@@ -93,13 +89,10 @@ const Login: FC = (): JSX.Element => {
 						<InputGroup
 							gap={'1rem'}
 							my={'1.5rem'}
-							px={{
-								sm: '1rem',
-								lg: '1rem',
-							}}
+							px={'1rem'}
 							flexDir={{
 								sm: 'column',
-								lg: 'row',
+								xl: 'row',
 							}}>
 							<Box>
 								<InputGroup size='md'>
@@ -217,23 +210,7 @@ const Login: FC = (): JSX.Element => {
 						Login With Google
 					</Button> */}
 				</Box>
-				<Box
-					width={{
-						sm: '100%',
-						desk: '40%',
-					}}
-					gap={'1rem'}
-					display={'flex'}
-					justifyContent={'center'}
-					alignItems={'center'}>
-					<Box
-						transform={'rotate(10deg)'}
-						display={{
-							sm: 'none',
-							lg: 'block',
-						}}>
-						<CardPhotoRandom />
-					</Box>
+				<Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
 					<Box transform={'rotate(-10deg)'}>
 						<CardPhotoRandom />
 					</Box>
