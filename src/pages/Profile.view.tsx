@@ -1,5 +1,5 @@
 import { COLORS_THEME } from '@/config/theme.config';
-import { Box, Divider, Text } from '@chakra-ui/react';
+import { Box, Divider, Heading, Text } from '@chakra-ui/react';
 import { FC, useEffect, useState } from 'react';
 import DrawerBio from '~components/drawers/DrawerBio.component';
 import DrawerName from '~components/drawers/DrawerName.component';
@@ -24,7 +24,7 @@ import { getDataUser } from '~lib/services/getDataUser.service';
  * - photos: string[] // based on the photos of the user
  *
  */
-interface IUserData {
+export interface IUserData {
 	bio: string;
 	followers: number;
 	following: number;
@@ -37,7 +37,7 @@ interface IUserData {
 	user_name: string;
 }
 
-const INITIAL_STATE_DATA_USER = {
+const INITIAL_STATE_DATA_USER: IUserData = {
 	bio: '',
 	followers: 0,
 	following: 0,
@@ -53,10 +53,23 @@ const INITIAL_STATE_DATA_USER = {
 const Profile: FC = (): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
 	const [user, setUser] = useState<IUserData>(INITIAL_STATE_DATA_USER);
+	console.log('🚀 ~ file: Profile.view.tsx ~ line 56 ~ user', user);
 
-	useEffect(() => {
+	useEffect((): void => {
 		getDataUser().then(res => setUser(res.user));
 	}, []);
+
+	if (user === undefined)
+		return (
+			<>
+				<Heading>Error in app.</Heading>
+				<Box>
+					you ask for help in this email :{' '}
+					<Text color={'blueG.500'}>contact@davplash.com </Text>
+				</Box>
+			</>
+		);
+
 	return (
 		<>
 			<Box
@@ -88,8 +101,8 @@ const Profile: FC = (): JSX.Element => {
 						height={29}
 						color={COLORS_THEME.DARK._PRIMARY_}
 					/>
-					{user.user_name === '' && <Text>No User Name</Text>}
-					{user.user_name !== '' && <Text>{user.user_name}</Text>}
+					{user?.user_name === '' && <Text>No User Name</Text>}
+					{user?.user_name !== '' && <Text>{user.user_name}</Text>}
 					<DrawerUserName />
 				</Box>
 

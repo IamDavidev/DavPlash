@@ -59,12 +59,12 @@ const HeaderLayout: FC = (): JSX.Element => {
 											transition: 'box-shadow 0.35s ease-in-out',
 									  }
 							}
-							px={'1rem'}
+							px={'2rem'}
 							alignItems={'center'}
 							justifyContent={'center'}
 							bg={isDarkMode ? 'primaryDark.500' : 'primaryLight.500'}
 							color={isDarkMode ? 'bgDark.500' : 'bgLight.500'}>
-							<Text mx={'2px'}>Get Started Collections</Text>
+							<Text mx={'2px'}>Collections</Text>
 							<HeartIcon
 								width={20}
 								height={20}
@@ -90,14 +90,14 @@ const HeaderLayout: FC = (): JSX.Element => {
 							borderWidth={2}
 							display={'flex'}
 							py={'.5rem'}
-							px={'1rem'}
+							px={'2rem'}
 							bg={'transparent'}
 							alignItems={'center'}
 							justifyContent={'center'}>
 							<Text
 								mx={'2px'}
 								color={isDarkMode ? 'tertiaryDark.500' : 'primaryLight.500'}>
-								Learn More Photos
+								Photos
 							</Text>
 							<ArrowRightIcon
 								width={20}
