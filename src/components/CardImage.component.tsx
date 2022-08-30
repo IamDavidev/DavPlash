@@ -31,7 +31,9 @@ function CardImage({
 			data-test-id='image-card'
 			border={'2px'}
 			borderColor={
-				isDarkMode ? COLORS_THEME.DARK._PRIMARY_ : COLORS_THEME.LIGHT._PRIMARY_
+				isDarkMode
+					? COLORS_THEME.DARK._SECONDARY_
+					: COLORS_THEME.LIGHT._PRIMARY_
 			}
 			borderRadius={'1rem'}
 			bg={isDarkMode ? 'blackDark.500' : 'whiteLight.500'}
