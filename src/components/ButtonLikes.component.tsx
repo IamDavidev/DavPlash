@@ -23,6 +23,12 @@ const setLike = (setLike: Function): void =>
 /**
  * * remove a like
  */
+/**
+ *
+ * @param setDislike
+ * @returns
+ */
+// jalfdsj
 
 const setDislike = (setDislike: Function): void =>
 	setDislike(

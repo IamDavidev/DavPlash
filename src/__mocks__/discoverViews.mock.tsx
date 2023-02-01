@@ -1,6 +1,7 @@
 import { ChakraProvider, theme } from '@chakra-ui/react';
 import { FC, ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+
 import CollectionsView from '~pages/Collections.view';
 import PhotosView from '~pages/photos.view';
 import UserView from '~pages/User.view';
@@ -19,7 +20,7 @@ const WrapperDiscoversView: FC<IWrapperDiscoverViewProps> = ({ children }) => {
 	);
 };
 
-export const MockCollectionsView: FC = () => {
+export const MockCollectionsView: FC = (): JSX.Element => {
 	return (
 		<>
 			<WrapperDiscoversView>
@@ -29,7 +30,7 @@ export const MockCollectionsView: FC = () => {
 	);
 };
 
-export const MockPhotosView: FC = () => {
+export const MockPhotosView: FC = (): JSX.Element => {
 	return (
 		<>
 			<WrapperDiscoversView>
@@ -39,7 +40,7 @@ export const MockPhotosView: FC = () => {
 	);
 };
 
-export const MockUsersView: FC = () => {
+export const MockUsersView: FC = (): JSX.Element => {
 	return (
 		<>
 			<WrapperDiscoversView>

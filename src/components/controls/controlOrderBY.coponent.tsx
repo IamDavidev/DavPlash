@@ -11,6 +11,7 @@ const ControlOrderBy: React.FC<IControlOrderBYProps> = ({
 	setOrderBy,
 }): JSX.Element => {
 	const isDarkMode = useIsDarkMode();
+
 	const handleOrderBy = (e: React.ChangeEvent<HTMLSelectElement>): void => {
 		setOrderBy(e.target.value);
 	};

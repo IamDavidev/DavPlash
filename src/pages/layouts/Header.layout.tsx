@@ -27,6 +27,7 @@ const HeaderLayout: FC = (): JSX.Element => {
 					fontSize={{
 						sm: '2.5rem',
 						lg: '3.5rem',
+						xl: '5rem',
 					}}
 					display='flex'
 					alignItems={'center'}
